@@ -1,0 +1,40 @@
+<%@page language="abap" %>
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<result>
+<%
+  data :
+  line      like line of IT_SOURCE,
+  src       like line of it_zsrc,
+  SCIT_rest like line of it_SCIT_REST.
+  loop at IT_SOURCE into line.
+%>
+<elt name="<%= line-repid.%>">
+<codeinspector>
+<%
+  loop at line-SCIT_REST into SCIT_REST.
+%>
+<met user="<%= SCIT_REST-CIUSER.%>"
+    type="<%= SCIT_REST-OBJTYPE.%>"
+    name="<%= SCIT_REST-OBJNAME.%>"
+    id="<%= SCIT_REST-TEST.%>"
+    cnt="<%= SCIT_REST-ERRCNT.%>"
+    cnt2="<%= SCIT_REST-CONSECCNT.%>"
+    ssobjname="<%= SCIT_REST-SOBJNAME.%>"
+    ssobjtype="<%= SCIT_REST-SOBJTYPE.%>"
+    line="<%= SCIT_REST-LINE.%>"
+    col="<%= SCIT_REST-COL.%>"
+    kind="<%= SCIT_REST-KIND.%>"
+    cpde="<%= SCIT_REST-CODE.%>">
+    <%= SCIT_REST-PARAM1.%>
+</met>
+<%  endloop.%>
+</codeinspector>
+<source>
+    <![CDATA[
+<%  loop at line-src into src.%>
+<%= src-line. %><%  endloop.%>
+    ]]>
+</source>
+</elt>
+<%  endloop.%>
+</result>

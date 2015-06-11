@@ -1,0 +1,33 @@
+body {
+    background: #f0f0ff;
+    font-family: sans-serif;
+    color: black;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+
+.ActivityIcon.Definition { filter:url(#Gray) }
+
+.ActivityIcon.Scheduled  { filter:url(#Blink); }
+.ActivityIcon.Reserved   { filter:url(#Blink); }
+.ActivityIcon.Executing  { filter:url(#Blink); }
+.ActivityIcon.WaitContin  { filter:url(#Blink); }
+
+.ActivityIcon.Completed { filter:url(#Green) }
+.ActivityIcon.Processed { filter:url(#Green) }
+.ActivityIcon.ConFalsified { filter:url(#Green) }
+.ActivityIcon.ConVerified { filter:url(#Green) }
+
+.ActivityIcon.Aborted   {filter:url(#Red) }
+.ActivityLabel.Aborted   {fill:red; }
+.ActivityIcon.Failed   {filter:url(#Red) }
+.ActivityLabel.Failed   {fill:red; }
+
+.ActivityIcon.Alert   {filter:url(#Blink2) }
+.ActivityIcon.OverDue   {filter:url(#Blink2) }
+
+.ActivityLabelBg        {fill:#f0f0ff;}
+
+.PropertyName {font-size:10pt}
+.PropertyValue {font-size:8pt}

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC '-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN' 'http://java.sun.com/dtd/web-app_2_3.dtd'>
+
+<web-app>
+   <display-name>Compuware Application Quality Solution portal</display-name>
+
+  <!-- Action Servlet Configuration -->
+    <servlet>
+        <servlet-name>action</servlet-name>
+  		<!-- we use our own (slightly) customized version of default org.apache.struts.action.ActionServlet -->
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+        <init-param>
+          <param-name>config</param-name>
+          <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
+        <init-param>
+          <param-name>debug</param-name>
+          <param-value>2</param-value>
+        </init-param>
+        <init-param>
+          <param-name>detail</param-name>
+          <param-value>2</param-value>
+        </init-param>
+        <init-param>
+          <param-name>validate</param-name>
+          <param-value>true</param-value>
+        </init-param>
+		<load-on-startup>1</load-on-startup>
+    </servlet>
+
+  <!-- Action Servlet Mapping -->
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+
+    <welcome-file-list>
+       <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
+    
+	<taglib>
+    	<taglib-uri>/struts-logic.tld</taglib-uri>
+	    <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+	</taglib>
+	<taglib>
+    	<taglib-uri>/struts-bean.tld</taglib-uri>
+		<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+	</taglib>
+	<taglib>
+    	<taglib-uri>/struts-html.tld</taglib-uri>
+	    <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+  	</taglib>
+  	
+<!-- Define a Security Constraint on this Application -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>HTMLManger and Manager command</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+       <!-- NOTE:  This role is not present in the default users file -->
+       <role-name>manager</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!-- Define the Login Configuration for this Application -->
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Tomcat Manager Application</realm-name>
+  </login-config>
+
+  <!-- Security roles referenced by this web application -->
+  <security-role>
+    <description>
+      The role that is required to log in to the Manager Application
+    </description>
+    <role-name>manager</role-name>
+  </security-role>
+  
+</web-app>

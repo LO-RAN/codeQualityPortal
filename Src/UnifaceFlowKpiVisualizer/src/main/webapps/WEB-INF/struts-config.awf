@@ -1,0 +1,16 @@
+<graph version="1.0">
+<cell id="0" x="0.0" y="70.0" doc="" el="/retrieveAggregatedProcessData" cap="/retrieveAggregatedProcessData" type="action"/>
+<cell id="1" x="60.0" y="370.0" doc="" el="exception" cap="exception" type="forward"/>
+<cell id="2" x="250.0" y="370.0" el="/exception.jsp" cap="/exception.jsp" type="page"/>
+<cell id="3" x="50.0" y="520.0" doc="" el="getCredentials" cap="getCredentials" type="forward"/>
+<cell id="4" x="250.0" y="520.0" el="/credentials.htm" cap="/credentials.htm" type="page"/>
+<cell id="5" x="230.0" y="70.0" el="/processsummary.jsp" cap="/processsummary.jsp" type="page"/>
+<cell id="6" x="230.0" y="220.0" el="/processinstances.jsp" cap="/processinstances.jsp" type="page"/>
+<cell id="7" x="0.0" y="590.0" doc="" el="/retrieveProcessInstanceData" cap="/retrieveProcessInstanceData" type="action"/>
+<cell id="8" x="0.0" y="660.0" doc="" el="/retrieveProcessTaskData" cap="/retrieveProcessTaskData" type="action"/>
+<edge id="9" src="1" tgt="2" doc="" el="exception" cap="exception" type="forward"/>
+<edge id="10" src="3" tgt="4" doc="" el="getCredentials" cap="getCredentials" type="forward"/>
+<edge id="11" src="0" tgt="5" doc="" el="success" cap="success" type="forward"/>
+<edge id="12" src="7" tgt="6" doc="" el="success" cap="success" type="forward"/>
+<edge id="13" src="8" tgt="6" doc="" el="success" cap="success" type="forward"/>
+</graph>

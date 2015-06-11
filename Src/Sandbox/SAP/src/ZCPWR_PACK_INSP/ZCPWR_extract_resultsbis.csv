@@ -1,0 +1,6 @@
+<%@page language="abap"%>
+  <%
+  data ana_line like line of analysisbis.
+  loop at analysisbis into ana_line.
+%>
+<%= ana_line-test.%>;<%= ana_line-objname.%>;<%= ana_line-objtype.%>;<%= ana_line-sobjname.%>;<%= ana_line-sobjtype.%>;<%= ana_line-PARAM1.%>;<%= ana_line-line.%>;<%= ana_line-kind.%><%endloop.%>

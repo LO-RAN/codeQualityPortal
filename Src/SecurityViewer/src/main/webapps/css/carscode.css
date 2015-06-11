@@ -1,0 +1,69 @@
+BODY {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    background-color: transparent;
+    font-size: 80%;
+}
+
+H2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #335588;
+}
+
+H3 {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    color: #335588;
+}
+
+A {
+    color: #335588;
+    text-decoration: none;
+}
+
+A:Visited {
+    color: #335588;
+}
+
+A:Hover {
+    color: #6682BB;
+}
+
+A:Active {
+    color: #CCCCCC;
+}
+
+.error {
+	background:inherit;
+	color:red;
+}
+
+TH {
+    vertical-align: text-bottom;
+    font-size: 80%;
+	color: white;
+	background-color: #335588;
+}
+
+TD {
+    font-size: 80%;
+	border:1px solid #335588;
+}
+
+.arial12 {
+    font: 12px arial
+}
+
+TABLE {
+	border:1px solid #335588;
+	border-spacing: 0px;
+}
+
+welcomeMessage {
+	color: #335588;
+}
+
+IMG {
+	border: 0;
+}

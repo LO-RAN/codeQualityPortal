@@ -1,0 +1,21 @@
+<module>
+	<inherits name="com.google.gwt.user.User"/>
+	<inherits name="com.google.gwt.user.theme.standard.Standard"/>
+
+	<inherits name="com.smartgwt.SmartGwtNoTheme"/>
+    <inherits name="com.smartgwt.Drawing"/>
+	<inherits name="com.smartclient.theme.graphite.Graphite"/>
+	<inherits name="com.smartgwt.tools.SmartGwtTools"/>
+		
+	<inherits name="com.google.gwt.i18n.I18N"/>
+	
+		<entry-point class="org.loran.smartgwt.connectors.client.Main"/>
+
+	<extend-property name="locale" values="en"/>
+    <extend-property name="locale" values="de"/>
+    <extend-property name="locale" values="es"/>
+    <extend-property name="locale" values="ru_RU"/>
+    <extend-property name="locale" values="ja"/>
+    <extend-property name="locale" values="fr"/>
+	
+</module>

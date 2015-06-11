@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE METHOD SYSTEM "method.dtd">
+
+<METHOD>
+
+    <USAGE id="STANDARD-JAVA">
+
+        <CRITDEF id="AVOIDSTARIMPORTCHECK" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDSTARIMPORTCHECK" type="NUMERIC"/>
+                    <VAL value="0" type="NUMERIC"/>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN"/>
+            </FORMULA>
+        </CRITDEF>
+
+        <CRITDEF id="HIDDENFIELDCHECK" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="HIDDENFIELDCHECK" type="NUMERIC"/>
+                    <VAL value="0" type="NUMERIC"/>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN"/>
+            </FORMULA>
+        </CRITDEF>
+
+        <CRITDEF id="MAGICNUMBERCHECK" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="MAGICNUMBERCHECK" type="NUMERIC"/>
+                    <VAL value="0" type="NUMERIC"/>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN"/>
+            </FORMULA>
+        </CRITDEF>
+
+        <CRITDEF id="JAVADOCMISSING" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="JAVADOCMETHODCHECK" type="NUMERIC"/>
+                    <VAL value="0" type="NUMERIC"/>
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="JAVADOCTYPECHECK" type="NUMERIC"/>
+                    <VAL value="0" type="NUMERIC"/>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN"/>
+            </FORMULA>
+        </CRITDEF>
+
+
+    </USAGE>
+</METHOD>
+

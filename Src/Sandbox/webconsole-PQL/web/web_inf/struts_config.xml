@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_0.dtd">
+
+<!--
+     This is the Struts configuration file for the Optimalflow webconsole 
+     application.
+-->
+
+
+<struts-config>
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+
+    <!-- Logon form bean -->
+    <form-bean      name="logonForm"
+                    type="com.compuware.optimal.flow.webconsole.LogonForm"/>
+
+    <form-bean      name="logonNoPasswordForm"
+                    type="com.compuware.optimal.flow.webconsole.LogonNoPasswordForm"/>
+
+    <form-bean      name="historyTaskListForm"
+                    type="com.compuware.optimal.flow.webconsole.HistoryTaskListForm"/>
+                    
+  </form-beans>
+
+
+  <!-- ========== Global Forward Definitions ==== and Forward from JSPs ==== -->
+  <global-forwards>
+    <forward   name="logoff"                           path="/logoff.do"/>
+    <forward   name="logon"                            path="/logon.jsp"/>
+    <forward   name="success"                          path="/main.jsp"/>
+    <forward   name="failure"                          path="/failure.jsp"/>
+    <forward   name="completeUserDriven"               path="/completeUserDriven.do"/>
+    <forward   name="showActivityInstances"            path="/showActivityInfoOfProcessIns.do?action=ShowActivities"/>
+    <forward   name="showOrganizationDetails"          path="/showOrganizationTree.do?action=ShowDetails"/>
+    <forward   name="showProcessInstances"             path="/showProcessInstancesOfProcessDef.do?action=ShowProcesses"/>
+    <forward   name="showworkflowdriven"               path="/showWorkFlowDrivenTaskList.do"/>
+    <forward   name="abortworkflowdriven"              path="/processWorkFlowDriven.do?action=Abort"/>
+    <forward   name="cancelreservationworkflowdriven"  path="/processWorkFlowDriven.do?action=CancelReservation"/>
+    <forward   name="executeworkflowdriven"            path="/processWorkFlowDriven.do?action=Execute"/>
+    <forward   name="reserveworkflowdriven"            path="/processWorkFlowDriven.do?action=Reserve"/>
+  </global-forwards>
+
+
+  <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+
+    <!-- Process a user logon -->
+    <action   path="/logon"
+              type="com.compuware.optimal.flow.webconsole.LogonAction"
+              scope="request">
+    </action>
+    <action   path="/logonNoPassword"
+              type="com.compuware.optimal.flow.webconsole.LogonNoPasswordAction"
+              scope="request">
+    </action>
+
+    <!-- Show the User-Driven Tasklist for the current user -->
+    <action   path="/showUserDrivenTaskList"
+              type="com.compuware.optimal.flow.webconsole.UserDrivenTaskListAction"
+              scope="request"
+              validate="false">
+      <forward name="success"              path="/userDrivenTaskList.jsp"/>
+    </action>
+    
+    <!-- Show the WorkFlow-Driven Tasklist for the current user -->
+    <action   path="/showWorkFlowDrivenTaskList"
+              type="com.compuware.optimal.flow.webconsole.WorkFlowDrivenTaskListAction"
+              scope="request"
+              input="/mainMenu.jsp"
+              validate="false">
+      <forward name="success"              path="/workFlowDrivenTaskList.jsp"/>
+    </action>
+
+    <!-- Show the History Tasklist for the current user -->
+    <action   path="/showHistoryTaskList"
+              type="com.compuware.optimal.flow.webconsole.HistoryTaskListAction"
+              name="historyTaskListForm"
+              scope="request"
+              input="/historyTaskList.jsp"
+              validate="true">
+      <forward name="success"              path="/historyTaskList.jsp"/>
+    </action>
+    
+    <!-- Complete a User-Driven Task -->
+    <action    path="/completeUserDriven"
+               type="com.compuware.optimal.flow.webconsole.CompleteUserDrivenTaskAction"
+               scope="request"
+               validate="false">
+      <forward name="fillparams"              path="/fillparameters.jsp"/>
+    </action>
+    
+    <!-- Process a WorkFlow-Driven Task -->
+    <action    path="/processWorkFlowDriven"
+               type="com.compuware.optimal.flow.webconsole.ProcessWorkFlowDrivenTaskAction"
+               input="/mainMenu.jsp"
+              scope="request"
+           validate="false">
+      <forward name="showworkflowdriven"   path="/showWorkFlowDrivenTaskList.do"/>
+    </action>
+
+    <!-- Show Process Instance information of a selected Process Definition -->
+    <action    path="/showProcessInstancesOfProcessDef"
+               type="com.compuware.optimal.flow.webconsole.ProcessInstanceListAction"
+               input="/mainMenu.jsp"
+              scope="request"
+           validate="false">
+      <forward name="showdefinitions"       path="/showDefinitionList.jsp"/>
+      <forward name="showprocessinstances"  path="/showProcessInstanceList.jsp"/>
+    </action>
+
+    <!-- Show Activity information of a selected Process Instance -->
+    <action    path="/showActivityInfoOfProcessIns"
+               type="com.compuware.optimal.flow.webconsole.ActivityInstanceListAction"
+               input="/mainMenu.jsp"
+              scope="request"
+           validate="false">
+      <forward name="showprocesslist"       path="/showProcessSelectList.jsp"/>
+      <forward name="showactivityinstances" path="/showActivityInstanceList.jsp"/>
+    </action>
+
+    <!-- Show Unit details and Actor/Role information for a selected Unit -->
+    <action    path="/showOrganizationTree"
+               type="com.compuware.optimal.flow.webconsole.OrganizationListAction"
+               input="/mainMenu.jsp"
+              scope="request"
+           validate="false">
+      <forward name="showorganizationtree"    path="/showOrganizationTree.jsp"/>
+      <forward name="showorganizationdetails" path="/showOrganizationDetails.jsp"/>
+    </action>
+
+    <!-- Process a user logoff -->
+    <action    path="/logoff"
+               type="com.compuware.optimal.flow.webconsole.LogoffAction"
+               input="/mainMenu.jsp">
+      <forward name="success"              path="/index.jsp"/>
+    </action>
+
+  </action-mappings>
+
+</struts-config>

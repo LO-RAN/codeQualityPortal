@@ -1,0 +1,1042 @@
+<!DOCTYPE METHOD SYSTEM "method.dtd">
+<METHOD>
+    <USAGE id="UML">
+
+
+
+
+
+
+		<CRITDEF id="ANTI_MULTIHER" agreg="EXCL_AVG" telt="CLS">
+			<FORMULA value="1">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NBCLASSESMERES" type="NUMERIC" />
+					<VAL value="2" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			<FORMULA value="4">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+
+
+
+
+
+		<CRITDEF id="REUSECLS" agreg="AVG" telt="CLS">
+			<FORMULA value="4">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="COUPLAGESORTANT" type="NUMERIC" />
+						<VAL value="0" type="NUMERIC" />
+					</OP>
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="PROFONDEURMAXIMALE" type="NUMERIC" />
+						<VAL value="0" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+		
+			<FORMULA value="3">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="le" type="BOOLEAN">
+						<VAR id="COUPLAGESORTANT" type="NUMERIC" />
+						<VAL value="1" type="NUMERIC" />
+					</OP>
+					<OP id="le" type="BOOLEAN">
+						<VAR id="PROFONDEURMAXIMALE" type="NUMERIC" />
+						<VAL value="1" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="1">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+
+
+
+
+
+
+
+		<CRITDEF id="HERITAGECLSUML" agreg="AVG" telt="CLS">
+			<FORMULA value="0">
+				<OP id="eq" type="BOOLEAN">
+					<VAR id="NBDIAGCLASSES" type="NUMERIC" />
+					<VAL value="0" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+
+			<FORMULA value="1">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="COUPLAGEENTRANT" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="PROFONDEURMAXIMALE" type="NUMERIC" />
+						<VAL value="7" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="2">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="COUPLAGEENTRANT" type="NUMERIC" />
+						<VAL value="3" type="NUMERIC" />
+					</OP>
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="PROFONDEURMAXIMALE" type="NUMERIC" />
+						<VAL value="5" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="3">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="COUPLAGEENTRANT" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="PROFONDEURMAXIMALE" type="NUMERIC" />
+						<VAL value="3" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="4">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+
+
+
+		<CRITDEF id="VISIBILITECLS" agreg="AVG" telt="CLS">
+
+			<FORMULA value="1">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="NBATTRIBUTSCLASSE" type="NUMERIC" />
+						<VAR id="NBATTRIBUTSPUBLICS" type="NUMERIC" />
+					</OP>
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="NBATTRIBUTSCLASSE" type="NUMERIC" />
+						<VAL value="0" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="1">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+						<VAR id="NBOPERATIONSPUBLIQUES" type="NUMERIC" />
+					</OP>
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+						<VAL value="0" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="2">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NBATTRIBUTSUBLICS" type="NUMERIC" />
+						<OP id="*" type="NUMERIC">
+							<VAR id="NBATTRIBUTSCLASSE" type="NUMERIC" />
+							<VAL value="0.8" type="NUMERIC" />
+						</OP>
+					</OP>
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="NBATTRIBUTSCLASSE" type="NUMERIC" />
+						<VAL value="0" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NBOPERATIONSPUBLIQUES" type="NUMERIC" />
+						<OP id="*" type="NUMERIC">
+							<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+							<VAL value="0.8" type="NUMERIC" />
+						</OP>
+					</OP>
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+						<VAL value="0" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="3">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NBATTRIBUTSUBLICS" type="NUMERIC" />
+						<OP id="*" type="NUMERIC">
+							<VAR id="NBATTRIBUTSCLASSE" type="NUMERIC" />
+							<VAL value="0.4" type="NUMERIC" />
+						</OP>
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NBOPERATIONSPUBLIQUES" type="NUMERIC" />
+						<OP id="*" type="NUMERIC">
+							<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+							<VAL value="0.4" type="NUMERIC" />
+						</OP>
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="4">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="lt" type="BOOLEAN">
+						<VAR id="NBATTRIBUTSUBLICS" type="NUMERIC" />
+						<OP id="*" type="NUMERIC">
+							<VAR id="NBATTRIBUTSCLASSE" type="NUMERIC" />
+							<VAL value="0.4" type="NUMERIC" />
+						</OP>
+					</OP>
+					<OP id="lt" type="BOOLEAN">
+						<VAR id="NBOPERATIONSPUBLIQUES" type="NUMERIC" />
+						<OP id="*" type="NUMERIC">
+							<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+							<VAL value="0.4" type="NUMERIC" />
+						</OP>
+					</OP>
+				</OP>
+			</FORMULA>
+		
+		</CRITDEF>
+
+		
+		<CRITDEF id="TAILLECLSUML" agreg="AVG" telt="CLS">
+			<FORMULA value="1">
+				<OP id="gt" type="BOOLEAN">
+					<VAR id="COMPLEXITECYCLOMATIQUE" type="NUMERIC" />
+					<OP id="*" type="NUMERIC">
+						<VAL value="10" type="NUMERIC" />
+						<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="1">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NBINTERFACESIMPLEMENTEES" type="NUMERIC" />
+					<VAL value="10" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			
+			
+
+			<FORMULA value="2">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="COMPLEXITECYCLOMATIQUE" type="NUMERIC" />
+					<OP id="*" type="NUMERIC">
+						<VAL value="7" type="NUMERIC" />
+						<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="2">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NBINTERFACESIMPLEMENTEES" type="NUMERIC" />
+					<VAL value="7" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			
+			
+			
+			<FORMULA value="3">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="COMPLEXITECYCLOMATIQUE" type="NUMERIC" />
+					<OP id="*" type="NUMERIC">
+						<VAL value="4" type="NUMERIC" />
+						<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="3">
+				<OP id="gt" type="BOOLEAN">
+					<VAR id="NBINTERFACESIMPLEMENTEES" type="NUMERIC" />
+					<VAL value="1" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			
+
+			<FORMULA value="4">
+				<OP id="lt" type="BOOLEAN">
+					<VAR id="COMPLEXITECYCLOMATIQUE" type="NUMERIC" />
+					<OP id="*" type="NUMERIC">
+						<VAL value="4" type="NUMERIC" />
+						<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="4">
+				<OP id="le" type="BOOLEAN">
+					<VAR id="NBINTERFACESIMPLEMENTEES" type="NUMERIC" />
+					<VAL value="1" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+		</CRITDEF>
+
+
+
+
+
+
+		
+		<CRITDEF id="HERIT_OPER" agreg="AVG" telt="CLS">
+			<FORMULA value="1">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NBOPERATIONSHERITEES" type="NUMERIC" />
+					<VAR id="NBOPERATIONSCLASSE" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			<FORMULA value="4">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+		
+		
+		<CRITDEF id="NO_ATTROPER" agreg="EXCL_AVG" telt="EA">
+			<FORMULA value="1">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="NOMBREMOYENOPERATIONSCLASSES" type="NUMERIC" />
+						<VAL value="0" type="NUMERIC" />
+					</OP>
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="NOMBREMOYENATTRIBUTSCLASSES" type="NUMERIC" />
+						<VAL value="0" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="4">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+
+
+
+		<CRITDEF id="COMPLEXITE_ACTEURS" agreg="AVG" telt="MET">
+		
+			<FORMULA value="0">
+				<OP id="eq" type="BOOLEAN">
+					<VAR id="NBACTEURS" type="NUMERIC" />
+					<VAL value="-1" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="1">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NBACTEURS" type="NUMERIC" />
+					<VAL value="5" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="2">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NBACTEURS" type="NUMERIC" />
+					<VAL value="4" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="3">
+				<OP id="gt" type="BOOLEAN">
+					<VAR id="NBACTEURS" type="NUMERIC" />
+					<VAL value="2" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="4">
+				<OP id="le" type="BOOLEAN">
+					<VAR id="NBACTEURS" type="NUMERIC" />
+					<VAL value="2" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+		</CRITDEF>
+
+
+
+
+		<CRITDEF id="COMPLEXITEUML" agreg="AVG" telt="EA">
+			<FORMULA value="1">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="COMPLEXITEDIAGRAMMES" type="NUMERIC" />
+						<VAL value="5" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<OP id="/" type="NUMERIC">
+							<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+							<VAR id="NOMBREPACKAGESCLASSES" type="NUMERIC" />
+						</OP>
+						<VAL value="30" type="NUMERIC" />
+					</OP>
+					<OP id="AND" type="BOOLEAN">
+						<OP id="ge" type="BOOLEAN">
+							<VAR id="RFCMOYENNE" type="NUMERIC" />
+							<VAR id="NOMBREOBJETSMODELE" type="NUMERIC" />
+						</OP>
+						<OP id="gt" type="BOOLEAN">
+							<VAR id="NOMBREOBJETSMODELE" type="NUMERIC" />
+							<VAL value="0" type="NUMERIC" />
+						</OP>
+					</OP>
+				</OP>
+			</FORMULA>
+
+
+			<FORMULA value="2">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="COMPLEXITEDIAGRAMMES" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<OP id="/" type="NUMERIC">
+							<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+							<VAR id="NOMBREPACKAGESCLASSES" type="NUMERIC" />
+						</OP>
+						<VAL value="20" type="NUMERIC" />
+					</OP>
+					<OP id="AND" type="BOOLEAN">
+						<OP id="ge" type="BOOLEAN">
+							<VAR id="RFCMOYENNE" type="NUMERIC" />
+							<OP id="*" type="NUMERIC">
+								<VAR id="NOMBREOBJETSMODELE" type="NUMERIC" />
+								<VAL value="0.75" type="NUMERIC" />
+							</OP>
+						</OP>
+						<OP id="gt" type="BOOLEAN">
+							<VAR id="NOMBREOBJETSMODELE" type="NUMERIC" />
+							<VAL value="0" type="NUMERIC" />
+						</OP>
+					</OP>
+				</OP>
+			</FORMULA>
+			
+			
+
+			<FORMULA value="3">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="COMPLEXITEDIAGRAMMES" type="NUMERIC" />
+						<VAL value="3" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<OP id="/" type="NUMERIC">
+							<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+							<VAR id="NOMBREPACKAGESCLASSES" type="NUMERIC" />
+						</OP>
+						<VAL value="15" type="NUMERIC" />
+					</OP>
+					<OP id="AND" type="BOOLEAN">
+						<OP id="ge" type="BOOLEAN">
+							<VAR id="RFCMOYENNE" type="NUMERIC" />
+							<OP id="*" type="NUMERIC">
+								<VAR id="NOMBREOBJETSMODELE" type="NUMERIC" />
+								<VAL value="0.35" type="NUMERIC" />
+							</OP>
+						</OP>
+						<OP id="gt" type="BOOLEAN">
+							<VAR id="NOMBREOBJETSMODELE" type="NUMERIC" />
+							<VAL value="0" type="NUMERIC" />
+						</OP>
+					</OP>
+				</OP>
+			</FORMULA>
+
+
+			<FORMULA value="4">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+	
+		</CRITDEF>
+
+
+
+		
+		
+		
+		
+		<CRITDEF id="NOATTR_OPER_VIS" agreg="EXCL_AVG" telt="CLS">
+			<FORMULA value="1">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="NBATTRIBUTSPUBLICS" type="NUMERIC" />
+						<VAL value="0" type="NUMERIC" />
+					</OP>
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="NBOPERATIONSPUBLIQUES" type="NUMERIC" />
+						<VAL value="0" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="4">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+
+
+
+
+
+
+
+
+		
+		<CRITDEF id="CRI_ARCHIUML" agreg="AVG" telt="EA">
+			<FORMULA value="1">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENPONDEREATTRCLASSES" type="NUMERIC" />
+						<VAL value="7" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENPONDEREOPERCLASSES" type="NUMERIC" />
+						<VAL value="7" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENMESSAGESUSECASES" type="NUMERIC" />
+						<VAL value="5" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENINTERFIMPL" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="2">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENPONDEREATTRCLASSES" type="NUMERIC" />
+						<VAL value="5" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENPONDEREOPERCLASSES" type="NUMERIC" />
+						<VAL value="5" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENMESSAGESUSECASES" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENINTERFIMPL" type="NUMERIC" />
+						<VAL value="3" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="3">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENPONDEREATTRCLASSES" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENPONDEREOPERCLASSES" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENMESSAGESUSECASES" type="NUMERIC" />
+						<VAL value="3" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENINTERFIMPL" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="4">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="lt" type="BOOLEAN">
+						<VAR id="NOMBREMOYENPONDEREATTRCLASSES" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+					<OP id="lt" type="BOOLEAN">
+						<VAR id="NOMBREMOYENPONDEREOPERCLASSES" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+					<OP id="lt" type="BOOLEAN">
+						<VAR id="NOMBREMOYENMESSAGESUSECASES" type="NUMERIC" />
+						<VAL value="3" type="NUMERIC" />
+					</OP>
+					<OP id="lt" type="BOOLEAN">
+						<VAR id="NOMBREMOYENINTERFIMPL" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+		</CRITDEF>
+
+
+		
+
+
+		
+		
+		
+		<CRITDEF id="HERITAGEUML" agreg="AVG" telt="EA">
+			<FORMULA value="0">
+				<OP id="eq" type="BOOLEAN">
+					<VAR id="NBDIAGCLASSES" type="NUMERIC" />
+					<VAL value="0" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="1">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREHERITAGESMODELE" type="NUMERIC" />
+					<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			<FORMULA value="1">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="PROFONDEURMOYENNECLASSES" type="NUMERIC" />
+					<VAL value="7" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			<FORMULA value="1">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREDESCENDANTSMOYEN" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="1">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREFILLESMOYEN" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="1">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREMOYENMETHODESSURCHARGEES" type="NUMERIC" />
+					<VAR id="NOMBREMOYENOPERATIONSCLASSES" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			<FORMULA value="1">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREMOYENMETHODESHERITEES" type="NUMERIC" />
+					<VAR id="NOMBREMOYENOPERATIONSCLASSES" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+
+			<FORMULA value="2">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREHERITAGESMODELE" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="2">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="PROFONDEURMOYENNECLASSES" type="NUMERIC" />
+					<VAL value="5" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			<FORMULA value="2">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREDESCENDANTSMOYEN" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="2">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREFILLESMOYEN" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="2">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREMOYENMETHODESSURCHARGEES" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBREMOYENOPERATIONSCLASSES" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="2">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREMOYENMETHODESHERITEES" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBREMOYENOPERATIONSCLASSES" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+
+			<FORMULA value="3">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREHERITAGESMODELE" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="3">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="PROFONDEURMOYENNECLASSES" type="NUMERIC" />
+					<VAL value="3" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			<FORMULA value="3">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREDESCENDANTSMOYEN" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+						<VAL value="6" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="3">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREFILLESMOYEN" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+						<VAL value="6" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="3">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREMOYENMETHODESSURCHARGEES" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBREMOYENOPERATIONSCLASSES" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="3">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="NOMBREMOYENMETHODESHERITEES" type="NUMERIC" />
+					<OP id="/" type="NUMERIC">
+						<VAR id="NOMBREMOYENOPERATIONSCLASSES" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+			
+			<FORMULA value="4">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+
+
+
+
+
+
+
+
+
+
+		<CRITDEF id="COUPLAGEUML" agreg="AVG" telt="EA">
+			<FORMULA value="1">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="OR" type="BOOLEAN">
+						<OP id="gt" type="BOOLEAN">
+							<VAR id="NOMBREAGREGATIONSMODELE" type="NUMERIC" />
+							<VAL value="4" type="NUMERIC" />
+						</OP>
+						<OP id="gt" type="BOOLEAN">
+							<VAR id="NOMBREASSOCIATIONSMODELE" type="NUMERIC" />
+							<VAL value="4" type="NUMERIC" />
+						</OP>
+					</OP>
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="COUPLAGEMOYEN" type="NUMERIC" />
+						<VAL value="7" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="1">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="eq" type="BOOLEAN">
+						<VAR id="RFCMOYENNE" type="NUMERIC" />
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+					</OP>
+					<OP id="AND" type="BOOLEAN">
+						<OP id="eq" type="BOOLEAN">
+							<VAR id="NOMBREAGREGATIONSMODELE" type="NUMERIC" />
+							<VAL value="0" type="NUMERIC" />
+						</OP>
+						<OP id="eq" type="BOOLEAN">
+							<VAR id="NOMBREASSOCIATIONSMODELE" type="NUMERIC" />
+							<VAL value="0" type="NUMERIC" />
+						</OP>
+					</OP>
+				</OP>
+			</FORMULA>
+
+			
+			
+			<FORMULA value="2">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="OR" type="BOOLEAN">
+						<OP id="gt" type="BOOLEAN">
+							<VAR id="NOMBREAGREGATIONSMODELE" type="NUMERIC" />
+							<VAL value="3" type="NUMERIC" />
+						</OP>
+						<OP id="gt" type="BOOLEAN">
+							<VAR id="NOMBREASSOCIATIONSMODELE" type="NUMERIC" />
+							<VAL value="3" type="NUMERIC" />
+						</OP>
+					</OP>
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="COUPLAGEMOYEN" type="NUMERIC" />
+						<VAL value="5" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="2">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="RFCMOYENNE" type="NUMERIC" />
+					<OP id="*" type="NUMERIC">
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+						<VAL value="0.7" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			
+
+			
+			<FORMULA value="3">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="OR" type="BOOLEAN">
+						<OP id="gt" type="BOOLEAN">
+							<VAR id="NOMBREAGREGATIONSMODELE" type="NUMERIC" />
+							<VAL value="1.5" type="NUMERIC" />
+						</OP>
+						<OP id="gt" type="BOOLEAN">
+							<VAR id="NOMBREASSOCIATIONSMODELE" type="NUMERIC" />
+							<VAL value="1.5" type="NUMERIC" />
+						</OP>
+					</OP>
+					<OP id="gt" type="BOOLEAN">
+						<VAR id="COUPLAGEMOYEN" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			<FORMULA value="3">
+				<OP id="ge" type="BOOLEAN">
+					<VAR id="RFCMOYENNE" type="NUMERIC" />
+					<OP id="*" type="NUMERIC">
+						<VAR id="NOMBRECLASSESMODELE" type="NUMERIC" />
+						<VAL value="0.4" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			
+			<FORMULA value="4">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+
+
+
+		<CRITDEF id="COMMENTAIRES" agreg="AVG" telt="EA">
+			<FORMULA value="1">
+				<OP id="eq" type="BOOLEAN">
+					<VAR id="NOMBRECOMMENTAIRESMOYEN" type="NUMERIC" />
+					<VAL value="0" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="2">
+				<OP id="le" type="BOOLEAN">
+					<VAR id="NOMBRECOMMENTAIRESMOYEN" type="NUMERIC" />
+					<VAL value="2" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			
+			<FORMULA value="4">
+				<OP id="gt" type="BOOLEAN">
+					<VAR id="NOMBRECOMMENTAIRESMOYEN" type="NUMERIC" />
+					<VAL value="3" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="3">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+
+
+
+
+
+
+		<CRITDEF id="DOCUML" agreg="AVG" telt="EA">
+			<FORMULA value="0">
+				<OP id="eq" type="BOOLEAN">
+					<VAR id="NBDIAGACT" type="NUMERIC" />
+					<VAL value="0" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="1">
+				<OP id="le" type="BOOLEAN">
+					<VAR id="NOMBREMETHODESDOCUMENTEES" type="NUMERIC" />
+					<VAL value="0.10" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="2">
+				<OP id="le" type="BOOLEAN">
+					<VAR id="NOMBREMETHODESDOCUMENTEES" type="NUMERIC" />
+					<VAL value="0.35" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			
+			<FORMULA value="4">
+				<OP id="gt" type="BOOLEAN">
+					<VAR id="NOMBREMETHODESDOCUMENTEES" type="NUMERIC" />
+					<VAL value="0.35" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+			
+			<FORMULA value="3">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+
+
+
+
+
+
+
+
+
+
+		<CRITDEF id="COMPUML" agreg="AVG" telt="EA">
+			<FORMULA value="1">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENMESSAGESUSECASES" type="NUMERIC" />
+						<VAL value="5" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENACTEURSUSECASES" type="NUMERIC" />
+						<VAL value="5" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+			
+			<FORMULA value="1">
+				<OP id="OR" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NBDIAGRAMMES" type="NUMERIC" />
+						<VAL value="30" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREDATATYPE" type="NUMERIC" />
+						<OP id="*" type="NUMERIC">
+							<VAR id="NBDIAGRAMMES" type="NUMERIC" />
+							<VAL value="5" type="NUMERIC" />
+						</OP>
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="2">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENMESSAGESUSECASES" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREMOYENACTEURSUSECASES" type="NUMERIC" />
+						<VAL value="4" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="2">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NBDIAGRAMMES" type="NUMERIC" />
+						<VAL value="20" type="NUMERIC" />
+					</OP>
+					<OP id="ge" type="BOOLEAN">
+						<VAR id="NOMBREDATATYPE" type="NUMERIC" />
+							<OP id="*" type="NUMERIC">
+								<VAR id="NBDIAGRAMMES" type="NUMERIC" />
+								<VAL value="4" type="NUMERIC" />
+							</OP>
+					</OP>
+				</OP>
+			</FORMULA>
+			
+			<FORMULA value="4">
+				<OP id="AND" type="BOOLEAN">
+					<OP id="le" type="BOOLEAN">
+						<VAR id="NOMBREMOYENMESSAGESUSECASES" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+					<OP id="le" type="BOOLEAN">
+						<VAR id="NOMBREMOYENACTEURSUSECASES" type="NUMERIC" />
+						<VAL value="2" type="NUMERIC" />
+					</OP>
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="3">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+			
+		</CRITDEF>
+
+
+
+
+
+
+
+		<CRITDEF id="MALFORME" agreg="AVG" telt="MET">
+			<FORMULA value="0">
+				<OP id="eq" type="BOOLEAN">
+					<VAR id="RATIOMALFORME" type="NUMERIC" />
+					<VAL value="-1.0" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="1">
+				<OP id="gt" type="BOOLEAN">
+					<VAR id="RATIOMALFORME" type="NUMERIC" />
+					<VAL value="0" type="NUMERIC" />
+				</OP>
+			</FORMULA>
+
+			<FORMULA value="4">
+				<VAL value="true" type="BOOLEAN" />
+			</FORMULA>
+		</CRITDEF>
+
+	</USAGE>
+</METHOD>

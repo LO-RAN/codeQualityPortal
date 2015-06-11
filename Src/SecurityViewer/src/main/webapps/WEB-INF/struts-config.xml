@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+  
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+  </form-beans>
+
+<!--
+  <global-exceptions>
+  	<exception 
+        key="error.unexpected"
+        path="/errorPage.jsp"
+        scope="request"
+        type="java.lang.Exception" />
+  </global-exceptions>
+-->
+
+  <!-- ========== Global Forward Definitions ==== and Forward from JSPs ==== -->
+  <global-forwards>
+    <forward   name="sessiontimeout" path="/sessiontimedout.jsp"/>
+  </global-forwards>
+
+  <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+
+    <action   path="/RetrieveSecurityInfo"
+              type="com.compuware.carscode.security.web.action.RetrieveSecurityInfoAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/displaySecurity.jsp"/>
+    </action>
+
+    <action   path="/CleanSession"
+              type="com.compuware.carscode.security.web.action.CleanSessionAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/RetrieveSecurityInfo.do"/>
+    </action>
+
+  </action-mappings>
+
+  <message-resources
+	key="org.apache.struts.action.MESSAGE"
+	parameter="com.compuware.carscode.resources.resources"
+	null="false">
+  </message-resources>
+    
+</struts-config>

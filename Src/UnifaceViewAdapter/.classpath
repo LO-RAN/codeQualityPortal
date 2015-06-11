@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="src/main/java/" kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="var" path="MAVEN_REPO/unifaceview/wrd/8.4.0/wrd-8.4.0.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/UserMgmt"/>
+	<classpathentry kind="var" path="MAVEN_REPO/unifaceview/optimalviewconnector/8.4.0/optimalviewconnector-8.4.0.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/log4j/log4j/1.2.14/log4j-1.2.14.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>caqsanalysis ant task - (c) Compuware Corporation 2008</title>
+</head>
+<body>
+<h2><a name="ant">Caqsanalysis</a></h2>
+<h3>Description</h3>
+
+<p>Runs a CAQS analysis through  the UnifaceFlow process manager.</p>
+
+
+<h3>Parameters</h3>
+<table border="1" cellpadding="2" cellspacing="0">
+  <tr>
+    <td valign="top"><b>Attribute</b></td>
+
+    <td valign="top"><b>Description</b></td>
+    <td align="center" valign="top"><b>Required</b></td>
+  </tr>
+  <tr>
+    <td valign="top">actorId</td>
+    <td valign="top">the user  starting the process . typically this is the id used to log into the CAQS portal.</td>
+
+    <td valign="top" align="center">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">projectId</td>
+         <td valign="top">the project id on which the analysis is to be run. This value can be found in the entity  source directory, in file build.properties, as &quot;id_pro&quot; property</td>
+    <td valign="top" align="center">Yes</td>
+  </tr>
+
+  <tr>
+    <td valign="top">projectName</td>
+    <td valign="top">the project label that will be displayed in the UnifaceFlow dashboard for this analysis. This value can be found in the entity  source directory, in file build.properties, as &quot;lib_pro&quot; property.</td>
+    <td valign="top" align="center">No</td>
+  </tr>
+  <tr>
+    <td valign="top">baselineName</td>
+
+    <td valign="top">the baseline name that will be given to this analysis results when displayed in the CAQS portal upon analysis completion.  Default to a timestamp.
+    </td>
+    <td align="center" valign="top">No</td>
+  </tr>
+
+</table>
+
+<h3>Parameters specified as nested elements</h3>
+
+<h4>connection</h4>
+Typical use of the caqsanalsysis task should not require this parameter.<br />It can be used to change UnifaceFlow default connection parameters. <br />When set, it should be defined only once per task.<br /><br />Check Uniface documentation on urouter settings for details<br />
+
+<table border="1" cellpadding="2" cellspacing="0">
+  <tr>
+    <td valign="top"><b>Attribute</b></td>
+
+    <td valign="top"><b>Description</b></td>
+    <td align="center" valign="top"><b>Required</b></td>
+  </tr>
+  <tr>
+    <td valign="top">protocol</td>
+    <td valign="top">the protocol to use to connect to Uniface urouter.</td>
+    <td valign="top" align="center">No, defaults to &quot;UNET&quot;.</td>
+
+  </tr>
+  <tr>
+    <td valign="top">host</td>
+    <td valign="top">the host name on which is running the Uniface urouter.</td>
+    <td valign="top" align="center">No, defaults to &quot;localhost&quot;.</td>
+  </tr>
+  <tr>
+    <td valign="top">port</td>
+    <td valign="top">the host port on which is running the Uniface urouter.</td>
+    <td valign="top" align="center">No, defaults to &quot;14000&quot;.</td>
+  </tr>
+  <tr>
+    <td valign="top">user</td>
+    <td valign="top">the user name used to connect to the Uniface urouter.</td>
+    <td valign="top" align="center">No, defaults to &quot;caqs&quot;.</td>
+  </tr>
+  <tr>
+    <td valign="top">password</td>
+    <td valign="top">the user password used to connect to the Uniface urouter.</td>
+    <td valign="top" align="center">No, defaults to &quot;cpwrcaqs&quot;.</td>
+  </tr>
+  <tr>
+    <td valign="top">name</td>
+    <td valign="top">the logical  name of the Uniface server to start.</td>
+    <td valign="top" align="center">No, defaults to &quot;uniface_flow&quot;.</td>
+  </tr>
+</table>
+
+<h4>entity</h4>You must  specify one or more  entities using nested <code>&lt;entity&gt;</code> elements.  These are the leafs of the project tree you want the analysis to be run on.
+
+<table border="1" cellpadding="2" cellspacing="0">
+  <tr>
+    <td valign="top"><b>Attribute</b></td>
+    <td valign="top"><b>Description</b></td>
+    <td align="center" valign="top"><b>Required</b></td>
+  </tr>
+  <tr>
+    <td valign="top">id</td>
+
+    <td valign="top">the entity Id on which the analysis is to be run. This value can be found in the entity  source directory, in file build.properties, as &quot;id_elt&quot; property.</td>
+    <td valign="top" align="center">Yes</td>
+  </tr><tr>
+    <td valign="top">option</td>
+
+    <td valign="top">the entity option. This value can be used for example to check out a specific revision from SVN (ex: &quot;-r 123&quot;).</td>
+    <td valign="top" align="center">No</td>
+  </tr>
+</table>
+
+<h3>Examples</h3>
+<blockquote><pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
+&lt;project name=&quot;CAQS&quot; default=&quot;batchAnalysis&quot; basedir=&quot;.&quot;&gt;
+
+  &lt;!-- 
+  NB: dependencies include :
+   unet-1.0.jar
+   uniface_flow-1.0.jar
+   log4j-.jar
+   unifaceflowlauncher-1.0.jar 
+  --&gt;
+  &lt;taskdef name=&quot;caqsAnalysis&quot; classname=&quot;com.compuware.caqs.ant.taskdef.CaqsAnalysisTask&quot; /&gt;
+
+
+  <br />  &lt;target name=&quot;batchAnalysis&quot;&gt;
+                
+    &lt;!-- 
+    NB: parameter values can be taken from ${SRC_DIR}/build.properties for each entity :
+        
+        id_pro  : projectId   attribute of caqsAnalysis task
+        lib_pro : projectName attribute of caqsAnalysis task 
+        id_elt  : id          attribute of entity element        
+    --&gt;   
+    
+    &lt;!-- first form with all parameters explicitely defined--&gt;
+    &lt;caqsAnalysis
+                actorId=&quot;QUA1&quot;      
+                projectId=&quot;20080218153749968119437&quot;     
+                projectName=&quot;my project&quot;      
+                baselineName=&quot;official release&quot;   
+                &gt;
+
+        &lt;entity id=&quot;2008031820034&quot; option=&quot;-r 23&quot; /&gt;
+        &lt;entity id=&quot;2008031820035&quot; /&gt;
+        &lt;entity id=&quot;2008031820036&quot; /&gt;
+        &lt;entity id=&quot;2008031820041&quot; /&gt;       
+
+    &lt;!-- 
+         parameters to connect to the UnifaceFlow engine: 
+         - can be defined once and reused for the following tasks(id/refid). 
+         - can be ommited. Default values will be used
+    --&gt;
+      &lt;connection id=&quot;myConnection&quot;          
+                protocol=&quot;UNET&quot;          
+                host=&quot;flow.server.organisation.com&quot;          
+                port=&quot;14567&quot;           
+                user=&quot;caqs&quot;          
+                password=&quot;cpwrcaqs&quot;          
+                name=&quot;uniface_flow&quot;         
+               /&gt;
+    &lt;/caqsAnalysis&gt;
+
+
+    &lt;!-- second form with a connection element refering a previously defined connection --&gt;
+    &lt;caqsAnalysis
+                actorId=&quot;DEV1&quot;      
+                projectId=&quot;20072228153749968119459&quot;     
+                projectName=&quot;another project&quot;        
+                &gt;
+      &lt;connection refid=&quot;myConnection&quot;/&gt;
+         
+        &lt;entity id=&quot;20080318200415&quot; /&gt;
+      
+    &lt;/caqsAnalysis&gt;
+
+
+    &lt;!-- third form with only the required parameters --&gt;
+    &lt;caqsAnalysis actorId=&quot;MAN1&quot; projectId=&quot;20080218153749968119437&quot;&gt;
+        &lt;entity id=&quot;2008031820041&quot;/&gt;       
+    &lt;/caqsAnalysis&gt;
+
+
+  &lt;/target&gt;
+
+&lt;/project&gt;
+</pre></blockquote>
+
+
+<hr>
+<p align="center">Copyright &copy; 2008 Compuware Corporation. All rights
+Reserved.</p>
+
+</body>
+</html>

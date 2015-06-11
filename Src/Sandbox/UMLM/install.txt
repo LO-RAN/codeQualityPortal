@@ -1,0 +1,8 @@
+1- Lancer le batch "import_data.bat" se trouvant dans le répertoire "Export DB".
+2- Copier l'arborescence "corp" dans le répertoire "D:\Cars-Code\OptimalView\vm\tomcat\webapps\carscode\WEB-INF\classes".
+3- Remplacer le "addPRJ.jsp" dans "D:\Cars-Code\OptimalView\vm\tomcat\webapps\carscode" par celui fourni dans le répertoire "JSPs".
+4- De même pour "as.jsp".
+5- Ajouter le fichier "jdom.jar" du répertoire "Libs" dans le répertoire "D:\Cars-Code\OptimalView\vm\tomcat\webapps\carscode\WEB-INF\lib".
+6- Ajouter le fichier "method-uml.xml" dans le répertoire "D:\Cars-Code\OptimalView\vm\tomcat\conf\pql\conf"
+7- Ne pas oublier de compléter com.compuware.carscode.servlet.AnalyseStatiqueServlet.class
+8- Mettre AnalyseStatiqueUml.class se trouvant dans le répertoire app dans le répertoire "D:\Cars-Code\OptimalView\vm\tomcat\webapps\carscode\WEB-INF\classes\com\compuware\carscode\app".

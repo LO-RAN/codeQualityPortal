@@ -1,0 +1,7 @@
+.bordertopright {
+    border-right: thin solid black;
+    border-top: thin solid black;
+}
+.bordertop {
+    border-top: thin solid black;
+}

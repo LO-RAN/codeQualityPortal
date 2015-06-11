@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="lib" path="Extjars/ant.jar"/>
+	<classpathentry kind="lib" path="Extjars/jaxp.jar"/>
+	<classpathentry kind="lib" path="Extjars/parser.jar"/>
+	<classpathentry kind="lib" path="Extjars/struts.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="Extjars/unet.jar"/>
+	<classpathentry kind="lib" path="Extjars/uniface_flow.jar"/>
+	<classpathentry kind="lib" path="Extjars/uniface_flow-eg.jar"/>
+	<classpathentry kind="lib" path="Extjars/uniface_flow-idl.jar"/>
+	<classpathentry kind="lib" path="Extjars/uniface_flow-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Documents and Settings/cwfr-fdubois/.maven/repository/log4j/jars/log4j-1.2.14.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

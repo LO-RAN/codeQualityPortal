@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+                        <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    
+    	  <!-- Dynatrace Application Monitoring -->
+    
+     <dynaTrace.version>6.1</dynaTrace.version>
+    <dynaTrace.testCategory>performance</dynaTrace.testCategory>
+    <dynaTrace.agentGroup>Test</dynaTrace.agentGroup>
+    <dynaTrace.username>admin</dynaTrace.username>
+    <dynaTrace.password>admin</dynaTrace.password>
+    <dynaTrace.collector>localhost:9998</dynaTrace.collector>
+    <dynaTrace.serverUrl>http://localhost:8020</dynaTrace.serverUrl>
+    
+	  <!-- Setting default values for dynaTrace Maven goals that operate on a system profile: startRecording, stopRecording, clearSession, activateConfiguration, enableProfile -->
+		<dynaTrace.systemProfile>caqs</dynaTrace.systemProfile>
+
+		<!-- This property will be used to store the actual Session Name for e.g.: Start/Stop Recording -->
+		<dynaTrace.sessionNameProperty>dynaTrace.sessionName</dynaTrace.sessionNameProperty>		
+		
+		<!-- Following is a list of properties for goal: startRecording -->
+		<dynaTrace.sessionName>CAQS test Session</dynaTrace.sessionName>
+		<dynaTrace.sessionDescription>My stored Session Description</dynaTrace.sessionDescription>
+		<dynaTrace.recordingOption>all</dynaTrace.recordingOption> <!-- other options: violations|timeseries -->
+		<dynaTrace.sessionLocked>false</dynaTrace.sessionLocked>
+		<dynaTrace.appendTimestamp>false</dynaTrace.appendTimestamp> 
+		
+		<!-- Following is a list of properties for goal: stopRecording -->
+		
+		<!-- Following is a list of properties for goal: reanalyzeSession -->
+		<dynaTrace.doReanalyzeSession>true</dynaTrace.doReanalyzeSession> <!-- true to trigger reanalyze session after stop recording -->
+		<dynaTrace.reanalyzeSessionTimeout>60000</dynaTrace.reanalyzeSessionTimeout> <!-- timeout to wait till reanalyze session is finished - in ms (default: 60000) -->
+		<dynaTrace.reanalyzeSessionPollingInterval>5000</dynaTrace.reanalyzeSessionPollingInterval> <!-- polling interval while waiting for reanalyze to be finished in ms (default:5000) -->
+		<dynaTrace.reanalyzeStatusProperty>dynaTrace.status</dynaTrace.reanalyzeStatusProperty> <!-- property that will be set with true when reanalyze was finished within the timeout-->
+
+		
+		<!-- Following is a list of properties for goal: clearSession -->
+		<!-- only takes the dynaTrace.systemProfile -->
+
+		<!-- Following is a list of properties for goal: activateConfiguration -->
+		<dynaTrace.configuration>Default</dynaTrace.configuration>
+
+		<!-- Following is a list of properties for goal: enableProfile -->
+		<dynaTrace.enable>true</dynaTrace.enable>
+		
+		<!-- Following is a list of properties for goal: getAgentInfo -->
+		<dynaTrace.infoForAgentByIndex>0</dynaTrace.infoForAgentByIndex> <!-- index of the agent that information should be returned, e.g.: 0, 1, 2, ... -->
+		<dynaTrace.infoForAgentByName>caqs_tomcat</dynaTrace.infoForAgentByName> <!-- Name of the agent that information should be returned -->
+		<dynaTrace.agentCountProperty>dynaTrace.agentCount</dynaTrace.agentCountProperty> <!-- Property that will be set with the number of agents based on the criteria passed by infoForAgentByXXX -->
+		<dynaTrace.agentNameProperty>dynaTrace.agentName</dynaTrace.agentNameProperty> <!-- Property that will be set with the first agent name that matches the search criteria -->
+		<dynaTrace.agentHostNameProperty>dynaTrace.agentHostName</dynaTrace.agentHostNameProperty> <!-- Property that will be set with the first agent host name that matches the search criteria -->
+		<dynaTrace.agentProcessIdProperty>dynaTrace.agentProcessId</dynaTrace.agentProcessIdProperty> <!-- Property that will be set with the first processid that matches the search criteria -->
+		
+		<!-- Following is a list of properties for Memory and Thread Dump goals: memoryDump, threadDump -->
+		<!-- <dynaTrace.agentHostName>MYMACHINE</dynaTrace.hostName> --> <!-- will take this from the output of getAgentInfo -->
+		<!-- <dynaTrace.agentName>GoSpaceFrontend</dynaTrace.agentName> --> <!-- will take this from the output of getAgentInfo -->
+		<!-- <dynaTrace.agentProcessId>1234</dynaTrace.processId> --> <!-- will take this from the output of getAgentInfo -->
+		<dynaTrace.sessionLocked>false</dynaTrace.sessionLocked>
+		<dynaTrace.waitForDumpTimeout>60000</dynaTrace.waitForDumpTimeout> <!-- How long to wait for the dump in ms -->
+		<dynaTrace.waitForDumpPollingInterval>5000</dynaTrace.waitForDumpPollingInterval> <!-- How often to poll for the status till we reach the timeout -->
+		<dynaTrace.dumpStatusProperty>dynaTrace.status</dynaTrace.dumpStatusProperty> <!-- Property that will be set with the status. true when succeeded - false when we ran into the timeout -->
+		
+		<!-- Following is a list of properties for Memory Dump goal only: memoryDump -->
+		<dynaTrace.dumpType>simple</dynaTrace.dumpType> <!-- other options: extended|selective -->
+		<dynaTrace.memoryDumpNameProperty>dynaTrace.dumpName</dynaTrace.memoryDumpNameProperty> <!-- Property that retrieves the memory dump name -->
+
+		<!-- Following is a list of properties for Thread Dump goal only: threadDump -->
+		<dynaTrace.threadDumpNameProperty>dynaTrace.dumpName</dynaTrace.threadDumpNameProperty> <!-- Property that retrieves the thread dump name -->
+		
+		<!-- Following is a list of properties for Reporting goal only: createReport -->
+		<dynaTrace.dashboardName>caqs_test_report</dynaTrace.dashboardName>
+		<dynaTrace.source>live:caqs</dynaTrace.source>
+		<!-- <dynaTrace.comparison>stored:Stored Session</dynaTrace.comparison> --> 
+		<!-- <dynaTrace.iteratorDashboard>caqs_test_iterator</dynaTrace.iteratorDashboard> -->
+		<dynaTrace.xmlToFile>output.xml</dynaTrace.xmlToFile>
+		<dynaTrace.reportDir>./results</dynaTrace.reportDir>
+		<dynaTrace.createHtml>true</dynaTrace.createHtml>
+
+		<!-- Following is a list of properties for Reporting goal only: architectureValidation -->
+		<dynaTrace.source>live:caqs</dynaTrace.source>
+		<!-- <dynaTrace.comparison>stored:Stored Session</dynaTrace.comparison> -->
+		<dynaTrace.errorProperty>./results/dynaTrace.error</dynaTrace.errorProperty>
+		<dynaTrace.reportFile>./results/archivalresults.xml</dynaTrace.reportFile>
+		<dynaTrace.archiValFile>archivalrules.xml</dynaTrace.archiValFile>
+
+    
+    </properties>
+<modelVersion>4.0.0</modelVersion>
+  <groupId>caqs</groupId>
+  <artifactId>toolbox</artifactId>
+  <name>ToolBox</name>
+  <version>4.5</version>
+  <description>CAQS Project: ToolBox</description>
+  <url>http://www.compuware.com</url>
+  <issueManagement>
+    <system>Bugzilla</system>
+    <url>http://parvw3caqsap001</url>
+  </issueManagement>
+  <ciManagement>
+    <notifiers>
+      <notifier>
+        <configuration>
+          <address>Frederic.Dubois@compuware.com</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+  <inceptionYear>2005</inceptionYear>
+  <mailingLists>
+    <mailingList>
+      <name>Dev List</name>
+      <subscribe>subscribe-caqs-dev@compuware.com</subscribe>
+      <unsubscribe>unsubscribe-caqs-dev@compuware.com</unsubscribe>
+    </mailingList>
+  </mailingLists>
+  <developers>
+    <developer>
+      <id>fdubois</id>
+      <name>Dubois Frederic</name>
+      <email>Frederic.Dubois@compuware.com</email>
+    </developer>
+    <developer>
+      <id>falbouy</id>
+      <name>Albouy Francois-Xavier</name>
+      <email>Francois.Xavier.Albouy@compuware.com</email>
+    </developer>
+    <developer>
+      <id>lizac</id>
+      <name>Izac Laurent</name>
+      <email>Laurent.Izac@compuware.com</email>
+    </developer>
+    <developer>
+      <id>dzysman</id>
+      <name>Zysman David</name>
+      <email>David.Zysman@compuware.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:svn:svn://parvw3caqsap001/caqs/Development/Src/trunk/ToolBox</connection>
+    <url>http://www.compuware.com</url>
+  </scm>
+  <organization>
+    <name>Compuware-France</name>
+    <url>http://www.compuware.com</url>
+  </organization>
+  <build>
+    <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+    <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>${basedir}/src/main/images</directory>
+        <includes>
+          <include>**/*.gif</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.dtd</include>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
+    <plugins>
+    
+    
+     <plugin>
+            <groupId>dynaTrace</groupId>
+            <artifactId>dtAutomation</artifactId>
+            <version>${dynaTrace.version}</version>
+            <executions>
+                <execution>
+                    <id>DT_StartTest_UnitTest</id>
+                    <configuration>
+                        <!-- define the configuration properties 
+                             for this test run -->
+                        <versionMajor>1</versionMajor>
+                        <versionMinor>2</versionMinor>
+                        <versionRevision>3</versionRevision>
+                        <versionMilestone>5</versionMilestone>
+                        <versionBuild>${BUILD_ID}</versionBuild>
+                        <category>unit</category>
+                        <profileName>${dynaTrace.systemProfile}</profileName>
+                        <username>${dynaTrace.username}</username>
+                        <password>${dynaTrace.password}</password>
+                        <serverUrl>${dynaTrace.serverUrl}</serverUrl>
+                        <additionalProperties></additionalProperties>
+                    </configuration>
+                    <!-- start this test in the process-test-classes phase
+                         which is the one before the tests are executed -->
+                    <phase>process-test-classes</phase>
+                    <goals>
+                        <!-- call the startTest goal of the Dynatrace plugin -->
+                        <goal>startTest</goal>
+                        <!-- call the createReport goal of the Dynatrace plugin -->
+                        <goal>createReport</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+    
+       <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.17</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+          
+          
+                          <!-- launch a new JVM for all tests -->
+                <forkMode>once</forkMode>
+ 
+                <!-- load the Java agent in the new JVM and also pass the test run id (dtTestrunID property) to the agent -->
+                <argLine>-agentpath:"d:\cpwr\dynaTrace_6.1\agent\lib64\dtagent.dll"=name=${dynaTrace.agentGroup}_${dynaTrace.systemProfile},server=${dynaTrace.collector},optionTestRunIdJava=${dtTestrunID}</argLine>
+
+          
+        </configuration>
+      </plugin>
+      
+      
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>2.17</version>
+            <configuration>
+                <forkMode>once</forkMode>
+                <argLine>-agentpath:"d:\cpwr\dynaTrace_6.1\agent\lib64\dtagent.dll"=name=${dynaTrace.agentGroup}_${dynaTrace.profileName},server=${dynaTrace.collector},optionTestRunIdJava=${dtTestrunID}</argLine>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>integration-test</goal>
+                        <goal>verify</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <configuration>
+          <formats>
+            <format>html</format>
+            <format>xml</format>
+          </formats>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>javancss-maven-plugin</artifactId>
+        <version>2.0-beta-2</version>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+  
+  <dependency>
+   <groupId>dynaTrace</groupId>
+   <artifactId>dtAutomation</artifactId>
+   <version>${dynaTrace.version}</version>
+ </dependency>
+  
+	  <dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.14</version>
+	  </dependency>
+
+       <dependency>
+         <groupId>jdom</groupId>
+         <artifactId>jdom</artifactId>
+         <version>1.0</version>
+       </dependency>
+
+     <dependency>
+         <groupId>commons-dbcp</groupId>
+         <artifactId>commons-dbcp</artifactId>
+         <version>1.2</version>
+         <!--<properties>
+             <war.bundle>true</war.bundle>
+         </properties>-->
+       <exclusions>
+         <exclusion>
+           <artifactId>xercesImpl</artifactId>
+           <groupId>xerces</groupId>
+         </exclusion>
+       </exclusions>
+     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.2</version>
+      <scope>test</scope>
+    </dependency>
+     <dependency>
+         <groupId>commons-pool</groupId>
+         <artifactId>commons-pool</artifactId>
+         <version>1.2</version>
+         <!--<properties>
+             <war.bundle>true</war.bundle>
+         </properties>-->
+       <exclusions>
+         <exclusion>
+           <artifactId>xercesImpl</artifactId>
+           <groupId>xerces</groupId>
+         </exclusion>
+       </exclusions>
+     </dependency>
+  </dependencies>
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-changelog-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-changes-plugin</artifactId>
+        <configuration>
+          <xmlPath>${basedir}/xdocs/changes.xml</xmlPath>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jxr-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-pmd-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+  <distributionManagement>
+    <repository>
+      <id>default</id>
+      <name>Default Repository</name>
+      <url>file://Z:/Maven2/Repository</url>
+    </repository>
+    <site>
+      <id>default</id>
+      <name>Default Site</name>
+      <url>file://Z:/Maven2/Site</url>
+    </site>
+  </distributionManagement>
+</project>

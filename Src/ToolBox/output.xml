@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="styleDashboard.xsl" type="text/xsl"?>
+
+<dashboardreport name="caqs_test_report" version="6.1.0.8191" reportdate="2015-06-11T22:30:56.174+02:00" description="">
+  <source name="caqs" filtersummary="last 30 minutes (auto)"></source>
+  <data>
+    <businesstransactionsdashlet name="Test Transactions" description="" displaysource="Base">
+      <transactions>
+        <layout>
+          <sort field="group" order="descending"></sort>
+          <field order="1" name="application" display="Application"></field>
+          <field order="0" name="error_state" display=""></field>
+          <field order="2" name="failure_rate" display="Failed %"></field>
+        </layout>
+      </transactions>
+    </businesstransactionsdashlet>
+    <entrypointsdashlet name="Entry Points" description="" displaysource="Base">
+      <entrypoints>
+        <layout>
+          <field order="1" name="method" display="Entry Method"></field>
+          <field order="2" name="class" display="Entry Class"></field>
+          <field order="0" name="error_state" display=""></field>
+          <field order="3" name="failure_rate" display="Failed %"></field>
+        </layout>
+      </entrypoints>
+    </entrypointsdashlet>
+    <methodsdashlet name="Methods" description="" displaysource="Base">
+      <methods>
+        <layout>
+          <sort field="method" order="ascending"></sort>
+          <field order="0" name="method" display="Method"></field>
+          <field order="1" name="platform" display=""></field>
+          <field order="2" name="api" display="API"></field>
+          <field order="3" name="count" display="Count"></field>
+          <field order="4" name="agent" display="Agent"></field>
+          <field order="5" name="exec_avg" display="Exec Avg [ms]"></field>
+          <field order="6" name="exec_sum" display="Exec Sum [ms]"></field>
+          <field order="7" name="exceptions" display="Exceptions"></field>
+          <field order="8" name="cpu_avg" display="CPU Avg [ms]"></field>
+          <field order="9" name="cpu_sum" display="CPU Sum [ms]"></field>
+          <field order="10" name="sync_avg" display="Sync Avg [ms]"></field>
+          <field order="11" name="sync_sum" display="Sync Sum [ms]"></field>
+          <field order="12" name="wait_avg" display="Wait Avg [ms]"></field>
+          <field order="13" name="wait_sum" display="Wait Sum [ms]"></field>
+        </layout>
+      </methods>
+    </methodsdashlet>
+    <purepathsdashlet name="PurePaths" description="" displaysource="Base">
+      <purepaths>
+        <layout>
+          <sort field="descheduled" order="descending"></sort>
+          <field order="0" name="state" display=""></field>
+          <field order="1" name="name" display="PurePath"></field>
+          <field order="4" name="agent" display="Agent"></field>
+          <field order="6" name="node_count" display="Size"></field>
+          <field order="7" name="exec" display="Duration [ms]"></field>
+          <field order="8" name="cpu" display="CPU Sum [ms]"></field>
+          <field order="9" name="sync" display="Sync Sum [ms]"></field>
+          <field order="10" name="wait" display="Wait Sum [ms]"></field>
+          <field order="11" name="suspension" display="Suspension Sum [ms]"></field>
+          <field order="12" name="descheduled" display="Virtualization Duration [ms]"></field>
+          <field order="13" name="start" display="Start Time"></field>
+          <field order="14" name="agentid" display="Agent ID"></field>
+          <field order="15" name="tagid" display="Tag ID"></field>
+          <field order="5" name="application" display="Application"></field>
+          <field order="3" name="breakdown" display="Breakdown"></field>
+          <field order="2" name="response_time" display="Response Time [ms]"></field>
+        </layout>
+      </purepaths>
+    </purepathsdashlet>
+    <methodsdashlet name="test" description="" displaysource="Base">
+      <methods>
+        <layout>
+          <sort field="method" order="ascending"></sort>
+          <field order="0" name="method" display="Method"></field>
+          <field order="1" name="api" display="API"></field>
+          <field order="2" name="count" display="Count"></field>
+          <field order="3" name="exec_avg" display="Exec Avg [ms]"></field>
+          <field order="4" name="exec_sum" display="Exec Sum [ms]"></field>
+          <field order="5" name="exceptions" display="Exceptions"></field>
+          <field order="6" name="cpu_avg" display="CPU Avg [ms]"></field>
+          <field order="7" name="cpu_sum" display="CPU Sum [ms]"></field>
+          <field order="8" name="sync_avg" display="Sync Avg [ms]"></field>
+          <field order="9" name="sync_sum" display="Sync Sum [ms]"></field>
+          <field order="10" name="wait_avg" display="Wait Avg [ms]"></field>
+          <field order="11" name="wait_sum" display="Wait Sum [ms]"></field>
+        </layout>
+      </methods>
+    </methodsdashlet>
+    <apibreakdowndashlet name="API Breakdown" description="" displaysource="Base">
+      <apis>
+        <layout>
+          <sort field="exec_sum" order="descending"></sort>
+          <field order="0" name="name" display="API"></field>
+          <field order="1" name="exec_avg" display="Exec Avg [ms]"></field>
+          <field order="2" name="exec_sum" display="Exec Sum [ms]"></field>
+          <field order="3" name="cpu_avg" display="CPU Avg [ms]"></field>
+          <field order="4" name="cpu_sum" display="CPU Total [ms]"></field>
+          <field order="5" name="sync_avg" display="Sync Avg [ms]"></field>
+          <field order="6" name="sync_sum" display="Sync Sum [ms]"></field>
+          <field order="7" name="wait_avg" display="Wait Avg [ms]"></field>
+          <field order="8" name="wait_sum" display="Wait Sum [ms]"></field>
+        </layout>
+      </apis>
+    </apibreakdowndashlet>
+  </data>
+</dashboardreport>
