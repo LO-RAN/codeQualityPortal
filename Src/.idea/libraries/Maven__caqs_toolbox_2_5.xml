@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Maven: caqs:toolbox:2.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ToolBox/pom.xml!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/caqs/toolbox/2.5/toolbox-2.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/ToolBox/pom-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/caqs/toolbox/2.5/toolbox-2.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/ToolBox/pom-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/caqs/toolbox/2.5/toolbox-2.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

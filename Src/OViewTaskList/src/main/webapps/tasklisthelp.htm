@@ -1,0 +1,192 @@
+<html>
+<head>
+<title>Task State Overview</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<table width="100%" border="0">
+  <tr>
+    <td>
+     <h1><img src="images/help.gif"> Task State Overview</h1>
+   </td>
+  </tr>
+  <tr valign="top">
+    <td>
+      <p>During its life time, every task goes through a number of states. This
+        makes it possible to trace exactly where every task is, which in turn
+        enables consistent and reliable execution of the business processes that
+        the tasks are part of.</p>
+      <p>Below is a schematic overview of the states a task can be in. The arrows
+        indicate how a task can travel from one state to another. Some transitions
+        are done automatically, while others can be performed by you, the user.
+        Every state has a specific purpose, which is discussed in the next section.</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <p><b>State Transitions</b></p>
+      <table width="1%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="2" rowspan="2"> </td>
+          <td>
+            <div align="right"><img src="images/bendne.gif" width="14" height="16"></div>
+          </td>
+          <td><img src="images/horizontal.gif" width="16" height="14"></td>
+          <td>
+            <div align="center"><img src="images/failed.gif" width="16" height="16" alt="Failed"></div>
+          </td>
+          <td colspan="5" rowspan="2"> </td>
+        </tr>
+        <tr>
+          <td>
+            <div align="right"><img src="images/down.gif" width="14" height="16"></div>
+          </td>
+          <td></td>
+          <td>
+            <div align="center"><img src="images/up.gif" width="14" height="16"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div align="right"><img src="images/scheduled.gif" width="16" height="16" alt="Scheduled"></div>
+          </td>
+          <td><img src="images/both.gif" width="16" height="14"></td>
+          <td><img src="images/reserved.gif" width="16" height="16" alt="Reserved"></td>
+          <td><img src="images/both.gif" width="16" height="14"></td>
+          <td><img src="images/executing.gif" width="22" height="16" alt="Executing"></td>
+          <td><img src="images/next.gif" width="16" height="14"></td>
+          <td><img src="images/completed.gif" width="16" height="16" alt="Completed"></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="2">
+          </td>
+          <td>
+            <div align="right"><img src="images/vertical.gif" width="14" height="16"></div>
+          </td>
+          <td></td>
+          <td>
+            <div align="center"><img src="images/down.gif" width="14" height="16"></div>
+          </td>
+          <td colspan="5" rowspan="2"> </td>
+        </tr>
+        <tr>
+          <td valign="top">
+            <div align="right"><img src="images/bendse.gif" width="16" height="14"></div>
+          </td>
+          <td valign="top"><img src="images/next.gif" width="16" height="14"></td>
+          <td>
+            <div align="center"><img src="images/aborted.gif" width="16" height="16" alt="Aborted"></div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <table width="100%" border="0" cellpadding="3">
+        <tr valign="top">
+          <td>
+            <p><b>State</b></p>
+          </td>
+          <td>
+            <p><b>Explanation</b></p>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <p><i><img src="images/scheduled.gif" width="16" height="16"><br>
+              Scheduled</i></p>
+          </td>
+          <td>
+            <p>A task is placed in the 'Scheduled' state when it is created and
+              assigned to one or more actors (i.e. users that can execute the
+              task). From this moment on the task can appear on task lists. When
+              you see a task in this state, you can do two things: reserve it
+              for later execution (see below) or execute it directly (in which
+              case the task will be reserved for you automatically).</p>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <p><i><img src="images/reserved.gif" width="16" height="16"><br>
+              Reserved</i></p>
+          </td>
+          <td>
+                  <p>When a task is assigned to multiple actors, one actor may want
+                     to claim the task for later execution.This may happen when the user
+                     was previously involved in the case and wants to prevent others
+                     from executing this particular task. When you have reserved a task
+                     and placed it in this state, others will not be able to see or execute
+                     it, until you release it of course (i.e. place it back in the 'Scheduled'
+                     state). </p>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <p><i><img src="images/executing.gif" width="22" height="16"><br>
+              Executing</i></p>
+          </td>
+          <td>
+            <p>When a task is executing, it is started but not yet completed.
+              Starting the task can be done by clicking on the 'Execute' button
+              or on the task title. The appropriate application will be started
+              automatically. When you finish the task, it will automatically place
+              itself into the 'Completed' state. When an error occurs, it will
+              be placed into the 'Failed' state.</p>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <p><i><img src="images/completed.gif" width="16" height="16"><br>
+              Completed</i></p>
+          </td>
+          <td>
+                  <p>When a task is completed, it disappears from the task list. This
+                     is the signal for the workflow software to create the next task
+                     in the process and assign it to the relevant actors (i.e. place
+                     it in the 'Scheduled' state). Tasks that are completed can still
+                     be retrieved for reference purposes until they are archived.</p>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <p><i><img src="images/failed.gif" width="16" height="16"><br>
+              Failed</i></p>
+          </td>
+          <td>
+                  <p>When a task could not be properly completed by the application,
+                     it may signal this by placing the task in the 'Failed' state. This
+                     doesn't necessarily mean that there is a serious problem. It just
+                     means that something went wrong. You can try to solve the problem
+                     or just try to execute it again. However, to make sure that you
+                     don't overlook the situation, you need to first reset the task into
+                     the 'Reserved' state. </p>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <p><i><img src="images/aborted.gif" width="16" height="16"><br>
+              Aborted</i></p>
+          </td>
+          <td>
+            <p>When for some reason the task should not be executed at all, you
+                     may indicate so by placing the task in state 'Aborted'. This may
+                     happen for instance when a customer had previously called in to
+                     report a problem (which started a business process), but later on
+                     decided that the problem had already disappeared. In such a case,
+                     the task at hand may be aborted, even when it is already in the
+                     'Executing' state, and the complete process will be halted.</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

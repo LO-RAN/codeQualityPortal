@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Clearcase (VobMountPoints)>
+<!ATTLIST Clearcase
+	PvobName CDATA #REQUIRED
+	BaseLineName CDATA #IMPLIED
+>
+<!ELEMENT Error EMPTY>
+<!ATTLIST Error
+	Message CDATA #REQUIRED
+>
+<!ELEMENT InputParameter (Project+)>
+<!ELEMENT OutputParameter (User)>
+<!ELEMENT Project (SubProject+)>
+<!ATTLIST Project
+	Name CDATA #REQUIRED
+>
+<!ELEMENT SubProject (Version+)>
+<!ATTLIST SubProject
+	Name CDATA #REQUIRED
+>
+<!ELEMENT User EMPTY>
+<!ATTLIST User
+	Name CDATA #REQUIRED
+	StreamName CDATA #IMPLIED
+	Path CDATA #IMPLIED
+>
+<!ELEMENT Version (User, Clearcase)>
+<!ATTLIST Version
+	Number CDATA #REQUIRED
+	Langage CDATA #REQUIRED
+	MakefileDir CDATA #REQUIRED
+	SrcDir CDATA #REQUIRED
+	BinDir CDATA #REQUIRED
+	Periodic CDATA #REQUIRED
+>
+<!ELEMENT VobMountPoint (#PCDATA)>
+<!ELEMENT VobMountPoints (VobMountPoint+)>
+<!ELEMENT extraction (InputParameter?, OutputParameter?, Error?)>

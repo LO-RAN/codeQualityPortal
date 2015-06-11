@@ -1,0 +1,14 @@
+@data\LANGAGE.dat;
+@data\DIALECTE.dat;
+@data\PROJET.dat;
+@data\TYPE_ELEMENT.dat;
+@data\ELEMENT.dat;
+@data\LANGUE.dat;
+@data\TYPE_METRIQUE.dat;
+@data\PACKAGE.dat;
+@data\I18N.dat;
+@data\ACCESS_RIGHTS.dat;
+@data\TASK.dat;
+@data\SETTINGS.dat;
+@data\ACTION_PLAN_UNIT.dat;
+@data\METRIQUE.dat;

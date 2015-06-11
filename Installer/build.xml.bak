@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="windows-1250"?>
+  <!--  
+        Author   : David ZYSMAN 
+        modified : Laurent IZAC - 29/06/2005 11:53:47
+	      modified : Frederic DUBOIS - 08/12/2005 12:28:32
+    -->
+    
+<project name="CAQSInstaller" default="install" basedir=".">
+  <property environment="env"/>
+    
+  <property file="ant.install.properties" />
+  
+  <condition property="isWindows">
+    <os family="windows"/>
+  </condition>
+     
+
+
+<!-- *********************************************************************** -->
+
+  <target name="install" description="Main install">
+
+    <delete dir="${CAQSDir}/webapps" failonerror="false"/>
+    <delete dir="${CAQSDir}/work" failonerror="false"/>
+    <delete dir="${CAQSDir}/Logs" failonerror="false"/>
+    
+    <antcall target="_tomcat"/>
+    <antcall target="_license"/>
+    <antcall target="_webapps"/>
+    <antcall target="_doc"/>
+    <antcall target="_models"/>
+    <antcall target="_parsers"/>
+    <antcall target="_openOffice"/>
+    
+    
+    <!-- rapports-->
+    <mkdir dir="${CAQSDir}/Rapports" />
+    <mkdir dir="${CAQSDir}/Logs" />
+    <mkdir dir="${CAQSDir}/cache" />
+    <mkdir dir="${CAQSDir}/Data" />
+    
+    <copy todir="${CAQSDir}/Logs/" file="${basedir}/files/Logs/index.html" overwrite="true" />
+
+    <copy todir="${CAQSDir}/webapps/ROOT" file="${basedir}/files/favicon.ico" overwrite="true" />
+    <copy todir="${CAQSDir}/webapps/ROOT" file="${basedir}/files/index.html"  overwrite="true" />
+
+    <copy todir="${CAQSDir}/conf" file="${CAQSDir}/config/log4j.properties"  overwrite="true" />
+    <copy todir="${CAQSDir}/lib"  file="${CAQSDir}/config/log4j.properties"  overwrite="true" />
+
+    <move file="${CAQSDir}/bin/bpm.bat" tofile="${CAQSDir}/bin/caqs.bat"/>
+    <move file="${CAQSDir}/bin/bpm.sh" tofile="${CAQSDir}/bin/caqs.sh"/>
+
+    <!-- make sure we have a temp directory in Tomcat for "on the fly" image creation (vertical column headers) -->
+    <mkdir dir="${CAQSDir}/temp"/>
+
+    <!-- update OptimalAdvisor config file to make sure all PMD detections are activated as a default -->
+    <antcall target="_majAdvisorUnix"/>
+    <antcall target="_majAdvisorWindows"/>
+       
+    <!-- set shortcuts -->
+    <antcall target="_setShortcuts"/>
+    
+    <antcall target="_setExecutableFlags"/>
+    
+  </target>
+  
+
+<!-- *********************************************************************** -->
+
+  <target name="_setShortcuts" if="isWindows">
+      <!-- shortcut (french desktop)-->
+    <copy todir="${env.HOMEDRIVE}${env.HOMEPATH}/Bureau" overwrite="true">
+      <fileset dir="${basedir}/files">
+        <include name="CAQS portal.url"/>
+      </fileset>
+    </copy>
+    <replace file="${env.HOMEDRIVE}${env.HOMEPATH}/Bureau/CAQS portal.url" token="%URL%" value="${URL}" />
+    
+    <!-- shortcut (english desktop)-->
+    <copy todir="${env.HOMEDRIVE}${env.HOMEPATH}/Desktop" overwrite="true">
+      <fileset dir="${basedir}/files">
+        <include name="CAQS portal.url"/>
+      </fileset>
+    </copy>
+    <replace file="${env.HOMEDRIVE}${env.HOMEPATH}/Desktop/CAQS portal.url" token="%URL%" value="${URL}" />
+  </target>
+
+
+<!-- *********************************************************************** -->
+
+  <target name="_setExecutableFlags" unless="isWindows">
+  		<chmod dir="${CAQSDir}" includes="**/*.sh" perm="ugo+rx"/> 
+  </target>
+
+<!-- *********************************************************************** -->
+
+  <target name="_changeClassPathSeparators" unless="isWindows">
+    <replace file="${CAQSDir}/Traitements/Configuration/conf.txt" token=";" value=":" />
+  </target>
+
+
+<!-- *********************************************************************** -->
+
+  <target name="_tomcat" description="Tomcat environment">
+    <!-- bonita-console-->
+    <copy todir="${CAQSDir}" overwrite="true">
+      <fileset dir="${basedir}/files/bonita-console" />
+    </copy>
+    <replace file="${CAQSDir}/bin/service.bat" token="%START_PATH%" value="${CAQSDir}\bin" />
+  </target>  
+
+
+<!-- *********************************************************************** -->
+
+  <target name="_license" description="License manager">
+    <!-- License manager -->
+    <copy todir="${CAQSDir}/License" overwrite="false">
+      <fileset dir="${basedir}/files/License/" />
+    </copy>
+    <copy todir="${CAQSDir}/shared/classes/" file="${basedir}/files/licenseMgmt/classes/license.properties" overwrite="false" />
+    <copy todir="${CAQSDir}/shared/lib/" overwrite="true">
+      <fileset dir="${basedir}/files/licenseMgmt/lib">
+        <include name="*.jar"/>
+      </fileset>
+    </copy>    
+  </target>
+
+
+<!-- *********************************************************************** -->
+
+  <target name="_webapps" description="Web applications">
+
+    <!-- webapps -->
+    
+    <mkdir dir="${CAQSDir}/webapps" />
+    <copy todir="${CAQSDir}/webapps" overwrite="true">
+        <fileset dir="${basedir}/files/webapps">
+          <include name="**/*.war"/>
+        </fileset>
+    </copy>
+    
+    <move file="${CAQSDir}/webapps/carscode-%CAQS_VERSION%.war" tofile="${CAQSDir}/webapps/caqs.war"/>
+    <move file="${CAQSDir}/webapps/securityviewer-%CAQS_VERSION%.war" tofile="${CAQSDir}/webapps/securityviewer.war"/>
+    
+    <!-- Tomcat configuration update -->
+    <!-- Contexts copy -->
+     <copy todir="${CAQSDir}/conf/Catalina/localhost" overwrite="true">
+      <fileset dir="${basedir}/files/webapps">
+        <include name="**/*.xml"/>
+      </fileset>
+    </copy>
+
+    <!-- Configuration files update -->
+    <replace dir="${CAQSDir}/conf/Catalina/localhost" token="%DBDRIVER%" value="${dbDriver}" />
+    <replace dir="${CAQSDir}/conf/Catalina/localhost" token="%DBURL%" value="${dbUrl}" />
+    <replace dir="${CAQSDir}/conf/Catalina/localhost" token="%DBUSER%" value="${dbUser}" />
+    <replace dir="${CAQSDir}/conf/Catalina/localhost" token="%DBPASSWORD%" value="${dbPassword}" />
+    
+    <replace file="${CAQSDir}/conf/bonita-caqs-mail.properties" token="%MAIL_HOST%" value="${smtpHost}" />
+    <replace file="${CAQSDir}/conf/bonita-caqs-mail.properties" token="%MAIL_PORT%" value="${smtpPort}" />
+    <replace file="${CAQSDir}/conf/bonita-caqs-mail.properties" token="%MAIL_FROM%" value="caqs" />
+    
+    <copy todir="${CAQSDir}/DBMS" overwrite="true">
+      <fileset dir="${basedir}/files/DBMS" />
+    </copy>
+    
+    <replace dir="${CAQSDir}/DBMS/Scripts" token="%TABLE_TBS%" value="${CAQS.TABLE_TBS}" />
+    <replace dir="${CAQSDir}/DBMS/Scripts" token="%INDEX_TBS%" value="${CAQS.INDEX_TBS}" />
+      
+  </target>
+
+
+<!-- *********************************************************************** -->
+
+  <target name="_openOffice" description="OpenOffice connector">
+	<!-- reports -->
+    <replace file="${CAQSDir}/config/report.properties" token="%SOFFICEDIR%" value="${SOfficeDir}" />
+    <replace file="${CAQSDir}/config/report.properties"  token="\" value="/" />
+    <replace file="${CAQSDir}/config/report.properties"  token="/(" value="\(" />
+    <replace file="${CAQSDir}/config/report.properties"  token="/)" value="\)" />
+
+    <copy todir="${SOfficeDir}/share/basic/Tools/" file="${basedir}/files/config/report/Conversions.xba" overwrite="true" />
+    <copy todir="${SOfficeDir}/share/basic/Tools/" file="${basedir}/files/config/report/script.xlb"      overwrite="true" />
+  </target>
+
+
+<!-- *********************************************************************** -->
+
+  <target name="_doc" description="Documentation">
+    <!-- Installation de la documentation -->
+    <mkdir dir="${CAQSDir}/Documentation" />
+    <copy todir="${CAQSDir}/Documentation" overwrite="true">
+      <fileset dir="${basedir}/files/documentation" />
+    </copy>
+  </target>
+
+
+<!-- *********************************************************************** -->
+
+  <target name="_models" description="Quality models">
+    <!-- Installation des modeles qualimetriques -->
+    <copy todir="${CAQSDir}/Models" overwrite="true">
+      <fileset dir="${basedir}/files/Models" />
+    </copy>
+  </target>
+
+
+<!-- *********************************************************************** -->
+
+  <target name="_parsers" description="Parser connectors">
+    <!-- traitements -->
+    <copy todir="${CAQSDir}/Traitements" overwrite="true">
+      <fileset dir="${basedir}/files/traitements" excludes="License/" />
+    </copy>
+    <replace file="${CAQSDir}/Traitements/Configuration/conf.txt" token="%ADMINMAIL%" value="${AdminMail}" />
+
+    <replace file="${CAQSDir}/Traitements/Configuration/conf.txt" token="%DATA-DIR%"  value="${CAQSDir}" />
+    <replace file="${CAQSDir}/Traitements/Configuration/conf.txt" token="%REPORT-SERVER-ADDRESS%"  value="${URL}" />
+    <replace file="${CAQSDir}/Traitements/Configuration/conf.txt" token="%COMPUTE-SERVER-ADDRESS%"  value="${URL}" />
+    <replace file="${CAQSDir}/Traitements/Configuration/conf.txt" token="%EXPORT-SERVER-ADDRESS%"  value="${URL}" />
+    <replace file="${CAQSDir}/Traitements/Configuration/conf.txt" token="%IMPORT-SERVER-ADDRESS%"  value="${URL}" />
+
+    <antcall target="_changeClassPathSeparators"/>
+
+	<!-- exports/imports -->
+    <replace file="${CAQSDir}/Traitements/ant/export/build.properties" token="%DBDRIVER%" value="${dbDriver}" />
+    <replace file="${CAQSDir}/Traitements/ant/export/build.properties" token="%DBURL%" value="${dbUrl}" />
+    <replace file="${CAQSDir}/Traitements/ant/export/build.properties" token="%DBUSER%" value="${dbUser}" />
+    <replace file="${CAQSDir}/Traitements/ant/export/build.properties" token="%DBPASSWORD%" value="${dbPassword}" />
+
+    <replace file="${CAQSDir}/Traitements/ant/template/build.xml" token="%CAQSDIR%" value="${CAQSDir}" />
+
+    <!-- configuration XML -->
+    <copy todir="${CAQSDir}/config" overwrite="true">
+      <fileset dir="${basedir}/files/config" />
+    </copy>
+  </target>
+
+  
+
+<!-- *********************************************************************** -->
+
+  <target name="_majAdvisorUnix" description="OptimalAdvisor configuration" unless="isWindows">
+    <copy file="${CAQSDir}/Traitements/advisor/plugin/advisor.cfg.linux" tofile="${CAQSDir}/../OptimalAdvisor/var/advisor.cfg" overwrite="true"/>
+  </target>
+    
+
+<!-- *********************************************************************** -->
+
+  <target name="_majAdvisorWindows" if="isWindows">
+    <copy file="${CAQSDir}/Traitements/advisor/plugin/advisor.cfg.windows" tofile="${env.HOMEDRIVE}${env.HOMEPATH}/../All Users/Application Data/Compuware/OptimalAdvisor/var/advisor.cfg" overwrite="true"/>
+  </target>
+
+
+
+<!-- *********************************************************************** -->
+
+    <!-- repository configuration -->
+  <target name="majDatabase" description="CAQS repository">
+
+<!-- 
+ if we are working on the H2 database, then replace the relative URL path to a full URL path.
+ Otherwise, the database will not be created in the right place. 
+-->
+  <condition property="dbUrl2" value="jdbc:h2:file:${CAQSDir}/temp/caqs-db/caqs;AUTO_SERVER=TRUE" else="${dbUrl}">
+      <equals arg1="${dbDriver}" arg2="org.h2.Driver"/>
+  </condition>
+    
+<!-- create structures for the different supported RDBMS. 
+NB: the "rdbms" attribute allows for the script execution only if appropriate rdbms is detected (from driver introspection).
+    It thus removes the need to test it explicitely.
+-->
+    <sql
+        driver="${dbDriver}"
+        url="${dbUrl2}"
+        userid="${dbUser}"
+        password="${dbPassword}"
+        rdbms="oracle" 
+        >
+      <transaction  src="${basedir}/files/DBMS/Scripts/ddl_oracle/create_tables.sql"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/ddl_oracle/add_constraints.sql"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/ddl_oracle/create_indexes.sql"/>
+    </sql>
+
+<!-- create structures for H2 RDBMS -->
+    <sql
+        driver="${dbDriver}"
+        url="${dbUrl2}"
+        userid="${dbUser}"
+        password="${dbPassword}"
+        rdbms="h2" 
+        >
+      <transaction  src="${basedir}/files/DBMS/Scripts/ddl_h2/create_tables.sql"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/ddl_h2/add_constraints.sql"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/ddl_h2/create_indexes.sql"/>
+    </sql>
+
+<!-- create structures for MS-SQL Server RDBMS -->
+    <sql
+        driver="${dbDriver}"
+        url="${dbUrl2}"
+        userid="${dbUser}"
+        password="${dbPassword}"
+        rdbms="microsoft sql server" 
+        >
+      <transaction  src="${basedir}/files/DBMS/Scripts/ddl_mssql/create_tables.sql"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/ddl_mssql/add_constraints.sql"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/ddl_mssql/create_indexes.sql"/>
+    </sql>
+
+<!-- insert default data into newly created tables -->
+    <sql
+        driver="${dbDriver}"
+        url="${dbUrl2}"
+        userid="${dbUser}"
+        password="${dbPassword}" 
+        autocommit="true"
+        encoding="UTF-8"
+        >
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/LANGAGE.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/DIALECTE.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/PROJET.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/TYPE_ELEMENT.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/ELEMENT.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/LANGUE.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/TYPE_METRIQUE.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/PACKAGE.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/I18N.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/ACCESS_RIGHTS.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/TASK.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/SETTINGS.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/ACTION_PLAN_UNIT.dat"/>
+      <transaction  src="${basedir}/files/DBMS/Scripts/data/METRIQUE.dat"/>
+    </sql>
+
+  </target>
+
+<target name="all"/>  
+</project>

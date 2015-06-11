@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CAQS" default="help" basedir=".">
+
+  <property environment="ENV" />
+  <dirname property="ant.root" file="${ant.file.CAQS}"/>
+
+  <!--
+  Targets in this script are called through the workflow engine
+  for EACH element (application entity) in a project
+  
+  Attributes available to targets (given as parameters) : 
+  - ${baselineId}        : baseline ID.
+  - ${id_elt}            : element ID.
+  - ${lib_elt}           : element caption.
+  - ${id_pro}            : project ID.
+  - ${lib_pro}           : project caption.
+  - ${SRC_DIR}           : element source directory.
+  - ${DEST_DIR}          : goal destination directory. 
+  - ${DIALECTE}          : source language dialect selected for element
+  - ${SCM_REPOSITORY}    : Source Control Management repository
+  - ${SCM_MODULE}        : Source Control Management module
+  - ${PROJECT_FILE_PATH} : project file path (ex : relative path from ${SRC_DIR} to solution file 
+                                                   for .Net projects where many solution files are
+												   in the same directory tree)
+	- ${EA_OPTION}         : option to give CMS manager for check out											   
+  - ${INFO1}             : generic parameter 1. Its value can be set in project definition, at element level.
+  - ${INFO2}             : generic parameter 2. Its value can be set in project definition, at element level.
+  -->
+  
+  <import file="export/build.xml"/>
+  <import file="export/migration_from_hsqldb/build.xml"/>
+
+  <!-- Import du script d'analyse PMD -->
+  <import file="${ant.root}/../pmd/build.xml"/>
+
+  <!-- Import du script d'analyse OptimalAdvisor -->
+  <import file="${ant.root}/../advisor/build.xml"/>
+
+  <!-- Import du script d'analyse Checkstyle -->
+  <import file="${ant.root}/../checkstyle/build.xml"/>
+
+  <!-- Import du script d'analyse pour les parseurs C -->
+  <import file="${ant.root}/../parserconnectors/build.xml"/>
+
+<patternset id="considered.extensions">
+          <include name="**/*.js" />
+          <include name="**/*.java" />
+          <include name="**/*.jsp" />
+          <include name="**/*.jspf" />
+          <include name="**/*.vb" />
+          <include name="**/*.cs" />
+          <include name="**/*.frm" />
+          <include name="**/*.form" />
+          <include name="**/*.bas" />
+          <include name="**/*.cls" />
+          <include name="**/*.aspx" />
+          <include name="**/*.ascx" />
+          <include name="**/*.asp" />
+          <include name="**/*.c" />
+          <include name="**/*.pc" />
+          <include name="**/*.h" />
+          <include name="**/*.cpp" />
+          <include name="**/*.hpp" />
+          <include name="**/*.php*" />
+          <include name="**/*.inc" />
+       <include name="**/*.pcc"/>
+       <include name="**/*.C"/>
+       <include name="**/*.CPP"/>
+       <include name="**/*.cc"/>
+       <include name="**/*.CC"/>
+       <include name="**/*.cxx"/>
+       <include name="**/*.H"/>
+          <include name="**/*.CBL" />
+          <include name="**/*.as" />
+          <include name="**/*.mxml" />
+         <include name="**/*.NSA" />
+          <include name="**/*.NSH" />
+          <include name="**/*.NSL" />
+          <include name="**/*.NSM" />
+          <include name="**/*.NSN" />
+          <include name="**/*.NSP" />
+          <include name="**/*.NSS" />          
+          <include name="**/*.natural" />
+          <include name="**/*.abap" />
+</patternset>
+
+<!-- describe a fileset for empty files in source directory -->
+  <fileset id="empty.files" dir="${SRC_DIR}/src">
+         <include name="**/*"/>
+         <size value="0" when="equal"/>
+  </fileset>
+  
+<!-- describe a GeneratedFile in source directory -->
+<fileset id="generated.files" dir="${SRC_DIR}/src">
+	<include name="**/*_SEI.java" />                  
+	<include name="**/*_Ser.java" />                  
+	<include name="**/*_Deser.java" />                    
+	<include name="**/*_Helper.java" />                   
+	<include name="**/*Proxy.java" />                     
+	<include name="**/*ServiceLocator.java" />           
+	<include name="**/*SoapBindingStub.java" />          
+	<include name="**/_*_Stub.java" />                   
+	<include name="**/EJSRemoteStateless*_*.java" />   
+	<include name="**/EJSLocalStateless*_*.java" />    
+	<include name="**/EJSRemoteStateful*_*.java" />    
+	<include name="**/EJSLocalStateful*_*.java" />     
+	<include name="**/EJSStateful*HomeBean_*.java" />  
+	<include name="**/EJSStateless*HomeBean_*.java" /> 
+	<include name="**/_EJSRemoteStateful*_*_Tie.java" />
+	<include name="**/_EJSRemoteStateless*_*_Tie.java" />
+	<include name="**/EJSRemoteCMP*_*.java" />         
+	<include name="**/EJSLocalCMP*_*.java" />        
+  <include name="**/EJSRemoteBMP*_*.java" />         
+	<include name="**/EJSLocalBMP*_*.java" />          
+	<include name="**/EJSCMP*HomeBean_*.java" />
+	<include name="**/EJSBMP*HomeBean_*.java" />
+	<include name="**/_EJSRemoteCMP*_*_Tie.java" />    
+	<include name="**/_EJSRemoteCMP*Home_*_Stub.java" />
+	<include name="**/_EJSRemoteBMP*_*_Tie.java" />    
+	<include name="**/EJSFinder*Bean.java" />            
+	<include name="**/EJSJDBCPersisterCMP*Bean.java" />  
+	<include name="**/*Persister.java" />
+	<include name="**/_EJSWrapper_Stub.java" />
+	<include name="**/_EJSWrapper_Tie.java" />
+	<include name="**/Concrete*.java" />                 
+	<include name="**/*BeanAdaptorBinding_*.java" />   
+	<include name="**/*BeanCacheEntry_*.java" />       
+	<include name="**/*BeanCacheEntryImpl_*.java" />   
+	<include name="**/*BeanExtractor_*.java" />        
+	<include name="**/*BeanFunctionSet_*.java" />      
+	<include name="**/*BeanInjector_*.java" />         
+	<include name="**/*BeanInjectorImpl_*.java" />     
+	<include name="**/*BeanInternalHome_*.java" />     
+	<include name="**/*BeanInternalLocalHome_*.java" />  
+ </fileset>        
+    
+<target name="_generatedFiles" >
+ <echo message="Filtering for generated Files: moved and archived into skipped directory"/>
+
+<delete dir="${SRC_DIR}/skipped"         quiet="true"/>
+ 
+ <move todir="${SRC_DIR}/skipped">
+   <fileset refid="generated.files"/>
+ </move>
+ 
+</target>
+
+<!-- internal target used to report and delete zero length files -->
+<target name="_deleteEmptyFiles" if="foundEmptyFiles">
+  <echo message="WARNING : deleting the following EMPTY files to prevent metrics generation failure :"/>
+  <echo message="${listOfEmptyFiles}"/>
+  
+  <delete>
+      <fileset refid="empty.files"/>
+  </delete>
+</target>
+
+<!-- internal target used to clear source directory before CMS checkout -->
+<target name="_deleteSrcDir" if="hasBeenCheckedOut">
+  <delete dir="${SRC_DIR}/src"         quiet="true"/>
+</target>
+
+<!--
+  this target is used to get source files
+  from a Configuration Management System (like CVS or SVN).
+  It is called during baseline analysis,
+  before others steps (metrics generation, loading, Computation, ...)
+  -->
+  <target name="loadFromCMS" description="load sources files from CMS">
+  
+  <echo message="Analysing ${DIALECTE}..."/>
+  
+      <condition property="hasBeenCheckedOut">
+          <and>
+            <isset property="SCM_REPOSITORY"/>
+            <not>
+              <equals arg1="${SCM_REPOSITORY}" arg2=""/>
+            </not>
+            <not>
+              <contains string="${DIALECTE}" substring="abap"/>
+            </not>
+            <not>
+              <contains string="${DIALECTE}" substring="natural"/>
+            </not>
+          </and>
+      </condition>
+
+      <!-- should we skip UTF-8 conversion ? -->
+      <condition property="skipConversion">
+          <and>
+            <isset property="INFO2"/>
+            <contains string="${INFO2}" substring="convert=no"/>
+          </and>
+      </condition>
+
+    <antcall target="_deleteSrcDir"/>
+
+    <!-- let's try to figure out whether we are checking out from CVS or SVN -->    
+    <condition property="cms.target" value="loadFromCVS" else="loadFromSVN">
+      <contains string="${SCM_REPOSITORY}" substring="pserver:" casesensitive="false"/>
+    </condition>
+    
+    <!-- then call appropriate target -->
+    <antcall target="_${cms.target}"/>     
+
+  <!-- look for empty files and set a property with the list of files found -->
+  <length property="listOfEmptyFiles" mode="each">
+      <fileset refid="empty.files"/>
+  </length>
+
+  <!-- did we find any empty file ? If yes, set a property accordingly -->
+  <condition property="foundEmptyFiles">
+       <length string="${listOfEmptyFiles}" when="greater" length="0"/>
+  </condition>
+
+  <!-- delete empty files if any were found -->
+  <antcall target="_deleteEmptyFiles"/>
+
+  <!-- Remove Generared files if any were found -->
+  <antcall target="_generatedFiles"/>
+
+  <antcall target="_convertToUtf8"/>
+   	  
+  </target>
+
+  <target name="_convertToUtf8" description="cope with potential codepage problems" unless="skipConversion">    
+  	<!-- 
+	    the following bloc is intended to cope with potential codepage problems
+	     and set the codepage property according to default host's codepage.
+		 This typically concerns Java source files saved on Windows system with codepage ISO-8859-1
+		 and parsed by OptimalAdvisor on Linux with codepage UTF-8 when these source files
+		 contain accented characters in code or litterals (the Javac compiler and OptimalAdvisor shoke on these if 
+		 not in the same encoding as host system).
+	-->
+    <echo message="transforming source files to UTF-8..."/>
+    <java dir="${SRC_DIR}/src" fork="true" classname="com.compuware.caqs.util.i18n.CodePageTransformer">
+	       <classpath>
+           <pathelement path="${ant.root}/lib/cptransform-1.1.jar:${ant.root}/lib/icu4j-4.6.jar"/>
+         </classpath>
+         <arg line="${SRC_DIR}/src ${SRC_DIR}/tmpsrc utf-8"/>
+     </java>
+	  <move todir="${SRC_DIR}/src">
+       <fileset dir="${SRC_DIR}/tmpsrc">
+           <patternset refid="considered.extensions"/>
+       </fileset>
+	  </move>
+	  <delete dir="${SRC_DIR}/tmpsrc"/>
+  </target>
+
+<!-- internal target used to checkout files from CVS -->
+  <target name="_loadFromCVS" description="load sources files from CVS" if="hasBeenCheckedOut">    
+
+    <property name="CVS.action" value="checkout ${EA_OPTION} -d src '${SCM_MODULE}'"/>   
+    <property name="CVS.dir" value="${SRC_DIR}"/>
+
+    <echo message="Repository : ${SCM_REPOSITORY}"/>
+    <echo message="Module     : ${SCM_MODULE}"/>
+    <echo message="Action     : ${CVS.action}"/>
+
+    <java jar="${ant.root}/svn/org-netbeans-lib-cvsclient.jar" dir="${CVS.dir}" fork="true">
+      <arg line="-d ${SCM_REPOSITORY}"/>
+      <arg line="${CVS.action}"/>
+    </java>
+
+
+  </target>
+
+<!-- internal target used to checkout files from SubVersion -->
+  <target name="_loadFromSVN" description="load sources files from SVN" if="hasBeenCheckedOut">    
+    <!-- make sure you change the following 2 values according to your environment -->
+    <property name="svn.username" value="THENAME"/>
+    <property name="svn.password" value="THEPASSWORD"/>
+
+    <condition property="svn.options" value="--native-eol CRLF" else="">
+      <or>
+       <contains string="${DIALECTE}" substring="vb_"/>
+       <contains string="${DIALECTE}" substring="cs_"/>
+      </or>
+    </condition>
+    
+    <property name="svn.action" value="export"/>
+
+    <echo message="Repository : ${SCM_REPOSITORY}"/>
+    <echo message="Module     : ${SCM_MODULE}"/>
+    <echo message="Action     : ${svn.action}"/>
+    <echo message="Options    : ${svn.options} ${EA_OPTION}"/>
+
+    <mkdir dir="${SRC_DIR}"/>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${SRC_DIR}" fork="true">
+      <arg line="${svn.action} ${svn.options} ${EA_OPTION} "/>
+      <arg value="--username"/>
+      <arg value="${svn.username}"/>
+      <arg value="--password"/>
+      <arg value="${svn.password}"/>
+      <arg value="${SCM_REPOSITORY}${SCM_MODULE}"/>
+      <arg value="src"/>
+      <classpath>
+        <pathelement location="${ant.root}/svn/ganymed.jar" />
+        <pathelement location="${ant.root}/svn/svnkit.jar" />
+        <pathelement location="${ant.root}/svn/svnkit-cli.jar" />
+      </classpath>
+    </java>
+
+    <!-- force line endings to crlf for VB/C# source files -->
+    <condition property="eol" value="crlf" else="lf">
+      <or>
+       <contains string="${DIALECTE}" substring="vb_"/>
+       <contains string="${DIALECTE}" substring="cs_"/>
+      </or>
+    </condition>
+    <fixcrlf srcDir="${SRC_DIR}/src" eol="${eol}">
+           <patternset refid="considered.extensions"/>
+    </fixcrlf>
+        
+  </target>
+
+  <!--
+  copy the source files into EA related Data directory so that they can be
+  used to zoom down to the line of code in CAQS portal.
+  -->
+  <target name="transformAndCopy" description="copy files into EA related Data directory ">
+    <fixcrlf srcDir="${SRC_DIR}/src" eol="lf">
+           <patternset refid="considered.extensions"/>
+	</fixcrlf>
+
+    <mkdir dir="${DEST_DIR}/"/>
+    
+    <copy todir="${DEST_DIR}">
+        <fileset dir="${SRC_DIR}/src">
+           <patternset refid="considered.extensions"/>
+        </fileset>
+    </copy>
+
+  </target>
+  
+  <!--
+  this SAMPLE target is used to transfer HTML files (generated by code2html from source files)
+  to a Unix server to be available there for use in pages when accessed from Unix http server.
+  
+  <target name="transferHTML" description="transfer colorized sources to Unix server">    
+  
+    <ftp  server="servername"
+          userid="user"        
+          password="pwd"
+          action="send"
+          verbose="no"
+          newer="yes"
+          remotedir="/someUserDirectory/caqs/Data"
+          >
+      <fileset dir="C:/CAQS/Data"/>
+    </ftp>
+    
+  </target>
+  -->
+
+  <!--
+  Create an OpenOffice document from a folder. 
+  -->
+  <target name="createSyntheseOpenOfficeDocument">
+    <replace file="${commonDir}/Rapports/${lib_pro}-${id_pro}/${baselineId}/${lib_elt}-${id_elt}/${langage}/${templateDir}/content.xml" token="@BR/@" value='&lt;/text:p>&lt;text:p text:style-name="Text_20_body">' />
+    <zip destfile="${commonDir}/Rapports/${lib_pro}-${id_pro}/${baselineId}/${lib_elt}-${id_elt}/${langage}/${fileName}"
+       basedir="${commonDir}/Rapports/${lib_pro}-${id_pro}/${baselineId}/${lib_elt}-${id_elt}/${langage}/${templateDir}/"
+    />
+    <delete dir="${commonDir}/Rapports/${lib_pro}-${id_pro}/${baselineId}/${lib_elt}-${id_elt}/${langage}/${templateDir}/"/>
+  </target>
+  <target name="createDetailOpenOfficeDocument">
+    <replace file="${commonDir}/Rapports/${lib_pro}-${id_pro}/${baselineId}/${lib_elt}-${id_elt}/${langage}/${templateDir}/content.xml" token="@BR/@" value='&lt;/text:p>&lt;text:p text:style-name="Text_20_body">' />
+    <zip destfile="${commonDir}/Rapports/${lib_pro}-${id_pro}/${baselineId}/${lib_elt}-${id_elt}/${langage}/${fileName}"
+       basedir="${commonDir}/Rapports/${lib_pro}-${id_pro}/${baselineId}/${lib_elt}-${id_elt}/${langage}/${templateDir}/"
+    />
+    <delete dir="${commonDir}/Rapports/${lib_pro}-${id_pro}/${baselineId}/${lib_elt}-${id_elt}/${langage}/${templateDir}/"/>
+  </target>
+  <target name="createAnnexesOpenOfficeDocument">
+    <replace file="${commonDir}/Rapports/${id_usa}/${langage}/annexes/content.xml" token="@BR/@" value='&lt;/text:p>&lt;text:p text:style-name="Text_20_body">' />
+    <zip destfile="${commonDir}/Rapports/${id_usa}/${langage}/annexes-${id_usa}.odt"
+       basedir="${commonDir}/Rapports/${id_usa}/${langage}/annexes/"
+    />
+    <delete dir="${commonDir}/Rapports/${id_usa}/${langage}/annexes/"/>
+  </target>
+
+
+<target name="initEA" description="EA level environment initialization">
+    <fail unless="SRC_DIR" message="SRC_DIR property must be set !"/>
+
+  <!-- create directories for EA files -->
+  
+  <!-- 
+        create directory that will contain source files (for example "*.java") 
+        NB: most parsers work on these source files.
+  -->
+  <mkdir dir="${SRC_DIR}/src" />
+  <!-- 
+        create directory that will contain compiled files (for example "*.class") 
+        NB: some parsers may require compiled files.
+  -->
+<!--  <mkdir dir="${SRC_DIR}/bin" /> -->
+  <!-- 
+        create directory that will contain used library files (for example "*.jar") 
+        NB: some parsers may require used libraries (for dependency checking)
+  -->
+<!--  <mkdir dir="${SRC_DIR}/lib" /> -->
+  
+<!-- 
+    copy EA specific build.xml (if it does not exist yet), that can be edited to cope with EA specific needs
+    like getting source files from a configuration management system with custom parameters
+    related to the given EA.
+-->
+    <copy todir="${SRC_DIR}">
+     <fileset dir="${ant.root}/template">
+       <include name="build.xml"/>
+     </fileset>
+    </copy>
+
+    <!-- initialisation environnement Phoenix -->
+    <!-- <antcall target="initStructure"/> -->
+
+</target>
+
+
+
+
+<!--
+   call CAST analysis manager for the given element
+<target name="CAST_analyse" description="CAST analysis">
+   <exec executable="cmd.exe">
+        <arg line="/c ${ant.root}/../CAST/runCAST_analyse.bat ${lib_elt}"/>
+   </exec>
+</target>
+-->
+
+<!--
+   call CAST snapshot builder for the given source directory, project and element
+<target name="CAST_snapshot" description="CAST analysis">
+   <exec executable="cmd.exe">
+        <arg line="/c ${ant.root}/../CAST/runCAST_snapshot.bat ${SRC_DIR} ${lib_pro} ${lib_elt}"/>
+   </exec>
+</target>
+-->
+<!--
+   call CAST data formatter for the given source directory, project and element
+<target name="CAST_format_data" description="CAST analysis">
+   <exec executable="cmd.exe">
+        <arg line="/c ${ant.root}/../CAST/runCAST_format_data.bat ${SRC_DIR} ${lib_pro} ${lib_elt}"/>
+   </exec>
+</target>
+-->
+<!--
+   call CAST csv generator for the given source directory, project and element
+<target name="CAST_pivots" description="CAST analysis">
+   <exec executable="cmd.exe">
+        <arg line="/c ${ant.root}/../CAST/runCAST_pivots.bat ${SRC_DIR} ${lib_pro} ${lib_elt}"/>
+   </exec>
+</target>
+-->
+
+  <target name="extractSrc">
+    <delete dir="${SRC_DIR}/src"/>
+    <delete dir="${SRC_DIR}/bin"/>
+    <unzip src="${SRC_DIR}/src.zip" dest="${SRC_DIR}/" />
+    <delete file="${SRC_DIR}/src.zip"/>
+  </target>
+
+  <target name="cleanEaDirectories">
+	<delete dir="${DATA_PATH}" />
+    <delete dir="${REPORT_PATH}" />
+  </target>
+    
+  <property name="maven.home" value="D:/Software/Maven-2.0.9"/>
+  <path id="maven.classpath">
+      <pathelement path="${maven.home}/boot/classworlds-1.1.jar"/>
+      <pathelement path="${maven.home}/bin/m2.conf"/>
+      <pathelement path="${maven.home}/lib/maven-2.0.9-uber.jar"/>
+      <pathelement path="D:/Software/jdk1.5.0_14/lib/tools.jar"/>
+  </path>
+
+  <target name="compile-and-test-sources">
+    <antcall target="maven-test"/> 
+    <condition property="repositoryExists">
+      <available file="${SRC_DIR}/repo/" type="dir"/>
+    </condition>
+    <antcall target="source-copy"/> 
+  </target>
+  
+  <condition property="isMavenProject">
+      <available file="${SRC_DIR}/repo/pom.xml"/>
+  </condition>
+
+  <condition property="repositoryExists">
+    <available file="${SRC_DIR}/repo/" type="dir"/>
+  </condition>
+
+  <target name="maven-test" if="isMavenProject">
+    <java classname="org.codehaus.classworlds.Launcher" fork="true" dir="${SRC_DIR}/repo">
+        <arg line="clean test cobertura:cobertura"/>
+        <sysproperty key="classworlds.conf" value="${maven.home}/bin/m2.conf" />
+        <sysproperty key="maven.home" value="${maven.home}" />
+        <classpath refid="maven.classpath"/>
+    </java>
+    
+    <delete dir="${SRC_DIR}/bin" />
+    <copy todir="${SRC_DIR}/bin">
+      <mapper type="regexp" from="^(.*target\\classes\\)(.*\.class)$$" to="\2"/>
+      <fileset dir="${SRC_DIR}/repo">
+        <include name="**/target/classes/**/*.class"/>
+      </fileset>
+    </copy>
+
+    <delete dir="${SRC_DIR}/junitreports" />
+    <mkdir dir="${SRC_DIR}/junitreports" />
+    <junitformatter destFile="${SRC_DIR}/junitreports/report.xml">
+     <source dir="${SRC_DIR}/repo">
+       <include name="**/target/surefire-reports/*.xml"/>
+     </source>
+    </junitformatter>
+<!--
+    <dpjcovformatter destFile="${SRC_DIR}/junitreports/cov-report.xml">
+     <source dir="${SRC_DIR}/repo">
+       <include name="**/exports/dpj/*.tcm.xml"/>
+       <include name="**/exports/dpj/*.tcs.xml"/>
+     </source>
+    </dpjcovformatter>
+  </target>
+-->
+    <coberturaformatter destFile="${SRC_DIR}/junitreports/cobertura.xml">
+     <source dir="${SRC_DIR}/repo">
+       <include name="**/site/cobertura/coverage.xml"/>
+     </source>
+    </coberturaformatter>
+  </target>
+
+  <target name="source-copy" if="repositoryExists">
+    <delete dir="${SRC_DIR}/src" />
+    <delete dir="${SRC_DIR}/testsrc" />
+    <copy todir="${SRC_DIR}/src" enablemultiplemappings="true">
+      <mapper type="regexp" from="^(.*src\\main\\java\\)(.*\.java)$$" to="\2"/>
+      <fileset dir="${SRC_DIR}/repo">
+        <include name="**/src/main/java/**/*.java"/>
+      </fileset>
+    </copy>
+    <copy todir="${SRC_DIR}/testsrc" enablemultiplemappings="true">
+      <mapper type="regexp" from="^(.*src\\test\\java\\)(.*\.java)$$" to="\2"/>
+      <fileset dir="${SRC_DIR}/repo">
+        <include name="**/src/test/java/**/*.java"/>
+      </fileset>
+    </copy>
+    <copy todir="${SRC_DIR}/src" enablemultiplemappings="true">
+      <mapper type="regexp" from="^(.*src\\main\\webapp\\)(.*\.jsp)$$" to="\2"/>
+      <fileset dir="${SRC_DIR}/repo">
+        <include name="**/src/main/webapp/**/*.jsp"/>
+      </fileset>
+    </copy>
+    <copy todir="${SRC_DIR}/src" enablemultiplemappings="true">
+      <mapper type="regexp" from="^(.*src\\main\\webapp\\)(.*\.xml)$$" to="\2"/>
+      <fileset dir="${SRC_DIR}/repo">
+        <include name="**/src/main/webapp/WEB-INF/*.xml"/>
+      </fileset>
+    </copy>
+  </target>
+    
+  <target name="help" description="help">
+    <echo message="CAQS generic Ant build file."/>
+    <echo message="You can use/modify the predefined targets and add your own."/>
+    <echo message="For invocation through CAQS servlet mechanism, use :"/>
+    <echo message="com.compuware.carscode.servlet.SourceManagerServlet"/>
+    <echo message="(see javadoc for usage)."/>
+  </target>
+</project>

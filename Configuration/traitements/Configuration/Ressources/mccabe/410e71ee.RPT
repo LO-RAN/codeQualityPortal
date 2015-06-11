@@ -1,0 +1,116 @@
+vg 10 1
+ivg 7 1
+evg 7 1
+nl 60 1
+unique_operators 20 0
+unique_operands 20 0
+operator_count 30 0
+operand_count 30 0
+blanks 10 0
+comments 10 0
+code 30 1
+mixed 10 0
+gdv 4 1
+pvg 2 1
+hal_length 300 1
+hal_volume 1500.00 1.00
+hal_level 0.60 0.01
+hal_difficulty 30.00 1.00
+hal_intel 120.00 1.00
+hal_effort 30000.00 1.00
+hal_error_est 0.60 0.01
+hal_prog_time 2100.00 1.00
+branch 19 1
+nodes 100 1
+edges 100 1
+params 5 1
+normal_vg 0.28 0.01
+dec 9 0
+cd 19 0
+mcd 9 0
+mc 24 0
+sum_vg 70 1
+avg_vg 10.00 1.00
+max_vg 10 1
+max_evg 4 1
+wmc 14 0
+noc 3 0
+depth 7 1
+rfc 100 0
+locm 75 0
+cbo 2 0
+oofanin 1 0
+pub_data 0 0
+pub_access 0 0
+s0 100 1
+s1 100 1
+pct_notov 70 0
+rootcnt 50 0
+dep_ct 0 0
+prog_sum_vg 100 0
+lines_with_nodes 30 1
+tested_branch 19 0
+ac 10 0
+tested_ivg 7 0
+lines_with_nodes_cov 30 0
+tested_edges 100 0
+dec_cov 9 0
+cdc 19 0
+mcdc 9 0
+mcc 24 0
+test_s0 100 0
+test_s1 100 0
+sdv 100 0
+call_pair 100 0
+sdr 100 0
+call_pair_cov 100 0
+tested_sdv 100 0
+tested_sdr 100 0
+all_code 60 0
+cyclomatic_density 0.14 0.00
+decision_density 3.00 0.00
+design_density 0.70 0.00
+essential_density 0.40 0.00
+global_data_density 1.00 0.00
+mi3 50.00 0.00
+mi4 65.00 0.00
+pct_branch_cov 100.00 0.00
+pct_call_pair_cov 100.00 0.00
+pct_comm 8.00 0.00
+pct_edge_cov 100.00 0.00
+pct_ivg_cov 100.00 0.00
+pct_line_cov 100.00 0.00
+pct_mcdc_cov 100.00 0.00
+pct_path_cov 100.00 0.00
+pct_sdv_cov 100.00 0.00
+pct_sdr_cov 100.00 0.00
+s0_div_sumv 0.70 0.00
+untested_branch 0 0
+untested_edge 0 0
+untested_iv 0 0
+untested_lines 0 0
+untested_path 0 0
+DR 18 0
+TDR 18 0
+DV 7 0
+TDV 7 0
+pct_DR_cov 100.00 0.00
+pct_DV_cov 100.00 0.00
+maint_severity 1.00 0.00
+gdv_severity 1.00 0.00
+DV_severity 0.70 0.00
+DR_severity 1.80 0.00
+in_dataset 0.50 0.00
+in_slice 0.50 0.00
+changed_numeric 1.00 0.00
+CLASS HISTOGRAM avg_vg wmc locm rfc cbo noc 
+CLASS KIVIAT rfc wmc locm avg_vg pub_data cbo pub_access noc 
+CLASS pub_data locm pct_notov wmc rfc max_vg max_evg dep_ct rootcnt oofanin noc depth locm pub_access 
+CLASS SCATTER 3 avg_vg wmc 
+CLASS TREND avg_vg wmc rfc pub_access pub_data locm 
+CLASS COLORING ADDITIVE avg_vg wmc 
+MODULE SCATTER 3 vg evg 
+MODULE KIVIAT gdv_severity maint_severity DR_severity DV_severity DR DV normal_vg 
+MODULE HISTOGRAM vg evg ivg DR DV nl normal_vg 
+MODULE TREND vg evg ivg DR DV nl normal_vg 
+MODULE COLORING PRIMSEC evg vg 

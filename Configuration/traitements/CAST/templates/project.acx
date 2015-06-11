@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<AnaMan>
+ <Version>500</Version>
+ <_x31_0>10</_x31_0>
+ <Config>
+  <LogConfig>
+   <UseLog>0</UseLog>
+   <RawTruncate>1</RawTruncate>
+   <RawImmediate>0</RawImmediate>
+   <RawSecure>0</RawSecure>
+   <RawFilePath></RawFilePath>
+   <StdTruncate>0</StdTruncate>
+   <StdImmediate>0</StdImmediate>
+   <StdSecure>0</StdSecure>
+   <StdFilePath>C:\CAST Implementation Framework\Implementation\Log\AnaMan-Log.log</StdFilePath>
+   <FieldTerminator>&#x9;</FieldTerminator>
+   <RowTerminator>&#xA;</RowTerminator>
+   <Threshold>4</Threshold>
+   <MaxLine>10000</MaxLine>
+   <ShowDate>0</ShowDate>
+   <IncludeDebug>1</IncludeDebug>
+  </LogConfig>
+  <ConnectionConfig>
+   <UserName>system</UserName>
+   <UserPassword>CRYPTED:E8B64F887D2F</UserPassword>
+   <ServerName>RECCAQS</ServerName>
+   <AppWName>KB_CAQS_ANALYSE</AppWName>
+   <ProfileName>RECCAQS_KB_CAQS_ANALYSE</ProfileName>
+   <HostName></HostName>
+   <LoginName>THEED\Administrator</LoginName>
+   <LoginPassword></LoginPassword>
+   <DatabaseType>Oracle</DatabaseType>
+  </ConnectionConfig>
+ </Config>
+ <Checktree>
+  <UserProject>
+   <Name>Jmeter</Name>
+  </UserProject>
+ </Checktree>
+ <Expand>
+  <UserProject>
+   <Name>Jmeter</Name>
+  </UserProject>
+ </Expand>
+</AnaMan>

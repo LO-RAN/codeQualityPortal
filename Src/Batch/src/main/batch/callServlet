@@ -1,0 +1,7 @@
+#!/bin/sh
+# give URL to call as a parameter
+
+CURDIR=`dirname $0`
+
+/opt/Compuware/jdk1.5.0_12/bin/java -cp $CURDIR/batch-1.0.jar com.compuware.carscode.batch.CallServlet $* > $CURDIR/callServlet.log 
+tail -n 1 $CURDIR/callServlet.log

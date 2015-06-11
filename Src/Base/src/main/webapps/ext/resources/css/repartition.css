@@ -1,0 +1,68 @@
+@CHARSET "ISO-8859-1";
+
+#dialecte-box {
+    position:absolute;
+    line-height:14px;
+    font-size:11px;
+	background-color:#fff;
+}
+#dialecte-box-inner {
+    line-height:14px;
+    font-size:11px;
+	background-color:#fff;
+	overflow:auto;
+}
+
+#dialecte-ct {
+    padding:2px;
+}
+
+#dialecte-ct p i {
+    color: #c33;
+	font-style:normal;
+	font-weight:bold;
+}
+
+#dialecte-ct h2 {
+    border-bottom: 2px solid #99bbe8;
+    cursor:pointer;
+    padding-top:6px;
+	-moz-user-select:none;
+	-khtml-user-select:none;
+}
+#dialecte-ct h2 div {
+    background:transparent url(../images/default/grid/group-expand-sprite.gif) no-repeat 3px -47px;
+    padding:4px 4px 4px 17px;
+    color:#3764a0;
+    font:bold 11px tahoma, arial, helvetica, sans-serif;
+}
+#dialecte-ct .collapsed h2 div {
+    background-position: 3px 3px;
+}
+#dialecte-ct .collapsed dl {
+    display:none;
+}
+
+#dialecte-ct dd {
+    float:left;
+    cursor:pointer;
+    zoom:1;
+}
+#dialecte-ct dd img {
+    margin:5px 0 0 5px;
+    float:left;
+}
+
+#dialecte-ct dd div {
+    float:left;
+}
+
+#dialecte-ct dd h4 {
+    font-family:tahoma,arial,san-serif;
+    color:#555;
+    font-size:11px;
+    font-weight:bold;
+}
+#dialecte-ct dd p {
+    color:#777;
+}

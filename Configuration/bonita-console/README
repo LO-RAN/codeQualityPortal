@@ -1,0 +1,73 @@
+#####################
+# PREREQUESITES     #
+#####################
+You must run it with a java 1.5
+
+#####################
+# INCLUDED VERSIONS #
+#####################
+Bonita version : Bonita-4.0
+eXo version : exo-eXoPortal-2.1-tomcat
+
+#################
+# DOCUMENTATION #
+#################
+FOR ALL THE TECHNICAL DOCUMENTATION :
+http://bonita.ow2.org
+
+###################
+# RUN THE CONSOLE #
+###################
+ For both OS environments (linux and windows), you need to set the JAVA_HOME variable.
+ Be sure that CATALINA_HOME and CATALINA_BASE are not set.
+
+ * On the Windows platform
+   Open a DOS prompt command, go to Bonita-Console-<release>/bin 
+   and type the command :
+   > .\bpm.bat run
+
+ * On Unix/linux/cygwin
+   Open a terminal, go to bonita-Console-<release>/bin 
+   and type the command :
+   > ./bpm.sh run
+   
+   You may need to change the permission of all *.sh files 
+   in the bonita-Console-<release>/bin folder
+
+####################################
+# HOW TO ACCESS THE BONITA CONSOLE #
+####################################
+ * Enter the following address into your browser address bar:
+   > http://localhost:8080/portal
+
+   You can log into the portal with the following accounts: 
+     root, admin, james, jack, john 
+   All those accounts have the default password "bpm".
+ 
+###########################################
+# HOW TO TEST A WORKFLOW WITH THE CONSOLE #
+###########################################
+ * Log in the console as root/bpm and go in the Management Portlet
+   Upload the examples/approvalWorkflow.bpar
+
+ * Enjoy it
+
+##########################################
+# HOW TO ACCESS TO AN EJB BONITA RUNTIME #
+##########################################
+ To do that, you need to specify to the console that you are using an EJB version of Bonita.
+ After that, you need to configure the jndi service of the console.
+ * modify the file conf/environment.xml
+   change <api  type='Standard' /> by <api  type='EJB2' /> or <api  type='EJB3' />
+ * modify the file webapps/portal/WEB-INF/conf/common/common-configuration.xml
+   uncomment the right configuration in InitialContextInitializer config
+ * don't forget to add the library containing the factory class in the lib/ directory. 
+##############
+# WHAT ELSE? #
+##############
+For more documentation and latest updated news, please visit our website http://bonita.ow2.org.
+If you have questions, please post in our forum http://forge.objectweb.org/forum/?group_id=56 .
+
+
+Thank your for using our products !
+The bonita team.

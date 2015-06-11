@@ -1,0 +1,55 @@
+#!/bin/bash
+#
+# Run-level Startup script for the Uniface Urouter
+#
+# chkconfig: 345 91 23
+# description: Startup/Shutdown Uniface Urouter
+
+UROUTER_HOME="/opt/Compuware/UnifaceFlow"
+export ORACLE_SID=CAQS
+export ORA_HOME="/home/oracle/oracle/product/10.2.0/db_1"
+export ORAENV_ASK=NO
+
+. /home/caqs/.bash_profile
+. $UROUTER_HOME/adm/insunis
+
+# if the executables do not exist -- display error
+
+if [ ! -f $UROUTER_HOME/bin/urouter -o ! -d $UROUTER_HOME ]
+then
+        echo "urouter startup: cannot start"
+        exit 1
+fi
+
+# depending on parameter -- startup, shutdown, restart 
+# of the instance and listener or usage display 
+
+case "$1" in
+    start)
+        # Uniface Urouter startup
+        echo -n "Starting Uniface Urouter: "
+        $UROUTER_HOME/bin/urouter /start &
+
+        touch /var/lock/subsys/urouter
+        echo "OK"
+        ;;
+    stop)
+        # Uniface Urouter shutdown
+        echo -n "Shutdown Uniface Urouter: "
+
+        $UROUTER_HOME/bin/urouter /shut
+        rm -f /var/lock/subsys/urouter
+    	# waiting time needed because tcp port is not available right away after service stop
+        echo waiting 60 seconds to prevent dirty restart...
+	    sleep 60
+        echo "OK"
+        ;;
+    reload|restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 start|stop|restart|reload"
+        exit 1
+esac
+exit 0

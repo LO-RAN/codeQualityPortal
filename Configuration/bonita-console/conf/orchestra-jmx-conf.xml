@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orchestraJmxSettings xmlns="http://orchestra.ow2.org/orchestra-jmx-config">
+<port>9999</port>
+<objectName>JMXAgent:name=orchestraRemoteDeployer</objectName>
+<serviceUrl>service:jmx:rmi:///jndi/rmi://localhost:9999/orchestraServer</serviceUrl>
+</orchestraJmxSettings>

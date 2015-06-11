@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://www.w3schools.com"
+		xmlns="http://www.w3schools.com"
+		elementFormDefault="qualified">
+
+<xs:simpleType name="facteurIdType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="MAIN"/>
+    <xs:enumeration value="EVOL"/>
+    <xs:enumeration value="REUT"/>
+    <xs:enumeration value="FIAB"/>
+    <xs:enumeration value="PERT"/>
+    <xs:enumeration value="ROBU"/>
+    <xs:enumeration value="SECU"/>
+  </xs:restriction>
+</xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,5 @@
+Caqs.SynthesisHelper = function() {
+    return {
+
+    };
+}();

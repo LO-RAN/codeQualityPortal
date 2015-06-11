@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE MODE SYSTEM "xmode.dtd">
+
+<!-- ABAP mode by Nathan Jones -->
+<MODE>
+	<PROPS>
+		<PROPERTY NAME="lineComment" VALUE="*" />
+	</PROPS>
+
+	<RULES IGNORE_CASE="TRUE" HIGHLIGHT_DIGITS="TRUE">
+		<SPAN TYPE="LITERAL2" NO_LINE_BREAK="TRUE">
+			<BEGIN>'</BEGIN>
+			<END>'</END>
+		</SPAN>
+		<KEYWORDS>
+			<!-- Comments -->
+		  <EOL_SPAN TYPE="COMMENT1" AT_LINE_START="TRUE">*</EOL_SPAN>
+			<EOL_SPAN TYPE="COMMENT2">"</EOL_SPAN>
+			<!-- Events -->
+			<KEYWORD1>initialization</KEYWORD1>
+			<KEYWORD1>start-of-selection</KEYWORD1>
+			<KEYWORD1>get</KEYWORD1>
+			<KEYWORD1>end-of-selection</KEYWORD1>
+			<KEYWORD1>at top-of-page</KEYWORD1>
+			<KEYWORD1>end-of-page</KEYWORD1>
+			<KEYWORD1>LINE-SELECTION</KEYWORD1>
+			<KEYWORD1>top-of-page</KEYWORD1>
+      <SEQ TYPE="KEYWORD1">at selection-screen</SEQ>
+      <SEQ TYPE="KEYWORD1">at line-selection</SEQ>
+			<SEQ TYPE="KEYWORD1">at user-command</SEQ>
+			<SEQ TYPE="KEYWORD1">on value-request</SEQ>
+			<!-- Forms -->
+			<FUNCTION>form</FUNCTION>
+			<FUNCTION>endform</FUNCTION>
+			<FUNCTION>define</FUNCTION>
+			<FUNCTION>end-of-definition</FUNCTION>
+			<FUNCTION>importing</FUNCTION>
+			<FUNCTION>exporting</FUNCTION>
+			<FUNCTION>exceptions</FUNCTION>
+			<FUNCTION>using</FUNCTION>
+			<FUNCTION>changing</FUNCTION>
+			<SEQ TYPE="FUNCTION">call function</SEQ>
+			<SEQ TYPE="FUNCTION">call transaction</SEQ>
+			<!-- Conditions -->
+			<KEYWORD2>if</KEYWORD2>
+			<KEYWORD2>else</KEYWORD2>
+			<KEYWORD2>elseif</KEYWORD2>
+			<KEYWORD2>endif</KEYWORD2>
+			<KEYWORD2>case</KEYWORD2>
+			<KEYWORD2>endcase</KEYWORD2>
+			<KEYWORD2>when</KEYWORD2>
+			<KEYWORD2>loop</KEYWORD2>
+			<KEYWORD2>endloop</KEYWORD2>
+			<KEYWORD2>while</KEYWORD2>
+			<KEYWORD2>endwhile</KEYWORD2>
+			<KEYWORD2>do</KEYWORD2>
+			<KEYWORD2>enddo</KEYWORD2>
+			<!-- Statements -->
+			<KEYWORD3>write</KEYWORD3>
+			<KEYWORD3>write:</KEYWORD3>
+			<KEYWORD3>concatenate</KEYWORD3>
+			<KEYWORD3>add</KEYWORD3>
+			<KEYWORD3>subtract</KEYWORD3>
+			<KEYWORD3>multiply</KEYWORD3>
+			<KEYWORD3>divide</KEYWORD3>
+			<KEYWORD3>move</KEYWORD3>
+			<KEYWORD3>translate</KEYWORD3>
+			<KEYWORD3>move-corresponding</KEYWORD3>
+			<KEYWORD3>delete</KEYWORD3>
+			<KEYWORD3>insert</KEYWORD3>
+			<KEYWORD3>select</KEYWORD3>
+			<KEYWORD3>endselect</KEYWORD3>
+			<KEYWORD3>update</KEYWORD3>
+			<KEYWORD3>modify</KEYWORD3>
+			<KEYWORD3>commit</KEYWORD3>
+			<KEYWORD3>append</KEYWORD3>
+			<KEYWORD3>collect</KEYWORD3>
+			<KEYWORD3>describe</KEYWORD3>
+			<KEYWORD3>format</KEYWORD3>
+			<KEYWORD3>condense</KEYWORD3>
+			<KEYWORD3>message</KEYWORD3>
+			<KEYWORD3>exit</KEYWORD3>
+			<KEYWORD3>perform</KEYWORD3>
+			<KEYWORD3>with</KEYWORD3>
+			<KEYWORD3>reject</KEYWORD3>
+			<KEYWORD3>clear read</KEYWORD3>
+			<!-- Operators -->
+			<OPERATOR>not</OPERATOR>
+			<OPERATOR>and</OPERATOR>
+			<OPERATOR>or</OPERATOR>
+			<OPERATOR>lt</OPERATOR>
+			<OPERATOR>le</OPERATOR>
+			<OPERATOR>gt</OPERATOR>
+			<OPERATOR>ge</OPERATOR>
+			<OPERATOR>eq</OPERATOR>
+			<OPERATOR>ne</OPERATOR>
+			<OPERATOR>co</OPERATOR>
+			<OPERATOR>ca</OPERATOR>
+			<OPERATOR>cs</OPERATOR>
+			<OPERATOR>cn</OPERATOR>
+			<OPERATOR>na</OPERATOR>
+			<OPERATOR>ns</OPERATOR>
+			<OPERATOR>cp</OPERATOR>
+			<OPERATOR>np</OPERATOR>
+			<OPERATOR>like</OPERATOR>
+			<OPERATOR>type</OPERATOR>
+			<OPERATOR>for</OPERATOR>
+			<OPERATOR>in</OPERATOR>
+			<OPERATOR>is</OPERATOR>
+			<OPERATOR>=</OPERATOR>
+			<OPERATOR>to</OPERATOR>
+			<!-- Data stuff -->
+			<MARKUP>constants</MARKUP>
+			<MARKUP>data</MARKUP>
+			<MARKUP>tables</MARKUP>
+			<MARKUP>parameters</MARKUP>
+			<MARKUP>types</MARKUP>
+			<MARKUP>type-pools</MARKUP>
+			<MARKUP>field-symbols</MARKUP>
+			<MARKUP>select-options</MARKUP>
+			<MARKUP>constants:</MARKUP>
+			<MARKUP>data:</MARKUP>
+			<MARKUP>tables:</MARKUP>
+			<MARKUP>types:</MARKUP>
+			<MARKUP>type-pools:</MARKUP>
+			<MARKUP>field-symbols:</MARKUP>
+			<MARKUP>ranges:</MARKUP>
+			<MARKUP>ranges</MARKUP>
+			<MARKUP>select-options:</MARKUP>
+			<MARKUP>parameters:</MARKUP>
+			<MARKUP>selection-screen</MARKUP>
+			<!-- Checks -->
+			<SPAN_REGEXP TYPE="INVALID" HASH_CHAR="s" NO_LINE_BREAK="TRUE" NO_WORD_BREAK="TRUE" >
+        <BEGIN>sy-[a-z0-9]*</BEGIN>
+				<END> </END>
+      </SPAN_REGEXP>
+			<INVALID>initial</INVALID>
+		</KEYWORDS>
+	</RULES>
+</MODE>
+

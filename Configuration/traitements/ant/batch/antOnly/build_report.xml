@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CAQS" default="report" basedir=".">
+
+
+    <!-- the following properties are specific to each run and must be provided by caller
+         (see portal : project administration : )
+    <property name="projectId" value="20090310161056859085106"/>
+ -->
+
+    <!-- the following properties are optionnal  -->
+
+    <!-- if not provided, reports will be generated for the last baseline in the project
+    <property name="baselineId" value=""/>
+  -->
+
+    <!-- defaults to the server default language
+    <property name="language" value="en"/>
+  -->
+
+    <!-- if not provided, reports will be generated for every EA in the project
+    <property name="EAId" value=""/> 
+  -->
+   
+    <!-- if not provided, no progressbar/message will be displayed
+    <property name="userId" value=""/> 
+  -->
+  
+  <!-- url of CAQS server (change it according to installation context) -->
+  <property name="protocol" value="http"/>
+  <property name="host" value="localhost"/>
+  <property name="port" value="8080"/>
+
+  
+  <!-- temp directory to store requests return values -->
+  <property name="resultFile" value="/tmp/report_result.xml"/>
+  
+  <target name="report">
+
+  <fail message="projectId property must be set">
+     <condition>
+            <not>
+              <isset property="projectId"/>
+            </not>
+     </condition>
+   </fail>
+
+   <fail message="language property must be set">
+     <condition>
+            <not>
+              <isset property="language"/>
+            </not>
+     </condition>
+   </fail>
+
+   <fail message="userId property must be set">
+     <condition>
+            <not>
+              <isset property="userId"/>
+            </not>
+     </condition>
+   </fail>
+
+   <fail message="EAId property must be set">
+     <condition>
+            <not>
+              <isset property="EAId"/>
+            </not>
+     </condition>
+   </fail>
+
+ <property name="URL" value="${protocol}://${host}:${port}/caqs/report?id_pro=${projectId}&amp;id_bline=&amp;language=${language}&amp;id_user=${userId}&amp;id_ea=${EAId}"/>
+    
+    <get src="${URL}"  dest="${resultFile}" />    
+
+    <condition property="error.found">         
+      <isfileselected file="${resultFile}">         
+        <contains text="&lt;success&gt;false&lt;/success&gt;" casesensitive="no"/>      
+      </isfileselected>   
+    </condition> 
+
+    <antcall target="_checkError"/>
+
+  </target>
+  
+  <target name="_checkError" if="error.found">
+   <loadfile property="result" srcFile="${resultFile}"/>
+   <echo message="${result}"/>
+
+    <fail message="Report generation failed. Check your inputs and execution messages."/>       
+  </target>
+    
+  
+</project>

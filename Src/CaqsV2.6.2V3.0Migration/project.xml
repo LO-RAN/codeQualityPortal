@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+ <project>
+   <pomVersion>1</pomVersion>
+   <groupId>caqs</groupId>
+   <id>migration262to30</id>
+   <currentVersion>1.0</currentVersion>
+   <name>Migration262to30</name>
+
+   <!--         Project Management section  goes here        -->
+	<organization>
+      <name>Compuware-France</name>
+      <url>http://www.compuware.com</url>
+      <logo>http://www.compuware.com/images/masthead/masthead_left_tagline.jpg</logo>
+   </organization>
+
+   <inceptionYear>2005</inceptionYear>
+   <package>com.compuware.*</package>
+   <logo>http://www.compuware.com/project-logo.jpg</logo>
+   <description>CAQS Project</description>
+   <shortDescription>CAQS Project</shortDescription>
+   <url>http://www.compuware.com</url>
+   <issueTrackingUrl>http://cwfr-d144/cgi-win/itemview.dll</issueTrackingUrl>
+   <siteAddress>http://localhost:8080/caqs/</siteAddress>
+   <siteDirectory>D:/CarsCode/Maven/Site</siteDirectory>
+   <distributionDirectory>D:/CarsCode/Maven/Build</distributionDirectory>
+
+   <repository>
+      <connection>scm:cvs:pserver:${cvs_name}@cwfr-d149:2401/CarsCode:/Src/CaqsV2.6.2V3.0Migration</connection>
+      <url>http://www.compuware.com</url>
+   </repository>
+
+   <mailingLists>
+      <mailingList>
+         <name>Dev List</name>
+         <subscribe>subscribe-caqs-dev@compuware.com</subscribe>
+         <unsubscribe>unsubscribe-caqs-dev@compuware.com</unsubscribe>
+      </mailingList>
+   </mailingLists>
+
+   <developers>
+      <developer>
+         <name>Dubois Frederic</name>
+         <id>fdubois</id>
+         <email>Frederic.Dubois@compuware.com</email>
+      </developer>
+
+      <developer>
+         <name>Albouy Francois-Xavier</name>
+         <id>falbouy</id>
+         <email>Francois.Xavier.Albouy@compuware.com</email>
+      </developer>
+
+      <developer>
+         <name>Izac Laurent</name>
+         <id>lizac</id>
+         <email>Laurent.Izac@compuware.com</email>
+      </developer>
+
+      <developer>
+         <name>Zysman David</name>
+         <id>dzysman</id>
+         <email>David.Zysman@compuware.com</email>
+      </developer>
+   </developers>
+
+   <!--         Project Dependency section  goes here        -->
+	<dependencies>
+	  <dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.8</version>
+	  </dependency>
+
+	  <dependency>
+		<groupId>caqs</groupId>
+		<artifactId>migration26to262</artifactId>
+		<version>1.0</version>
+	  </dependency>
+
+	  <dependency>
+		<groupId>caqs</groupId>
+		<artifactId>toolbox</artifactId>
+		<version>2.4</version>
+	  </dependency>
+  </dependencies>
+
+   <!--            Project Build section goes here           -->
+   <build>
+	   <nagEmailAddress>david.zysman@compuware.com</nagEmailAddress>
+	   <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+	   <unitTestSourceDirectory>${basedir}/src/test/java</unitTestSourceDirectory>
+	   <unitTest>
+		  <includes>
+			 <include>**/*Test.java</include>
+		  </includes>
+	   </unitTest>
+	
+	   <resources>
+		  <resource>
+			 <directory>${basedir}/src/main/resources</directory>
+			 <includes>
+				<include>*.properties</include>
+				<include>*.dtd</include>
+				<include>*.xml</include>
+			 </includes>
+		  </resource>
+	   </resources>
+   </build>
+   
+   <!--           Project Reports section goes here          -->
+	<reports>
+	   <report>maven-javadoc-plugin</report>
+	   <report>maven-changes-plugin</report>
+	   <report>maven-jdepend-plugin</report>
+	   <report>maven-checkstyle-plugin</report>
+	   <report>maven-pmd-plugin</report>
+	   <report>maven-junit-report-plugin</report>
+	   <report>maven-changelog-plugin</report>
+	   <report>maven-file-activity-plugin</report>
+	   <report>maven-developer-activity-plugin</report>
+	   <report>maven-file-activity-plugin</report>
+	   <report>maven-linkcheck-plugin</report>
+	   <report>maven-jxr-plugin</report>
+	</reports>
+ </project>

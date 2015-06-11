@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CAQS_analysis" default="help" basedir=".">
+  <property environment="env" />
+  
+  <!-- The default tasks implementation -->
+  <import file="${ant.home}/build.xml"/>
+
+  <!--  
+  Targets in this script are called through the workflow engine
+  for EACH element (application entity) in a project
+  
+  Attributes available to targets (given as parameters) : 
+  - ${baselineId} : baseline ID.
+  - ${id_elt}     : element ID.
+  - ${lib_elt}    : element caption.
+  - ${id_pro}     : project ID.
+  - ${lib_pro}    : project caption.
+  - ${SRC_DIR}    : element source directory.
+  - ${DEST_DIR}   : goal destination directory. 
+  - ${INFO1}      : generic parameter 1. Its value can be set in project definition, at element level.
+  - ${INFO2}      : generic parameter 2. Its value can be set in project definition, at element level.
+ -->
+  
+  <!--
+  this target is intended to be used to get source files
+  from a Configuration Management System ( here is a Subversion example).
+  It is to be called during baseline analysis,
+  before others steps (metrics generation, loading, calculating, ...)
+  NB: keep the target name unchanged, only adjust content
+  -->
+ <!-- 
+  <target name="loadFromCMS" description="load sources files from Content Management System">  
+
+    <property name="repository.URL" value="${INFO1}"/>
+
+
+    <condition property="svn.action" value="update" else="checkout">
+      <available file="${SRC_DIR}/src/.svn"/>
+    </condition>
+
+    <mkdir dir="${SRC_DIR}"/>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${SRC_DIR}" fork="true">
+      <arg value="${svn.action}"/>
+      <arg value="${repository.URL}"/>
+      <arg value="src"/>
+      <classpath>
+        <pathelement location="${ant.root}/svn/ganymed.jar" />
+        <pathelement location="${ant.root}/svn/svnkit.jar" />
+        <pathelement location="${ant.root}/svn/svnkit-cli.jar" />
+      </classpath>
+    </java>
+
+  </target>
+-->
+
+
+  <target name="help" description="help">
+    <echo message="CAQS generic Ant build file."/>
+    <echo message="You can use/modify the predefined targets and add your own."/>
+    <echo message="For invocation through CAQS servlet mechanism, use :"/>
+    <echo message="com.compuware.carscode.servlet.SourceManagerServlet"/>
+    <echo message="(see javadoc for usage)."/>
+  </target>
+
+</project>

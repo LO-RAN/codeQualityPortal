@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Maven: caqs:usermgmt:1.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/UserMgmt/pom.xml!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/caqs/usermgmt/1.3/usermgmt-1.3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/UserMgmt/pom-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/caqs/usermgmt/1.3/usermgmt-1.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/UserMgmt/pom-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/caqs/usermgmt/1.3/usermgmt-1.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

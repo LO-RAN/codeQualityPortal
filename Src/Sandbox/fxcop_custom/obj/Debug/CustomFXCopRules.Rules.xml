@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Rules>
+  <Rule TypeName="MemberCheckRule" Category="Compuware.Structure" CheckId="CPWR00">
+    <Name>Member structural infos</Name>
+    <Description>gets details on member.</Description>
+    <LongDescription></LongDescription>
+    <GroupOwner>com.compmpuware.fxcop.rules</GroupOwner>
+    <DevOwner>laurent IZAC</DevOwner>
+    <Owner>Compuware Corp.</Owner>
+    <Url>http://localhost</Url>
+    <Resolution>{0}</Resolution>
+    <Email>laurent.izac@compuware.com</Email>
+    <MessageLevel Certainty="100">Information</MessageLevel>
+    <FixCategories>NonBreaking</FixCategories>
+  </Rule>
+  <Rule TypeName="TypeCheckRule" Category="Compuware.Structure" CheckId="CPWR01">
+    <Name>Type structural infos</Name>
+    <Description>gets details on type.</Description>
+    <LongDescription></LongDescription>
+    <GroupOwner>com.compmpuware.fxcop.rules</GroupOwner>
+    <DevOwner>laurent IZAC</DevOwner>
+    <Owner>Compuware Corp.</Owner>
+    <Url>http://localhost</Url>
+    <Resolution>{0}</Resolution>
+    <Email>laurent.izac@compuware.com</Email>
+    <MessageLevel Certainty="100">Information</MessageLevel>
+    <FixCategories>NonBreaking</FixCategories>
+  </Rule>
+  <Rule TypeName="NamespaceCheckRule" Category="Compuware.Structure" CheckId="CPWR02">
+    <Name>Namespace structural infos</Name>
+    <Description>gets details on namespace.</Description>
+    <LongDescription></LongDescription>
+    <GroupOwner>com.compmpuware.fxcop.rules</GroupOwner>
+    <DevOwner>laurent IZAC</DevOwner>
+    <Owner>Compuware Corp.</Owner>
+    <Url>http://localhost</Url>
+    <Resolution>{0}</Resolution>
+    <Email>laurent.izac@compuware.com</Email>
+    <MessageLevel Certainty="100">Information</MessageLevel>
+    <FixCategories>NonBreaking</FixCategories>
+  </Rule>
+  <Rule TypeName="ModuleCheckRule" Category="Compuware.Structure" CheckId="CPWR03">
+    <Name>Module structural infos</Name>
+    <Description>gets details on module.</Description>
+    <LongDescription></LongDescription>
+    <GroupOwner>com.compmpuware.fxcop.rules</GroupOwner>
+    <DevOwner>laurent IZAC</DevOwner>
+    <Owner>Compuware Corp.</Owner>
+    <Url>http://localhost</Url>
+    <Resolution>{0}</Resolution>
+    <Email>laurent.izac@compuware.com</Email>
+    <MessageLevel Certainty="100">Information</MessageLevel>
+    <FixCategories>NonBreaking</FixCategories>
+  </Rule>
+  <Rule TypeName="MemberDependencyCheckRule" Category="Compuware.Structure" CheckId="CPWR04">
+    <Name>Member dependencies infos</Name>
+    <Description>gets callers for member.</Description>
+    <LongDescription></LongDescription>
+    <GroupOwner>com.compmpuware.fxcop.rules</GroupOwner>
+    <DevOwner>laurent IZAC</DevOwner>
+    <Owner>Compuware Corp.</Owner>
+    <Url>http://localhost</Url>
+    <Resolution>{0}</Resolution>
+    <Email>laurent.izac@compuware.com</Email>
+    <MessageLevel Certainty="100">Information</MessageLevel>
+    <FixCategories>NonBreaking</FixCategories>
+  </Rule>
+  <Rule TypeName="ExampleRule" Category="Compuware.Structure" CheckId="SMP0000">
+    <Name>Namespaces should begin with the company name 'FooBar'</Name>
+    <Description>
+      All Namespaces should be named {Company}.{Application}.{Feature}.{SubFeature}
+      eg. FooBar.Calulator.UI
+    </Description>
+    <GroupOwner>FooBar</GroupOwner>
+    <DevOwner>Paul Glavich</DevOwner>
+    <Owner>Paul Glavich</Owner>
+    <Url>http://localhost</Url>
+    <Resolution>Alter the namespace '{0}' so that 'FooBar' is the first component.</Resolution>
+    <Email>someone@foobar.com.au</Email>
+    <MessageLevel Certainty="100">Error</MessageLevel>
+    <FixCategories>Breaking</FixCategories>
+	</Rule>
+	<!--
+	<Rule TypeName="EmptyRule" Category="Microsoft.Naming" CheckId="CA9999">
+		<Name>
+			EmptyAssemblyRule: The prose name of the rule goes here.
+		</Name>
+		<Description>
+			EmptyAssemblyRule: The short description goes here.
+		</Description>
+		<LongDescription>
+			EmptyAssemblyRule: The long description goes here.
+		</LongDescription>
+		<GroupOwner>
+			EmptyAssemblyRule: This is optional, but is generally the
+			developer/team/company.
+		</GroupOwner>
+		<DevOwner>
+			EmptyAssemblyRule: The team or individual responsible for the
+			rule.
+		</DevOwner>
+		<Owner>
+			OwnderName: optional
+		</Owner>
+		<Url>
+			EmptyAssemblyRule: The URL for help containing the rule.
+		</Url>
+		<Resolution>
+			EmptyAssemblyRule: The string that appears in the message panel
+			pointing out the error.
+		</Resolution>
+		<Email>
+			EmptyAssemblyRule: The optional email address of the rule author.
+		</Email>
+		<MessageLevel Certainty="80">
+			Error
+		</MessageLevel>
+		<FixCategories>
+			Breaking
+		</FixCategories>
+	</Rule>
+	-->
+
+  <Rule TypeName="ObjVariableNamingConvention" Category="Database" CheckId="sanjit08">
+    <Name>Follow Proper Variable(Object) Naming Convension</Name>
+    <Description>
+      Follow Proper Variable(Object) Naming Convension
+    </Description>
+    <LongDescription></LongDescription>
+    <Url></Url>
+    <Resolution>Variable naming convension:object type variable '{0}' name should start with 'obj';</Resolution>
+    <MessageLevel Certainty="60">Warning</MessageLevel>
+    <Email></Email>
+    <FixCategories>DependsOnFix</FixCategories>
+    <Owner>Sanjit</Owner>
+  </Rule>
+
+  <Rule TypeName="StringVariableNamingConvention" Category="Database" CheckId="sanjit09">
+    <Name>Follow Proper Variable(String) Naming Convension</Name>
+    <Description>
+      Follow Proper Variable(String) Naming Convension
+    </Description>
+    <LongDescription></LongDescription>
+    <Url></Url>
+    <Resolution>Variable naming convension:string type variable '{0}' name should start with 'str';</Resolution>
+    <MessageLevel Certainty="60">Warning</MessageLevel>
+    <Email></Email>
+    <FixCategories>DependsOnFix</FixCategories>
+    <Owner>Sanjit</Owner>
+  </Rule>
+
+  <Rule TypeName="IntVariableNamingConvention" Category="Database" CheckId="sanjit10">
+    <Name>Follow Proper Variable(integer) Naming Convension</Name>
+    <Description>
+      Follow Proper Variable(integer) Naming Convension
+    </Description>
+    <LongDescription></LongDescription>
+    <Url></Url>
+    <Resolution>Variable naming convension:int type variable '{0}' name should start with 'i';</Resolution>
+    <MessageLevel Certainty="60">Warning</MessageLevel>
+    <Email></Email>
+    <FixCategories>DependsOnFix</FixCategories>
+    <Owner>Sanjit</Owner>
+  </Rule>
+
+  <Rule TypeName="BoolVariableNamingConvention" Category="Database" CheckId="sanjit11">
+    <Name>Follow Proper Variable(Boolean) Naming Convension</Name>
+    <Description>
+      Follow Proper Variable(Boolean) Naming Convension
+    </Description>
+    <LongDescription></LongDescription>
+    <Url></Url>
+    <Resolution>Variable naming convension:boolean type variable '{0}' name should start with 'b';</Resolution>
+    <MessageLevel Certainty="60">Warning</MessageLevel>
+    <Email></Email>
+    <FixCategories>DependsOnFix</FixCategories>
+    <Owner>Sanjit</Owner>
+  </Rule>
+
+</Rules>
+

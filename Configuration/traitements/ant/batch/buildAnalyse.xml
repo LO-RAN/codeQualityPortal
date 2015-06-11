@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CAQS" default="batchAnalysis" basedir=".">
+
+  <!-- 
+  NB: dependencies include :
+   unet-1.0.jar
+   uniface_flow-1.0.jar
+   log4j-.jar
+   unifaceflowlauncher-1.0.jar 
+  -->
+  <taskdef name="caqsAnalysis" classname="com.compuware.caqs.ant.taskdef.CaqsAnalysisTask" />
+
+
+  <target name="batchAnalysis">
+                
+    <!-- 
+    NB: parameter values can be taken from ${SRC_DIR}/build.properties :
+        
+        id_pro  : projectId   attribute of caqsAnalysis task
+        lib_pro : projectName attribute of caqsAnalysis task 
+        id_elt  : id          attribute of nested <entity> elements        
+    -->   
+    
+    <!-- first form with all parameters explicitely defined-->
+    <caqsAnalysis
+                actorId="QUA1"      
+                projectId="20080218153749968119437"     
+                projectName="my project"      
+                baselineName="official release"   
+                >
+                
+        <entity id="2008031820034" option="-r 23" />
+        <entity id="2008031820035" />
+        <entity id="2008031820036" />
+        <entity id="2008031820041" />       
+
+    <!-- 
+         parameters to connect to the UnifaceFlow engine: 
+         - can be defined once and reused for the following tasks(id/refid). 
+         - can be ommited. Default values will be used
+    -->
+      <connection id="myConnection"          
+                protocol="UNET"          
+                host="localhost"          
+                port="14000"           
+                user="caqs"          
+                password="cpwrcaqs"          
+                name="uniface_flow"         
+               />
+    </caqsAnalysis>
+
+
+    <!-- second form with a connection element refering a previously defined connection -->
+    <caqsAnalysis
+                actorId="DEV1"      
+                projectId="20072228153749968119459"     
+                projectName="another project"        
+                >
+      <connection refid="myConnection"/>
+         
+        <entity id="20080318200415" />
+      
+    </caqsAnalysis>
+
+
+    <!-- third form with only the required parameters -->
+    <caqsAnalysis actorId="MAN1" projectId="20080218153749968119437">
+        <entity id="2008031820041"/>       
+    </caqsAnalysis>
+
+
+  </target>
+
+</project>

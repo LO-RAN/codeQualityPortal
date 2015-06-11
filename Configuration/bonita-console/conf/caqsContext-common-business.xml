@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  - Application context containing business beans.
+  -
+  - Used by all artifacts.
+  -
+  - $Id: applicationContext-common-business.xml 3092 2008-05-25 20:57:07Z luke_t $
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:sec="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.xsd">
+
+    <!--
+    <bean id="authDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@cwfr-l740:1521:CAQS"/>
+        <property name="username" value="pqlapp"/>
+        <property name="password" value="pqlapp"/>
+    </bean>
+    -->
+    <bean id="authDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/PqlDS"/>
+        <property name="resourceRef" value="true" />
+    </bean>
+
+    <!-- Unifaceflow configuration.
+    <bean id="workflow" class="com.compuware.caqs.business.workflow.UnifaceFlowWorkflow">
+        <property name="unifaceFlowURL" value="UNET:localhost+14000|caqs|cpwrcaqs|unet" />
+    </bean>
+    -->
+
+    <!-- Bonita workflow configuration : -->
+
+    <!--
+        Workflow process definition used by the different thread pools.
+        The id is passed to the thread pool class using the processDefinition property.
+    -->
+    <bean id="workflowProcessConfig" class="com.compuware.caqs.domain.dataschemas.workflow.WorkflowProcessDefinitionBean" scope="prototype">
+        <property name="packageName" value="CAQS_Workflow" />
+        <property name="processName" value="analysis" />
+        <property name="processVersion" value="4.5" />
+        <property name="httpServerContextPath" value="http://localhost:8080/caqs" />
+        <property name="httpServerContextPath2" value="http://localhost:8080/caqs" />
+        <property name="httpServerContextPath3" value="http://localhost:8080/caqs" />
+    </bean>
+
+    <!--
+        Different thread pools including a default one with the language value default.
+        All thread pools definition includes:
+         - the thread count and max pool size
+         - the languages supported by the thread pool (use 'default' for all other
+           languages).
+         - the workflow process definition to use (the same one can be used or different ones).
+        NB: you can have only one pool including the default language.
+    -->
+    <!--
+        The default pool for all languages not part of a specific one.
+        The language specified has to be default.
+    -->
+    <bean id="defaultWorkflowThreadPool" class="com.compuware.caqs.domain.dataschemas.workflow.WorkflowThreadPoolConfigBean" scope="prototype">
+        <property name="threadCount" value="1" />
+        <property name="threadMaxPoolSize" value="1" />
+        <property name="dialectList">
+            <list  value-type="java.lang.String">
+                <value>default</value>
+            </list>
+        </property>
+        <property name="processDefinition" ref="workflowProcessConfig" />
+    </bean>
+    <!--
+        The first windows pool for languages that need to be run on windows.
+        This includes cobol (DevEnterprise) and dialects from MS VS 2005 and beyond (DevPartner Studio 8 and beyond)
+    -->
+    <bean id="firstWindowsWorkflowThreadPool" class="com.compuware.caqs.domain.dataschemas.workflow.WorkflowThreadPoolConfigBean" scope="prototype">
+        <property name="threadCount" value="1" />
+        <property name="threadMaxPoolSize" value="1" />
+        <property name="dialectList">
+            <list value-type="java.lang.String">
+                <value>vb_VB.Net_2005</value>
+                <value>vb_VB.Net_2008</value>
+                <value>vb_VB.Net_2010</value>
+                <value>cs_C#.Net_2005</value>
+                <value>cs_C#.Net_2008</value>
+                <value>cs_C#.Net_2010</value>
+                <value>cobol_ANY</value>
+                <value>cobol</value>
+            </list>
+        </property>
+        <property name="processDefinition" ref="workflowProcessConfig" />
+    </bean>
+
+    <!--
+        The second windows pool for languages that need to be run also on windows, but on a distinct server for compatibility reasons .
+        This includes  vb6 , VB.Net and c# for MS VS 2003 (DevPartner Studio 7)
+    -->
+    <bean id="secondWindowsWorkflowThreadPool" class="com.compuware.caqs.domain.dataschemas.workflow.WorkflowThreadPoolConfigBean" scope="prototype">
+        <property name="threadCount" value="1" />
+        <property name="threadMaxPoolSize" value="1" />
+        <property name="dialectList">
+            <list value-type="java.lang.String">
+                <value>vb_VB6</value>
+                <value>vb_VB.Net</value>
+                <value>natural</value>
+            </list>
+        </property>
+        <property name="processDefinition" ref="workflowProcessConfig" />
+    </bean>
+
+    <!--
+        The workflow definition including:
+        The user/pwd to connect to the Bonita workflow engine.
+        The thread pool list (in that case one for windows analysis engine, and
+        the default one).
+    -->
+    <bean id="workflow" class="com.compuware.caqs.business.workflow.BonitaWorkflow" factory-method="getInstance">
+        <constructor-arg><value>john</value></constructor-arg>
+        <constructor-arg><value>bpm</value></constructor-arg>
+        <constructor-arg>
+            <list>
+                <ref bean="secondWindowsWorkflowThreadPool"/>
+                <ref bean="firstWindowsWorkflowThreadPool"/>
+                <ref bean="defaultWorkflowThreadPool"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="workflow_analysis_config" class="com.compuware.caqs.domain.dataschemas.workflow.WorkflowConfigBean" scope="prototype">
+    </bean>
+
+	
+<!-- definition flow report -->	
+	<!--
+        Workflow process definition used by the different thread pools.
+        The id is passed to the thread pool class using the processDefinition property.
+    -->
+    <bean id="reportGenerationWorkflowProcessConfig" class="com.compuware.caqs.domain.dataschemas.workflow.WorkflowProcessDefinitionBean" scope="prototype">
+        <property name="packageName" value="report_generator" />
+        <property name="processName" value="report_generator" />
+        <property name="processVersion" value="1.0" />
+        <property name="httpServerContextPath" value="http://localhost:8080/caqs" />
+    </bean>
+
+	<bean id="reportGenerationWorkflowThreadPool" class="com.compuware.caqs.domain.dataschemas.workflow.ReportGenerationWorkflowThreadPoolConfigBean" scope="prototype">
+        <property name="threadCount" value="1" />
+        <property name="threadMaxPoolSize" value="1" />
+        <property name="processDefinition" ref="reportGenerationWorkflowProcessConfig" />
+    </bean>
+
+    <!--
+        The workflow definition including:
+        The user/pwd to connect to the Bonita workflow engine.
+        The thread pool.
+    -->
+    <bean id="reportGenerationWorkflow" class="com.compuware.caqs.business.workflow.BonitaReportGeneratorWorkflow" factory-method="getInstance">
+        <constructor-arg><value>john</value></constructor-arg>
+        <constructor-arg><value>bpm</value></constructor-arg>
+		<constructor-arg><ref bean="reportGenerationWorkflowThreadPool"/></constructor-arg>
+    </bean>
+	
+    <bean id="workflow_report_generator_config" class="com.compuware.caqs.domain.dataschemas.workflow.ReportGeneratorWorkflowConfigBean" scope="prototype">
+    </bean>
+<!-- fin definition flow report -->
+	
+    <bean id="portal_service_provider" class="com.compuware.caqs.business.security.Portal" />
+
+    <bean id="upload.strobe" class="com.compuware.caqs.presentation.consult.actions.upload.uploaders.StrobeCaqsUploader" scope="prototype" />
+    <bean id="upload.xmlmetrics" class="com.compuware.caqs.presentation.consult.actions.upload.uploaders.DefaultXmlMetricsUploader" scope="prototype" />
+    <bean id="upload.csvmetrics" class="com.compuware.caqs.presentation.consult.actions.upload.uploaders.DefaultCsvMetricsUploader" scope="prototype" />
+    <bean id="upload.csvcallsto" class="com.compuware.caqs.presentation.consult.actions.upload.uploaders.CsvCallsUploader" scope="prototype" />
+    <bean id="upload.csvdevpartnercov" class="com.compuware.caqs.presentation.consult.actions.upload.uploaders.DevPartnerCovUploader" scope="prototype" />
+
+
+    <!-- Analyzer. -->
+    <bean id="parser.mccabe" class="com.compuware.caqs.business.analysis.StaticAnalysisMcCabe" scope="prototype" />
+    <bean id="parser.flawfinder" class="com.compuware.caqs.business.analysis.StaticAnalysisFlawFinder" scope="prototype" />
+    <bean id="parser.optimaladvisor" class="com.compuware.caqs.business.analysis.StaticAnalysisOptimalAdvisor" scope="prototype" />
+    <bean id="parser.devpartner"  class="com.compuware.caqs.business.analysis.StaticAnalysisDevPartner" scope="prototype" />
+    <bean id="parser.cast" class="com.compuware.caqs.business.analysis.StaticAnalysisCAST" scope="prototype" />
+    <!--<bean id="parser.devpartnerrulebyrule" class="com.compuware.caqs.business.analysis.StaticAnalysisDevPartnerRuleByRule" scope="prototype" />-->
+    <bean id="parser.checkstyle" class="com.compuware.caqs.business.analysis.StaticAnalysisCheckStyle" scope="prototype" />
+    <bean id="parser.pmd" class="com.compuware.caqs.business.analysis.StaticAnalysisPmd" scope="prototype" />
+    <bean id="parser.csmetricgeneration" class="com.compuware.caqs.business.analysis.StaticAnalysisCSMetricGeneration" scope="prototype" />
+    <bean id="parser.phoenix" class="com.compuware.caqs.business.analysis.StaticAnalysisPhoenix" scope="prototype" />
+    <bean id="parser.pqc" class="com.compuware.caqs.business.analysis.StaticAnalysisPQC" scope="prototype" />
+    <bean id="parser.cobolprocextractor" class="com.compuware.caqs.business.analysis.StaticAnalysisCobolProcExtractor" scope="prototype" />
+    <bean id="parser.pmccabe" class="com.compuware.caqs.business.analysis.StaticAnalysisPMcCabe" scope="prototype" />
+    <bean id="parser.splint" class="com.compuware.caqs.business.analysis.StaticAnalysisSplint" scope="prototype" />
+    <bean id="parser.cppcheck" class="com.compuware.caqs.business.analysis.StaticAnalysisCppCheck" scope="prototype" />
+    <bean id="parser.codeanalyzerpro" class="com.compuware.caqs.business.analysis.StaticAnalysisCodeAnalyzerPro" scope="prototype" />
+    <bean id="parser.phpcs" class="com.compuware.caqs.business.analysis.StaticAnalysisPhpcs" scope="prototype" />
+    <bean id="parser.deventreprise" class="com.compuware.caqs.business.analysis.StaticAnalysisDevEntreprise" scope="prototype" />
+    <bean id="parser.junit" class="com.compuware.caqs.business.analysis.StaticAnalysisJUnit" scope="prototype" />
+    <bean id="parser.jspanalyzer" class="com.compuware.caqs.business.analysis.StaticAnalysisJsp" scope="prototype" />
+    <bean id="parser.deventerprise" class="com.compuware.caqs.business.analysis.StaticAnalysisDevEntreprise" scope="prototype" />
+    <bean id="parser.jdt" class="com.compuware.caqs.business.analysis.StaticAnalysisJdt" scope="prototype" />
+    <bean id="parser.genericparser" class="com.compuware.caqs.business.analysis.StaticAnalysisGenericParser" scope="prototype" />
+    <bean id="parser.antdynamic" class="com.compuware.caqs.business.analysis.StaticAnalysisGenericParser" scope="prototype" />
+    <bean id="parser.flexpmd" class="com.compuware.caqs.business.analysis.StaticAnalysisFlexPmd" scope="prototype" />
+    <bean id="parser.codeinspector" class="com.compuware.caqs.business.analysis.StaticAnalysisAbap" scope="prototype" />
+    <bean id="parser.agility" class="com.compuware.caqs.business.analysis.StaticAnalysisAgility" scope="prototype" />
+    <bean id="parser.restnat" class="com.compuware.caqs.business.analysis.StaticAnalysisRestNat" scope="prototype" />
+
+</beans>

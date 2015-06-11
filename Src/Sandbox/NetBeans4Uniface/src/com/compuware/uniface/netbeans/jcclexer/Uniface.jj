@@ -1,0 +1,293 @@
+
+options {
+    IGNORE_CASE=true;
+ JAVA_UNICODE_ESCAPE = true;
+  ERROR_REPORTING = false;
+  STATIC = false;
+  JDK_VERSION = "1.5";
+  BUILD_PARSER = false;
+}
+
+PARSER_BEGIN(UnifaceParser)
+
+package com.compuware.uniface.netbeans.jcclexer;
+
+public class UnifaceParser {}
+
+PARSER_END(UnifaceParser)
+
+TOKEN :
+{
+  < WHITESPACE:
+  " "
+| "\t"
+| "\n"
+| "\r"
+| "\f">
+}
+
+TOKEN :
+{
+  < BR: (["\n","\r"])+ >
+| < COMMA : "," >
+| < COLON : ":" >
+| < SEMICOLON : ";" >
+| < DOLLAR : "$" >
+| < LPAREN: "(" >
+| < RPAREN: ")" >
+| < LBRACKET: "[" >
+| < RBRACKET: "]" >
+| < AT: "@" >
+}
+
+
+/* OPERATORS */
+TOKEN :/* arithmetic operators */
+{
+  < MULTIPLY: "*" >
+| < DIVIDE: "/" > 
+| < MODULO: "%" >
+| < PLUS: "+" >
+| < MINUS: "-" >
+}
+
+TOKEN :/* relational operators */
+{
+  < EQUAL: "=" >
+| < LT: "<" >
+| < GT: ">" >
+| < EQ: "==" >
+| < LE: "<=" >
+| < GE: ">=" >
+| < NE: "!=" >
+}
+
+TOKEN :/* assignment operators */
+{
+  < PLUSASSIGN: "+=" >
+| < MINUSASSIGN: "-=" >
+| < STARASSIGN: "*=" >
+| < SLASHASSIGN: "/=" >
+| < REMASSIGN: "%=" >
+}
+
+TOKEN :/* logical operators */
+{
+  < NOT: "!" >
+| < OR: "|" >
+| < AND: "&" >
+}
+
+TOKEN :
+{
+  <COMMENT: <SEMICOLON> (~["\n", "\r"])* >
+} 
+
+TOKEN : /* literals */
+{
+  < INTEGER_LITERAL:
+        <DECIMAL_LITERAL> (["l","L"])?
+      | <HEX_LITERAL> (["l","L"])?
+      | <OCTAL_LITERAL> (["l","L"])?
+  >
+| < #DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])* >
+| < #HEX_LITERAL: "0" ["x","X"] (["0"-"9","a"-"f","A"-"F"])+ >
+| < #OCTAL_LITERAL: "0" (["0"-"7"])* >
+| < FLOATING_POINT_LITERAL:
+        <DECIMAL_FLOATING_POINT_LITERAL>
+      | <HEXADECIMAL_FLOATING_POINT_LITERAL>
+  >
+| < #DECIMAL_FLOATING_POINT_LITERAL:
+        (["0"-"9"])+ "." (["0"-"9"])* (<DECIMAL_EXPONENT>)? (["f","F","d","D"])?
+      | "." (["0"-"9"])+ (<DECIMAL_EXPONENT>)? (["f","F","d","D"])?
+      | (["0"-"9"])+ <DECIMAL_EXPONENT> (["f","F","d","D"])?
+      | (["0"-"9"])+ (<DECIMAL_EXPONENT>)? ["f","F","d","D"]
+  >
+| < #DECIMAL_EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ >
+| < #HEXADECIMAL_FLOATING_POINT_LITERAL:
+        "0" ["x", "X"] (["0"-"9","a"-"f","A"-"F"])+ (".")? <HEXADECIMAL_EXPONENT> (["f","F","d","D"])?
+      | "0" ["x", "X"] (["0"-"9","a"-"f","A"-"F"])* "." (["0"-"9","a"-"f","A"-"F"])+ <HEXADECIMAL_EXPONENT> (["f","F","d","D"])?
+  >
+| < #HEXADECIMAL_EXPONENT: ["p","P"] (["+","-"])? (["0"-"9"])+ >
+| < SYNTAX_STRING_LITERAL:
+      "'"
+      (   (~["'","\\","\n","\r"])
+        | ("\\"
+            ( ["n","t","b","r","f","\\","'","\""]
+            | ["0"-"7"] ( ["0"-"7"] )?
+            | ["0"-"3"] ["0"-"7"] ["0"-"7"]
+            )
+          )
+      )
+      "'"
+  >
+| < STRING_LITERAL:
+      "\""
+      (   (~["\"","\\","\n","\r"])
+        | ("\\"
+            ( ["n","t","b","r","f","\\","'","\""]
+            | ["0"-"7"] ( ["0"-"7"] )?
+            | ["0"-"3"] ["0"-"7"] ["0"-"7"]
+            )
+          )
+      )*
+      "\""
+  >
+}
+
+TOKEN : /* parameter and variable blocks */
+{
+  < PARAMS: "params" >
+| < ENDPARAMS: "endparams" >
+| < VARIABLES: "variables" >
+| < ENDVARIABLES: "endvariables" >
+}
+
+TOKEN : 
+{
+  < IF: "if" >
+| < ELSEIF: "elseif" >
+| < ELSE: "else" >
+| < ENDIF: "endif" >
+| < WHILE: "while" >
+| < ENDWHILE: "endwhile" >
+| < REPEAT: "repeat" >
+| < UNTIL: "until" >
+| < SELECTCASE: "selectcase" >
+| < CASE: "case" >
+| < ELSECASE: "elsecase" >
+| < ENDSELECTCASE: "endselectcase" >
+}
+
+TOKEN : /* data types */
+{
+  < BOOLEAN: "boolean" >
+| < DATE: "date" >
+| < DATETIME: "datetime" >
+| < FLOAT: "float" >
+| < HANDLE: "handle" >
+| < IMAGE: "image" >
+| < LINEARDATE: "lineardate" >
+| < LINEARDATETIME: "lineardatetime" >
+| < LINEARTIME: "lineartime" >
+| < NUMERIC: "numeric" >
+| < RAW: "raw" >
+| < STRING: "string" >
+| < TIME: "time" >
+| < ANY: "any" >
+| < ENTITY: "entity" >
+| < OCCURRENCE: "occurrence" >
+| < XMLSTREAM: "xmlstream" >
+}
+
+TOKEN : 
+{
+  < FUNCTION : <DOLLAR> <IDENTIFIER> >
+}
+
+
+TOKEN : /* statements : Components and Component Instances */
+{
+  < DELETEINSTANCE : "deleteinstance" >
+| < NEWINSTANCE: "newinstance" >
+| < SETFORMFOCUS: "setformfocus" >
+}
+
+TOKEN : /* statements : Data Conversion and System Information */
+{
+  < ENTITYCOPY : "entitycopy" >
+}
+
+TOKEN : /* statements : Data Manipulation */
+{
+  < ADDMONTHS : "addmonths" >      
+| < COMPARE : "compare" >        
+| < DISPLAYLENGTH : "displaylength" >  
+| < LENGTH : "length" >         
+| < LOWERCASE : "lowercase" >      
+| < RESET : "reset" >          
+| < SCAN : "scan" >           
+| < SET : "set" >            
+| < STRIPATTRIBUTES : "stripattributes" >
+| < UPPERCASE : "uppercase" >
+  }
+
+TOKEN : /* statements : DBMS Path I/O */
+{
+  < CLOSE : "close" >   
+| < COMMIT : "commit" > 
+| < OPEN : "open" >
+| < ROLLBACK : "rollback" >
+| < SQL : "sql" >
+}
+
+TOKEN : /* statements : Process flow */
+{
+  < ACTIVATE : "activate" >   
+| < APEXIT : "apexit" > 
+| < APSTART : "apstart" >
+| < BREAK : "break" >
+| < DISPLAY : "display" >
+| < DONE : "done" >
+| < EDIT : "edit" >
+| < EXIT : "exit" >
+| < GOTO : "goto" >
+| < MACRO : "macro" >
+| < PERFORM : "perform" >
+| < PULLDOWN : "pulldown" >
+| < RETURN : "return" >
+| < RUN : "run" >
+| < SPAWN : "spawn" >
+}
+
+
+TOKEN : /* parameter directions */
+{
+  < IN: "in"  >
+| < OUT: "out" >
+| < INOUT: "inout" >
+}
+
+TOKEN : /* switches */
+{
+  < SYNC_SWITCH: "/sync"  >
+| < ASYNC_SWITCH: "/async" >
+| < ATTACHED_SWITCH: "/attached" >
+| < PREVIOUS_SWITCH: "/previous" >
+| < NEXT_SWITCH: "/next" >
+| < PRINT_SWITCH: "/print" >
+| < FROM: "from" >
+}
+
+
+TOKEN : /* identifiers */
+{
+  < IDENTIFIER: <LETTER> (<LETTER>|<DIGIT>|<UNDERSCORE>|<DOT>)* >
+| < #LETTER: ["a"-"z","A"-"Z"] >
+| < DIGIT: ["0"-"9"] >
+| < #UNDERSCORE: "_" >
+| < #DOT: "." >
+}
+
+
+TOKEN :
+{
+  < REGISTER : <DOLLAR><DIGIT>(<DIGIT>)? >
+| < GLOBALVARIABLE : <DOLLAR> <DOLLAR> <IDENTIFIER> >
+| < COMPONENTVARIABLE : <DOLLAR> <IDENTIFIER> <DOLLAR> >
+}
+
+
+TOKEN : /* compile time constants */
+{
+  < CMPSTATEMANAGEDBY: "<$cmpStateManagedBy>" >
+| < COMPONENTNAME: "<$componentName>" >
+| < COMPONENTTYPE: "<$componentType>" >    
+| < ENTNAME: "<$entName>" >          
+| < FIELDNAME: "<$fieldName>" >        
+| < LIBRARYNAME: "<$libraryName>" >      
+| < MODELNAME: "<$modelName>" >        
+| < TABLENAME: "<$tableName>" >        
+| < TRIGGERABBR: "<$triggerAbbr>" >      
+}
+  

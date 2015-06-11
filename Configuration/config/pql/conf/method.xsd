@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://www.w3schools.com"
+		xmlns="http://www.w3schools.com"
+		elementFormDefault="qualified">
+
+<xs:include schemaLocation="critDefType.xsd"/>
+
+ <xs:complexType name="usageType">
+   <xs:choice maxOccurs="unbounded">
+    <xs:element name="CRITDEF" type="critDefType"/>
+    <xs:element name="FACT" type="factType"/>
+   </xs:choice>
+   <xs:attribute name="id" type="xs:string" use="required"/>
+ </xs:complexType>
+
+<xs:element name="METHOD">
+ <xs:complexType>
+   <xs:sequence>
+    <xs:element name="USAGE" type="usageType"/>
+   </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+</xs:schema>

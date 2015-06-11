@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://www.w3schools.com"
+		xmlns="http://www.w3schools.com"
+		elementFormDefault="qualified">
+
+<xs:simpleType name="typeElementType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="EA"/>
+    <xs:enumeration value="SSP"/>
+    <xs:enumeration value="CLS"/>
+    <xs:enumeration value="MET"/>
+    <xs:enumeration value="ENTRYPOINT"/>
+    <xs:enumeration value="PRJ"/>
+  </xs:restriction>
+</xs:simpleType>
+
+</xs:schema>

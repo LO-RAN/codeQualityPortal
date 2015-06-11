@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<xs:schema 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://www.w3schools.com"
+		xmlns="http://www.w3schools.com"
+		elementFormDefault="qualified">
+
+<xs:include schemaLocation="typeElementType.xsd"/>
+<xs:include schemaLocation="facteurIdType.xsd"/>
+
+<xs:simpleType name="typeType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="BOOLEAN"/>
+    <xs:enumeration value="NUMERIC"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="agregType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="AVG"/>
+    <xs:enumeration value="EXCLUS"/>
+    <xs:enumeration value="AVG_ALL"/>
+    <xs:enumeration value="EXCLUS_AVG"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="opIdType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="eq"/>
+    <xs:enumeration value="ge"/>
+    <xs:enumeration value="gt"/>
+    <xs:enumeration value="le"/>
+    <xs:enumeration value="lt"/>
+    <xs:enumeration value="AND"/>
+    <xs:enumeration value="OR"/>
+    <xs:enumeration value="AVG"/>
+    <xs:enumeration value="/m"/>
+    <xs:enumeration value="*"/>
+    <xs:enumeration value="/"/>
+    <xs:enumeration value="+"/>
+    <xs:enumeration value="-"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="booleanOpIdType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="eq"/>
+    <xs:enumeration value="ge"/>
+    <xs:enumeration value="gt"/>
+    <xs:enumeration value="le"/>
+    <xs:enumeration value="lt"/>
+    <xs:enumeration value="AND"/>
+    <xs:enumeration value="OR"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="numericOpIdType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="AVG"/>
+    <xs:enumeration value="/m"/>
+    <xs:enumeration value="*"/>
+    <xs:enumeration value="/"/>
+    <xs:enumeration value="+"/>
+    <xs:enumeration value="-"/>
+  </xs:restriction>
+</xs:simpleType>
+
+ <xs:complexType name="critType">
+  <xs:attribute name="id" type="xs:string" use="required"/>
+  <xs:attribute name="weight" type="xs:positiveInteger" use="required"/>
+ </xs:complexType>
+
+ <xs:complexType name="factType">
+  <xs:sequence>
+   <xs:element name="CRIT" type="critType" maxOccurs="unbounded"/>
+  </xs:sequence>
+   <xs:attribute name="id" type="facteurIdType" use="required"/>
+ </xs:complexType>
+
+ <xs:complexType name="valType">
+  <xs:attribute name="type" type="typeType" use="required"/>
+  <xs:attribute name="value" type="xs:string" use="required"/>
+ </xs:complexType>
+
+ <xs:complexType name="booleanValType">
+  <xs:attribute name="value" type="xs:boolean" use="required"/>
+ </xs:complexType>
+
+ <xs:complexType name="numericValType">
+  <xs:attribute name="value" type="xs:decimal" use="required"/>
+ </xs:complexType>
+
+ <xs:complexType name="varType">
+  <xs:attribute name="type" type="typeType" use="required"/>
+  <xs:attribute name="id" type="xs:string" use="required"/>
+ </xs:complexType>
+
+ <xs:complexType name="booleanVarType">
+  <xs:attribute name="id" type="xs:string" use="required"/>
+ </xs:complexType>
+
+ <xs:complexType name="numericVarType">
+  <xs:attribute name="id" type="xs:string" use="required"/>
+ </xs:complexType>
+
+ <xs:complexType name="opType">
+  <xs:choice maxOccurs="unbounded">
+   <xs:element name="OP" type="opType"/>
+   <xs:element name="VAR" type="varType"/>
+   <xs:element name="VAL" type="valType"/>
+  </xs:choice>
+  <xs:attribute name="type" type="typeType" use="required"/>
+  <xs:attribute name="id" type="opIdType" use="required"/>
+  <xs:attribute name="weight" type="xs:positiveInteger"/>
+ </xs:complexType>
+
+<xs:group name="opGroup">
+  <xs:choice maxOccurs="unbounded">
+   <xs:element name="BOOLEANOP" type="booleanOpType"/>
+   <xs:element name="NUMERICOP" type="numericOpType"/>
+   <xs:element name="BOOLEANVAR" type="booleanVarType"/>
+   <xs:element name="NUMERICVAR" type="numericVarType"/>
+   <xs:element name="BOOLEANVAL" type="booleanValType"/>
+   <xs:element name="NUMERICVAL" type="numericValType"/>
+  </xs:choice>
+</xs:group>
+
+
+ <xs:complexType name="booleanOpType">
+  <xs:group ref="opGroup"/>
+  <xs:attribute name="id" type="booleanOpIdType" use="required"/>
+  <xs:attribute name="weight" type="xs:positiveInteger"/>
+ </xs:complexType>
+
+ <xs:complexType name="numericOpType">
+  <xs:group ref="opGroup"/>
+  <xs:attribute name="id" type="numericOpIdType" use="required"/>
+  <xs:attribute name="weight" type="xs:positiveInteger"/>
+ </xs:complexType>
+
+ <xs:complexType name="formulaType">
+  <xs:choice maxOccurs="unbounded">
+   <xs:element name="OP" type="opType"/>
+   <xs:element name="BOOLEANOP" type="booleanOpType"/>
+   <xs:element name="NUMERICOP" type="numericOpType"/>
+   <xs:element name="VAL" type="valType"/>
+   <xs:element name="BOOLEANVAL" type="booleanValType"/>
+   <xs:element name="NUMERICVAL" type="numericValType"/>
+  </xs:choice>
+  <xs:attribute name="value" type="xs:string" use="required"/>
+ </xs:complexType>
+
+ <xs:complexType name="critDefType">
+  <xs:sequence>
+   <xs:element name="FORMULA" type="formulaType" maxOccurs="unbounded"/>
+  </xs:sequence>
+  <xs:attribute name="id" type="xs:string" use="required"/>
+  <xs:attribute name="telt" type="typeElementType"/>
+  <xs:attribute name="agreg" type="agregType" use="required"/>
+ </xs:complexType>
+
+<xs:element name="CRITDEF" type="critDefType"/>
+
+</xs:schema>

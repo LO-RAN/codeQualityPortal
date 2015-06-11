@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="lib" path="lib/jaf/1.1.1/jaf-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxb-impl/2.1.8/jaxb-impl-2.1.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxp-api/1.4/jaxp-api-1.4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-rt-ws-addr/2.2.5/cxf-rt-ws-addr-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-rt-ws-security/2.2.5/cxf-rt-ws-security-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/geronimo/specs/geronimo-jaxws_2.1_spec/1.0/geronimo-jaxws_2.1_spec-1.0.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/geronimo/specs/geronimo-ws-metadata_2.0_spec/1.1.2/geronimo-ws-metadata_2.0_spec-1.1.2.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/santuario/xmlsec/1.4.3/xmlsec-1.4.3.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/ws/commons/schema/XmlSchema/1.4.5/XmlSchema-1.4.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/wsdl4j/wsdl4j/1.6.2/wsdl4j-1.6.2.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-api/2.2.5/cxf-api-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-common-schemas/2.2.5/cxf-common-schemas-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-rt-bindings-soap/2.2.5/cxf-rt-bindings-soap-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-rt-core/2.2.5/cxf-rt-core-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-rt-databinding-jaxb/2.2.5/cxf-rt-databinding-jaxb-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-rt-frontend-jaxws/2.2.5/cxf-rt-frontend-jaxws-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-rt-frontend-simple/2.2.5/cxf-rt-frontend-simple-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/javax/xml/bind/jaxb-api/2.1/jaxb-api-2.1.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-rt-transports-http/2.2.5/cxf-rt-transports-http-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/ws/security/wss4j/1.5.8/wss4j-1.5.8.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-common-utilities/2.2.5/cxf-common-utilities-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry exported="true" kind="lib" path="lib/org/apache/cxf/cxf-tools-common/2.2.5/cxf-tools-common-2.2.5.jar" sourcepath="CaqsPluginsrc.zip"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CAQS" default="analysis" basedir=".">
+
+
+
+
+<!-- the following 4 properties are specific to each run and must be provided by caller -->
+<property name="projectId" value="20070618174110028380049"/>
+<property name="eaList" value="20080411121510183418892,20070618174128832156859"/>
+<property name="eaOptionList" value=","/>
+<property name="userId" value="QUA1"/>
+
+<!-- the following properties will get default values if not provided -->
+<property name="baselineName" value="sample baseline"/>
+<property name="email" value="admin@caqs.com"/>
+<property name="projectName" value="sample project name"/>
+
+
+
+
+
+<!-- technical parameters about CAQS execution context -->
+<property name="host" value="http://localhost:8370/caqs/"/>
+<property name="mailHost" value="mailhost.nl.compuware.com"/>
+<property name="mailPort" value="25"/>
+<property name="fromAddress" value="caqs@localhost"/>
+<property name="resultFile" value="d:/temp/result.xml"/>
+
+<target name="analysis">
+
+<fail unless="projectId"    message="projectId is a required property"/>
+<fail unless="eaList"       message="eaList is a required property"/>
+<fail unless="eaOptionList" message="eaOptionList is a required property"/>
+<fail unless="userId"       message="userId is a required property"/>
+
+<antcall target="_performInit"/>
+
+<!-- get the baseline Id -->
+<replace file="${resultFile}" token="&lt;result&gt;&lt;success&gt;true&lt;/success&gt;" value=""/>
+<replace file="${resultFile}" token="&lt;/baselineId&gt;&lt;/result&gt;" value=""/>
+<replace file="${resultFile}" token="&lt;baselineId&gt;" value="baselineId="/>
+<property file="${resultFile}"/>
+  
+<echo message="baseline ID : ${baselineId}"/>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="5"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performSourceManagement">
+<param name="goal" value="loadFromCMS"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="10"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performSourceManagement">
+<param name="goal" value="transformAndCopy"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="15"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+
+<antcall target="_performAnalysis">
+<param name="tool" value="csmetricgeneration"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="20"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+
+<antcall target="_performAnalysis">
+<param name="tool" value="optimaladvisor"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="25"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performAnalysis">
+<param name="tool" value="checkstyle"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="30"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performAnalysis">
+<param name="tool" value="pmccabe"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="35"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performAnalysis">
+<param name="tool" value="splint"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="40"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performAnalysis">
+<param name="tool" value="flawfinder"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="45"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performAnalysis">
+<param name="tool" value="phpcs"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="50"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performLoad">
+<param name="tool" value="csmetricgeneration"/>
+<param name="isMaster" value="true"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="55"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performLoad">
+<param name="tool" value="optimaladvisor"/>
+<param name="isMaster" value="false"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="60"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performLoad">
+<param name="tool" value="checkstyle"/>
+<param name="isMaster" value="false"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="65"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performLoad">
+<param name="tool" value="pmccabe"/>
+<param name="isMaster" value="false"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="70"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performLoad">
+<param name="tool" value="splint"/>
+<param name="isMaster" value="false"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="75"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performLoad">
+<param name="tool" value="flawfinder"/>
+<param name="isMaster" value="false"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="80"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performLoad">
+<param name="tool" value="phpcs"/>
+<param name="isMaster" value="false"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="85"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antcall target="_performAnalysisAndLoad">
+<param name="tool" value="devpartner"/>
+<param name="isMaster" value="true"/>
+</antcall>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="90"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+
+<antcall target="_performCompute"/>
+
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="95"/>  
+  <param  name="status" value="IN_PROGRESS"/>  
+</antcall>
+
+<antCall target="_performCommit"/>
+
+<antcall target="_reportPercent">
+  <param  name="percent" value="100"/>  
+  <param  name="status" value="COMPLETED"/>  
+</antcall>
+
+<antcall target="_sendMail">
+  <param name="mailSubject" value="CAQS: Analysis complete"/>
+  <param name="mailMessage" value=""/>
+</antcall>
+
+
+</target>
+
+
+
+
+
+
+
+<target name="_sendMail">
+    <mail mailhost="${mailHost}" mailport="${mailPort}" subject="${mailSubject}">
+      <from address="${fromAddress}"/>
+      <to address="${email}"/>
+      <message>${mailMessage}</message>
+    </mail>
+</target>
+
+
+<target name="_performStep">
+<echo message="Performing step : ${step}..."/>
+  <get src="${URL}"  dest="${resultFile}" />
+
+    <condition property="error.found">
+         <isfileselected file="${resultFile}">
+         <contains text="&lt;success&gt;false&lt;/success&gt;" casesensitive="no"/>
+      </isfileselected>
+   </condition>
+   <fail if="error.found" message="ERROR: Analysis failed on step : ${step} !"/>
+</target>
+
+<target name="_reportPercent">
+<antcall target="_performStep">
+<param name="URL" value="${host}message?projectId=${projectId}&amp;baselineId=${baselineId}&amp;userId=${userId}&amp;percent=${percent}&amp;status=${status}"/>  
+<param name="step" value="${percent}% complete"/>
+</antcall>
+</target>
+
+<target name="_performInit">
+<antcall target="_performStep">
+<param name="URL" value="${host}baseline?projectId=${projectId}&amp;eaList=${eaList}&amp;action=0"/>  
+<param name="step" value="init"/>
+</antcall>
+</target>
+
+<target name="_performAnalysis">
+<antcall target="_performStep">
+<param name="URL" value="${host}analysestatique?projectId=${projectId}&amp;eaList=${eaList}&amp;baselineId=${baselineId}&amp;tool=${tool}&amp;step=analyse"/>
+<param name="step" value="${tool}"/>  
+</antcall>
+</target>
+
+<target name="_performLoad">
+<antcall target="_performStep">
+<param name="URL" value="${host}analysestatique?projectId=${projectId}&amp;eaList=${eaList}&amp;baselineId=${baselineId}&amp;tool=${tool}&amp;step=load&amp;master=${isMaster}"/>
+<param name="step" value="${tool}"/>  
+</antcall>
+</target>
+
+<target name="_performAnalysisAndLoad">
+<antcall target="_performStep">
+<param name="URL" value="${host}analysestatique?projectId=${projectId}&amp;eaList=${eaList}&amp;baselineId=${baselineId}&amp;tool=${tool}&amp;step=analyseandload&amp;master=${isMaster}"/>
+<param name="step" value="${tool}"/>  
+</antcall>
+</target>
+
+<target name="_performCompute">
+<antcall target="_performStep">
+<param name="URL" value="${host}calcul?projectId=${projectId}&amp;eaList=${eaList}&amp;baselineId=${baselineId}"/>
+<param name="step" value="compute"/>  
+</antcall>
+</target>
+
+
+<target name="_performCommit">
+<condition property="baselineName" value="${baselineId}">
+  <not>
+    <isset property="baselineName"/>
+  </not>
+</condition>
+<antcall target="_performStep">
+<param name="URL" value="${host}baseline?baselineName=${baselineName}&amp;baselineId=${baselineId}&amp;action=1"/>
+<param name="step" value="commit"/>  
+</antcall>
+</target>
+
+
+<target name="_performSourceManagement">
+<antcall target="_performStep">
+<param name="URL" value="${host}sourcemanager?projectId=${projectId}&amp;eaList=${eaList}&amp;eaOptionList=${eaOptionList}&amp;baselineId=${baselineId}&amp;goal=${goal}"/>  
+<param name="step" value="${goal}"/>
+</antcall>
+</target>
+
+</project>

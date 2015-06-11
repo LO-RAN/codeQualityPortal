@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Checkstyle" default="help" basedir=".">
+  <dirname property="Checkstyle.basedir" file="${ant.file.Checkstyle}"/>  
+
+  <path id="checkstyle.classpath">
+      <fileset dir="${Checkstyle.basedir}/lib">
+          <include name="**/*.jar"/>
+      </fileset>
+  </path>
+  
+  <taskdef resource="checkstyletask.properties" classpathref="checkstyle.classpath" />
+  
+  <target name="checkstyle">
+      <delete dir="${SRC_DIR}/checkstylereports" />
+      <mkdir dir="${SRC_DIR}/checkstylereports" />
+      <checkstyle failOnViolation="false" maxErrors="2147483647" config="${Checkstyle.basedir}/checkstyle_checks.xml">
+        <fileset dir="${SRC_DIR}/src" includes="**/*.java"/>
+        <formatter type="xml" toFile="${SRC_DIR}/checkstylereports/checkstyleOut.xml"/>
+      </checkstyle>
+  </target>
+  
+</project>

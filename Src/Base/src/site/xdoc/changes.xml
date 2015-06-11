@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<document>
+  <properties>
+    <title>Changements CAQS</title>
+    <author email="Frederic.Dubois@compuware.com">Frédéric Dubois</author>
+  </properties>
+  <body>
+    <release version="2.4" date="in CVS">
+      <action dev="fdubois" type="update">
+        Intégration d'OptimalAdvisor 4.1 intégrant PMD.
+      </action>
+      <action dev="fdubois" type="add">
+        Gestion des stéréotypes.
+      </action>
+      <action dev="fdubois" type="add">
+        Retour d'un fichier zip après génération des rapport.
+      </action>
+    </release>
+    <release version="2.4" date="in CVS">
+      <action dev="fdubois" type="add">
+        Affichage des fichiers source dans la plateforme. Disponible pour Checkstyle et OptimalAdvisor. Pour les autres une déduction automatique a été implémentée pour essayer de trouver les fichiers.
+      </action>
+      <action dev="fdubois" type="update">
+        Intégration d'OptimalAdvisor 4 intégrant PMD.
+      </action>
+      <action dev="fdubois" type="update">
+        Paramétrage du parseur d'analyse principal.
+      </action>
+      <action dev="fdubois" type="update">
+        Paramètrage du ScatterPlot pour choisir les métriques à afficher.
+      </action>
+      <action dev="fdubois" type="fix">
+        Correction de l'uploader: prise en compte de l'outil ou du type d'élément. Intégration dans la page de synthèse.
+      </action>
+      <action dev="fdubois" type="fix">
+        Refactoring de CAQS: ajout de constantes, utilisation du war et non de son contenu décompressé, MAJ de l'installateur.
+      </action>
+      <action dev="fdubois" type="fix">
+        Suppression de la répartition des notes par critère lors de la purge de baseline.
+      </action>
+      <action dev="fdubois" type="fix">
+        Correctifs sur le ScatterPlot pour les méthodes avec des espaces.
+      </action>
+      <action dev="fdubois" type="fix">
+        Correctifs sur la base de connaissance qui ne supportait plus l'upload de fichiers.
+      </action>
+    </release>
+    <release version="2.3.1" date="in CVS">
+      <action dev="fdubois" type="fix">
+        Modification des clés primaires des tables: CRITERE_BLINE, FACTEUR_BLINE et POIDS_FACT_CRIT ainsi que des contraintes associées. La colonne id_pro était inutile et le module de calcul ne l'utilisait pas dans le "select for update" entrainant des problèmes de performance.
+      </action>
+      <action dev="fdubois" type="update">
+        Sauvegarde des répartitions des notes pour les critères au moment du calcul. Celles-ci ne sont plus recalculées à  chaque accès ce qui allège le serveur et améliore fortement les performances pour les accès aux pages de synthèse des facteurs.
+      </action>
+      <action dev="lizac" type="fix">
+        Correction de disfonctionnement sur la base de connaissance.
+      </action>
+    </release>
+    <release version="2.3" date="in CVS">
+    	<action dev="lizac" type="add">
+	Nouvelle infrastructure technique: Support d'UnifaceView, Oracle 9, Tomcat 5.5, JDK 5.
+  	</action>
+	<action dev="fdubois" type="add">
+      	Introduction d'un cache (apache JCS) d'accès aux données pour améliorer les performances et les accès simultanés.
+  	</action>
+    	<action dev="lizac" type="add">
+	Création d'un assistant d'installation de la plateforme CAQS.
+  	</action>
+    	<action dev="ialbanese" type="add">
+	Mise en français du portail UnifaceView.
+	</action>
+	<action dev="dzysman" type="update">
+	Gestion qualité: 
+	Légende pour expliquer la répartition.
+	Nouvelle présentation de la version imprimable pour la page critères.
+	Ajout de tooltips.
+	Ajout de la colonne granularité pour les critères.
+	Possibilité d'internationalisation (externalisation des chaines de caractères).
+	</action>
+	<action dev="dzysman" type="update">
+	Refonte de la page administration.
+	</action>
+	<action dev="dzysman" type="update">
+	Nouvelle applet architecture.
+	</action>
+	<action dev="dzysman" type="update">
+	Editeur qualimétrique:
+	Uniformisation du look de l'éditeur qualimétrique.
+	Version imprimable du modèle qualimétrique.
+	Agrégation multi-seuils dans le modèle qualimétrique.
+	</action>
+    	<action dev="lizac" type="add">
+	Intégration du parseur C/C++ : FlawFinder.
+	</action>
+	<action dev="dzysman" type="add">
+	Intégration du parseur Java : OptimalAdvisor.
+	</action>
+	<action dev="dzysman" type="add">
+	Nouvelles documentations : administration + utilisation.
+	</action>
+	</release>
+  </body>
+</document>

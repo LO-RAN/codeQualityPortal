@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Rules>
+	<Rule TypeName="EmptyRule" Category="Microsoft.Naming" CheckId="EX9999">
+		<Name>
+			EmptyAssemblyRule: The prose name of the rule goes here.
+		</Name>
+		<Description>
+			EmptyAssemblyRule: The short description goes here.
+		</Description>
+		<LongDescription>
+			EmptyAssemblyRule: The long description goes here.
+		</LongDescription>
+		<GroupOwner>
+			EmptyAssemblyRule: This is optional, but is generally the
+			developer/team/company.
+		</GroupOwner>
+		<DevOwner>
+			EmptyAssemblyRule: The team or individual responsible for the
+			rule.
+		</DevOwner>
+		<Owner>
+			The Owner: Optional - can be empty string
+		</Owner>
+		<Url>
+			EmptyAssemblyRule: The URL for help containing the rule.
+		</Url>
+		<Resolution>
+			EmptyAssemblyRule: The string that appears in the message panel
+			pointing out the error.
+		</Resolution>
+		<Email>
+			EmptyAssemblyRule: The optional email address of the rule author.
+		</Email>
+		<MessageLevel Certainty="80">
+			Error
+		</MessageLevel>
+		<FixCategories>
+			Breaking
+		</FixCategories>
+	</Rule>
+	<Rule TypeName="ExampleRule" Category="Microsoft.Naming" CheckId="EX0001">
+		<Name>Namespaces should begin with the company name 'FooBar'</Name>
+		<Description>All Namespaces should be named {Company}.{Application}.{Feature}.{SubFeature}
+		eg. FooBar.Calulator.UI</Description>
+		<GroupOwner>FooBar</GroupOwner>
+		<DevOwner>Paul Glavich</DevOwner>
+		<Owner>Paul Glavich</Owner>
+		<Url>http://localhost</Url>
+		<Resolution>Alter the namespace '{0}' so that 'FooBar' is the first component.</Resolution>
+		<Email>someone@foobar.com.au</Email>
+		<MessageLevel Certainty="100">Error</MessageLevel>
+		<FixCategories>Breaking</FixCategories>
+	</Rule>
+	<!--
+	<Rule TypeName="EmptyRule" Category="Microsoft.Naming" CheckId="CA9999">
+		<Name>
+			EmptyAssemblyRule: The prose name of the rule goes here.
+		</Name>
+		<Description>
+			EmptyAssemblyRule: The short description goes here.
+		</Description>
+		<LongDescription>
+			EmptyAssemblyRule: The long description goes here.
+		</LongDescription>
+		<GroupOwner>
+			EmptyAssemblyRule: This is optional, but is generally the
+			developer/team/company.
+		</GroupOwner>
+		<DevOwner>
+			EmptyAssemblyRule: The team or individual responsible for the
+			rule.
+		</DevOwner>
+		<Owner>
+			OwnderName: optional
+		</Owner>
+		<Url>
+			EmptyAssemblyRule: The URL for help containing the rule.
+		</Url>
+		<Resolution>
+			EmptyAssemblyRule: The string that appears in the message panel
+			pointing out the error.
+		</Resolution>
+		<Email>
+			EmptyAssemblyRule: The optional email address of the rule author.
+		</Email>
+		<MessageLevel Certainty="80">
+			Error
+		</MessageLevel>
+		<FixCategories>
+			Breaking
+		</FixCategories>
+	</Rule>
+	-->
+</Rules>
+

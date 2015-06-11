@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.jdt.core.ICompilationUnit"
+            id="com.compuware.caqs.eclipseplugin.contribution">
+         <menu
+               label="Caqs"
+               path="additions"
+               id="com.compuware.caqs.eclipseplugin.menu">
+            <separator
+                  name="caqsGroup">
+            </separator>
+         </menu>
+         <action
+               label="Compare with analyzed source"
+               class="com.compuware.caqs.eclipseplugin.popup.actions.CompareWithAnalyzedSourceAction"
+               menubarPath="com.compuware.caqs.eclipseplugin.menu/caqsGroup"
+               enablesFor="1"
+               id="com.compuware.caqs.eclipseplugin.CompareWithAnalyzedSourceAction">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="Caqs Preferences"
+            class="com.compuware.caqs.eclipseplugin.preferences.CaqsPreferencesPage"
+            id="com.compuware.caqs.eclipseplugin.preferences.CaqsPreferencesPage">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.compuware.caqs.eclipseplugin.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Caqs Category"
+            id="com.compuware.caqs.eclipseplugin">
+      </category>
+      <view
+            name="Caqs View"
+            icon="icons/sample.gif"
+            category="com.compuware.caqs.eclipseplugin"
+            class="com.compuware.caqs.eclipseplugin.views.CaqsView"
+            id="com.compuware.caqs.eclipseplugin.views.CaqsView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="right"
+               id="com.compuware.caqs.eclipseplugin.views.CaqsView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="com.compuware.caqs.eclipseplugin.properties.CaqsProjectPropertiesPage"
+            id="com.compuware.caqs.eclipseplugin.properties.CaqsProjectPropertiesPage"
+            name="Caqs Project Properties">
+         <enabledWhen>
+         	<adapt type="org.eclipse.core.resources.IProject" />
+			<test property="org.eclipse.core.resources.projectNature" value="org.eclipse.jdt.core.javanature" />
+         </enabledWhen>
+      </page>
+   </extension>
+
+</plugin>

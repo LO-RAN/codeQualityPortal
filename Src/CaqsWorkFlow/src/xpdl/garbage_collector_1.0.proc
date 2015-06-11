@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process">
+  <process:MainProcess xmi:id="_l5BgcBjfEeC4E4kKkm-5MQ" name="garbage_collector" label="Garbage collector" bonitaVersion="5.3">
+    <elements xmi:type="process:Pool" xmi:id="_l5Ys0BjfEeC4E4kKkm-5MQ" name="Garbage_collector" label="Garbage collector">
+      <elements xmi:type="process:XORGateway" xmi:id="_l5cXMBjfEeC4E4kKkm-5MQ" name="Wait_Garbage" label="Wait Garbage" exclusiveOutgoingTransition="true" outgoing="_l6fgEBjfEeC4E4kKkm-5MQ" incoming="_l6k_oBjfEeC4E4kKkm-5MQ _l6oqABjfEeC4E4kKkm-5MQ"/>
+      <elements xmi:type="process:EndEvent" xmi:id="_l5n9YBjfEeC4E4kKkm-5MQ" name="BonitaEnd" label="BonitaEnd" incoming="_l6ijYBjfEeC4E4kKkm-5MQ"/>
+      <elements xmi:type="process:Activity" xmi:id="_l5wgQBjfEeC4E4kKkm-5MQ" name="BonitaInit" label="BonitaInit" outgoing="_l6oqABjfEeC4E4kKkm-5MQ"/>
+      <elements xmi:type="process:Task" xmi:id="_l55qMBjfEeC4E4kKkm-5MQ" name="Run_Garbage_Collector" label="Run Garbage Collector" outgoing="_l6m00BjfEeC4E4kKkm-5MQ" incoming="_l6fgEBjfEeC4E4kKkm-5MQ" groups="_l5bJExjfEeC4E4kKkm-5MQ" overrideGroupsOfTheLane="true">
+        <deadlines xmi:type="process:Deadline" xmi:id="_l56RQxjfEeC4E4kKkm-5MQ" condition="86400000">
+          <connector xmi:type="process:Connector" xmi:id="_l56RRBjfEeC4E4kKkm-5MQ" name="com_compuware_caqs_workflow_common_GarbageCollectorHook" label="com.compuware.caqs.workflow.common.GarbageCollectorHook" connectorId="HookProcessConnector">
+            <parameters xmi:type="process:Parameter" xmi:id="_l56RRRjfEeC4E4kKkm-5MQ" key="setClassName" value="ACED0005740037636F6D2E636F6D7075776172652E636171732E776F726B666C6F772E636F6D6D6F6E2E47617262616765436F6C6C6563746F72486F6F6B"/>
+          </connector>
+        </deadlines>
+      </elements>
+      <elements xmi:type="process:Activity" xmi:id="_l6EpUBjfEeC4E4kKkm-5MQ" name="Loop" label="Loop" outgoing="_l6ijYBjfEeC4E4kKkm-5MQ _l6k_oBjfEeC4E4kKkm-5MQ" incoming="_l6m00BjfEeC4E4kKkm-5MQ">
+        <connectors xmi:type="process:Connector" xmi:id="_l6FQYBjfEeC4E4kKkm-5MQ" name="com_compuware_caqs_workflow_common_LoopHook" label="com.compuware.caqs.workflow.common.LoopHook" connectorId="HookProcessConnector" event="automaticOnEnter">
+          <parameters xmi:type="process:Parameter" xmi:id="_l6FQYRjfEeC4E4kKkm-5MQ" key="setClassName" value="ACED000574002B636F6D2E636F6D7075776172652E636171732E776F726B666C6F772E636F6D6D6F6E2E4C6F6F70486F6F6B"/>
+        </connectors>
+      </elements>
+      <errorTemplate xmi:type="process:AssociatedFile" xmi:id="_mM0mMhjfEeC4E4kKkm-5MQ" path="Provided/black/html/error.html"/>
+      <processTemplate xmi:type="process:AssociatedFile" xmi:id="_mM0mMRjfEeC4E4kKkm-5MQ" path="Provided/black/html/process.html"/>
+      <pageTemplate xmi:type="process:AssociatedFile" xmi:id="_mM0mMxjfEeC4E4kKkm-5MQ" path="Provided/black/html/page.html"/>
+      <consultationTemplate xmi:type="process:AssociatedFile" xmi:id="_mM0mNRjfEeC4E4kKkm-5MQ" path="Provided/black/html/consultation.html"/>
+      <data xmi:type="process:Data" xmi:id="_l5bJEBjfEeC4E4kKkm-5MQ" name="HTTP_SERVER_CONTEXT_PATH" label="HTTP_SERVER_CONTEXT_PATH" dataType="_l5CHhBjfEeC4E4kKkm-5MQ" defaultValue="http://localhost:8080/caqs"/>
+      <data xmi:type="process:Data" xmi:id="_l5bJERjfEeC4E4kKkm-5MQ" name="loop" label="loop" dataType="_l5CHgBjfEeC4E4kKkm-5MQ" defaultValue="true"/>
+      <data xmi:type="process:Data" xmi:id="_l5bJEhjfEeC4E4kKkm-5MQ" name="lastUrl" label="lastUrl" dataType="_l5CHhBjfEeC4E4kKkm-5MQ"/>
+      <confirmationTemplate xmi:type="process:AssociatedFile" xmi:id="_mM0mNBjfEeC4E4kKkm-5MQ" path="Provided/black/html/confirmation.html"/>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_l6fgEBjfEeC4E4kKkm-5MQ" name="Wait_Garbage_Run_Garbage_Collector" label="Wait Garbage_Run Garbage Collector" source="_l5cXMBjfEeC4E4kKkm-5MQ" target="_l55qMBjfEeC4E4kKkm-5MQ"/>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_l6ijYBjfEeC4E4kKkm-5MQ" name="Loop2_End" label="Loop2_End" source="_l6EpUBjfEeC4E4kKkm-5MQ" target="_l5n9YBjfEeC4E4kKkm-5MQ" condition="loop.compareTo(Boolean.valueOf(&quot;false&quot;)) == 0"/>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_l6k_oBjfEeC4E4kKkm-5MQ" name="Loop2_Wait_Garbage" label="Loop2_Wait Garbage" source="_l6EpUBjfEeC4E4kKkm-5MQ" target="_l5cXMBjfEeC4E4kKkm-5MQ" condition="loop.compareTo(Boolean.valueOf(&quot;true&quot;)) == 0"/>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_l6m00BjfEeC4E4kKkm-5MQ" name="Run_Garbage_Collector_Loop2" label="Run Garbage Collector_Loop2" source="_l55qMBjfEeC4E4kKkm-5MQ" target="_l6EpUBjfEeC4E4kKkm-5MQ"/>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_l6oqABjfEeC4E4kKkm-5MQ" name="Start_Wait_Garbage" label="Start_Wait Garbage" source="_l5wgQBjfEeC4E4kKkm-5MQ" target="_l5cXMBjfEeC4E4kKkm-5MQ"/>
+    </elements>
+    <groups xmi:type="process:Group" xmi:id="_l5bJExjfEeC4E4kKkm-5MQ" name="john" label="john" connectorId="User List">
+      <parameters xmi:type="process:Parameter" xmi:id="_l5bJFBjfEeC4E4kKkm-5MQ" key="setUsers" value="ACED00057400046A6F686E"/>
+    </groups>
+    <datatypes xmi:type="process:BooleanType" xmi:id="_l5CHgBjfEeC4E4kKkm-5MQ" name="Boolean" label="Boolean"/>
+    <datatypes xmi:type="process:IntegerType" xmi:id="_l5CHghjfEeC4E4kKkm-5MQ" name="Integer" label="Integer"/>
+    <datatypes xmi:type="process:FloatType" xmi:id="_l5CHgxjfEeC4E4kKkm-5MQ" name="Decimal" label="Decimal"/>
+    <datatypes xmi:type="process:StringType" xmi:id="_l5CHhBjfEeC4E4kKkm-5MQ" name="Text" label="Text"/>
+    <datatypes xmi:type="process:AttachmentType" xmi:id="_l5CHhRjfEeC4E4kKkm-5MQ" name="Attachment" label="Attachment"/>
+    <datatypes xmi:type="process:JavaType" xmi:id="_l5CHhhjfEeC4E4kKkm-5MQ" name="Java_object" label="Java object"/>
+    <datatypes xmi:type="process:XMLType" xmi:id="_l5CHhxjfEeC4E4kKkm-5MQ" name="XML" label="XML"/>
+    <datatypes xmi:type="process:DateType" xmi:id="_mLmeMBjfEeC4E4kKkm-5MQ" name="Date" label="Date"/>
+    <datatypes xmi:type="process:AttachmentType" xmi:id="_mL7OUBjfEeC4E4kKkm-5MQ" name="Attachment" label="Attachment"/>
+    <datatypes xmi:type="process:JavaType" xmi:id="_mMFmYBjfEeC4E4kKkm-5MQ" name="Java_object" label="Java object"/>
+    <datatypes xmi:type="process:XMLType" xmi:id="_mNNnwBjfEeC4E4kKkm-5MQ" name="XML" label="XML"/>
+    <includedEntries>bonita/bonita-5.3.2.jar</includedEntries>
+    <includedEntries>garbage_collector_1.0-classes.jar</includedEntries>
+  </process:MainProcess>
+  <notation:Diagram xmi:id="_l5BgcRjfEeC4E4kKkm-5MQ" type="Process" element="_l5BgcBjfEeC4E4kKkm-5MQ" name="dest6430242141651936816.proc" measurementUnit="Pixel">
+    <children xmi:type="notation:Node" xmi:id="_l5Ys0RjfEeC4E4kKkm-5MQ" type="2007" element="_l5Ys0BjfEeC4E4kKkm-5MQ">
+      <children xmi:type="notation:DecorationNode" xmi:id="_l5ZT4xjfEeC4E4kKkm-5MQ" type="5008"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_l5ZT5BjfEeC4E4kKkm-5MQ" type="7001">
+        <children xmi:type="notation:Shape" xmi:id="_l5cXMRjfEeC4E4kKkm-5MQ" type="3008" element="_l5cXMBjfEeC4E4kKkm-5MQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_l5cXMxjfEeC4E4kKkm-5MQ" type="5026">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_l5cXNBjfEeC4E4kKkm-5MQ" y="5"/>
+          </children>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l5cXMhjfEeC4E4kKkm-5MQ" x="127" y="226"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_l5okcBjfEeC4E4kKkm-5MQ" type="3003" element="_l5n9YBjfEeC4E4kKkm-5MQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_l5okchjfEeC4E4kKkm-5MQ" type="5025">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_l5okcxjfEeC4E4kKkm-5MQ" y="5"/>
+          </children>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l5okcRjfEeC4E4kKkm-5MQ" x="711" y="230"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_l5wgQRjfEeC4E4kKkm-5MQ" type="3006" element="_l5wgQBjfEeC4E4kKkm-5MQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_l5wgQxjfEeC4E4kKkm-5MQ" type="5006"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l5wgQhjfEeC4E4kKkm-5MQ" x="9" y="230"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_l56RQBjfEeC4E4kKkm-5MQ" type="3005" element="_l55qMBjfEeC4E4kKkm-5MQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_l56RQhjfEeC4E4kKkm-5MQ" type="5005"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l56RQRjfEeC4E4kKkm-5MQ" x="311" y="232" width="120" height="60"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_l6EpURjfEeC4E4kKkm-5MQ" type="3006" element="_l6EpUBjfEeC4E4kKkm-5MQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_l6EpUxjfEeC4E4kKkm-5MQ" type="5006"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l6EpUhjfEeC4E4kKkm-5MQ" x="531" y="232"/>
+        </children>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_l5Ys0hjfEeC4E4kKkm-5MQ"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_l5ZT4BjfEeC4E4kKkm-5MQ"/>
+      <styles xmi:type="notation:LineStyle" xmi:id="_l5ZT4RjfEeC4E4kKkm-5MQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l5ZT4hjfEeC4E4kKkm-5MQ" width="1100" height="352"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_l5BgchjfEeC4E4kKkm-5MQ"/>
+    <edges xmi:type="notation:Connector" xmi:id="_l6gHIBjfEeC4E4kKkm-5MQ" type="4001" element="_l6fgEBjfEeC4E4kKkm-5MQ" source="_l5cXMRjfEeC4E4kKkm-5MQ" target="_l56RQBjfEeC4E4kKkm-5MQ" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_l6gHIxjfEeC4E4kKkm-5MQ" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l6gHJBjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_l6gHJRjfEeC4E4kKkm-5MQ" type="6002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l6gHJhjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_l6gHIRjfEeC4E4kKkm-5MQ"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_l6gHIhjfEeC4E4kKkm-5MQ" points="[0, 0, -311, -190]$[311, 190, 0, 0]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_l6jKcBjfEeC4E4kKkm-5MQ" type="4001" element="_l6ijYBjfEeC4E4kKkm-5MQ" source="_l6EpURjfEeC4E4kKkm-5MQ" target="_l5okcBjfEeC4E4kKkm-5MQ" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_l6jKcxjfEeC4E4kKkm-5MQ" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l6jKdBjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_l6jKdRjfEeC4E4kKkm-5MQ" type="6002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l6jKdhjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_l6jKcRjfEeC4E4kKkm-5MQ"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_l6jKchjfEeC4E4kKkm-5MQ" points="[0, 0, 531, 190]$[-531, -190, 0, 0]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_l6k_oRjfEeC4E4kKkm-5MQ" type="4001" element="_l6k_oBjfEeC4E4kKkm-5MQ" source="_l6EpURjfEeC4E4kKkm-5MQ" target="_l5cXMRjfEeC4E4kKkm-5MQ" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_l6k_pBjfEeC4E4kKkm-5MQ" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l6k_pRjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_l6k_phjfEeC4E4kKkm-5MQ" type="6002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l6k_pxjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_l6k_ohjfEeC4E4kKkm-5MQ"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_l6k_oxjfEeC4E4kKkm-5MQ" points="[0, 0, 531, 190]$[-531, -190, 0, 0]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_l6m00RjfEeC4E4kKkm-5MQ" type="4001" element="_l6m00BjfEeC4E4kKkm-5MQ" source="_l56RQBjfEeC4E4kKkm-5MQ" target="_l6EpURjfEeC4E4kKkm-5MQ" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_l6m01BjfEeC4E4kKkm-5MQ" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l6m01RjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_l6m01hjfEeC4E4kKkm-5MQ" type="6002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l6m01xjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_l6m00hjfEeC4E4kKkm-5MQ"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_l6m00xjfEeC4E4kKkm-5MQ" points="[0, 0, -220, 0]$[220, 0, 0, 0]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_l6pREBjfEeC4E4kKkm-5MQ" type="4001" element="_l6oqABjfEeC4E4kKkm-5MQ" source="_l5wgQRjfEeC4E4kKkm-5MQ" target="_l5cXMRjfEeC4E4kKkm-5MQ" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_l6pRExjfEeC4E4kKkm-5MQ" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l6pRFBjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_l6pRFRjfEeC4E4kKkm-5MQ" type="6002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_l6pRFhjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_l6pRERjfEeC4E4kKkm-5MQ"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_l6pREhjfEeC4E4kKkm-5MQ" points="[0, 0, 25, 190]$[-25, -190, 0, 0]"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>

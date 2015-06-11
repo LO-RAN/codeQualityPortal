@@ -1,0 +1,5 @@
+<!-- 
+  CAQS Doc Context 
+  used to allow access to documentation files from web client
+-->
+<Context path="/CAQSdoc" docBase="../Documentation" debug="0" reloadable="true" />

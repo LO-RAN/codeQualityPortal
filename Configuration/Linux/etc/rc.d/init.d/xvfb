@@ -1,0 +1,89 @@
+#!/bin/bash
+#
+# Run-level Startup script for the Virtual Frame Buffer X Server (Xvfb)
+#
+# chkconfig: 345 91 21
+# description: Startup/Shutdown Virtual Frame Buffer X Server (Xvfb)
+
+#
+#**************************************************************************
+#
+#   Medformix OpenOffice "Headless Install" Package: Xvfb Startup Script
+#
+#     Start/stop/restart the virtual frame buffer based X Server (Xvfb)
+#
+#**************************************************************************
+#
+# Copyright (c) 2004 Crowell Systems -- http://www.crowellsystems.com/
+#
+# This file is part of the Medformix OpenOffice "Headless Install" Package.
+#
+# The Medformix OpenOffice "Headless Install" Package is free software; you
+# can redistribute it and/or modify it under the terms of the GNU General
+# Public License as published by the Free Software Foundation; either
+# version 2 of the License, or (at your option) any later version.
+#
+# The Medformix OpenOffice "Headless Install" Package is distributed in the
+# hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with the Medformix OpenOffice "Headless Install" Package; if not, write to
+# the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+# MA 02111-1307 USA or view it at "http://www.gnu.org/licenses/gpl.html".
+#
+#**************************************************************************
+# Contributors:
+#   volkerdi: Patrick J. Volkerding, volkerdi@slackware.com
+#   jbotte:   James Botte, jbotte@crowellsystems.com
+#
+# Changelog:
+#   N/A:   unknown: volkerdi: Wrote rc.syslog for Slackware 9.0. No license
+#     was included in the file; however, I have received permission from
+#     volkerdi to distribute this derivative work under the GPL.
+#   1.0.0: 09mar04: jbotte: Created based on volkerdi's rc.syslog
+#     start/stop/restart framework written for Slackware.
+#   1.0.1: 05oct04: jbotte: Put in full path for killall in xvfb_stop().
+#     Got rid of xvfb_restart() function and just inlined the code in
+#     the main case statement. Updated help, added more error checking.
+#**************************************************************************
+
+xvfb_start() {
+  if [ -x /usr/X11R6/bin/Xvfb ]; then
+    echo "Starting Virtual Frame Buffer X Server (Xvfb) as local display :5.0"
+    echo "  /usr/X11R6/bin/Xvfb :5 -screen 0 800x600x16 -fbdir /usr/tmp"
+    /usr/X11R6/bin/Xvfb :5 -screen 0 800x600x16 -fbdir /usr/tmp &
+  else
+    echo "Error: Could not find /usr/X11R6/bin/Xvfb. Cannot start Xvfb."
+  fi
+}
+
+xvfb_stop() {
+  if [ -x /usr/bin/killall ]; then
+    echo "Stopping Virtual Frame Buffer X Server (Xvfb) for local display :5.0"
+    /usr/bin/killall Xvfb 2> /dev/null
+  else
+    echo "Error: Could not find /usr/bin/killall. Cannot stop Xvfb."
+  fi
+}
+
+case "$1" in
+  'start')
+    xvfb_start
+    ;;
+  'stop')
+    xvfb_stop
+    ;;
+  'restart')
+    xvfb_stop
+    sleep 1
+    xvfb_start
+    ;;
+  *)
+    if [ -x /usr/bin/basename ]; then
+      echo "usage: `/usr/bin/basename $0` start|stop|restart"
+    else
+      echo "usage: $0 start|stop|restart"
+    fi
+esac

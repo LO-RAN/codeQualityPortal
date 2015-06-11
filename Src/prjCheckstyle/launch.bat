@@ -1,0 +1,5 @@
+java -cp renault.jar com.compuware.caqs.CobolStyle.Main "D:\Prof\Data\projets\EDF - GDMI\M89\M89\SYGMA\CMPWR\COBSE" > "D:\Prof\Data\projets\EDF - GDMI\M89\M89\SYGMA\CMPWR\COBSE\output.csv"
+java -cp renault.jar com.compuware.caqs.CobolStyle.Main "D:\Prof\Data\projets\EDF - GDMI\M89\M89\SYGMA\CMPWR\COPYCOB" > "D:\Prof\Data\projets\EDF - GDMI\M89\M89\SYGMA\CMPWR\COPYCOB\output.csv"
+java -cp renault.jar com.compuware.caqs.CobolStyle.Main "D:\Prof\Data\projets\EDF - GDMI\M89\M89\SYGMA\CMPWR\BTCHCOB" > "D:\Prof\Data\projets\EDF - GDMI\M89\M89\SYGMA\CMPWR\BTCHCOB\output.csv"
+java -cp renault.jar com.compuware.caqs.CobolStyle.Main "D:\Prof\Data\projets\EDF - GDMI\M89\M89\SYGMA\CMPWR\COPYGEN" > "D:\Prof\Data\projets\EDF - GDMI\M89\M89\SYGMA\CMPWR\COPYGEN\output.csv"
+java -cp renault.jar com.compuware.caqs.CobolStyle.Main "D:\Prof\Data\projets\EDF - GDMI\M89\M89\CRADLE" > "D:\Prof\Data\projets\EDF - GDMI\M89\M89\CRADLE\output.csv"

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CarsCode" default="save" basedir="../..">
+
+  <!--________________________ Initialization ____________________________-->
+
+  <target name="init">
+	  <tstamp>
+	    <format property="NOW_UK" pattern="yyyy-MM-dd" locale="en"/>
+	  </tstamp>
+
+
+    <!--
+    
+    propriétés utilisées par le logger mail pour envoyer une notification en cas d'échec
+    (cf. ligne de commande de Ant : -logger org.apache.tools.ant.listener.MailLogger )
+    
+    -->
+    <property name="MailLogger.mailhost"        value="mailhost.nl.compuware.com" />
+    <property name="MailLogger.from"            value="CAQS_backup_process" />
+    <property name="MailLogger.failure.notify"  value="true" />
+    <property name="MailLogger.success.notify"  value="true" />
+    <property name="MailLogger.failure.to"      value="laurent.izac@compuware.com" />
+
+
+
+
+      <!--___________________ Repertoires presents _______________________-->
+      <property name="APP.NAME"               value="caqs"/>
+      <property name="APP.VERSION"            value="3.1.05"/>
+
+
+      <property name="SAVE.DIR"               value="../Save"/>
+      <property name="FILE.NAME"	          value="${APP.NAME}-${APP.VERSION}-${NOW_UK}"/>
+
+      <property name="REF.DIR"                value=".."/>
+      <property name="BUILD.DIR"                value="."/>
+      
+	  <delete dir="${BUILD.DIR}/bin"/>
+  </target>
+
+  <target name="svnupdate" depends="init">
+    <property name="svn.action" value="update"/>
+    <path id="svnlib.path">
+      <pathelement location="lib/svn/ganymed.jar" />
+      <pathelement location="lib/svn/svnkit.jar" />
+      <pathelement location="lib/svn/svnkit-cli.jar" />
+    </path>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${REF.DIR}/Src" fork="true">
+      <arg value="checkout"/>
+      <arg value="svn://cwfr-s934/caqs/Development/Src/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${REF.DIR}/Installer" fork="true">
+      <arg value="checkout"/>
+      <arg value="svn://cwfr-s934/caqs/Development/Installer/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${REF.DIR}/FCKEditor" fork="true">
+      <arg value="checkout"/>
+      <arg value="svn://cwfr-s934/caqs/Development/FCKEditor/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${REF.DIR}/CaqsModeler" fork="true">
+      <arg value="checkout"/>
+      <arg value="svn://cwfr-s934/caqs/Development/CaqsModeler/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${REF.DIR}/Configuration/config" fork="true">
+      <arg value="checkout"/>
+      <arg value="svn://cwfr-s934/caqs/Development/Configuration/config/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${REF.DIR}/Configuration/DBMS" fork="true">
+      <arg value="checkout"/>
+      <arg value="svn://cwfr-s934/caqs/Development/Configuration/DBMS/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${REF.DIR}/Configuration/traitements" fork="true">
+      <arg value="checkout"/>
+      <arg value="svn://cwfr-s934/caqs/Development/Configuration/traitements/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${REF.DIR}/Configuration/UnifaceView" fork="true">
+      <arg value="checkout"/>
+      <arg value="svn://cwfr-s934/caqs/Development/Configuration/UnifaceView/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${REF.DIR}/Configuration/UnifaceFlow" fork="true">
+      <arg value="checkout"/>
+      <arg value="svn://cwfr-s934/caqs/Development/Configuration/UnifaceFlow/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+    <java classname="org.tmatesoft.svn.cli.SVN" dir="${REF.DIR}/Documentation" fork="true">
+      <arg value="checkout"/>
+      <arg value="svn://cwfr-s934/caqs/Development/Documentation/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+  </target>
+  
+  <target name="save" depends="svnupdate">
+  <mkdir dir="${SAVE.DIR}"/>
+  <echo message="Saving to ${SAVE.DIR}/${FILE.NAME}.zip"/>
+	<zip destfile="${SAVE.DIR}/${FILE.NAME}.zip">
+    <fileset dir="${REF.DIR}/Src"/>
+    <fileset dir="${REF.DIR}/Installer"/>
+    <fileset dir="${REF.DIR}/FCKEditor"/>
+    <fileset dir="${REF.DIR}/CaqsModeler"/>
+    <fileset dir="${REF.DIR}/Configuration/config"/>
+    <fileset dir="${REF.DIR}/Configuration/DBMS"/>
+    <fileset dir="${REF.DIR}/Configuration/traitements"/>
+    <fileset dir="${REF.DIR}/Configuration/UnifaceView"/>
+    <fileset dir="${REF.DIR}/Configuration/UnifaceFlow"/>
+    <fileset dir="${REF.DIR}/Documentation"/>
+	  </zip>
+  </target>
+
+</project>

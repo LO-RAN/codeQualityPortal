@@ -1,0 +1,11 @@
+#
+#Mon Sep 20 10:30:41 CEST 2010
+Agreement\ Display=false
+VB=bas, cls
+HTML=htm, html
+Java=java
+SQL=sql
+Output\ Directory=D\:\\projects\\CAQS\\Development\\Configuration\\traitements\\parserconnectors\\lib
+Javascript=js
+JSP=jsp
+C++=cpp, h

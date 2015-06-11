@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="Conversions" script:language="StarBasic">REM  *****  BASIC  *****
+&apos; Save document as an Acrobat PDF file.
+Sub SaveAsPDF( cFile )
+   cURL = ConvertToURL( cFile )
+   &apos; Open the document. Just blindly assume that the document 
+   &apos; is of a type that OOo will correctly recognize and open 
+   &apos; without specifying an import filter.
+   oDoc = StarDesktop.loadComponentFromURL( cURL, &quot;_blank&quot;, 0, _
+            Array(MakePropertyValue( &quot;Hidden&quot;, True ),))
+
+   UpdateAllIndexes( oDoc )
+
+   cFile = Left( cFile, Len( cFile ) - 4 ) + &quot;.pdf&quot;
+   cURL = ConvertToURL( cFile )
+   
+   &apos; Save the document using a filter.   
+   oDoc.storeToURL( cURL, Array(_
+            MakePropertyValue( &quot;FilterName&quot;, &quot;writer_pdf_Export&quot; ),)
+   
+   oDoc.close( True )
+End Sub
+
+&apos; Save document as a Microsoft Word file. 
+Sub SaveAsDoc( cFile ) 
+   &apos; mostly a copy of SaveAsPDF
+   cURL = ConvertToURL( cFile )
+   oDoc = StarDesktop.loadComponentFromURL( cURL, &quot;_blank&quot;, 0, (_
+            Array(MakePropertyValue( &quot;Hidden&quot;, True ),))
+
+   UpdateAllIndexes( oDoc )
+
+   cFile = Left( cFile, Len( cFile ) - 4 ) + &quot;.doc&quot;
+   cURL = ConvertToURL( cFile )
+   
+   oDoc.storeToURL( cURL, Array(_
+            MakePropertyValue( &quot;FilterName&quot;, &quot;MS Word 97&quot; ),)
+   oDoc.close( True )
+
+End Sub
+
+
+&apos; Save document as an OpenOffice 2 file. 
+Sub SaveAsOOO( cFile ) 
+   &apos; mostly a copy of SaveAsPDF. Save as an OpenOffice file. 
+   cURL = ConvertToURL( cFile )
+   oDoc = StarDesktop.loadComponentFromURL( cURL, &quot;_blank&quot;, 0, _
+            Array(MakePropertyValue( &quot;Hidden&quot;, True ),))
+
+   &apos; Set output file extension based on lower-case 
+   &apos; version of input extension.
+   Select Case LCase(Right(cFile,3))
+     Case &quot;ppt&quot;         &apos; PowerPoint file.
+       cFileExt = &quot;odp&quot;
+     Case &quot;doc&quot;         &apos; Word file.
+       cFileExt = &quot;odt&quot;
+     Case &quot;xls&quot;         &apos; Excel file.
+       cFileExt = &quot;ods&quot;
+     Case Else
+       cFileExt = &quot;xxx&quot;
+    End Select
+       
+   cFile = Left( cFile, Len( cFile ) - 3 ) + cFileExt
+   cURL = ConvertToURL( cFile )
+   
+   oDoc.storeAsURL( cURL, Array() )
+   oDoc.close( True )
+
+End Sub
+
+Function UpdateAllIndexes( oDoc )
+   oDocCtrl = oDoc.getCurrentController()
+   oDocFrame = oDocCtrl.getFrame()
+   
+   oDispatchHelper = createUnoService( "com.sun.star.frame.DispatchHelper" )
+   oDispatchHelper.executeDispatch( oDocFrame, ".uno:UpdateAllIndexes", "", 0, Array() ) 
+End Function
+
+
+Function MakePropertyValue( Optional cName As String, Optional uValue ) _
+   As com.sun.star.beans.PropertyValue
+   Dim oPropertyValue As New com.sun.star.beans.PropertyValue
+   If Not IsMissing( cName ) Then
+      oPropertyValue.Name = cName
+   EndIf
+   If Not IsMissing( uValue ) Then
+      oPropertyValue.Value = uValue
+   EndIf
+   MakePropertyValue() = oPropertyValue
+End Function
+</script:module>

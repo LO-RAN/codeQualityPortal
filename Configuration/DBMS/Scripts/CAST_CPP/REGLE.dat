@@ -1,0 +1,151 @@
+-- CAST 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('MAIN', 'MI3', 'CAST_CPP', 'MAIN-MI3', 'Maintenabilite-MI3',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('MAIN', 'MI4', 'CAST_CPP', 'MAIN-MI4', 'Maintenabilite-MI4',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('COMP', 'VG', 'CAST_CPP', 'COMP-VG', 'Compréhension-VG',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('COMP', 'COMMENTS', 'CAST_CPP', 'COMP-COMMENTS', 'Compréhension-COMMENTS',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('COMP', 'ALL_CODE', 'CAST_CPP', 'COMP-ALL_CODE', 'Compréhension-ALL_CODE',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('COMP', 'NL', 'CAST_CPP', 'NL', 'Compréhension-NL',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('DEST', 'EVG', 'CAST_CPP', 'DEST-EVG', 'Destructuration-EVG',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('PLOG', 'VG', 'CAST_CPP', 'PLOG-VG', 'Poids Logique-VG',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('PLOG', 'EVG', 'CAST_CPP', 'PLOG-EVG', 'Poids Logique-EVG',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('INTE', 'CALL_PAIR', 'CAST_CPP', 'INTE-CALL_PAIR', 'Intégration-CALL_PAIR',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('INTE', 'IVG', 'CAST_CPP', 'IVG', 'Intégration-IVG',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CTRA', 'CALL_PAIR', 'CAST_CPP', 'CTRA-CALL_PAIR', 'Couplage Traditionnel-CALL_PAIR',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CTRA', 'IVG', 'CAST_CPP', 'CTRA-IVG', 'Couplage Traditionnel-IVG',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CHER', 'OOFANIN', 'CAST_CPP', 'CHER-OOFANIN', 'Couplage Héritage-OOFANIN',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CHER', 'DEPTH', 'CAST_CPP', 'CHER-DEPTH', 'Couplage Héritage-DEPTH',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('COBJ', 'CBO', 'CAST_CPP', 'COBJ-CBO', 'Couplage Objet-CBO',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('COBJ', 'PUB_DATA', 'CAST_CPP', 'COBJ-PUB_DATA', 'Couplage Objet-PUB_DATA',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('TPRO', 'NL', 'CAST_CPP', 'TPRO-NL', 'Taille Procédure-NL',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_SAK', 'LOCM', 'CAST_CPP', 'ANTI_SAK', 'Antipattern Couteau Suisse',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_SAK', 'MAX_EVG', 'CAST_CPP', 'ANTI_SAK', 'Antipatern Couteau Suisse',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_SAK', 'DEPTH', 'CAST_CPP', 'ANTI_SAK', 'Antipattern Couteau Suisse',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_SAK', 'NOC', 'CAST_CPP', 'ANTI_SAK', 'Antipattern Couteau Suisse',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_SAK', 'RFC', 'CAST_CPP', 'ANTI_SAK', 'Antipattern Couteau Suisse',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_BLOB', 'MAX_EVG', 'CAST_CPP', 'ANTI_BLOB', 'Antipattern Pieuvre',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_BLOB', 'LOCM', 'CAST_CPP', 'ANTI_BLOB', 'Antipattern Pieuvre',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_BLOB', 'DEPTH', 'CAST_CPP', 'ANTI_BLOB', 'Antipattern Pieuvre',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_BLOB', 'NOC', 'CAST_CPP', 'ANTI_BLOB', 'Antipattern Pieuvre',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_BLOB', 'RFC', 'CAST_CPP', 'ANTI_BLOB', 'Antipattern Pieuvre',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_POLT', 'DEPTH', 'CAST_CPP', 'ANTI_POLT', 'Antipattern Poltergeist',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_POLT', 'WMC', 'CAST_CPP', 'ANTI_POLT', 'Antipattern Poltergeist',  null); 
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_POLT', 'NOC', 'CAST_CPP', 'ANTI_POLT', 'Antipattern Poltergeist',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_SPAG', 'MAX_EVG', 'CAST_CPP', 'ANTI_SPAG', 'Antipattern Spaghetti',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_COPIER_COLLER', 'COPY_PASTE', 'CAST_CPP', 'Copier-Coller', 'Copier-Coller',  null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('DEAD', 'CAST_FAN-IN', 'CAST_CPP', 'Code mort', 'code potentiellement jamais référencé', null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('ANTI_RECURSIVITE', 'RECURSIVITE', 'CAST_CPP', 'ANTI_RECURSIVITE', 'Antipattern Récursivité',  null); 
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CODING', 'CAST_CLASS_NAM', 'CAST_CPP', 'Class naming', 'Class naming convention', null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CODING', 'CAST_METHOD_NAM', 'CAST_CPP', 'Method naming', 'Method naming convention', null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CODING', 'CAST_CONST_NAM', 'CAST_CPP', 'Constant naming', 'Constant naming convention', null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CODING', 'CAST_DATAMEMBER_NAM', 'CAST_CPP', 'Data members naming', 'Data members naming convention', null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CODING', 'CAST_STRUCT_USE', 'CAST_CPP', 'Structures', 'Avoid using structures', null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CODING', 'CAST_INLINE_CONSTR_DESTR', 'CAST_CPP', 'Inline constr. and destr.', 'Constructors and destructors must not be inline', null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CODING', 'CAST_COPY_CONSTR', 'CAST_CPP', 'copy constructor required', 'Classes using "new" to allocate instances managed by the class must define a copy constructor', null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CODING', 'CAST_VIRTUAL_DESTR', 'CAST_CPP', 'virtual destructor required', 'Write a "virtual" destructor for base classes', null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CODING', 'CAST_METHOD_5PARAM', 'CAST_CPP', 'Too many parameters', 'Avoid Methods with more than 5 parameters', null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('CODING', 'CAST_GLOBAL_VAR', 'CAST_CPP', 'global variables', 'Avoid using global variables', null);
+
+
+
+-- flawfinder
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '4_BUFFER_STRCPY'                 , 'CAST_CPP','strcpy'                       ,'strcpy'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '4_BUFFER_LSTRCPY'                , 'CAST_CPP','lstrcpy'                      ,'lstrcpy'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '2_BUFFER_MEMCPY'                 , 'CAST_CPP','memcpy'                       ,'memcpy'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '4_BUFFER_STRCAT'                 , 'CAST_CPP','strcat'                       ,'strcat'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '4_BUFFER_LSTRCAT'                , 'CAST_CPP','lstrcat'                      ,'lstrcat'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '1_BUFFER_STRNCPY'                , 'CAST_CPP','strncpy'                      ,'strncpy'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '1_BUFFER_LSTRCPYN'               , 'CAST_CPP','lstrcpyn'                     ,'lstrcpyn'                         , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '1_BUFFER_STRNCAT'                , 'CAST_CPP','strncat'                      ,'strncat'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '5_BUFFER_STRNCAT'                , 'CAST_CPP','strncat'                      ,'strncat'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '1_BUFFER_LSTRCATN'               , 'CAST_CPP','lstrcatn'                     ,'lstrcatn'                         , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '1_BUFFER_STRCCPY'                , 'CAST_CPP','strccpy'                      ,'strccpy'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '5_BUFFER_GETS'                   , 'CAST_CPP','gets'                         ,'gets'                             , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '4_BUFFER_SPRINTF'                , 'CAST_CPP','sprintf'                      ,'sprintf'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '1_BUFFER_SPRINTF'                , 'CAST_CPP','sprintf'                      ,'sprintf'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '2_BUFFER_SPRINTF'                , 'CAST_CPP','sprintf'                      ,'sprintf'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '4_BUFFER_SCANF'                  , 'CAST_CPP','scanf'                        ,'scanf'                            , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '1_BUFFER_SCANF'                  , 'CAST_CPP','scanf'                        ,'scanf'                            , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '4_BUFFER_FSCANF'                 , 'CAST_CPP','fscanf'                       ,'fscanf'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '1_BUFFER_STRLEN'                 , 'CAST_CPP','strlen'                       ,'strlen'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '2_BUFFER_MULTIBYTETOWIDECHAR'    , 'CAST_CPP','MultiByteToWideChar'          ,'MultiByteToWideChar'              , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '4_BUFFER_STREADD'                , 'CAST_CPP','streadd'                      ,'streadd'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '3_BUFFER_STRTRNS'                , 'CAST_CPP','strtrns'                      ,'strtrns'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '3_BUFFER_REALPATH'               , 'CAST_CPP','realpath'                     ,'realpath'                         , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '3_BUFFER_GETOPT'                 , 'CAST_CPP','getopt'                       ,'getopt'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '3_BUFFER_GETPASS'                , 'CAST_CPP','getpass'                      ,'getpass'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '3_BUFFER_GETWD'                  , 'CAST_CPP','getwd'                        ,'getwd'                            , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '1_BUFFER_GETCHAR'                , 'CAST_CPP','getchar'                      ,'getchar'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '3_BUFFER_GETENV'                 , 'CAST_CPP','getenv'                       ,'getenv'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '3_BUFFER_G_GET_HOME_DIR'         , 'CAST_CPP','g_get_home_dir'               ,'g_get_home_dir'                   , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '3_BUFFER_G_GET_TMP_DIR'          , 'CAST_CPP','g_get_tmp_dir'                ,'g_get_tmp_dir'                    , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_BUFFER'   , '4_BUFFER_GETPW'                  , 'CAST_CPP','getpw'                        ,'getpw'                            , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_FORMAT'   , '4_FORMAT_SPRINTF'                , 'CAST_CPP','sprintf'                      ,'sprintf'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_FORMAT'   , '4_FORMAT_PRINTF'                 , 'CAST_CPP','printf'                       ,'printf'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_FORMAT'   , '4_FORMAT_FPRINTF'                , 'CAST_CPP','fprintf'                      ,'fprintf'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_FORMAT'   , '4_FORMAT_SYSLOG'                 , 'CAST_CPP','syslog'                       ,'syslog'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_FORMAT'   , '4_FORMAT_SNPRINTF'               , 'CAST_CPP','snprintf'                     ,'snprintf'                         , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_RACE'     , '4_RACE_ACCESS'                   , 'CAST_CPP','access'                       ,'access'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_RACE'     , '5_RACE_CHOWN'                    , 'CAST_CPP','chown'                        ,'chown'                            , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_RACE'     , '5_RACE_CHGRP'                    , 'CAST_CPP','chgrp'                        ,'chgrp'                            , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_RACE'     , '5_RACE_CHMOD'                    , 'CAST_CPP','chmod'                        ,'chmod'                            , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_RACE'     , '2_RACE_VFORK'                    , 'CAST_CPP','vfork'                        ,'vfork'                            , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_RACE'     , '5_RACE_READLINK'                 , 'CAST_CPP','readlink'                     ,'readlink'                         , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_TMPFILE'  , '2_TMPFILE_TMPFILE'               , 'CAST_CPP','tmpfile'                      ,'tmpfile'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_TMPFILE'  , '3_TMPFILE_TMPNAM'                , 'CAST_CPP','tmpnam'                       ,'tmpnam'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_TMPFILE'  , '4_TMPFILE_MKTEMP'                , 'CAST_CPP','mktemp'                       ,'mktemp'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_TMPFILE'  , '2_TMPFILE_MKSTEMP'               , 'CAST_CPP','mkstemp'                      ,'mkstemp'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_TMPFILE'  , '3_TMPFILE_GETTEMPFILENAME'       , 'CAST_CPP','GetTempFileName'              ,'GetTempFileName'                  , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_ACCESS'   , '1_ACCESS_UMASK'                  , 'CAST_CPP','access_umask'                 ,'access_umask'                      , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_ACCESS'   , '4_ACCESS_RPCIMPERSONATECLIENT'   , 'CAST_CPP','RpcImpersonateClient'         ,'RpcImpersonateClient'             , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_SHELL'    , '4_SHELL_EXECL'                   , 'CAST_CPP','execl'                        ,'execl'                            , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_SHELL'    , '3_SHELL_CREATEPROCESSASUSER'     , 'CAST_CPP','CreateProcessAsUser'          ,'CreateProcessAsUser'              , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_SHELL'    , '3_SHELL_CREATEPROCESS'           , 'CAST_CPP','CreateProcess'                ,'CreateProcess'                    , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_RANDOM'   , '3_RANDOM_DRAND48'                , 'CAST_CPP','random_drand48'               ,'random_drand48'                    , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_CRYPTO'   , '4_CRYPTO_CRYPT'                  , 'CAST_CPP','crypt'                        ,'crypt'                            , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_CRYPTO'   , '4_CRYPTO_EVP_DES_ECB'            , 'CAST_CPP','EVP_des_ecb'                  ,'EVP_des_ecb'                      , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_CRYPTO'   , '4_CRYPTO_EVP_RC4_40'             , 'CAST_CPP','EVP_rc40'                     ,'EVP_rc40'                         , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_MISC'     , '2_MISC_FOPEN'                    , 'CAST_CPP','misc_fopen'                   ,'misc_fopen'                        , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_MISC'     , '3_MISC_CHROOT'                   , 'CAST_CPP','chroot'                       ,'chroot'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_MISC'     , '3_MISC_INITIALIZECRITICALSECTION', 'CAST_CPP','InitializeCriticalSection'    ,'InitializeCriticalSection'        , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_MISC'     , '3_MISC_ENTERCRITICALSECTION'     , 'CAST_CPP','EnterCriticalSection'         ,'EnterCriticalSection'             , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_MISC'     , '3_MISC_LOADLIBRARY'              , 'CAST_CPP','LoadLibrary'                  ,'LoadLibrary'                      , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_MISC'     , '5_MISC_SETSECURITYDESCRIPTORDACL', 'CAST_CPP','SetSecurityDescriptorDacl'    ,'SetSecurityDescriptorDacl'        , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_MISC'     , '3_MISC_ADDACCESSALLOWEDACE'      , 'CAST_CPP','AddAccessAllowedAce'          ,'AddAccessAllowedAce'              , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_MISC'     , '4_MISC_GETLOGIN'                 , 'CAST_CPP','getlogin'                     ,'getlogin'                         , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_MISC'     , '4_MISC_CUSERID'                  , 'CAST_CPP','cuserid'                      ,'cuserid'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_MISC'     , '4_MISC_GETPASS'                  , 'CAST_CPP','getpass'                      ,'getpass'                          , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_FREE'     , '1_FREE_MEMALIGN'                 , 'CAST_CPP','memalign'                     ,'memalign'                         , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_OBSOLETE' , '2_OBSOLETE_GSIGNAL'              , 'CAST_CPP','gsignal'                      ,'gsignal'                          , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_OBSOLETE' , '1_OBSOLETE_ULIMIT'               , 'CAST_CPP','ulimit'                       ,'ulimit'                           , null);
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_OBSOLETE' , '1_OBSOLETE_USLEEP'               , 'CAST_CPP','usleep'                       ,'usleep'                           , null);
+
+INSERT INTO REGLE ( ID_CRIT, ID_MET, ID_USA, LIB_REG, DESC_REG, DINST_REG ) VALUES ('FF_INPUT'    , '0_INPUT_RECV'                    , 'CAST_CPP','recv'                         ,'recv'                             , null);
+
+commit;
+ 

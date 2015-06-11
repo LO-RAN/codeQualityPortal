@@ -1,0 +1,30 @@
+<xml>
+    <SEARCH name="Servlet" filter=".*\.java">
+    	<RULE regexp="Servlet" />
+    	<RULE regexp="struts" />
+    </SEARCH>
+    <SEARCH name="JDBC" filter=".*\.java">
+    	<RULE regexp="jdbc" />
+    	<RULE regexp="SQL" />
+    	<RULE regexp="sql" />
+    </SEARCH>
+    <SEARCH name="EJB" filter=".*\.java">
+    	<RULE regexp="ejb" />
+    </SEARCH>
+    <SEARCH name="WS" filter=".*\.java">
+    	<RULE regexp="axis" />
+    	<RULE regexp="[W|w][S|s]" />
+    </SEARCH>
+    <SEARCH name="Portlets" filter=".*\.java">
+		<RULE regexp="[P|p]ortlet" />
+    	<RULE regexp="doHelp" />
+    	<RULE regexp="doView" />
+		<RULE regexp="doEdit" />
+    </SEARCH>
+    <SEARCH name="Applets" filter=".*\.java">
+		<RULE regexp="[A|a]pplet" />
+    </SEARCH>
+    <SEARCH name="JCA" filter=".*\.java">
+		<RULE regexp="jca" />
+    </SEARCH>
+</xml>

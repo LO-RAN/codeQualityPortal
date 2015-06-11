@@ -1,0 +1,114 @@
+<project name="Phoenix" default="phoenix.analysis" basedir=".">	
+  <dirname property="phoenix.basedir" file="${ant.file.Phoenix}"/>
+
+	<property name="vmware.host" value="192.168.145.1"/>
+	<property name="vmware.guest" value="192.168.145.2"/>
+	
+	<property name="vmware.user" value="root"/>
+	<property name="vmware.password" value="phx78demo"/>	
+	
+<!--
+	<property name="vmware.path" value="C:\Program Files\VMware\VMware Workstation"/>
+	<property name="vmware.exe" value="${vmware.path}\vmplayer.exe"/>
+	<property name="vmware.image.path" value="d:\TestPhoenix"/>
+	<property name="vmware.image" value="${vmware.image.path}\phoenixvm\OtherLinux.vmx"/>
+-->
+	
+	<property name="host.catalogs.share" value="Analyses"/>
+	<property name="caqs.analyses.root" value="D:\Analyses\"/>
+	
+	<property name="host.user" value="userver"/>
+	<property name="host.password" value="userver"/>
+	
+<!--
+	<target name="vmware.start"> 
+		<exec dir="${vmware.path}" executable="${vmware.exe}" spawn="true">
+		  <arg line='"${vmware.image}"'/>
+		</exec>
+		<waitfor maxwait="10" maxwaitunit="minute" checkevery="500">
+				<http url="http://${vmware.guest}/icons/apache_pb2.gif"/>
+		</waitfor>
+    <echo message="Mounting shared directory //${vmware.host}/${host.catalogs.share} as /mnt/catalogs ..."/>
+		<sshexec host="${vmware.guest}"
+				trust="true"
+				username="${vmware.user}"
+				password="${vmware.password}"
+				command="mount -t smbfs //${vmware.host}/${host.catalogs.share} /mnt/catalogs -o username=${host.user}%${host.password}"/>
+		<sleep seconds="60"/>
+	</target>
+	
+		<target name="vmware.stop"> 
+		<sshexec host="${vmware.guest}"
+				trust="true"
+				username="${vmware.user}"
+				password="${vmware.password}"
+				command="umount /mnt/catalogs"/>				
+		<sshexec host="${vmware.guest}"
+				trust="true"
+				username="${vmware.user}"
+				password="${vmware.password}"
+				command="shutdown -h now"/>		
+	</target>
+-->
+	
+	<target name="phoenix.analysis" depends="prepare"> 
+  		<sshexec host="${vmware.guest}"
+  				trust="true"
+  				username="${vmware.user}"
+  				password="${vmware.password}"
+  				command="/home/demo/phoenix/bin/phoenix-ant.sh -f /home/demo/phoenix/bin/phoenix.xml -Dproject.path=${src.path.unix}"/>
+    <copy todir="${SRC_DIR}/src">
+      <fileset dir="${SRC_DIR}/source/PRG">
+        <include name="*.etend" />
+      </fileset>
+    </copy>
+    <copy todir="${SRC_DIR}/phoenix/metrics">
+      <fileset dir="${SRC_DIR}/source/PRG">
+        <include name="*.metrics" />
+      </fileset>
+    </copy>    
+    <copy todir="${SRC_DIR}/phoenix/performs">
+      <fileset dir="${SRC_DIR}/source/PRG">
+        <include name="*.perform" />
+      </fileset>
+    </copy>    
+	</target>
+
+  <target name="prepare">
+    <echo message="Mounting shared directory //${vmware.host}/${host.catalogs.share} as /mnt/catalogs ..."/>
+		<sshexec host="${vmware.guest}"
+				trust="true"
+				username="${vmware.user}"
+				password="${vmware.password}"
+				command="mount -t smbfs //${vmware.host}/${host.catalogs.share} /mnt/catalogs -o username=${host.user}%${host.password}"/>
+
+    <path id="src.path">
+      <pathelement location="${SRC_DIR}"/>
+    </path>
+    <pathconvert targetos="unix" property="src.path.unix" refid="src.path">
+      <map from="${caqs.analyses.root}" to="/mnt/catalogs/"/>
+    </pathconvert>
+  </target>	
+	
+  <!-- init structure EA -->
+  <target name="initStructure" depends="prepare">
+    <echo message="Init EA ${lib_elt} ..."/>
+    <mkdir dir="${SRC_DIR}/source/CPY" />
+    <mkdir dir="${SRC_DIR}/source/PRG" />
+    <mkdir dir="${SRC_DIR}/param" />
+    <copy file="${Phoenix.basedir}/template/system.desc" todir="${SRC_DIR}/param"/>
+    <mkdir dir="${SRC_DIR}/work" />
+    <copy file="${Phoenix.basedir}/template/project.properties" todir="${SRC_DIR}"/>
+    <copy file="${Phoenix.basedir}/template/system.properties" todir="//${vmware.host}/${host.catalogs.share}"/>
+    <mkdir dir="${SRC_DIR}/src" />
+    <mkdir dir="${SRC_DIR}/reports" />
+    <mkdir dir="${SRC_DIR}/phoenix/metrics" />
+
+    <echo message="${src.path.unix}"/>
+    <replace file="${SRC_DIR}/param/system.desc" token="@SRC_PATH@" value="${src.path.unix}"/>
+    <replace file="${SRC_DIR}/param/system.desc" token="@PRJ_NAME@" value="${lib_elt}"/>
+    <replace file="${SRC_DIR}/project.properties" token="@SRC_PATH@" value="${src.path.unix}"/>
+    <replace file="${SRC_DIR}/project.properties" token="@PRJ_NAME@" value="${lib_elt}"/>
+  </target>	
+	
+</project>	

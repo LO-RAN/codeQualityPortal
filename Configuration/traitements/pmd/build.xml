@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="PMD" default="help" basedir=".">
+  <dirname property="PMD.basedir" file="${ant.file.PMD}"/>  
+
+  <path id="pmd.classpath">
+      <fileset dir="${PMD.basedir}/lib">
+          <include name="**/*.jar"/>
+      </fileset>
+  </path>
+  
+  <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath"/>
+  
+  <target name="pmd">
+      <delete dir="${SRC_DIR}/pmdreports" />
+      <mkdir dir="${SRC_DIR}/pmdreports" />
+      <pmd rulesetfiles="basic,braces,clone,codesize,controversial,coupling,design,finalizers,imports,javabeans,logging-jakarta-commons,logging-java,migrating,naming,optimizations,strictexception,strings,sunsecure,unusedcode" targetjdk="1.5" shortFilenames="true">
+          <formatter type="com.compuware.caqs.parser.pmd.renderer.XmlRenderer" toFile="${SRC_DIR}/pmdreports/report.xml" toConsole="false"/>
+          <fileset dir="${SRC_DIR}/src">
+              <include name="**/*.java"/>
+          </fileset>
+      </pmd>
+  </target>
+  
+</project>

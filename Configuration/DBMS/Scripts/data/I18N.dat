@@ -1,0 +1,128 @@
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('metrique','desc','COMPLEX_DEST','fr','COMPLEX_DEST');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('metrique','lib','COMPLEX_DEST','fr','COMPLEX_DEST');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','PKG','fr','Package');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','compl','MET','en','Method');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','CLS','fr','Classe');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','CLS','en','Class');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','MET','fr','Méthode');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','MET','en','Method');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','PKG','fr','Package');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','PKG','en','Package');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','CLS','fr','Classe');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','CLS','en','Class');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','MET','fr','Methode');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','MET','en','Method');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','compl','PKG','fr','Package');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','compl','PKG','en','Package');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','compl','CLS','fr','Classe');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','compl','CLS','en','Class');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','compl','MET','fr','Méthode');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','PKG','en','Package');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','PRJ','fr','Projet');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','PRJ','en','Project');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','PRJ','fr','Projet');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','PRJ','en','Project');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','SSP','fr','Sous-projet');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','SSP','en','Sub-project');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','SSP','fr','Sous-projet');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','SSP','en','Sub-project');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','EA','fr','Entité applicative');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','EA','en','Application entity');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','EA','fr','Entité applicative');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','EA','en','Application entity');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','DOMAIN','fr','Domaine');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','DOMAIN','en','Domain');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','DOMAIN','fr','Domaine');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','DOMAIN','en','Domain');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','PROG','fr','Programme');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','lib','PROG','en','Program');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','PROG','fr','Programme');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('type_element','desc','PROG','en','Program');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','ANALYSING_NOT_STARTED','fr','Analyse non commencée');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','ANALYSING_NOT_STARTED','en','Analysis not started');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','ANALYSING_IN_PROGRESS','fr','Analyse en cours');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','ANALYSING_IN_PROGRESS','en','Analysis in progress');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','ANALYSING_COMPLETED','fr','Analyse terminée');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','ANALYSING_COMPLETED','en','Analysis completed');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','ANALYSING_FAILED','fr','Analyse échouée');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','ANALYSING_FAILED','en','Analysis failed');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','COMPUTING_NOT_STARTED','fr','Calcul non commencé');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','COMPUTING_NOT_STARTED','en','Computing not started');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','COMPUTING_IN_PROGRESS','fr','Calcul en cours');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','COMPUTING_IN_PROGRESS','en','Computing in progress');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','COMPUTING_COMPLETED','fr','Calcul terminé');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','COMPUTING_COMPLETED','en','Computing completed');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','COMPUTING_FAILED','fr','Calcul échoué');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','COMPUTING_FAILED','en','Computing failed');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','GENERATING_REPORT_NOT_STARTED','fr','Génération du rapport non commencée');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','GENERATING_REPORT_NOT_STARTED','en','Report generation not started');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','GENERATING_REPORT_IN_PROGRESS','fr','Génération du rapport en cours');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','GENERATING_REPORT_IN_PROGRESS','en','Report generation in progress');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','GENERATING_REPORT_COMPLETED','fr','Génération du rapport terminée');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','GENERATING_REPORT_COMPLETED','en','Report generation completed');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','GENERATING_REPORT_FAILED','fr','Génération du rapport échouée');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('message_status','lib','GENERATING_REPORT_FAILED','en','Report generation failed');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-default','fr','Bleu');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-black','fr','Noir');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-gray','fr','Gris');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-olive','fr','Olive');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-purple','fr','Pourpre');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-slate','fr','Ardoise');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-default','en','Blue');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-black','en','Black');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-gray','en','Gray');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-olive','en','Olive');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-purple','en','Purple');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-slate','en','Slate');
+
+INSERT INTO I18N(TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('action_plan_unit','lib','DAY_PER_MAN','fr','Jours/Homme');
+INSERT INTO I18N(TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('action_plan_unit','lib','DAY_PER_MAN','en','Days/Man');
+INSERT INTO I18N(TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('action_plan_unit','lib','K_EURO','fr','K-Euros');
+INSERT INTO I18N(TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('action_plan_unit','lib','K_EURO','en','K-Euros');
+INSERT INTO I18N(TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('action_plan_unit','lib','K_DOLLAR','fr','K-Dollars');
+INSERT INTO I18N(TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('action_plan_unit','lib','K_DOLLAR','en','K-Dollars');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','message-location-north','fr','En haut');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','message-location-south','fr','En bas');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','message-location-north','en','Up');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','message-location-south','en','Down');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','dashboard','fr','Tableau de bord');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','dashboard','en','Dashboard');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','quality','fr','Gestion qualité');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','quality','en','Quality management');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','administration','fr','Administration');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','administration','en','Administration');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','architecture','fr','Architecture');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','architecture','en','Architecture');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','justification','fr','Justification');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','justification','en','Justification');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','labellisation','fr','Labellisation');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','labellisation','en','Labelling');
+
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-light-brown','fr','Marron clair');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-light-brown','en','Light brown');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-light-green','fr','Vert clair');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-light-green','en','Light green');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-light-orange','fr','Orange clair');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-light-orange','en','Light orange');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-light-wine','fr','Vin clair');
+INSERT INTO I18N (TABLE_NAME,COLUMN_NAME,ID_TABLE,ID_LANGUE,TEXT) VALUES ('setting_value','lib','theme-light-wine','en','Light wine');
+
+INSERT INTO I18N(TABLE_NAME, COLUMN_NAME, ID_TABLE, ID_LANGUE, TEXT) VALUES('metrique', 'lib', 'IFPUG', 'fr', 'Points de fonctions');
+INSERT INTO I18N(TABLE_NAME, COLUMN_NAME, ID_TABLE, ID_LANGUE, TEXT) VALUES('metrique', 'desc', 'IFPUG', 'fr', 'Métrique de points de fonctions');
+INSERT INTO I18N(TABLE_NAME, COLUMN_NAME, ID_TABLE, ID_LANGUE, TEXT) VALUES('metrique', 'compl', 'IFPUG', 'fr', 'Son implémentation dépend du modèle qualimétrique. Se référer à l''annexe pour plus d''informations quant à sa formule de calcul.');
+INSERT INTO I18N(TABLE_NAME, COLUMN_NAME, ID_TABLE, ID_LANGUE, TEXT) VALUES('metrique', 'lib', 'IFPUG', 'en', 'Functions points');
+INSERT INTO I18N(TABLE_NAME, COLUMN_NAME, ID_TABLE, ID_LANGUE, TEXT) VALUES('metrique', 'desc', 'IFPUG', 'en', 'Functions points metric');
+INSERT INTO I18N(TABLE_NAME, COLUMN_NAME, ID_TABLE, ID_LANGUE, TEXT) VALUES('metrique', 'compl', 'IFPUG', 'en', 'Its implementation differs from one quality model to another. Refer to the appendice for more information regarding its computation formula.');
+

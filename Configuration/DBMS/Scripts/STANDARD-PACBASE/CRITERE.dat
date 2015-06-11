@@ -1,0 +1,12 @@
+-- pacbase specific criteria
+INSERT INTO CRITERE (ID_CRIT, LIB_CRIT, DESC_CRIT, DINST_CRIT, DAPPLICATION_CRIT) VALUES ( 'C00001', 'Taille', 'Taille Pacbase',  null,  null);
+INSERT INTO CRITERE (ID_CRIT, LIB_CRIT, DESC_CRIT, DINST_CRIT, DAPPLICATION_CRIT) VALUES ( 'C00002', 'Complexité', 'Complexité Pacbase',  null,  null);
+INSERT INTO CRITERE (ID_CRIT, LIB_CRIT, DESC_CRIT, DINST_CRIT, DAPPLICATION_CRIT) VALUES ( 'C00003', 'Lisibilité', 'Lisibilité Pacbase',  null,  null);
+INSERT INTO CRITERE (ID_CRIT, LIB_CRIT, DESC_CRIT, DINST_CRIT, DAPPLICATION_CRIT) VALUES ( 'C00004', 'Modularité', 'Modularité Pacbase',  null,  null);
+INSERT INTO CRITERE (ID_CRIT, LIB_CRIT, DESC_CRIT, DINST_CRIT, DAPPLICATION_CRIT) VALUES ( 'C00005', 'Portabilité', 'Portabilité Pacbase',  null,  null);
+INSERT INTO CRITERE (ID_CRIT, LIB_CRIT, DESC_CRIT, DINST_CRIT, DAPPLICATION_CRIT) VALUES ( 'C00015', 'Standardisation', 'Standardisation Pacbase',  null,  null);
+INSERT INTO CRITERE (ID_CRIT, LIB_CRIT, DESC_CRIT, DINST_CRIT, DAPPLICATION_CRIT) VALUES ( 'C00016', 'Normalisation', 'Normalisation Pacbase',  null,  null);
+
+
+commit;
+ 

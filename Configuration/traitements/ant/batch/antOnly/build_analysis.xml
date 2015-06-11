@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CAQS" default="analysis" basedir=".">
+
+
+    <!-- the following properties are specific to each run and must be provided by caller
+         (see portal : project administration : )
+    <property name="projectId" value="20090310161056859085106"/>
+    <property name="projectName" value="name"/>
+    <property name="userId" value="qua1"/>
+    <property name="email" value="qua1@compuware.com"/>
+    <property name="eaList" value="20090310164343781644003"/>
+    <property name="eaOptionList" value=""/>
+
+    <property name="baselineName" value=""/> 
+ -->
+
+  <!-- url of CAQS server (change it according to installation context) -->
+  <property name="protocol" value="http"/>
+  <property name="host" value="localhost"/>
+  <property name="port" value="8080"/>
+
+  
+  <!-- temp directory to store requests return values -->
+  <property name="resultFile" value="/tmp/result.xml"/>
+  
+
+  <target name="analysis">
+
+  <fail message="projectId property must be set">
+     <condition>
+            <not>
+              <isset property="projectId"/>
+            </not>
+     </condition>
+   </fail>
+
+  <fail message="projectName property must be set">
+     <condition>
+            <not>
+              <isset property="projectName"/>
+            </not>
+     </condition>
+   </fail>
+
+  <fail message="eaList property must be set">
+     <condition>
+            <not>
+              <isset property="eaList"/>
+            </not>
+     </condition>
+   </fail>
+
+  <fail message="eaOptionList property must be set">
+     <condition>
+            <not>
+              <isset property="eaOptionList"/>
+            </not>
+     </condition>
+   </fail>
+
+  <fail message="userId property must be set">
+     <condition>
+            <not>
+              <isset property="userId"/>
+            </not>
+     </condition>
+   </fail>
+
+  <fail message="email property must be set">
+     <condition>
+            <not>
+              <isset property="email"/>
+            </not>
+     </condition>
+   </fail>
+
+ <property name="URL" value="${protocol}://${host}:${port}/caqs/projectanalysislaunch?projectId=${projectId}&amp;projectName=${projectName}&amp;baselineName=${baselineName}&amp;userId=${userId}&amp;email=${email}&amp;eaList=${eaList}&amp;eaOptionList=${eaOptionList}"/>
+    
+    <get src="${URL}"  dest="${resultFile}" />    
+
+    <condition property="error.found">         
+      <isfileselected file="${resultFile}">         
+        <contains text="&lt;success&gt;false&lt;/success&gt;" casesensitive="no"/>      
+      </isfileselected>   
+    </condition> 
+
+    <antcall target="_checkError"/>
+
+  </target>
+  
+  <target name="_checkError" if="error.found">
+   <loadfile property="result" srcFile="${resultFile}"/>
+   <echo message="${result}"/>
+
+    <fail message="Analysis failed. Check your inputs and execution messages."/>       
+  </target>
+    
+  
+</project>

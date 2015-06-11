@@ -1,0 +1,22 @@
+system @PRJ_NAME@ root "@SRC_PATH@/source"
+OS MVS
+%parens-colon-partial-match
+cobol-left-margin=7. 
+cobol-right-margin=72. 
+
+%
+% Les copies
+%
+directory "CPY" type Cobol-Library files "*.CBL".
+%directory "INCLUDE" type Cobol-Library files "*.CBL".
+
+
+%
+% Les Batchs
+%
+directory "PRG" type Cobol-Batch files "*.CBL" libraries "CPY".
+%,"INCLUDE".
+
+
+
+

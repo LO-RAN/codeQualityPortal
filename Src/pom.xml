@@ -1,0 +1,156 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                      
+                      
+                      
+                        <properties>    
+        <netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        
+        
+		
+  </properties>
+
+                      
+                      
+                      
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>compuware</groupId>
+  <version>XXX</version>
+  <artifactId>Global</artifactId>
+  <name>CAQS Solution</name>
+  <inceptionYear>2005</inceptionYear>
+  <url>http://parvw3caqsap001:8080/caqs</url>
+  <issueManagement>
+    <system>Bugzilla</system>
+    <url>http://parvw3caqsap001</url>
+  </issueManagement>
+  <ciManagement>
+   <system>jenkins</system>
+    <url>http://parvw3caqsap001:8080/jenkins/</url>
+    <notifiers>
+      <notifier>
+        <configuration>
+          <address>laurent.izac@compuware.com</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+
+  <mailingLists>
+    <mailingList>
+      <name>Dev List</name>
+      <subscribe>subscribe-caqs-dev@compuware.com</subscribe>
+      <unsubscribe>unsubscribe-caqs-dev@compuware.com</unsubscribe>
+    </mailingList>
+  </mailingLists>
+  <developers>
+    <developer>
+      <id>lizac</id>
+      <name>Izac Laurent</name>
+      <email>Laurent.Izac@compuware.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:svn:svn://parvw3caqsap001/caqs/Development/Src/trunk</connection>
+    <url>http://parvw3caqsap001:8080/svnwebclient/directoryContent.jsp?url=Development</url>
+  </scm>
+  <organization>
+    <name>Compuware-France</name>
+    <url>http://www.compuware.fr</url>
+  </organization>
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-changelog-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-changes-plugin</artifactId>
+        <configuration>
+          <xmlPath>${basedir}/xdocs/changes.xml</xmlPath>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jxr-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-pmd-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+      </plugin>
+     <plugin>
+       <groupId>org.codehaus.mojo</groupId>
+      <artifactId>findbugs-maven-plugin</artifactId>
+     </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </reporting>
+  <repositories>
+<repository>
+            <id>JBOSS</id>
+            <name>JBoss Repository</name>
+            <url>http://repository.jboss.org/maven2/</url>
+        </repository>
+  </repositories>
+  <packaging>pom</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <modules>
+    <module>Sandbox/Code2HTML</module>
+    <module>CodePageTransform</module>
+    <module>AntTask</module>
+    <module>AppletArchitecture</module>
+    <module>AppletFactory</module>
+    <module>DevEntreprisePlugin</module>
+    <module>DevpartnerPlugin</module>
+    <module>GenericParser</module>
+    <module>GraphApplet</module>
+    <module>JDBCImporter</module>
+    <module>MetricExtractor</module>
+    <module>MetricGeneration</module>
+    <module>OptimalAdvisorPlugin</module>
+    <module>ParserConnector</module>
+    <module>PmdFormatter</module>
+    <module>ScatterPlot</module>
+    <module>Security</module>
+    <module>SecurityViewer</module>
+    <module>ToolBox</module>
+    <module>UserMgmt</module>
+    <module>XmlCalcul</module>
+    <module>CaqsWorkFlow</module>
+<!-- keep Base last as it depends upon the others -->
+    <module>Base</module>
+  </modules>
+</project>

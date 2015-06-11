@@ -1,0 +1,85 @@
+.eltHeader {
+    text-align: left;
+    border-bottom: thin solid black;
+    border-left: none;
+    border-right: none;
+    vertical-align: text-bottom;
+    color: #335588;
+}
+.metHeader {
+    writing-mode: tb-rl;
+    text-align: right;
+    cursor: help;
+    color: #335588;
+    background-image: url(../images/nav-lev1_repeat_big.gif);
+}
+.critHeader {
+    writing-mode: tb-rl;
+    text-align: right;
+    cursor: help;
+    color: #335588;
+    background-image: url(../images/nav-lev1_repeat_big.gif);
+}
+
+.linkMetBar {
+    text-align: center;
+    color: #335588;
+    border-left: thin solid black;
+    border-right: none;
+    border-bottom: thin solid black;
+    background-image: url(../images/nav-lev1_repeat_inv.gif);
+}
+
+.linkCritBar {
+    text-align: center;
+    color: #335588;
+    border-left: thin solid black;
+    border-right: none;
+    border-bottom: thin solid black;
+    background-image: url(../images/nav-lev1_repeat_inv.gif);
+}
+
+.blm {
+    border-right: none;
+	border-left: thin solid black;
+    text-align: center;
+}
+
+.bldt {
+    border-left: thin dashed black;
+    border-right: none;
+    text-align: center;
+}
+
+.bldt-brm {
+    border-left: thin dashed black;
+    border-right: none;
+    text-align: center;
+}
+
+.btsearch {
+ background-image:url(../images/search.gif);
+ background-repeat: no-repeat;
+ width:30;
+ height:30;
+}
+
+.btupfolder {
+ display:inline;
+ background-color:inherit;
+ background-image:url(../images/upfolder.gif);
+ background-repeat: no-repeat;
+ margin:0em;
+ width:30;
+ height:30;
+}
+
+.btclear {
+ display:inline;
+ background-color:inherit;
+ background-image:url(../images/clear.gif);
+ background-repeat: no-repeat;
+ margin:0em;
+ width:30;
+ height:30;
+}

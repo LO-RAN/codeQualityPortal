@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CAQS" default="compile-application" basedir="../..">
+  <!--________________________ Initialization ____________________________-->
+  <target name="init-properties">
+    <!--___________________ General Properties _______________________-->
+    <property name="APP.NAME"               value="caqs"/>
+    <property name="APP.VERSION"            value="4.5"/>
+
+    <property name="svn.server"            value="parvw3caqsap001.clients.emea.cpwr.corp"/>
+    <property name="svn.action" 	   value="update"/>
+    
+    <!--___________________ Repertoires presents _______________________-->
+    <property name="SRC.CHECKOUT.DIR"       value="../"/>
+    <property name="BASE.DIR"               value="${SRC.CHECKOUT.DIR}/Src/Base"/>
+    <property name="SRC.BASE.DIR"           value="${BASE.DIR}/src/main/java"/>
+    <property name="RESOURCES.BASE.DIR"           value="${BASE.DIR}/src/main/resources"/>
+    <property name="JSP.BASE.DIR"           value="bin/Base/carscode"/>
+    <property name="BUILD.BASE.DIR"         value="${JSP.BASE.DIR}/WEB-INF/classes"/>
+    <property name="BUILD.BASE.LIB"         value="${JSP.BASE.DIR}/WEB-INF/lib"/>
+    <property name="SRC.ARCHITECTURE.DIR"   value="${SRC.CHECKOUT.DIR}/Src/AppletArchitecture/src/main/java"/>
+    <property name="BUILD.ARCHITECTURE.DIR" value="bin/AppletArchitecture"/>
+    <property name="SRC.SCATTER.DIR"        value="${SRC.CHECKOUT.DIR}/Src/ScatterPlot/src/main/java"/>
+    <property name="BUILD.SCATTER.DIR"      value="bin/ScatterPlot"/>
+    <property name="SRC.CALCUL.DIR"        value="${SRC.CHECKOUT.DIR}/Src/XmlCalcul/src/main/java"/>
+    <property name="BUILD.CALCUL.DIR"      value="bin/XmlCalcul"/>
+    <property name="SRC.TOOLBOX.DIR"        value="${SRC.CHECKOUT.DIR}/Src/ToolBox/src/main/java"/>
+    <property name="BUILD.TOOLBOX.DIR"      value="bin/ToolBox"/>
+    <property name="SRC.CNEDI.DIR"        value="${SRC.CHECKOUT.DIR}/Src/Cnedi"/>
+    <property name="BUILD.CNEDI.DIR"      value="bin/Cnedi"/>
+    <property name="LIB.DIR"                value="bin/Base/lib"/>
+    <property name="APPLICATION.DIR"        value="bin/Base/carscode" />
+    <property name="TRAITEMENTS.DIR"        value="${SRC.CHECKOUT.DIR}/Configuration/Traitements" />
+    <property name="DBMS.DIR"        value="${SRC.CHECKOUT.DIR}/Configuration/DBMS" />
+    <property name="WORKFLOW.DIR"        value="${SRC.CHECKOUT.DIR}/Src/CaqsWorkFlow/BAR" />
+    <property name="ARCHIVE.DIR"            value="bin/Archives" />
+    
+    <property name="INSTALL.DIR"            value="${SRC.CHECKOUT.DIR}/Installer" />
+    <property name="INSTALL.TEMP"           value="${SRC.CHECKOUT.DIR}/InstallerTemp" />
+    
+    
+    <!-- ______________________ Compilation options for SecurityViewer______________________ -->
+    <property name="BASE.SECURITYVIEWER.DIR"       location="${SRC.CHECKOUT.DIR}/Src/SecurityViewer"/>
+    
+    <!-- ______________________ Compilation options for http client Batch -->
+    <property name="BASE.BATCH.DIR"       location="${SRC.CHECKOUT.DIR}/Src/Batch"/>
+    
+    <!-- ______________________ Compilation options for 1.4______________________ -->
+    <!-- LAISSER DEBUG=TRUE POUR QUE LOG4J TROUVE LE FICHIER ET SA LIGNE -->
+    <property name="COMPILE.DEBUG"         value="true"/>
+    <property name="COMPILE.DEPRECATION"   value="false"/>
+    <property name="COMPILE.OPTIMIZE"      value="true"/>
+    <property name="CVS.UPDATE.OPTIONS"     value="-A -d"/>
+  </target>
+
+  
+  
+  <target name="svncheckout" depends="init-properties">
+    <mkdir  dir="${SRC.CHECKOUT.DIR}/Src"/>
+    <mkdir  dir="${SRC.CHECKOUT.DIR}/Installer"/>
+    <mkdir  dir="${SRC.CHECKOUT.DIR}/Configuration/config"/>
+    <mkdir  dir="${SRC.CHECKOUT.DIR}/Configuration/DBMS"/>
+    <mkdir  dir="${SRC.CHECKOUT.DIR}/Configuration/Models"/>
+    <mkdir  dir="${SRC.CHECKOUT.DIR}/Configuration/traitements"/>
+    <mkdir  dir="${SRC.CHECKOUT.DIR}/Configuration/Linux"/>
+    <mkdir  dir="${SRC.CHECKOUT.DIR}/Configuration/bonita-console"/>
+    <mkdir  dir="${SRC.CHECKOUT.DIR}/Documentation"/>
+
+    <antcall target="svnupdate">
+    	<param name="svn.action" value="checkout"/>
+    </antcall>
+  </target>
+  
+  <target name="svnupdate" depends="init-properties">
+    <path id="svnlib.path">
+      <pathelement location="lib/svn/ganymed.jar" />
+      <pathelement location="lib/svn/svnkit.jar" />
+      <pathelement location="lib/svn/svnkit-cli.jar" />
+    </path>
+	<echo message="Updating Src..."/>
+    <java classname="org.tmatesoft.svn.cli.svn.SVN" dir="${SRC.CHECKOUT.DIR}/Src" fork="true">
+      <arg value="${svn.action}"/>
+      <arg value="svn://${svn.server}/caqs/Development/Src/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+	<echo message="Updating Installer..."/>
+    <java classname="org.tmatesoft.svn.cli.svn.SVN" dir="${SRC.CHECKOUT.DIR}/Installer" fork="true">
+      <arg value="${svn.action}"/>
+      <arg value="svn://${svn.server}/caqs/Development/Installer/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+	<echo message="Updating config..."/>
+    <java classname="org.tmatesoft.svn.cli.svn.SVN" dir="${SRC.CHECKOUT.DIR}/Configuration/config" fork="true">
+      <arg value="${svn.action}"/>
+      <arg value="svn://${svn.server}/caqs/Development/Configuration/config/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+	<echo message="Updating DBMS..."/>
+    <java classname="org.tmatesoft.svn.cli.svn.SVN" dir="${SRC.CHECKOUT.DIR}/Configuration/DBMS" fork="true">
+      <arg value="${svn.action}"/>
+      <arg value="svn://${svn.server}/caqs/Development/Configuration/DBMS/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+	<echo message="Updating Models..."/>
+    <java classname="org.tmatesoft.svn.cli.svn.SVN" dir="${SRC.CHECKOUT.DIR}/Configuration/Models" fork="true">
+      <arg value="${svn.action}"/>
+      <arg value="svn://${svn.server}/caqs/Development/Configuration/Models/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+	<echo message="Updating traitements..."/>
+    <java classname="org.tmatesoft.svn.cli.svn.SVN" dir="${SRC.CHECKOUT.DIR}/Configuration/traitements" fork="true">
+      <arg value="${svn.action}"/>
+      <arg value="svn://${svn.server}/caqs/Development/Configuration/traitements/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+	<echo message="Updating Linux..."/>
+    <java classname="org.tmatesoft.svn.cli.svn.SVN" dir="${SRC.CHECKOUT.DIR}/Configuration/Linux" fork="true">
+      <arg value="${svn.action}"/>
+      <arg value="svn://${svn.server}/caqs/Development/Configuration/Linux/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+	<echo message="Updating Nova Bonita..."/>
+    <java classname="org.tmatesoft.svn.cli.svn.SVN" dir="${SRC.CHECKOUT.DIR}/Configuration/bonita-console" fork="true">
+      <arg value="${svn.action}"/>
+      <arg value="svn://${svn.server}/caqs/Development/Configuration/bonita-console/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+	<echo message="Updating Documentation..."/>
+    <java classname="org.tmatesoft.svn.cli.svn.SVN" dir="${SRC.CHECKOUT.DIR}/Documentation" fork="true">
+      <arg value="${svn.action}"/>
+      <arg value="svn://${svn.server}/caqs/Development/Documentation/trunk"/>
+      <arg value="."/>
+      <classpath refid="svnlib.path"/>
+    </java>
+  </target>
+  
+  <target name="init" depends="init-properties">
+    <path id="COMPILE.14.CLASSPATH">
+      <!-- Include all JAR files that will be included in /WEB-INF/lib -->
+      <fileset dir="${LIB.DIR}">
+        <include name="**/*.jar"/>
+      </fileset>
+    </path>
+    <delete dir="bin"/>
+    <mkdir  dir="bin/Base/carscode"/>
+    <copy  todir="bin/Base/carscode">
+      <fileset dir="${BASE.DIR}/target/carscode" />
+    </copy>
+    <copy  todir="bin/Base/lib">
+      <fileset dir="${BASE.DIR}/lib" />
+    </copy>
+  </target>
+  <!-- ______________________ Clean Directories ______________________ -->
+  <target name="clean" depends="init">
+    <!-- delete old files -->
+    <delete dir="${BUILD.BASE.DIR}/com"/>
+    <delete dir="${BUILD.BASE.LIB}"/>
+    <!-- Create build directory  -->
+    <mkdir  dir="${BUILD.BASE.DIR}/com"/>
+    <mkdir  dir="${BUILD.BASE.LIB}"/>
+  </target>
+  <!-- ________________________ Compile 1.4 _________________________ -->
+  <target name="compile-application" depends="clean,compile-architecture,compile-scatter,compile-calcul,compile-toolbox" description="Compile 1.4 Java sources">
+    <!-- Compile Java classes as necessary -->
+    <javac srcdir="${SRC.BASE.DIR}"           destdir="${BUILD.BASE.DIR}"             debug="${COMPILE.DEBUG}"       deprecation="${COMPILE.DEPRECATION}"          optimize="${COMPILE.OPTIMIZE}">
+      <classpath refid="COMPILE.14.CLASSPATH"/>
+    </javac>
+    <copy  todir="${BUILD.BASE.LIB}">
+      <fileset dir="${LIB.DIR}">
+        <include name="**.jar"/>
+        <exclude name="scatterplot.jar"/>
+      </fileset>
+    </copy>
+    <copy  todir="${BUILD.BASE.DIR}">
+      <fileset dir="${RESOURCES.BASE.DIR}">
+        <include name="**/*.properties"/>
+        <include name="**/*.conf"/>
+        <include name="**/*.ccf"/>
+        <include name="**/*.dtd"/>
+        <include name="**/*.xml"/>
+      </fileset>
+    </copy>
+    <mkdir  dir="${ARCHIVE.DIR}"/>
+    <jar destfile="${ARCHIVE.DIR}/carscode-${APP.VERSION}.war" basedir="${JSP.BASE.DIR}"/>
+  </target>
+  <target name="compile-last-version" depends="svnupdate,compile-application" description="Update and Compile Java sources">
+  </target>
+
+  <!-- ________________________ Compile Calcul _________________________ -->
+  <target name="compile-calcul" depends="compile-toolbox" description="Compile 1.4 Java sources">
+    <delete dir="${BUILD.CALCUL.DIR}"/>
+    <mkdir  dir="${BUILD.CALCUL.DIR}"/>
+    <!-- Compile Java classes as necessary -->
+    <javac srcdir="${SRC.CALCUL.DIR}"           destdir="${BUILD.CALCUL.DIR}"             debug="${COMPILE.DEBUG}"       deprecation="${COMPILE.DEPRECATION}"          optimize="${COMPILE.OPTIMIZE}">
+    </javac>
+    <copy todir="${BUILD.CALCUL.DIR}/">
+      <fileset dir="${SRC.CALCUL.DIR}">
+        <include name="**/*.properties"/>
+      </fileset>
+    </copy>
+    <jar destfile="${LIB.DIR}/calcul.jar" basedir="${BUILD.CALCUL.DIR}"/>
+  </target>
+  <!-- ________________________ Compile ToolBox _________________________ -->
+  <target name="compile-toolbox" depends="init" description="Compile 1.4 Java sources">
+    <delete dir="${BUILD.TOOLBOX.DIR}"/>
+    <mkdir  dir="${BUILD.TOOLBOX.DIR}"/>
+    <!-- Compile Java classes as necessary -->
+    <javac srcdir="${SRC.TOOLBOX.DIR}"           destdir="${BUILD.TOOLBOX.DIR}"             debug="${COMPILE.DEBUG}"       deprecation="${COMPILE.DEPRECATION}"          optimize="${COMPILE.OPTIMIZE}">
+      <classpath refid="COMPILE.14.CLASSPATH"/>
+    </javac>
+    <jar destfile="${LIB.DIR}/toolbox.jar" basedir="${BUILD.TOOLBOX.DIR}"/>
+  </target>
+  <!-- ________________________ Compile 1.4 _________________________ -->
+  <target name="compile-cnedi" depends="compile-toolbox" description="Compile 1.4 Java sources">
+    <delete dir="${BUILD.CNEDI.DIR}"/>
+    <mkdir  dir="${BUILD.CNEDI.DIR}"/>
+    <!-- Compile Java classes as necessary -->
+    <javac srcdir="${SRC.CNEDI.DIR}"           destdir="${BUILD.CNEDI.DIR}"             debug="${COMPILE.DEBUG}"       deprecation="${COMPILE.DEPRECATION}"          optimize="${COMPILE.OPTIMIZE}">
+      <classpath refid="COMPILE.14.CLASSPATH"/>
+    </javac>
+    <copy file="${SRC.CNEDI.DIR}/com/compuware/cobol/consolidator.properties" todir="${BUILD.CNEDI.DIR}/com/compuware/cobol/" />
+    <jar destfile="${BUILD.CNEDI.DIR}/cobolconsolidate.jar" basedir="${BUILD.CNEDI.DIR}"/>
+  </target>
+  <!-- ________________________ Compile architecture _________________________ -->
+  <target name="compile-architecture" depends="init" description="Compile Architecture Applet sources">
+    <delete dir="${BUILD.ARCHITECTURE.DIR}"/>
+    <mkdir  dir="${BUILD.ARCHITECTURE.DIR}"/>
+    <javac srcdir="${SRC.ARCHITECTURE.DIR}"           destdir="${BUILD.ARCHITECTURE.DIR}"             debug="${COMPILE.DEBUG}"       deprecation="${COMPILE.DEPRECATION}"          optimize="${COMPILE.OPTIMIZE}">
+    </javac>
+    <copy  todir="${BUILD.ARCHITECTURE.DIR}/com/compuware/carscode/gui/">
+      <fileset dir="${SRC.ARCHITECTURE.DIR}/../images/com/compuware/carscode/gui/">
+        <include name="**/*.gif"/>
+      </fileset>
+    </copy>
+  </target>
+  <!-- ________________________ Compile scatterplot _________________________ -->
+  <target name="compile-scatter" depends="init" description="Compile Scatterplot sources">
+    <delete dir="${BUILD.SCATTER.DIR}"/>
+    <mkdir  dir="${BUILD.SCATTER.DIR}"/>
+    <javac srcdir="${SRC.SCATTER.DIR}"           destdir="${BUILD.SCATTER.DIR}"             debug="${COMPILE.DEBUG}"       deprecation="${COMPILE.DEPRECATION}"          optimize="${COMPILE.OPTIMIZE}">
+    </javac>
+  </target>
+
+  <target name="doc" depends="init-properties" description="documents sources">
+    <javadoc destdir="javadoc" sourcepath="${SRC.BASE.DIR}" packagenames="*" classpathref="COMPILE.14.CLASSPATH"/>
+    <!-- enhance javadoc with package UML diagrams -->
+    <taskdef name="advisor" classname="com.compuware.advisor.application.ant.AdvisorAnt">
+      <classpath>
+        <pathelement path="lib/OptimalAdvisor.jar"/>
+      </classpath>
+    </taskdef>
+    <advisor command="newjava" param1="${SRC.BASE.DIR}"/>
+    <advisor command="uml2javadoc" param1="javadoc"/>
+  </target>
+
+  <!-- ________________________ Make Install _________________________ -->
+  <target name="makeInstall" depends="init-properties" description="build install resources">
+    <delete dir="${INSTALL.TEMP}"/>
+    <mkdir dir="${INSTALL.TEMP}" />
+    <mkdir dir="${INSTALL.TEMP}/files/DBMS" />
+    <copy todir="${INSTALL.TEMP}/files/DBMS/Scripts" overwrite="yes">
+      <fileset dir="${DBMS.DIR}/Scripts">
+        <exclude name="Export/*.DMP" />
+      </fileset>
+    </copy>
+
+    <!--  Bonita Tomcat + console -->
+    <copy todir="${INSTALL.TEMP}/files/bonita-console" overwrite="yes">
+      <fileset dir="../Configuration/bonita-console" />
+    </copy>
+
+    <copy todir="${INSTALL.TEMP}/files/traitements" overwrite="yes">
+      <fileset dir="${TRAITEMENTS.DIR}" />
+    </copy>
+
+    <copy todir="${INSTALL.TEMP}/files/config" overwrite="yes">
+      <fileset dir="../Configuration/config/pql/conf" />
+    </copy>
+    
+    <copy todir="${INSTALL.TEMP}/files/licenseMgmt" overwrite="yes">
+      <fileset dir="../Configuration/config/licenseMgmt" />
+    </copy>
+    
+    <copy todir="${INSTALL.TEMP}/files/License" overwrite="yes">
+      <fileset dir="../Configuration/config/License" />
+    </copy>
+    
+    <copy todir="${INSTALL.TEMP}/files/Models" overwrite="yes">
+      <fileset dir="../Configuration/Models" />
+    </copy>
+    
+    <copy todir="${INSTALL.TEMP}/files/Workflows" overwrite="yes">
+      <fileset dir="${WORKFLOW.DIR}" />
+    </copy>
+    
+    <mkdir dir="${INSTALL.TEMP}/files/documentation" />
+    <copy todir="${INSTALL.TEMP}/files/documentation" overwrite="yes">
+      <fileset dir="../Documentation/pdf">
+        <include name="*.pdf" />
+      </fileset>
+      <fileset dir="../Documentation/OptimalAdvisor" >
+        <include name="JRulesReference.html" />
+      </fileset>
+    </copy>
+    
+    <mkdir dir="${INSTALL.TEMP}/files/webapps" />
+    <copy todir="${INSTALL.TEMP}/files/webapps" overwrite="yes">
+      <fileset dir="${BASE.DIR}/target">
+        <include name="carscode-${APP.VERSION}.war"/>
+      </fileset>
+    </copy>
+    <copy todir="${INSTALL.TEMP}/files/webapps" overwrite="yes">
+      <fileset dir="${BASE.SECURITYVIEWER.DIR}/target">
+        <include name="securityviewer-${APP.VERSION}.war"/>
+      </fileset>
+    </copy>
+
+    <copy todir="${INSTALL.TEMP}/files/webapps" overwrite="yes">
+      <fileset dir="../Configuration/config/webapps">
+      </fileset>
+    </copy>
+    
+    <copy todir="${INSTALL.TEMP}" overwrite="yes">
+      <fileset dir="${INSTALL.DIR}" />
+    </copy>
+
+    <replace file="${INSTALL.TEMP}/antinstall-config.xml" token="%CAQS_VERSION%" value="${APP.VERSION}"/>
+    <replace file="${INSTALL.TEMP}/build.xml"             token="%CAQS_VERSION%" value="${APP.VERSION}"/>
+    
+  </target>
+</project>

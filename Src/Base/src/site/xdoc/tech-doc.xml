@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<document>
+
+  <properties>
+    <title>Documentation Technique</title>
+  </properties>
+  
+  <head>
+  </head>
+  
+  <body>
+    <section name="Documentation Technique">
+      <p>
+		Contient la documentation technique de CAQS.
+      </p>
+	</section>
+  </body>
+</document>

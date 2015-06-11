@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+
+    <property name="severity" value="error"/>
+
+    <module name="TreeWalker">
+	<!-- Unused -->
+	<module name="usage.UnusedLocalVariable"/>    		
+	
+	<module name="usage.UnusedParameter"/>
+	
+	<module name="usage.UnusedPrivateField"/>
+	
+	<module name="usage.UnusedPrivateMethod"/>
+      
+    	<!-- interdit le import xxx.* -->
+        <module name="AvoidStarImport"/>
+
+        <!--limite a 2000 ligne la taille d'un fichier-->
+        <module name="FileLength">
+      		<property name="max" value="2000"/>
+	</module>
+
+	<!-- ordre des declarations : Class (static) variables. First the public class variables, then the protected, then package level (no access modifier), and then the private. 
+	Instance variables. First the public class variables, then the protected, then package level (no access modifier), and then the private. 
+	Constructors 
+	Methods -->
+	<module name="DeclarationOrder"/>
+
+	<!--une déclaration par ligne-->
+	<module name="MultipleVariableDeclarations"/>
+
+	<!-- JavaDecl_05 -->
+	<module name="HiddenField"/>
+
+	<!-- JavaTrai_02-->
+	<module name="UnnecessaryParentheses"/>
+
+	<!-- JavaTrai_03 -->
+	<module name="NeedBraces">
+		<property name="tokens" value="LITERAL_DO,LITERAL_ELSE,LITERAL_IF,LITERAL_FOR,LITERAL_WHILE"/>
+	</module>
+
+	<!-- JavaRegPro_03 -->
+	<module name="MagicNumber">
+		<property name="tokens" value="NUM_DOUBLE, NUM_FLOAT, NUM_INT, NUM_LONG"/>
+		<property name="ignoreNumbers" value="0,1"/>
+	</module>
+
+	<!-- JavaRegPro_05 -->
+	<module name="InnerAssignment">
+		<property name="tokens" value="ASSIGN, BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN, DIV_ASSIGN, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN"/>
+	</module>	
+
+	<!-- Javadoc pour les elements (reutilisable) public JavaComm_01 -->
+	<module name="JavadocType">
+		<property name="scope" value="public"/>
+	</module>
+	<module name="JavadocMethod">
+		<property name="scope" value="public"/>
+	</module>
+	<module name="JavadocStyle">
+   		<property name="scope" value="public"/>
+      <property name="checkFirstSentence" value="false"/>
+	</module>
+    </module>
+</module>

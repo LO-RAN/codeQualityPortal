@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<faqs title="Frequently Asked Questions">
+    <part id="Calcul">
+        <title>Calcul</title>
+        <faq id="NullPointer">
+            <question><B>Le re-calcul lance une NullPointerException?</B></question>
+            <answer>
+                  <p>Vérifier que le paramètre "conf.dir" se trouvant dans le fichier server.xml référence bien le bon répertoire.</p>
+            </answer>
+        </faq>
+    </part>
+    <part id="OptimalView">
+        <title>OptimalView</title>
+        <faq id="Error25">
+            <question><B>OptimalView indique une erreur -25?</B></question>
+            <answer>
+                  <p>Vérifier que la licence OptimalView est toujours valide.</p>
+            </answer>
+        </faq>
+        <faq id="DemarrageWithoutSuccess">
+            <question><B>Chargement la page de démarrage pendant un temps très long sans réussir?</B></question>
+            <answer>
+                  <p>Vérifier que le service Tomcat n’a pas été créé avec trop de mémoire allouée à la JVM.</p>
+            </answer>
+        </faq>
+        <faq id="passwordExpired">
+          <question><B>OptimalView indique une erreur 300 ?</B></question>
+          <answer>
+            <p>
+            Si OptimalView indique l'erreur suivante :
+            <pre>
+            300 URD_MW_ERROR: Middleware : UV8
+            Error# : Failure in the connection to the UNIFACE Application Server
+            Error Text : Cannot connect to the UNIFACE process on the remote address/port. The system returned: "Bad connection parameters".
+            </pre>
+            Alors, vérifier que le mot de passe de l'utilisateur OptimalViewUser au sein de Windows n'a pas expiré. Si c'est le cas, changer le paramétrage en " Le mot de passe n'expire jamais " et redémarrer le service " OptimalView URouter ".
+            </p>
+          </answer>
+        </faq>
+    </part>
+    <part id="CAQS">
+      <title>CAQS : Administration des projets</title>
+      <faq id="Administration des projets">
+        <question><b>Les nouveaux projets n'apparaissent pas dans l'arborescence</b></question>
+        <answer>
+          <p>Il faut vérifier que l'élément " ENTRYPOINT " se trouve bien dans la table ELEMENT et dans la table PROJET.</p>
+        </answer>
+      </faq>
+    </part>    
+
+
+
+</faqs>

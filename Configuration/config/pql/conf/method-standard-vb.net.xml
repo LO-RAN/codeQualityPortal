@@ -1,0 +1,1757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<METHOD xmlns="http://www.w3schools.com">
+  <USAGE xmlns="" id="STANDARD-VB.NET">
+    <CRITDEF id="COMPLEXITY">
+      <AGGREG id="AVG" telt="ALL" />
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-MCCABECYCLOCOMPLEXITY" type="NUMERIC" />
+          <VAL value="10" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-MCCABECYCLOCOMPLEXITY" type="NUMERIC" />
+          <VAL value="7" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="3">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-MCCABECYCLOCOMPLEXITY" type="NUMERIC" />
+          <VAL value="5" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-CDATE-FOUND">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1090" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NO-ARG-EXC">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1027" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-ON-ERROR">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="OR" type="BOOLEAN">
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1065" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1206" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-RESUME-FOUND">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1072" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-MAIN-WITHOUT-ERROR">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1081" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-EXC-IN-DESTRUCTOR">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1177" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-ERR-IN-CACHE-ADD">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1596" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-SYSTEM.EXC">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1631" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-GC-COLLECT">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1039" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-LONG-WEAK">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1045" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-PERF-DESTRUCTOR">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1013" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-REF-SELF">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1014" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-RESSURECTION-OBJECT">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1015" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-GC-REGISTERFORFINALIZE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="OR" type="BOOLEAN">
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1016" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1182" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-FINALIZE-DISPOSE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1056" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-DESTR-CALL-DISPOSE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1062" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-BASE-CALL-DISPOSE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1178" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-CLOSE-CALL-DISPOSE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1179" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-OBJECTDISPOSED-DISPOSE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1181" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-DISPOSABLE-CLASS">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1609" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-LOOP-NOT-ENTERED">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="OR" type="BOOLEAN">
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1031" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1559" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-PROTECTED-FIELD">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1038" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NO-HTML">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1043" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-PUBLIC-FIELD">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1044" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-RETURN-FROM-MAIN">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1002" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-MAIN-CALLED">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1006" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NO-EQUALS-OVERRIDE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1011" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NO-SESSION-IN-CONSTRUCTEUR">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1025" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NO-PRIVATE-DEFAULT-CONSTRUCTEUR">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1060" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-GOTO">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1073" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-ASC-FUNCTION">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1080" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-DOEVENTS">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1082" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-FILEATTR-ARG">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1083" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-LOCK-FOUND">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1086" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-DBCDROPDOWNLIST">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1089" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-ITEM-FROM-CACHE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1601" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-AT-SYMBOL">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1004" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-CLASS-NAME-NAMESPACE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1018" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NO-RELATIVE-PATH-IN-URL">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="OR" type="BOOLEAN">
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1020" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1562" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-VARIABLE-SAME-NAME">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1021" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-MULTIPLE-INDEXERS">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1052" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-RESPONSE-BUFFEROUTPUT">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1054" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-SMALL-CONSTRUCTOR">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1061" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NESTED-STATEMENT">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1067" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NO-COMMENT">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1069" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-STOP-STATEMENT">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1070" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-END-STATEMENT">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1071" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-DOTNET-COLLECTION">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1075" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-MORE-100-LINES">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1079" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-METHOD-NAME-CASE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1610" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NAMESPACE-NAME-CASE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1611" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-TYPE-NAME-CASE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1612" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-EVENT-NAME-CASE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1613" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-PARAMETER-NAME-CASE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1614" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-PARAMETER-NAME-METHOD">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1615" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-METHODNAME-PROPERTY">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1616" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-JAGGED-ARRAY">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1026" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-UNMANAGED-MANAGED">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="DEFAULT" value="4.0" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1036" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-EXCESSIVE-AUTOPOSTBACK">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="OR" type="BOOLEAN">
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1040" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1563" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-PAGE-ISPOSTBACK">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="DEFAULT" value="4.0" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1041" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-WRITEIF-WRITELINEIF">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1046" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-STRING-CONCATENATION">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1003" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-REDIMARRAY">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1010" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NEW-KEYWORD">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1024" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-REQUEST-COLLECTION">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1053" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-RESPONSE-REDIRECT">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1055" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-UBOUND-LBOUND">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1078" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-TEST-EMPTY-STRING">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1088" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-PRESERVE-REDIM">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1109" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-TURN-OFF-FUNCTIONNALITY">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="OR" type="BOOLEAN">
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1164" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1167" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1565" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-ASPCOMPAT">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1171" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NO-VALIDATION-CONTROL">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="OR" type="BOOLEAN">
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1173" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1569" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-DISABLE-VIEW-STATE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1174" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-CACHING-IMPLEMENTATION">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1564" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-VIEW-STATE-NOT-REQUIRED">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1570" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-CACHE-ATTRIBUTE-SET">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1595" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-DISABLE-SESSIONSTATE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1175" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-OPTION-COMPARE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1049" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-USE-HTMLENCODE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1166" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-TURN-OFF-OPTIONS">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="OR" type="BOOLEAN">
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1168" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1169" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1560" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1561" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1567" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1568" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-VERIFY-CACHE-DURATION">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1172" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-HTMLENCODE-WITH-TEXT">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1566" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NO-CODE-VERIFICATION">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1571" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-STATIC-CONSTRUCTOR-NOT-PROTECTED">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1572" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-SECURITY-ASSERT">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1573" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-SECURITY-DEMANDS">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1574" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-OPTIONAL-PERMISSIONS">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1575" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NOTHING-PERMISSION">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1576" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-FULLTRUST-PERMISSION">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1578" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-INVALID-INHERITANCE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1579" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-TYPE-UNTRUSTED-CODE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1580" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-ASSEMBLY-OPEN">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1581" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-ELEVATED-PRIVILEGES">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1582" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-SECURITY-HOLE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1583" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-NOT-ENFORCED-LINKDEMAND">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1584" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-OPEN-HACKING">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1585" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-FIELD-SECURITY-HOLE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1586" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-SECURITY-CIRCUMVENTION">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1587" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-PROTECTED-FINALIZE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1588" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-LOSS-ASSERT-INFORMATION">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1589" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-INSUFFICIENT-SECURITY-PINVOKE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1590" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-VIRTUAL-ON-PUBLIC">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1591" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-SECURITY-FOR-CONSTRUCTOR">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1592" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-SECURE-GETDATAOBJECT">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1593" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-CUSTOMERRORS-NOT-REMOTEONLY">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1594" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-DECRYPTIONKEY-AUTOGENERATE">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1597" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-CLEAR-PASSWORD">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1598" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-BLANK-PASSWORD-CONNECTION-SQL">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1599" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-QUIT-AUTHENTICATE-PAGE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1600" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-REVIEW-HTML-COMMENTS">
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="2">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1602" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-UNFILTERED-USER-WROTE">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1603" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-URLREFERRER-HEADER">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="gt" type="BOOLEAN">
+          <VAR id="DP8-1604" type="NUMERIC" />
+          <VAL value="0" type="NUMERIC" />
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-LOSS-SECURITY-INFORMATION">
+      <AGGREG id="EXCLUS" telt="ALL">
+        <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+      </AGGREG>
+      <FORMULA value="1">
+        <OP id="OR" type="BOOLEAN">
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1607" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1608" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+        </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+    </CRITDEF>
+    <CRITDEF id="DP8-SLOW-ADO-COLL" telt="EA">
+      <FORMULA value="2">
+          <OP id="gt" type="BOOLEAN">
+            <VAR id="DP8-1606" type="NUMERIC" />
+            <VAL value="0" type="NUMERIC" />
+          </OP>
+      </FORMULA>
+      <FORMULA value="4">
+        <VAL value="true" type="BOOLEAN" />
+      </FORMULA>
+      <AGGREG id="EXCLUS_AVG_SEUIL" telt="ALL">
+        <PARAM id="SEUIL" value="10" type="NUMERIC" />
+        <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+      </AGGREG>
+    </CRITDEF>
+  </USAGE>
+</METHOD>
+

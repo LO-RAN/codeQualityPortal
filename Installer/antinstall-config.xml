@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<!DOCTYPE installer PUBLIC "-//tp23 //DTD Ant Installer Config//EN" "http://antinstaller.sf.net/dtd/antinstall-config-0.7.dtd">
+<!--
+
+This is an example installer from which you can start a project
+Edit this file to select the properties you want decided, at the end
+of the installation screen the properties will be available in a file
+in the current directory for your ant script
+
+
+lookAndFeel="com.jgoodies.plaf.windows.ExtWindowsLookAndFeel"  - not recommended since it is not linux compatible due to Micro$oft License restrictions
+
+lookAndFeel="net.sourceforge.mlf.metouia.MetouiaLookAndFeel"  - good, and cross platform
+
+lookAndFeel="com.jgoodies.plaf.plastic.Plastic3DLookAndFeel"  - good, and cross platform
+
+lookAndFeel="com.jgoodies.plaf.plastic.PlasticXPLookAndFeel"  - good, and cross platform
+
+lookAndFeel="com.jgoodies.plaf.plastic.PlasticLookAndFeel" - good but flat, and cross platform
+
+lookAndFeel="org.tp23.jgoodies.plaf.plastic.PlasticXPLookAndFeel" - default
+-->
+
+<!--
+
+defaultImageResource,windowIcon,resource and imageResource load from the classpath
+the installer script should put the locations of these resources on the classpath
+
+-->
+<installer
+			ui="swing,text"
+			verbose="false"
+			lookAndFeel="org.tp23.jgoodies.plaf.plastic.PlasticXPLookAndFeel"
+			name="CAQS %CAQS_VERSION% Installer"
+			windowIcon="/resources/icon.png"
+			defaultImageResource="/resources/caqs.png"
+			minJavaVersion="1.4"
+			loadDefaults="prompt"
+>
+
+<!-- *********************************************************************** -->
+
+   	<!--  each page element represents a page of the installer -->
+	<page displayText="Welcome to CAQS %CAQS_VERSION% Installer"
+			type="splash"
+			splashResource="/resources/splash.png"
+			altText="CAQS %CAQS_VERSION% - Compuware Application Quality Solution"
+      >
+	</page>
+
+<!-- *********************************************************************** -->
+
+	<page displayText="Requirements"
+			type="input"
+			name="intro"
+      >
+		<comment displayText="This will install CAQS %CAQS_VERSION% on your computer" bold="true"/>
+		<comment displayText="Prerequisites are :" bold="true"/>
+		<comment displayText="- JDK 1.5"/>
+		<comment displayText="- OpenOffice 2.2"/>
+		<comment displayText="Make sure these are properly installed before proceeding" bold="true"/>
+		<target displayText="CAQS solution" 
+            target="install" 
+            defaultValue="true"
+            />
+		<target displayText="CAQS database" 
+            target="majDatabase" 
+            defaultValue="false"
+            />
+  </page>
+
+<!-- *********************************************************************** -->
+
+	<!--  type="license" shows a license page to click through -->
+	<page displayText="License conditions"
+			type="license"
+			name="license"
+			resource="/resources/CPWR_license.txt"
+			usePaging="true"
+  >
+	</page>
+
+<!-- *********************************************************************** -->
+
+  <page displayText="Repository connexion"
+      name="dbconnexion" 
+      type="input"
+      >
+      <select
+            property="dbDriver"
+            defaultValue="org.h2.Driver"
+            displayText="Database hosting CAQS repository">
+         <option text="embedded H2" value="org.h2.Driver"/>
+         <option text="Oracle"      value="oracle.jdbc.driver.OracleDriver"/>
+         <option text="SQL Server"  value="net.sourceforge.jtds.jdbc.Driver"/>
+         <option text="PostgreSQL"  value="org.postgresql.Driver"/>
+      </select>
+		<text
+				property="dbUser"
+				defaultValue="caqs"
+				displayText="User name"
+				explanatoryText="User Id for creating and using CAQS tables"
+        />
+		<text
+				property="dbPassword"
+				defaultValue="caqs"
+				displayText="Password"
+				explanatoryText="User password for creating and using CAQS tables"
+        />
+        
+  </page>	
+
+<!-- *********************************************************************** -->
+
+<!-- display only if not using H2 embedded db -->
+  <page displayText="Repository connexion (2)"
+      name="dbconnexion" 
+      type="input"
+      ifProperty="${dbDriver}!=org.h2.Driver"
+      >
+
+  <comment displayText="Database connection parameters" bold="true" />    
+    <text
+				property="dbHost"
+				defaultValue="${env.HOSTNAME}${env.COMPUTERNAME}"
+				displayText="Database Host Name"
+        />
+<!-- sets the default port number depending on the selected database engine -->        
+      <conditional ifProperty="${dbDriver}==oracle.jdbc.driver.OracleDriver">
+        <hidden property="dbPort" value="1521"/>
+      </conditional>
+      <conditional ifProperty="${dbDriver}==net.sourceforge.jtds.jdbc.Driver">
+        <hidden property="dbPort" value="1433"/>
+      </conditional>
+      <conditional ifProperty="${dbDriver}==org.postgresql.Driver">
+        <hidden property="dbPort" value="5432"/>
+      </conditional>
+    <text
+				property="dbPort"
+				defaultValue="${dbPort}"
+				displayText="Database Port Number"
+        />
+		<text
+				property="dbName"
+				defaultValue="CAQS"
+				displayText="Database Service Name"
+        />
+
+  </page>	
+
+<!-- *********************************************************************** -->
+
+	<!--  type="input" shows a list of editable options for the installer -->
+	<!-- Page Settings CAQS -->
+  <page displayText="Common requirements"
+      name="CommonRequirements" 
+      type="input"
+      ifTarget="install">
+    
+		<directory
+				property="CAQSDir"
+				defaultValue="/opt/Compuware/caqs"
+				defaultValueWin="C:/Compuware/CAQS"
+				displayText="Where to install CAQS"
+				create="true"
+        /> 
+		<text
+				property="URL"
+				defaultValue="http://${env.HOSTNAME}${env.COMPUTERNAME}:8080"
+				displayText="CAQS pages URL"
+        />
+		<app-root
+				property="SOfficeDir"
+				defaultValue="/opt/Compuware/openoffice.org2.2"
+				defaultValueWin="C:/Program Files/OpenOffice.org 2.0"
+				displayText="Path to Open Office"
+        checkFile1="share/basic/Tools/script.xlb"
+        checkDir1="program"
+        explanatoryText="Directory in which the Open Office suite has been installed."
+        />
+    <comment displayText="The CAQS administrator's email adress will appear on the portal"/>
+    <comment displayText="allowing users to give some feedback about usage."/>
+    <text 
+        property="AdminMail"
+        defaultValue="admin@myCompany.com"
+        displayText="Administrator's email adress"
+        /> 
+    <comment displayText="SMTP server used to send mails upon workflow process completion"/>
+    <text 
+        property="smtpHost"
+        defaultValue="smtp.company.com"
+        displayText="SMTP server name"
+        /> 
+    <text 
+        property="smtpPort"
+        defaultValue="25"
+        displayText="SMTP server port"
+        /> 
+  </page>
+
+<!-- *********************************************************************** -->
+
+  <page
+      type="input"
+      name="Summary"
+      displayText="Settings Summary"
+      overflow="true"
+  >
+      <conditional ifProperty="${dbDriver}==org.h2.Driver">
+        <hidden property="dbUrl" value="jdbc:h2:file:../temp/caqs-db/caqs;AUTO_SERVER=TRUE"/>
+      </conditional>
+      <conditional ifProperty="${dbDriver}==oracle.jdbc.driver.OracleDriver">
+        <hidden property="dbUrl" value="jdbc:oracle:thin:@//${dbHost}:${dbPort}/${dbName}"/>
+      </conditional>
+      <conditional ifProperty="${dbDriver}==net.sourceforge.jtds.jdbc.Driver">
+        <hidden property="dbUrl" value="jdbc:jtds:sqlserver://${dbHost}:${dbPort}/${dbName}"/>
+      </conditional>
+      <conditional ifProperty="${dbDriver}==org.postgresql.Driver">
+        <hidden property="dbUrl" value="jdbc:postgresql://${dbHost}:${dbPort}/${dbName}"/>
+      </conditional>
+
+	<text
+				property="URL"
+				defaultValue="${URL}"
+				displayText="CAQS pages URL"
+        />
+  <text 
+        property="AdminMail"
+        defaultValue="${AdminMail}"
+        displayText="Administrator's email adress"
+        /> 
+  <text 
+        property="smtpHost"
+        defaultValue="${smtpHost}"
+        displayText="SMTP server name"
+        /> 
+  <text 
+        property="smtpPort"
+        defaultValue="${smtpPort}"
+        displayText="SMTP server port"
+        /> 
+ <text 
+        property="CAQSDir" 
+        defaultValue="${CAQSDir}"
+        displayText="CAQS Dir" 
+        />      
+ <text 
+        property="SOfficeDir" 
+        defaultValue="${SOfficeDir}"
+        displayText="Open Office Dir" 
+        />      
+  <comment displayText="Database connection parameters" bold="true" />    
+  <text
+				property="dbDriver"
+				defaultValue="${dbDriver}"
+				displayText="Database Driver"
+        />
+  <text
+				property="dbUrl"
+				defaultValue="${dbUrl}"
+				displayText="Database URL"
+        />
+ <text 
+        property="dbUser" 
+        defaultValue="${dbUser}"
+        displayText="Database User" 
+        />      
+ <text 
+        property="dbPassword" 
+        defaultValue="${dbPassword}"
+        displayText="Database Password" 
+        />      
+            
+  </page>
+
+<!-- *********************************************************************** -->
+
+	<!--  page type="progress" shows a progress page with the install button 
+				Its target is set to install since it is the last page this target will be run last-->
+	<page
+			type="progress"
+			name="progress"
+			displayText="Installation progress"
+			target="all"
+      >
+	</page>
+
+<!-- *********************************************************************** -->
+
+</installer>
+
+

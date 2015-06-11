@@ -1,0 +1,96 @@
+CREATE TABLE OUTILS_MODELE (
+    ID_USA                         VARCHAR2 (40)                  NOT NULL,
+    ID_OUTILS                      VARCHAR2 (40)                  NOT NULL
+)
+  TABLESPACE %TABLE_TBS%;
+   
+ALTER TABLE OUTILS_MODELE
+ ADD CONSTRAINT OUTILS_MODELEP1
+  PRIMARY KEY (ID_OUTILS, ID_USA) 
+  USING INDEX 
+  TABLESPACE %INDEX_TBS% 
+;
+
+INSERT INTO OUTILS_MODELE (ID_OUTILS, ID_USA) SELECT distinct outil_met, id_usa FROM regle r, metrique m WHERE r.id_met=m.id_met;
+
+ALTER TABLE CRITERE_USAGE MODIFY("ID_TELT" NOT NULL);
+
+ALTER TABLE STEREOTYPE MODIFY("LIB_STEREOTYPE" NULL, "DESC_STEREOTYPE" NULL);
+
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('java_jdk1.1','java','SUN JDK 1.1',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('java_jdk1.2','java','SUN JDK 1.2',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('java_jdk1.3','java','SUN JDK 1.3',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('java_jdk1.4','java','SUN JDK 1.4',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('java_jdk1.5','java','SUN JDK 1.5',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('java_jdk1.6','java','SUN JDK 1.6',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('vb_VB4','vb','MS VB 4.x',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('vb_VB5','vb','MS VB 5.x',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('vb_VB6','vb','MS VB 6.x',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('vb_VB.Net','vb','MS VB.NET',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('cobol_ANY','cobol','Cobol ANY',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('cpp_MS','cpp','MS C++',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('ansic_MS','ansic','MS C',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('pacbase_VA_2.5','pacbase','VisualAge Pacbase 2.5',null);
+INSERT INTO DIALECTE (ID_DIALECTE,ID_LANGAGE,LIB_DIALECTE,DESC_DIALECTE) VALUES ('csharp_MSVCS7.0','csharp','MS C#',null);
+commit;
+
+Update Element set ID_DIALECTE = 'java_jdk1.1' where ID_DIALECTE = 'java jdk1.1';
+Update Element set ID_DIALECTE = 'java_jdk1.2' where ID_DIALECTE = 'java jdk1.2';
+Update Element set ID_DIALECTE = 'java_jdk1.3' where ID_DIALECTE = 'java jdk1.3';
+Update Element set ID_DIALECTE = 'java_jdk1.4' where ID_DIALECTE = 'java jdk1.4';
+Update Element set ID_DIALECTE = 'java_jdk1.5' where ID_DIALECTE = 'java jdk1.5';
+Update Element set ID_DIALECTE = 'java_jdk1.6' where ID_DIALECTE = 'java jdk1.6';
+Update Element set ID_DIALECTE = 'vb_VB4' where ID_DIALECTE = 'vb VB4';
+Update Element set ID_DIALECTE = 'vb_VB5' where ID_DIALECTE = 'vb VB5';
+Update Element set ID_DIALECTE = 'vb_VB6' where ID_DIALECTE = 'vb VB6';
+Update Element set ID_DIALECTE = 'cobol_ANY' where ID_DIALECTE = 'cobol ANY';
+Update Element set ID_DIALECTE = 'cpp_MS' where ID_DIALECTE = 'cpp MS';
+Update Element set ID_DIALECTE = 'ansic_MS' where ID_DIALECTE = 'ansic MS';
+Update Element set ID_DIALECTE = 'pacbase_VA_2.5' where ID_DIALECTE = 'pacbase VA 2.5';
+Update Element set ID_DIALECTE = 'csharp_MSVCS7.0' where ID_DIALECTE = 'csharp MSVCS7.0';
+commit;
+
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'java_jdk1.1' where ID_DIALECTE = 'java jdk1.1';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'java_jdk1.2' where ID_DIALECTE = 'java jdk1.2';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'java_jdk1.3' where ID_DIALECTE = 'java jdk1.3';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'java_jdk1.4' where ID_DIALECTE = 'java jdk1.4';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'java_jdk1.5' where ID_DIALECTE = 'java jdk1.5';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'java_jdk1.6' where ID_DIALECTE = 'java jdk1.6';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'vb_VB4' where ID_DIALECTE = 'vb VB4';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'vb_VB5' where ID_DIALECTE = 'vb VB5';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'vb_VB6' where ID_DIALECTE = 'vb VB6';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'cobol_ANY' where ID_DIALECTE = 'cobol ANY';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'cpp_MS' where ID_DIALECTE = 'cpp MS';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'ansic_MS' where ID_DIALECTE = 'ansic MS';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'pacbase_VA_2.5' where ID_DIALECTE = 'pacbase VA 2.5';
+Update FICHE_CONNAISSANCE set ID_DIALECTE = 'csharp_MSVCS7.0' where ID_DIALECTE = 'csharp MSVCS7.0';
+commit;
+
+Delete From DIALECTE where ID_DIALECTE = 'java jdk1.1';
+Delete From DIALECTE where ID_DIALECTE = 'java jdk1.2';
+Delete From DIALECTE where ID_DIALECTE = 'java jdk1.3';
+Delete From DIALECTE where ID_DIALECTE = 'java jdk1.4';
+Delete From DIALECTE where ID_DIALECTE = 'java jdk1.5';
+Delete From DIALECTE where ID_DIALECTE = 'java jdk1.6';
+Delete From DIALECTE where ID_DIALECTE = 'vb VB4';
+Delete From DIALECTE where ID_DIALECTE = 'vb VB5';
+Delete From DIALECTE where ID_DIALECTE = 'vb VB6';
+Delete From DIALECTE where ID_DIALECTE = 'cobol ANY';
+Delete From DIALECTE where ID_DIALECTE = 'cpp MS';
+Delete From DIALECTE where ID_DIALECTE = 'ansic MS';
+Delete From DIALECTE where ID_DIALECTE = 'pacbase VA 2.5';
+Delete From DIALECTE where ID_DIALECTE = 'csharp MSVCS7.0';
+commit;
+
+DROP INDEX ELEMENT_BASELINE_INFO;
+CREATE INDEX ELEMENT_BASELINE_INFO_I1 ON 
+  ELEMENT_BASELINE_INFO(ID_BLINE, ID_MAIN_ELT, ID_ELT) 
+  TABLESPACE %INDEX_TBS% 
+; 
+
+DROP INDEX ELTDESCIDX;
+CREATE INDEX ELTDESCIDX ON 
+  ELEMENT(ID_MAIN_ELT, DESC_ELT, ID_ELT) 
+  TABLESPACE %INDEX_TBS% 
+; 
+

@@ -1,0 +1,600 @@
+[INFO] Scanning for projects...
+[INFO] Reactor build order: 
+[INFO]   Code2HTML
+[INFO]   AntTask
+[INFO]   AppletArchitecture
+[INFO]   Applet factory
+[INFO]   ToolBox
+[INFO]   DevEntreprise Plugin
+[INFO]   Devpartner Plugin
+[INFO]   Generic Parser
+[INFO]   Applet Graph
+[INFO]   ImportExport
+[INFO]   MetricExtractor
+[INFO]   Metrics Generation
+[INFO]   AdvisorPlugin
+[INFO]   ParserConnector
+[INFO]   PmdFormatter
+[INFO]   Applet ScatterPlot
+[INFO]   Security
+[INFO]   UserMgmt
+[INFO]   SecurityViewer
+[INFO]   XmlCalcul
+[INFO]   CaqsWorkFlow
+[INFO]   Caqs
+[INFO]   CAQS Solution
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Code2HTML
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\Sandbox\Code2HTML\src\main\resources
+Downloading: http://repo1.maven.org/maven2/gnu/gnu-regexp/1.1.4/gnu-regexp-1.1.4.pom
+[INFO] Unable to find resource 'gnu:gnu-regexp:pom:1.1.4' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/microstar/microstar-xml/1.4.0/microstar-xml-1.4.0.pom
+[INFO] Unable to find resource 'microstar:microstar-xml:pom:1.4.0' in repository central (http://repo1.maven.org/maven2)
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\Sandbox\Code2HTML\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\Sandbox\Code2HTML\target\code2html-1.0.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\code2html\1.0\code2html-1.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building AntTask
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\AntTask\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\AntTask\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\AntTask\target\anttask-1.3.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\anttask\1.3\anttask-1.3.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building AppletArchitecture
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 16 resources
+[INFO] Copying 2 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\AppletArchitecture\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\AppletArchitecture\target\architecture-applet-4.5.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\architecture-applet\4.5\architecture-applet-4.5.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Applet factory
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\AppletFactory\src\main\images
+[INFO] Copying 3 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\AppletFactory\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\AppletFactory\target\applet-factory-4.5.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\applet-factory\4.5\applet-factory-4.5.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ToolBox
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\ToolBox\src\main\images
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\ToolBox\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\ToolBox\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Surefire report directory: D:\projects\CAQS\Development\Src\ToolBox\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.compuware.toolbox.util.HashMapUtilsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 sec
+Running com.compuware.toolbox.util.xml.FonctionsParserTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.162 sec
+Running com.compuware.toolbox.util.StringUtilsTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 sec
+
+Results :
+
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\ToolBox\target\toolbox-4.5.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\toolbox\4.5\toolbox-4.5.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building DevEntreprise Plugin
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+Downloading: http://repo1.maven.org/maven2/sqljdbc/sqljdbc/1.2/sqljdbc-1.2.pom
+[INFO] Unable to find resource 'sqljdbc:sqljdbc:pom:1.2' in repository central (http://repo1.maven.org/maven2)
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\DevEntreprisePlugin\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\DevEntreprisePlugin\target\deventreprise-plugin-1.0.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\deventreprise-plugin\1.0\deventreprise-plugin-1.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Devpartner Plugin
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\DevpartnerPlugin\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\DevpartnerPlugin\target\devpartner-plugin-1.3.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\devpartner-plugin\1.3\devpartner-plugin-1.3.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Generic Parser
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\GenericParser\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\GenericParser\target\genericparser-1.0.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\genericparser\1.0\genericparser-1.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Applet Graph
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\GraphApplet\src\main\images
+[INFO] Copying 6 resources
+Downloading: http://repo1.maven.org/maven2/org/netbeans/org-netbeans-api-visual/2.0/org-netbeans-api-visual-2.0.pom
+[INFO] Unable to find resource 'org.netbeans:org-netbeans-api-visual:pom:2.0' in repository central (http://repo1.maven.org/maven2)
+Downloading: http://repo1.maven.org/maven2/org/netbeans/org-openide-util/2.0/org-openide-util-2.0.pom
+[INFO] Unable to find resource 'org.netbeans:org-openide-util:pom:2.0' in repository central (http://repo1.maven.org/maven2)
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\GraphApplet\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [jar:sign {execution: default}]
+[debug] jarsigner executable=[d:\tools\jdk1.5.0_11\jre\..\bin\jarsigner.exe]
+[debug] Executing: cmd.exe /X /C '"d:\tools\jdk1.5.0_11\jre\..\bin\jarsigner.exe -verify D:\projects\CAQS\Development\Src\GraphApplet\target\signed\graph-applet-4.5.jar"'
+[info] jar verified.
+[info] 
+[info] Warning: This jar contains entries whose signer certificate has expired. Re-run with the -verbose and -certs options for more details.
+[INFO] JAR D:\projects\CAQS\Development\Src\GraphApplet\target\signed\graph-applet-4.5.jar is already signed. Skipping.
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\GraphApplet\target\graph-applet-4.5.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\graph-applet\4.5\graph-applet-4.5.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ImportExport
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\JDBCImporter\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\JDBCImporter\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\JDBCImporter\target\importExport-1.3.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\importExport\1.3\importExport-1.3.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building MetricExtractor
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\MetricExtractor\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\MetricExtractor\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\MetricExtractor\target\metric-extractor-1.0.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\metric-extractor\1.0\metric-extractor-1.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Metrics Generation
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\MetricGeneration\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\MetricGeneration\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\MetricGeneration\target\metricgeneration-1.1.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\metricgeneration\1.1\metricgeneration-1.1.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building AdvisorPlugin
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\OptimalAdvisorPlugin\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\OptimalAdvisorPlugin\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\OptimalAdvisorPlugin\target\advisorplugin-1.2.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\advisorplugin\1.2\advisorplugin-1.2.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ParserConnector
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\ParserConnector\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\ParserConnector\target\parserconnector-1.3.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\parserconnector\1.3\parserconnector-1.3.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building PmdFormatter
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\PmdFormatter\src\main\resources
+Downloading: http://repo1.maven.org/maven2/jaxen/jaxen/1.1-beta-10/jaxen-1.1-beta-10.pom
+[INFO] Unable to find resource 'jaxen:jaxen:pom:1.1-beta-10' in repository central (http://repo1.maven.org/maven2)
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\PmdFormatter\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\PmdFormatter\target\pmdformatter-1.0.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\pmdformatter\1.0\pmdformatter-1.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Applet ScatterPlot
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\ScatterPlot\src\main\images
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\ScatterPlot\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\ScatterPlot\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\ScatterPlot\target\scatterplot-applet-4.5.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\scatterplot-applet\4.5\scatterplot-applet-4.5.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Security
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\Security\src\main\resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\Security\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\Security\target\security-4.5.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\security\4.5\security-4.5.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building UserMgmt
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\UserMgmt\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: D:\projects\CAQS\Development\Src\UserMgmt\target\usermgmt-4.5.jar
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\UserMgmt\target\usermgmt-4.5.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\usermgmt\4.5\usermgmt-4.5.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building SecurityViewer
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\SecurityViewer\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [war:war {execution: default-war}]
+[INFO] Packaging webapp
+[INFO] Assembling webapp[securityviewer] in [D:\projects\CAQS\Development\Src\SecurityViewer\target\securityviewer-4.5]
+[INFO] Dependency[Dependency {groupId=struts, artifactId=struts-core, version=1.3.8, type=jar}] has changed (was Dependency {groupId=struts, artifactId=struts-core, version=1.3.8, type=jar}).
+[INFO] Dependency[Dependency {groupId=struts, artifactId=struts-taglib, version=1.3.8, type=jar}] has changed (was Dependency {groupId=struts, artifactId=struts-taglib, version=1.3.8, type=jar}).
+[INFO] Processing war project
+[INFO] Copying webapp resources[D:\projects\CAQS\Development\Src\SecurityViewer\src\main\webapps]
+[INFO] Webapp assembled in[106 msecs]
+[INFO] Building war: D:\projects\CAQS\Development\Src\SecurityViewer\target\securityviewer-4.5.war
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\SecurityViewer\target\securityviewer-4.5.war to C:\Users\cwfr-lizac\.m2\repository\caqs\securityviewer\4.5\securityviewer-4.5.war
+[INFO] ------------------------------------------------------------------------
+[INFO] Building XmlCalcul
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\XmlCalcul\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\XmlCalcul\target\xmlcalcul-4.5.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\xmlcalcul\4.5\xmlcalcul-4.5.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building CaqsWorkFlow
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\projects\CAQS\Development\Src\CaqsWorkFlow\src\test\resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\CaqsWorkFlow\target\caqsworkflow-4.5.jar to C:\Users\cwfr-lizac\.m2\repository\caqs\caqsworkflow\4.5\caqsworkflow-4.5.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Caqs
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using encoding: 'UTF-8' to copy filtered resources.
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using encoding: 'UTF-8' to copy filtered resources.
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [surefire:test {execution: default-test}]
+[INFO] No tests to run.
+[INFO] [war:war {execution: default-war}]
+[INFO] Packaging webapp
+[INFO] Assembling webapp[carscode] in [D:\projects\CAQS\Development\Src\Base\target\carscode-4.5]
+[INFO] Dependency[Dependency {groupId=org.apache.poi, artifactId=poi, version=3.6, type=jar}] has changed (was Dependency {groupId=org.apache.poi, artifactId=poi, version=3.6, type=jar}).
+[INFO] Dependency[Dependency {groupId=org.apache.poi, artifactId=poi-ooxml, version=3.6, type=jar}] has changed (was Dependency {groupId=org.apache.poi, artifactId=poi-ooxml, version=3.6, type=jar}).
+[INFO] Dependency[Dependency {groupId=jcs, artifactId=jcs, version=1.2.7.9, type=jar}] has changed (was Dependency {groupId=jcs, artifactId=jcs, version=1.2.7.9, type=jar}).
+[INFO] Dependency[Dependency {groupId=commons-math, artifactId=commons-math, version=1.2, type=jar}] has changed (was Dependency {groupId=commons-math, artifactId=commons-math, version=1.2, type=jar}).
+[INFO] Dependency[Dependency {groupId=commons-fileupload, artifactId=commons-fileupload, version=1.1.1, type=jar}] has changed (was Dependency {groupId=commons-fileupload, artifactId=commons-fileupload, version=1.1.1, type=jar}).
+[INFO] Dependency[Dependency {groupId=json-lib, artifactId=json-lib, version=2.2-jdk15, type=jar}] has changed (was Dependency {groupId=json-lib, artifactId=json-lib, version=2.2-jdk15, type=jar}).
+[INFO] Dependency[Dependency {groupId=ezmorph, artifactId=ezmorph, version=1.0.4, type=jar}] has changed (was Dependency {groupId=ezmorph, artifactId=ezmorph, version=1.0.4, type=jar}).
+[INFO] Dependency[Dependency {groupId=struts, artifactId=struts-core, version=1.3.8, type=jar}] has changed (was Dependency {groupId=struts, artifactId=struts-core, version=1.3.8, type=jar}).
+[INFO] Dependency[Dependency {groupId=struts, artifactId=struts-taglib, version=1.3.8, type=jar}] has changed (was Dependency {groupId=struts, artifactId=struts-taglib, version=1.3.8, type=jar}).
+[INFO] Dependency[Dependency {groupId=commons-io, artifactId=commons-io, version=1.1, type=jar}] has changed (was Dependency {groupId=commons-io, artifactId=commons-io, version=1.1, type=jar}).
+[INFO] Dependency[Dependency {groupId=caqs, artifactId=toolbox, version=4.5, type=jar}] has changed (was Dependency {groupId=caqs, artifactId=toolbox, version=4.5, type=jar}).
+[INFO] Dependency[Dependency {groupId=caqs, artifactId=xmlcalcul, version=4.5, type=jar}] has changed (was Dependency {groupId=caqs, artifactId=xmlcalcul, version=4.5, type=jar}).
+[INFO] Dependency[Dependency {groupId=caqs, artifactId=applet-factory, version=4.5, type=jar}] has changed (was Dependency {groupId=caqs, artifactId=applet-factory, version=4.5, type=jar}).
+[INFO] Dependency[Dependency {groupId=caqs, artifactId=architecture-applet, version=4.5, type=jar}] has changed (was Dependency {groupId=caqs, artifactId=architecture-applet, version=4.5, type=jar}).
+[INFO] Dependency[Dependency {groupId=caqs, artifactId=security, version=4.5, type=jar}] has changed (was Dependency {groupId=caqs, artifactId=security, version=4.5, type=jar}).
+[INFO] Dependency[Dependency {groupId=org.springframework.security, artifactId=spring-security-core, version=2.0.5.RELEASE, type=jar}] has changed (was Dependency {groupId=org.springframework.security, artifactId=spring-security-core, version=2.0.5.RELEASE, type=jar}).
+[INFO] Dependency[Dependency {groupId=org.springframework.ldap, artifactId=spring-ldap, version=1.2.1, type=jar}] has changed (was Dependency {groupId=org.springframework.ldap, artifactId=spring-ldap, version=1.2.1, type=jar}).
+[INFO] Dependency[Dependency {groupId=org.springframework, artifactId=spring-core, version=2.5.6, type=jar}] has changed (was Dependency {groupId=org.springframework, artifactId=spring-core, version=2.5.6, type=jar}).
+[INFO] Dependency[Dependency {groupId=org.springframework, artifactId=spring-context, version=2.5.6, type=jar}] has changed (was Dependency {groupId=org.springframework, artifactId=spring-context, version=2.5.6, type=jar}).
+[INFO] Dependency[Dependency {groupId=org.springframework, artifactId=spring-aop, version=2.5.6, type=jar}] has changed (was Dependency {groupId=org.springframework, artifactId=spring-aop, version=2.5.6, type=jar}).
+[INFO] Dependency[Dependency {groupId=org.springframework, artifactId=spring-beans, version=2.5.6, type=jar}] has changed (was Dependency {groupId=org.springframework, artifactId=spring-beans, version=2.5.6, type=jar}).
+[INFO] Dependency[Dependency {groupId=org.springframework, artifactId=spring-dao, version=2.0.8, type=jar}] has changed (was Dependency {groupId=org.springframework, artifactId=spring-dao, version=2.0.8, type=jar}).
+[INFO] Dependency[Dependency {groupId=org.springframework, artifactId=spring-jdbc, version=2.5.6, type=jar}] has changed (was Dependency {groupId=org.springframework, artifactId=spring-jdbc, version=2.5.6, type=jar}).
+[INFO] Dependency[Dependency {groupId=org.springframework, artifactId=spring-web, version=2.5.6, type=jar}] has changed (was Dependency {groupId=org.springframework, artifactId=spring-web, version=2.5.6, type=jar}).
+[INFO] Dependency[Dependency {groupId=jfree, artifactId=jcommon, version=1.0.16, type=jar}] has changed (was Dependency {groupId=jfree, artifactId=jcommon, version=1.0.16, type=jar}).
+[INFO] Dependency[Dependency {groupId=jfree, artifactId=jfreechart, version=1.0.13, type=jar}] has changed (was Dependency {groupId=jfree, artifactId=jfreechart, version=1.0.13, type=jar}).
+[INFO] Dependency[Dependency {groupId=jdom, artifactId=jdom, version=1.0, type=jar}] has changed (was Dependency {groupId=jdom, artifactId=jdom, version=1.0, type=jar}).
+[INFO] Dependency[Dependency {groupId=regexp, artifactId=regexp, version=1.3, type=jar}] has changed (was Dependency {groupId=regexp, artifactId=regexp, version=1.3, type=jar}).
+[INFO] Dependency[Dependency {groupId=opencsv, artifactId=opencsv, version=1.6, type=jar}] has changed (was Dependency {groupId=opencsv, artifactId=opencsv, version=1.6, type=jar}).
+[INFO] Dependency[Dependency {groupId=iText, artifactId=iText, version=2.0.7, type=jar}] has changed (was Dependency {groupId=iText, artifactId=iText, version=2.0.7, type=jar}).
+[INFO] Dependency[Dependency {groupId=dom4j, artifactId=dom4j, version=1.6.1, type=jar}] has changed (was Dependency {groupId=dom4j, artifactId=dom4j, version=1.6.1, type=jar}).
+[INFO] Dependency[Dependency {groupId=jaxen, artifactId=jaxen, version=1.1.1, type=jar}] has changed (was Dependency {groupId=jaxen, artifactId=jaxen, version=1.1.1, type=jar}).
+[INFO] Dependency[Dependency {groupId=xerces, artifactId=xerces, version=2.4.0, type=jar}] has been removed from the project.
+[WARNING] Could not retrieve the target file name of dependency[Dependency {groupId=xerces, artifactId=xerces, version=2.4.0, type=jar}]
+[INFO] Processing war project
+[INFO] Copying webapp resources[D:\projects\CAQS\Development\Src\Base\src\main\webapps]
+[INFO] Webapp assembled in[3000 msecs]
+[INFO] Building war: D:\projects\CAQS\Development\Src\Base\target\carscode-4.5.war
+[INFO] [dependency:copy {execution: default}]
+[INFO] Configured Artifact: caqs:scatterplot-applet:4.5:jar
+[INFO] Configured Artifact: caqs:graph-applet:4.5:jar
+[INFO] Configured Artifact: org.netbeans:org-netbeans-api-visual:2.0:jar
+[INFO] Configured Artifact: org.netbeans:org-openide-util:2.0:jar
+[INFO] Configured Artifact: jfree:jfreechart:1.0.13:jar
+[INFO] Configured Artifact: jfree:jcommon:1.0.16:jar
+[INFO] Configured Artifact: commons-collections:commons-collections:3.2:jar
+[INFO] Configured Artifact: caqs:architecture-applet:4.5:jar
+[INFO] Configured Artifact: caqs:applet-factory:4.5:jar
+[INFO] Copying scatterplot-applet-4.5.jar to D:\projects\CAQS\Development\Src\Base\target\carscode-4.5\applets\scatterplot-applet-4.5.jar
+[INFO] Copying graph-applet-4.5.jar to D:\projects\CAQS\Development\Src\Base\target\carscode-4.5\applets\graph-applet-4.5.jar
+[INFO] org.netbeans:org-netbeans-api-visual:2.0:jar already exists in D:\projects\CAQS\Development\Src\Base\target\carscode-4.5\applets
+[INFO] org.netbeans:org-openide-util:2.0:jar already exists in D:\projects\CAQS\Development\Src\Base\target\carscode-4.5\applets
+[INFO] jfree:jfreechart:1.0.13:jar already exists in D:\projects\CAQS\Development\Src\Base\target\carscode-4.5\applets
+[INFO] jfree:jcommon:1.0.16:jar already exists in D:\projects\CAQS\Development\Src\Base\target\carscode-4.5\applets
+[INFO] commons-collections:commons-collections:3.2:jar already exists in D:\projects\CAQS\Development\Src\Base\target\carscode-4.5\applets
+[INFO] Copying architecture-applet-4.5.jar to D:\projects\CAQS\Development\Src\Base\target\carscode-4.5\applets\architecture-applet-4.5.jar
+[INFO] Copying applet-factory-4.5.jar to D:\projects\CAQS\Development\Src\Base\target\carscode-4.5\applets\applet-factory-4.5.jar
+[INFO] [antrun:run {execution: default}]
+[INFO] Executing tasks
+   [delete] Deleting: D:\projects\CAQS\Development\Src\Base\target\carscode-4.5.war
+     [echo] Setting ExtJS as not debug...
+     [echo] Striping white spaces from JSP files...
+     [echo] Filling about.js file...
+      [zip] Building zip: D:\projects\CAQS\Development\Src\Base\target\carscode-4.5.war
+[INFO] Executed tasks
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\Base\target\carscode-4.5.war to C:\Users\cwfr-lizac\.m2\repository\caqs\carscode\4.5\carscode-4.5.war
+[INFO] ------------------------------------------------------------------------
+[INFO] Building CAQS Solution
+[INFO]    task-segment: [install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [site:attach-descriptor {execution: default-attach-descriptor}]
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing D:\projects\CAQS\Development\Src\pom.xml to C:\Users\cwfr-lizac\.m2\repository\compuware\Global\XXX\Global-XXX.pom
+[INFO] 
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] ------------------------------------------------------------------------
+[INFO] Code2HTML ............................................. SUCCESS [3.145s]
+[INFO] AntTask ............................................... SUCCESS [0.100s]
+[INFO] AppletArchitecture .................................... SUCCESS [0.249s]
+[INFO] Applet factory ........................................ SUCCESS [0.136s]
+[INFO] ToolBox ............................................... SUCCESS [1.050s]
+[INFO] DevEntreprise Plugin .................................. SUCCESS [0.443s]
+[INFO] Devpartner Plugin ..................................... SUCCESS [0.093s]
+[INFO] Generic Parser ........................................ SUCCESS [0.138s]
+[INFO] Applet Graph .......................................... SUCCESS [1.110s]
+[INFO] ImportExport .......................................... SUCCESS [0.260s]
+[INFO] MetricExtractor ....................................... SUCCESS [0.099s]
+[INFO] Metrics Generation .................................... SUCCESS [0.117s]
+[INFO] AdvisorPlugin ......................................... SUCCESS [0.068s]
+[INFO] ParserConnector ....................................... SUCCESS [0.127s]
+[INFO] PmdFormatter .......................................... SUCCESS [0.443s]
+[INFO] Applet ScatterPlot .................................... SUCCESS [0.105s]
+[INFO] Security .............................................. SUCCESS [0.219s]
+[INFO] UserMgmt .............................................. SUCCESS [0.154s]
+[INFO] SecurityViewer ........................................ SUCCESS [1.278s]
+[INFO] XmlCalcul ............................................. SUCCESS [0.211s]
+[INFO] CaqsWorkFlow .......................................... SUCCESS [0.130s]
+[INFO] Caqs .................................................. SUCCESS [25.981s]
+[INFO] CAQS Solution ......................................... SUCCESS [1.254s]
+[INFO] ------------------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 37 seconds
+[INFO] Finished at: Fri Nov 05 14:32:27 CET 2010
+[INFO] Final Memory: 29M/52M
+[INFO] ------------------------------------------------------------------------

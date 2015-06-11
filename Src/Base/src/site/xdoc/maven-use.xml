@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<document>
+
+  <properties>
+    <title>Maven</title>
+  </properties>
+  
+  <head>
+	<style>
+		.info-file {
+			font-style: italic;
+		}
+	</style>
+  </head>
+  
+  <body>
+    <section name="Initialisation du référentiel">
+		<subsection name="Mise à jour de la structure des sources">
+		  <p>
+			Il faut faire un checkout du répertoire Referentiel/Src.
+		  </p>
+		</subsection>
+		<subsection name="Installation de Maven">
+		  <p>
+			Télécharger l'exécutable sur <a href="http://maven.apache.org" target="_blank">http://maven.apache.org</a><BR/>
+			Installer l'application.<BR/>
+			Dans MAVEN_HOME/bin exécuter la commande install_repo [répertoire du repository local]<BR/>
+			Ajouter dans le Path le chemin d'accès à %MAVEN_HOME%/bin<BR/>
+		  </p>
+		</subsection>
+		<subsection name="Arborescence des modules">
+			<p>
+				Chaque module est doit avoir l'arborescence suivante:<BR/>
+				<source>
+project.xml            <span class="info-file">contient la définition du projet: nom, équipe de dev, modules utilisés, rapports</span>
+project.properties     <span class="info-file">contient les propriétés utilisées par le project.xml et spécifiques à l'environnement utilisateur</span>
+maven.xml              <span class="info-file">facultatif: définition de nouvelles tâches ou redéfinition de tâche</span>
+src
+  - main
+	- java              <span class="info-file">contient les fichiers source .java</span>
+	- resources         <span class="info-file">contient les fichiers de propriété utilisés par l'application</span>
+	- webapps           <span class="info-file">contient les fichiers web: JSP, images, css, js, etc...</span>
+	   - web.xml        <span class="info-file">fichier de configuration Web</span>
+  - site
+	- xdoc              <span class="info-file">contient les fichiers de documentation au format xdoc utilisés lors de la génération du site</span>
+	   - navigation.xml <span class="info-file">fichier contenant le menu à insérer avant les rapports automatiques</span>
+	   - faq.fml        <span class="info-file">fichier contenant la FAQ cf. <a href="http://maven.apache.org/reference/plugins/faq/" target="_blank">plugin FAQ</a></span>
+	   - xxx.xml        <span class="info-file">fichier de documentation défini</span>
+  - test
+    - java              <span class="info-file">contient les fichiers source .java de test</span>
+				</source>
+			</p>
+		</subsection>
+		<subsection name="Modification des fichiers properties des modules">
+			<p>
+			Monter un disque réseau pour \\cwfr-d149\d$ et lui assigner une lettre (par exemple Z).<BR/>
+			Modifier le fichier project.properties pour faire pointer le repository distant sur Z:/Maven/Repository<BR/>
+			Ex : maven.repo.remote=file://Z:/Maven/Repository<BR/>
+			</p>
+			<p>
+			Les fichiers project.properties, project.xml, maven.xml sont dépendant des installations de chacun. Il ne faut pas les valider dans CVS. Ceux présents dans CVS sont là pour servir de base aux autres installations.
+			</p>
+		</subsection>
+		<subsection name="Commandes à exécuter">
+			<p>
+			Ouvrir une session dos et se positionner dans un module (exemple Referentiel/Src/Base).<BR/>
+			Il est alors possible d'exécuter les commandes suivantes :<BR/>
+			</p>
+			<p>
+		  <table>
+			<tbody>
+				<tr>
+					<td>maven java:compile</td>
+					<td>Compile le module.</td>
+				</tr>
+				<tr>
+					<td>maven jar:jar</td>
+					<td>Compile et crée une archive de type JAR.</td>
+				</tr>
+				<tr>
+					<td>maven jar:install</td>
+					<td>Installe l'archive JAR dans le repository local pour être utilisée par d'autres modules.</td>
+				</tr>
+				<tr>
+					<td>maven jar:deploy</td>
+					<td>Déploie l'archive sur le repository distant pour être utilisée par d'autres développeurs.</td>
+				</tr>
+				<tr>
+					<td>maven war</td>
+					<td>Crée une archive Web. Valable pour Base.</td>
+				</tr>
+				<tr>
+					<td>maven site</td>
+					<td>Crée un site WEB correspondant à l'état courant du projet.</td>
+				</tr>
+				<tr>
+					<td>maven site:war</td>
+					<td>Crée une archive Web pour le site.</td>
+				</tr>
+				<tr>
+					<td>maven scm:update-project</td>
+					<td>Effectue un CVS update des sources.</td>
+				</tr>
+				<tr>
+					<td>maven -g</td>
+					<td>Liste toutes les commandes possibles à l'instant t.</td>
+				</tr>
+			</tbody>
+			</table>
+			</p>
+			<p>
+				La description des différents plugins disponibles est accessible sur le site <a href="http://maven.apache.org/reference/plugins/" target="_blank">http://maven.apache.org/reference/plugins/</a>
+			</p>
+		</subsection>
+	</section>
+	<section name="How to">
+		<subsection name="Compiler un module">
+			<p>
+				<ul>
+					<li>Ouvrir une fenêtre DOS</li>
+					<li>Se positionner dans le répertoire du module</li>
+					<li>Taper la commande maven java:compile</li>
+				</ul>
+				Le répertoire destination pour les fichiers .class est <span class="info-file">target/classes</span>.
+			</p>
+		</subsection>
+		<subsection name="Créer une archive Java">
+			<p>
+				<ul>
+					<li>Ouvrir une fenêtre DOS</li>
+					<li>Se positionner dans le répertoire du module</li>
+					<li>Taper la commande maven jar:jar</li>
+				</ul>
+				Le répertoire destination pour l'archive .jar est <span class="info-file">target/classes</span>.
+			</p>
+		</subsection>
+		<subsection name="Installer une archive Java dans le référentiel local">
+			<p>
+				La publication dans le référentiel local permet de rendre accessible l'archive aux autres modules sur la machine locale.
+				<ul>
+					<li>Ouvrir une fenêtre DOS</li>
+					<li>Se positionner dans le répertoire du module</li>
+					<li>Taper la commande maven jar:install</li>
+				</ul>
+			</p>
+		</subsection>
+		<subsection name="Installer une archive Java dans le référentiel commun">
+			<p>
+				La publication dans le référentiel commun permet de rendre accessible l'archive à l'ensemble de l'équipe de développement.
+				<ul>
+					<li>Ouvrir une fenêtre DOS</li>
+					<li>Se positionner dans le répertoire du module</li>
+					<li>Taper la commande maven jar:deploy</li>
+				</ul>
+			</p>
+			Le fichier project.properties doit être correctement configuré afin de publier l'archive au bon endroit.
+		</subsection>
+		<subsection name="Compiler un projet WEB">
+			<p>
+				Un projet de type WEB nécessite la présence du répertoire webapps contenant les JSP ainsi que les éléments statiques de l'application. Il doit contenir un répertoire WEB-INF/ et le fichier de configuration web.xml.
+				<ul>
+					<li>Ouvrir une fenêtre DOS</li>
+					<li>Se positionner dans le répertoire du module</li>
+					<li>Taper la commande maven war</li>
+				</ul>
+			</p>
+			<p>
+				Cette commande réalise les tâches suivantes:
+				<ul>
+					<li>
+						Copie des fichiers du répertoire source <span class="info-file">src/main/webapps</span> dans le répertoire <span class="info-file">target/{projectId}</span>.
+					</li>
+					<li>
+						Compilation des sources Java dans le répertoire <span class="info-file">target/classes</span>.
+					</li>
+					<li>
+						Copie des fichiers de resources dans le répertoire <span class="info-file">target/classes</span>.
+					</li>
+					<li>
+						Compilation et exécution des tests unitaires s'ils existent.
+					</li>
+					<li>
+						Copie des librairies utilisées par le projet dans le répertoire <span class="info-file">target/{projectId}/lib</span>.
+					</li>
+					<li>
+						Copie des classes de <span class="info-file">target/classes</span> vers <span class="info-file">target/{projectId}/WEB-INF/classes</span>.
+					</li>
+					<li>
+						Création de l'archive WAR dans le répertoire <span class="info-file">target/</span>.
+					</li>
+				</ul>
+			</p>
+		</subsection>
+		<subsection name="Référencer une librairie dans un module">
+			<p>
+				Si un module nécessite l'utilisation d'une librairie ou d'un autre module, les points suivants doivent être vérifié:
+				<ul>
+					<li>La version de la librairie ou du module référencé se trouve dans le référentiel commun.</li>
+					<li>
+						Le fichier de description du projet project.xml est configuré afin d'indiquer la référence:
+						<source>
+&lt;dependencies&gt;
+	...
+	&lt;dependency&gt;
+		&lt;groupId&gt;groupeId de la librairie&lt;/groupId&gt;   
+		&lt;artifactId&gt;id de la librairie&lt;/artifactId&gt;
+		&lt;version&gt;version de la librairie&lt;/version&gt;
+		&lt;!-- Cas particulier des modules WEB --&gt;
+		&lt;properties&gt;
+			&lt;!-- Indique que le fichier .JAR de la librairie doit être copié dans le webapps/WEB-INF/lib du module --&gt;
+			&lt;war.bundle&gt;true&lt;/war.bundle&gt;
+			&lt;!-- Indique que le fichier .JAR de la librairie doit être copié dans le webapps/directory du module --&gt;
+			&lt;war.target.path&gt;directory&lt;/war.target.path&gt;
+		&lt;/properties&gt;
+	&lt;/dependency&gt;
+	...
+&lt;/dependencies&gt;
+						</source>
+						Exemple avec servlet version 2.3, struts version 1.0.2 et l'applet d'architecture version 2.1:
+						<source>
+&lt;!--
+	Utilisé pour la compilation, la librairie est déjà déployé avec les serveur tomcat.
+	Il n'est pas nécessaire d'avoir la librairie dans le WEB-INF/lib.
+--&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;servletapi&lt;/groupId&gt;
+	&lt;artifactId&gt;servletapi&lt;/artifactId&gt;
+	&lt;version&gt;2.3&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!--
+	Utilisation du framework Struts dans l'application.
+	Il est pas nécessaire d'avoir la librairie dans le WEB-INF/lib.
+--&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;struts&lt;/groupId&gt;
+	&lt;artifactId&gt;struts&lt;/artifactId&gt;
+	&lt;version&gt;1.0.2&lt;/version&gt;
+	&lt;properties&gt;
+		&lt;war.bundle&gt;true&lt;/war.bundle&gt;
+	&lt;/properties&gt;
+&lt;/dependency&gt;
+	
+&lt;!--
+	L'applet d'architecture doit être présente dans le répertoire applets.
+	Il est nécessaire d'avoir la librairie dans le WEB-INF/lib car des DataObjects sont utilisés par une servlet.
+--&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;caqs&lt;/groupId&gt;
+	&lt;artifactId&gt;architecture-applet&lt;/artifactId&gt;
+	&lt;version&gt;2.1&lt;/version&gt;
+	&lt;properties&gt;
+		&lt;war.bundle&gt;true&lt;/war.bundle&gt;
+		&lt;war.target.path&gt;applets&lt;/war.target.path&gt;
+	&lt;/properties&gt;
+&lt;/dependency&gt;
+						</source>
+					</li>
+				</ul>
+			</p>
+		</subsection>
+	</section>
+	<section name="Intégration avec CVS">
+		<subsection name="Configuration">
+			<p>
+				Le plugin <a href="http://maven.apache.org/reference/plugins/scm/" target="_blank">SCM</a> permet d'intéragir avec un gestionnaire de version. Pour se faire, il est indispensable de configurer le projet via son fichier de configuration project.xml da la façon suivante:
+				<source>
+&lt;repository&gt;
+	&lt;connection&gt;scm:cvs:pserver:${cvs_name}@${machine}:${referentiel}:${module}&lt;/connection&gt;
+	&lt;url&gt;http://www.compuware.com&lt;/url&gt;
+&lt;/repository&gt;
+				</source>
+				Soit dans notre environnement, pour le module Base:
+				<source>
+&lt;repository&gt;
+	&lt;connection>scm:cvs:pserver:${cvs_name}@cwfr-d149:/CarsCode:/Base&lt;/connection&gt;
+	&lt;url&gt;http://www.compuware.com&lt;/url&gt;
+&lt;/repository&gt;
+				</source>
+				L'exemple précédent est basé sur CVS. Pour utiliser un autre gestionnaire de version, se référer à la documentation du <a href="http://maven.apache.org/reference/plugins/scm/" target="_blank">plugin SCM</a>.
+			</p>
+		</subsection>
+		<subsection name="Intéractions">
+			<p>
+			  <table>
+				<tbody>
+					<tr>
+						<td>maven scm:checkout-project -Dmaven.scm.tag=TAG_1_0</td>
+						<td>Effectue un CVS checkout du projet avec le tag TAG_1_0. Le paramètre -Dmaven.scm.tag est facultatif, la dernière version sera récupérée.</td>
+					</tr>
+					<tr>
+						<td>maven scm:update-project</td>
+						<td>Effectue un CVS update sur le projet.</td>
+					</tr>
+					<tr>
+						<td>maven scm:tag -Dmaven.scm.tag=TAG_1_0</td>
+						<td>Positionne le tag sur la version du projet en cours.</td>
+					</tr>
+					<tr>
+						<td>maven scm:prepare-release</td>
+						<td>
+							Prepare un release avec la version du projet en cours:
+							<ul>
+								<li>Vérifie que tous les éléments sont enregistrés dans le référentiel.</li>
+								<li>Demande la version et le tag à positionner.</li>
+								<li>Modifie les fichiers project.xml et changes.xml pour prendre en compte la nouvelle version et le tag.</li>
+								<li>Positionne le tag sur l'ensemble des sources du projet.</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+				</table>
+			</p>
+			<p>Pour plus d'information, se référer à la documentation du <a href="http://maven.apache.org/reference/plugins/scm/" target="_blank">plugin SCM</a>.</p>
+		</subsection>
+	</section>
+  </body>
+</document>

@@ -1,0 +1,8 @@
+bin\Debug\CpwrCaqsCustomFXCopRules.dll
+bin\Debug\CpwrCaqsCustomFXCopRules.pdb
+bin\Debug\FxCopSdk.dll
+bin\Debug\Microsoft.Cci.dll
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\CustomFXCopRules.Rules.xml
+obj\Debug\CpwrCaqsCustomFXCopRules.dll
+obj\Debug\CpwrCaqsCustomFXCopRules.pdb

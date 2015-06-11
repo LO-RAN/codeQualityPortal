@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Advisor" default="help" basedir="${ENV.ADVISOR_HOME}/bin">
+  <dirname property="Advisor.basedir" file="${ant.file.Advisor}"/>  
+
+  <property environment="ENV" />
+
+  <path id="caqs.ant.task">
+    <pathelement path="${ant.root}/lib/anttask-1.3.jar"/>
+  </path>
+
+  <taskdef name="replaceregexp" classname="com.compuware.carscode.ant.taskdef.ReplaceRegexpTask">
+    <classpath refid="caqs.ant.task" />
+  </taskdef>
+  
+    <condition property="advisor_home" value="${ENV.ADVISOR_HOME}" else="${ENV.MF_ADVISOR_HOME}">
+      <or>
+      <contains string="${DIALECTE}" substring="1.3" casesensitive="no"/>
+      <contains string="${DIALECTE}" substring="1.4" casesensitive="no"/>
+      </or>
+    </condition>
+  
+    <echo message="Using Advisor from ${advisor_home}"/>
+  
+  <taskdef name="advisor" classname="com.compuware.advisor.application.ant.AdvisorAnt" onerror="report">
+    <classpath>
+      <pathelement path="${advisor_home}/bin/OptimalAdvisor.jar"/>
+      <pathelement path="${advisor_home}/lib/DLM40JNI.jar"/>
+      <pathelement path="${JAVA_PATH}/lib/tools.jar"/>
+    </classpath>
+  </taskdef>  
+  
+  <!-- Copy/Paste detector.-->
+  <taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask" onerror="report">
+    <classpath>
+      <pathelement path="${advisor_home}/bin/OptimalAdvisor.jar"/>
+      <pathelement path="${advisor_home}/lib/DLM40JNI.jar"/>
+      <pathelement path="${JAVA_PATH}/lib/tools.jar"/>
+    </classpath>
+  </taskdef>  
+
+
+  <!--
+    Export Design Validation from OptimalAdvisor.
+    Check if bytecode is present or not.
+    if bytecode is present then OptimalAdvisor will use it
+    else it will use the source code for design validation.
+    Detect if the dialect is jdk 1.3 to disable assert keywork.
+    Detect if the dialect is jdk 1.4 to enable the assert keywork.
+  -->
+  <target name="prepareDesignCheck">
+    <available file="${SRC_DIR}/bin" type="dir" property="bin.present"/>
+    <condition property="advisor.jdk.1.3">
+      <contains string="${DIALECTE}" substring="1.3" casesensitive="no"/>
+    </condition>
+    <condition property="advisor.jdk.1.4">
+      <contains string="${DIALECTE}" substring="1.4" casesensitive="no"/>
+    </condition>
+  </target>
+  
+  <target name="clearResults">
+    <delete dir="${SRC_DIR}/optimaladvisorreports"/>
+    <mkdir dir="${SRC_DIR}/optimaladvisorreports"/>
+  </target>
+
+  <!--
+    Set the source14 option to false if the jdk 1.3 is used.
+   -->
+  <target name="prepareSrcCodeAnalysis13" if="advisor.jdk.1.3">
+    <advisor command="setoption" param1="source14" param2="false" />
+  </target>
+  
+  <!--
+    Set the source14 option to true if the jdk 1.4 is used.
+   -->
+  <target name="prepareSrcCodeAnalysis14" if="advisor.jdk.1.4">
+    <advisor command="setoption" param1="source14" param2="true" />
+  </target>
+
+  <target name="prepareSrcCodeAnalysis" depends="clearResults,prepareSrcCodeAnalysis13,prepareSrcCodeAnalysis14">
+    <advisor command="newjava" param1="${SRC_DIR}/src"/>
+  </target>
+  
+  <target name="showAdvisorErrors" unless="advisor.metrics.found">
+    <loadfile property="advisor.metrics.contents" srcFile="${SRC_DIR}/optimaladvisorreports/xmlmetrics.xml"/>
+   <echo message="${advisor.metrics.contents}"/>
+  </target>
+  
+  <target name="exportDesignViolation" depends="prepareDesignCheck,prepareSrcCodeAnalysis" description="Export design violation found using OptimalAdvisor">
+    <mkdir dir="${DEST_DIR}/"/>
+    <advisor command="xmlmetrics" param1="${SRC_DIR}/optimaladvisorreports/xmlmetrics.xml" />
+
+    <!-- if Advisor encountered problems parsing the code, don't go further -->   
+    <condition property="advisor.metrics.found">
+         <isfileselected file="${SRC_DIR}/optimaladvisorreports/xmlmetrics.xml">
+         <contains text="package name=" casesensitive="no"/>
+      </isfileselected>
+   </condition>
+   <antcall target="showAdvisorErrors"/>
+   <fail unless="advisor.metrics.found" message="Compilation errors found in parsing Java code"/>
+    <xslt in="${SRC_DIR}/optimaladvisorreports/xmlmetrics.xml" out="${SRC_DIR}/optimaladvisorreports/traited-xmlmetrics.xml" style="${Advisor.basedir}/plugin/xsl/xmlmetrics.xsl" />
+
+    <advisor command="setoption" param1="reportFormat" param2="XML" />
+    <advisor command="setoption" param1="reportFile" param2="${SRC_DIR}/optimaladvisorreports/tmpAdvisorAnalyse.xml" />
+    <advisor command="setoption" param1="collapsed" param2="TRUE" />
+    <advisor command="checkrules" param1="" />
+    <advisor command="designreport" param1="${DEST_DIR}/DesignReport.html" />    
+    <advisor command="adpreporthtml" param1="${DEST_DIR}/adpreport.html" /> 
+    <advisor command="creatediagrams" param1="${DEST_DIR}" param2="800" param3="600" />    
+        
+    <!-- clean description after ":" to prevent problems with unicode caracters that are not recognized by Sax parser --> 
+    <replaceregexp regexp=':.*"&lt;/Description&gt;'  value=':"&lt;/Description&gt;'>
+          <fileset file="${SRC_DIR}/optimaladvisorreports/tmpAdvisorAnalyse.xml" />
+    </replaceregexp>
+    <!-- and also for new Microfocus CodeReview format -->
+    <replaceregexp regexp="description='(.*):(.*)'"  value="description='$1:'">
+          <fileset file="${SRC_DIR}/optimaladvisorreports/tmpAdvisorAnalyse.xml" />
+    </replaceregexp>
+
+    <cpd encoding="utf-8" minimumTokenCount="100" outputFile="${SRC_DIR}/optimaladvisorreports/cpd.xml" format="xml">
+        <fileset dir="${SRC_DIR}/src">
+            <include name="**/*.java"/>
+        </fileset>
+    </cpd>
+    <replaceregexp regexp="&lt;!\[CDATA\[.*?\]\]&gt;"
+                   value="" 
+                   multiline="true">
+          <fileset file="${SRC_DIR}/optimaladvisorreports/cpd.xml" />
+    </replaceregexp>
+
+  </target>
+
+  <target name="exportLinks" depends="prepareDesignCheck" if="bin.present" description="Export links using DependencyDinfer">
+
+  <!-- DependencyFinder classpath definition -->
+  <property name="dependencyfinder.home" value="${ant.root}/../DependencyFinder"/>
+  <path id="dependencyfinder">
+      <pathelement location="${dependencyfinder.home}/classes"/>
+      <pathelement location="${dependencyfinder.home}/lib/DependencyFinder.jar"/>
+      <pathelement location="${dependencyfinder.home}/lib/jakarta-oro.jar"/>
+      <pathelement location="${dependencyfinder.home}/lib/log4j.jar"/>
+  </path>
+  <taskdef name="dependencyextractor" classname="com.jeantessier.dependencyfinder.ant.DependencyExtractor">
+      <classpath refid="dependencyfinder"/>
+  </taskdef>
+  
+    <dependencyextractor destfile="${SRC_DIR}/optimaladvisorreports/dependency.xml" xml="yes" dtdprefix="${ant.root}/../DependencyFinder/etc" filterexcludes="/^java.lang.*/,/^java.util.*/,/^javax.*/,/^org.*/" encoding="UTF-8">
+      <path>
+        <pathelement location="${SRC_DIR}/bin"/>
+      </path>
+    </dependencyextractor>
+    
+    <xslt style="${dependencyfinder.home}/etc/dependencyToCsv.xsl"
+          in="${SRC_DIR}/optimaladvisorreports/dependency.xml"
+          out="${SRC_DIR}/optimaladvisorreports/dependency.csv"/>
+    
+    <!-- Naming consolidation -->      
+    <replace file="${SRC_DIR}/optimaladvisorreports/dependency.csv" token=" " value=""/>
+    <replaceregexp regexp="\([a-z\.]*\."
+                   value="(">
+          <fileset file="${SRC_DIR}/optimaladvisorreports/dependency.csv" />
+    </replaceregexp>
+    <replaceregexp regexp=",[a-z\.]*\."
+                   value=",">
+          <fileset file="${SRC_DIR}/optimaladvisorreports/dependency.csv" />
+    </replaceregexp>
+    
+    <!-- Extract Database access -->
+    <replaceregexp regexp=";java\.sql\.Connection\.[^\)]+\);"
+                   value=";sql.DB;">
+          <fileset file="${SRC_DIR}/optimaladvisorreports/dependency.csv" />
+    </replaceregexp>
+    <replaceregexp regexp=";java\.sql\.PreparedStatement\.[^\)]+\);"
+                   value=";sql.DB;">
+          <fileset file="${SRC_DIR}/optimaladvisorreports/dependency.csv" />
+    </replaceregexp>
+    <replaceregexp regexp=";java\.sql\.Statement\.[^\)]+\);"
+                   value=";sql.DB;">
+          <fileset file="${SRC_DIR}/optimaladvisorreports/dependency.csv" />
+    </replaceregexp>
+    <replaceregexp regexp=";java\.sql\.ResultSet\.[^\)]+\);"
+                   value=";sql.DB;">
+          <fileset file="${SRC_DIR}/optimaladvisorreports/dependency.csv" />
+    </replaceregexp>
+  </target>
+  
+  <target name="help" description="help">
+    <echo message="CAQS generic Ant build file."/>
+    <echo message="You can use/modify the predefined targets and add your own."/>
+    <echo message="For invocation through CAQS servlet mechanism, use :"/>
+    <echo message="com.compuware.carscode.servlet.SourceManagerServlet"/>
+    <echo message="(see javadoc for usage)."/>
+  </target>
+
+</project>

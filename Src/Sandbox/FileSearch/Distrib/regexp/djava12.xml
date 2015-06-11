@@ -1,0 +1,6 @@
+<xml>
+    <SEARCH name="djava12" filter=".*\.java">
+    	<RULE regexp="[ \t.]*[A-Z_]{3,}" />
+    	<RULE regexp="static" />
+    </SEARCH>
+</xml>

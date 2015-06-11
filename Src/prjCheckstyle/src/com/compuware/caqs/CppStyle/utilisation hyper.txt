@@ -1,0 +1,5 @@
+sous hyper.exe
+set db_view [dbopen nav_view .snprj/<nom projet> RDONLY 0644 btree cachesize=200000]
+open fil_file.csv w+ => channel
+
+puts <channel> [join [$db_view seq] \n]

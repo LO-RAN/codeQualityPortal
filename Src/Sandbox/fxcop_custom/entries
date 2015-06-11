@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="88"
+   name=""
+   committed-date="2005-08-02T00:31:46.590860Z"
+   url="file:///C:/Data/Development/SVNRepository/DOTNET_V2/CustomFXCopRules/Branches/VS2003Version"
+   last-author="Paul.Glavich"
+   kind="dir"
+   uuid="303a0965-3314-8141-948e-09f691e37620"
+   revision="88"/>
+<entry
+   committed-rev="85"
+   name="CustomFXCopRules_VS2003.csproj"
+   text-time="2005-08-02T00:31:57.906296Z"
+   committed-date="2005-08-02T00:31:04.742521Z"
+   checksum="dfe353a64d9f1d2a234c6f5ea465a982"
+   last-author="Paul.Glavich"
+   kind="file"
+   prop-time="2005-08-02T00:31:57.142582Z"/>
+<entry
+   name="Globals"
+   kind="dir"/>
+<entry
+   committed-rev="85"
+   name="BaseFXCopRule.cs"
+   text-time="2005-08-02T00:31:57.921882Z"
+   committed-date="2005-08-02T00:31:04.742521Z"
+   checksum="e06d9de2df1d353100b93a7404558eba"
+   last-author="Paul.Glavich"
+   kind="file"
+   prop-time="2005-08-02T00:31:57.360786Z"/>
+<entry
+   committed-rev="85"
+   name="ExampleRule.cs"
+   text-time="2005-08-02T00:31:57.937468Z"
+   committed-date="2005-08-02T00:31:04.742521Z"
+   checksum="61bf8f18ebca7d555cbbd5dead644ac5"
+   last-author="Paul.Glavich"
+   kind="file"
+   prop-time="2005-08-02T00:31:57.391958Z"/>
+<entry
+   committed-rev="85"
+   name="Rules.xml"
+   text-time="2005-08-02T00:31:57.937468Z"
+   committed-date="2005-08-02T00:31:04.742521Z"
+   checksum="bea25a9fdc03030dbf048552750e41e5"
+   last-author="Paul.Glavich"
+   kind="file"
+   prop-time="2005-08-02T00:31:57.454302Z"/>
+<entry
+   committed-rev="85"
+   name="EmptyRule.cs"
+   text-time="2005-08-02T00:31:57.999812Z"
+   committed-date="2005-08-02T00:31:04.742521Z"
+   checksum="d22417d65b1c9c58d60660f10d3b71c9"
+   last-author="Paul.Glavich"
+   kind="file"
+   prop-time="2005-08-02T00:31:57.485474Z"/>
+<entry
+   name="Properties"
+   kind="dir"/>
+<entry
+   committed-rev="85"
+   name="CustomFXCopRules_VS2003.csproj.user"
+   text-time="2005-08-02T00:31:58.015398Z"
+   committed-date="2005-08-02T00:31:04.742521Z"
+   checksum="fabede4387c938d704dc17d0e23808cf"
+   last-author="Paul.Glavich"
+   kind="file"
+   prop-time="2005-08-02T00:31:57.875124Z"/>
+</wc-entries>

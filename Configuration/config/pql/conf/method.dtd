@@ -1,0 +1,81 @@
+<!--
+    Typical usage:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE METHOD SYSTEM "method.dtd">
+
+    <METHOD>
+    ...
+    </METHOD>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT CRIT EMPTY>
+<!ATTLIST CRIT
+    weight CDATA #IMPLIED
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT CRITDEF (FORMULA|AGGREG)*>
+<!ATTLIST CRITDEF
+    id CDATA #IMPLIED
+    telt CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT FACT (CRIT)*>
+<!ATTLIST FACT
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT FORMULA (OP|VAL)*>
+<!ATTLIST FORMULA
+    value CDATA #IMPLIED
+  >
+<!--- aggregation -->
+<!ELEMENT AGGREG (PARAM)*>
+<!ATTLIST AGGREG
+    id CDATA #IMPLIED
+    telt CDATA #IMPLIED
+  >
+<!--- paramètre d'aggregation -->
+<!ELEMENT PARAM EMPTY>
+<!ATTLIST PARAM
+    id CDATA #IMPLIED
+    value CDATA #IMPLIED
+    type CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT METHOD (USAGE)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT OP (OP|VAR|VAL)*>
+<!ATTLIST OP
+    type CDATA #IMPLIED
+    id CDATA #IMPLIED
+    weight CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT USAGE (CRITDEF|FACT)*>
+<!ATTLIST USAGE
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT VAL EMPTY>
+<!ATTLIST VAL
+    value CDATA #IMPLIED
+    type CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT VAR EMPTY>
+<!ATTLIST VAR
+    type CDATA #IMPLIED
+    id CDATA #IMPLIED
+  >

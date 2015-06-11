@@ -1,0 +1,10 @@
+#!/bin/sh
+ANT_HOME=`dirname $0`
+
+CLASSPATH=$ANT_HOME/lib/ant-launcher-1.6.5.jar:$ANT_HOME/lib/ant-1.6.5.jar:$ANT_HOME/lib/anttask-1.3.jar:$ANT_HOME/lib/ant-commons-net-1.6.5.jar:$ANT_HOME/lib/commons-net-1.4.1.jar:$ANT_HOME/lib/jakarta-oro-2.0.8.jar:$ANT_HOME/export/importExport-1.3.jar:$ANT_HOME/export/commons-logging.jar:$ANT_HOME/lib/jsch-0.1.30.jar:$ANT_HOME/lib/ant-nodeps.jar
+CLASSPATH=$CLASSPATH:$ANT_HOME/../../lib/oracle-jdbc-1.4.jar
+CLASSPATH=$CLASSPATH:$ANT_HOME/../../lib/h2-1.2.139.jar
+CLASSPATH=$CLASSPATH:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/jre/lib/rt.jar
+
+$JAVA_HOME/bin/java -classpath $CLASSPATH -Dant.home=$ANT_HOME org.apache.tools.ant.Main $*
+

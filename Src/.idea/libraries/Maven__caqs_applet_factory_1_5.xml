@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Maven: caqs:applet-factory:1.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AppletFactory/pom.xml!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/caqs/applet-factory/1.5/applet-factory-1.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/AppletFactory/pom-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/caqs/applet-factory/1.5/applet-factory-1.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/AppletFactory/pom-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/caqs/applet-factory/1.5/applet-factory-1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

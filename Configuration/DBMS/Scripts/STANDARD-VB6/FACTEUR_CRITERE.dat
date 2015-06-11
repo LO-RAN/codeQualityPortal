@@ -1,0 +1,138 @@
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'MAIN', 'MAIN', 'Maintenabilité-Maintenabilité', 'Maintenabilité-Maintenabilité'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'MAIN', 'COMP', 'Maintenabilité-Compréhension', 'Maintenabilité-Compréhension'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'MAIN', 'ANTI_COPIER_COLLER', 'Maintenabilité-CopierColler', 'Maintenabilité-CopierColler'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'MAIN', 'DEST', 'Maintenabilité-Destructuration', 'Maintenabilité-Destructuration'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'MAIN', 'ANTI_NETSTD', 'Maintenabilité-NEtS', 'Maintenabilité-NormesEtStandards'
+, 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'MAIN', 'PLOG', 'Maintenabilité-Poids Logique', 'Maintenabilité-Poids Logique'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'MAIN', 'NETSTD_PRIO', 'Maintenabilité-NEtS', 'Maintenabilité-NormesEtStandardsSévérité'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'EVOL', 'ANTI_SAK', 'Evolutivité-CouteauSuisse', 'Evolutivité-CouteauSuisse'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'EVOL', 'COMP', 'Evolutivité-Compréhension', 'Evolutivité-Compréhension'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'EVOL', 'DEST', 'Evolutivité-Destructuration', 'Evolutivité-Destructuration'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'EVOL', 'PLOG', 'Evolutivité-PoidsLogique', 'Evolutivité-PoidsLogique'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'EVOL', 'TPRO', 'Evolutivité-TailleProc', 'Evolutivité-TailleProc'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'ROBU', 'ANTI_FMEM', 'Robustesse-FuiteMémoire', 'Robustesse-FuiteMémoire'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'ROBU', 'ANTI_NETSTD', 'Robustesse-NetS', 'Robustesse-NetS', 1,  null
+,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'ROBU', 'NETSTD_PRIO', 'Robustesse-NetS', 'Robustesse-NetS Sévérité'
+, 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'ROBU', 'TCOU', 'Robustesse-Tx Couverture', 'Robustesse-Tx Couverture'
+, 8,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'PERT', 'ANTI_ARCHI_CS', 'Architecture-Liens CS', 'Architecture-Liens CS'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'PERT', 'ANTI_ARCHI_NP', 'Architecture-Liens NP', 'Architecture-Liens NP'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'PERT', 'ANTI_RECURSIVITE', 'Architecture-Récursivité', 'Architecture-Récursivité'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'REUT', 'ANTI_ARCHI_CS', 'Réutilisation-Liens CS', 'Réutilisation-Liens CS'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'REUT', 'ANTI_ARCHI_NP', 'Réutilisation-Liens NP', 'Réutilisation-Liens NP'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'REUT', 'ANTI_RECURSIVITE', 'Réutilisation-Récursivité', 'Réutilisation-Récursivité'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'REUT', 'ANTI_POLT', 'Réutilisation-Poltergeist', 'Réutilisation-Poltergeist'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'REUT', 'ANTI_SAK', 'Réutilisation-CouteauSuisse', 'Réutilisation-CouteauSuisse'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'REUT', 'COBJ', 'Réutilisation-CouplageO', 'Réutilisation-CouplageObjet'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'REUT', 'CTRA', 'Réutilisation-CouplageT', 'Réutilisation-CouplageTraditionnel'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'REUT', 'PORTABILITE', 'Réutilisation-Portabilité', 'Réutilisation-Portabilité'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'REUT', 'TCOU', 'Réutilisation-TxCouv', 'Réutilisation-TauxCouverture'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'FIAB', 'ANTI_COPIER_COLLER', 'Fiabilité-CopierColler', 'Fiabilité-CopierColler'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'FIAB', 'COBJ', 'Fiabilité-CouplageO', 'Fiabilité-CouplageObjet'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'FIAB', 'CTRA', 'Fiabilité-CouplageT', 'Fiabilité-CouplageTraditionnel'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'FIAB', 'DEST', 'Fiabilité-Destructuration', 'Fiabilité-Destructuration'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'FIAB', 'INTE', 'Fiabilité-Intégration', 'Fiabilité-Intégration'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-VB6', 'FIAB', 'PLOG', 'Fiabilité-Poids Logique', 'Fiabilité-Poids Logique'
+, 6,  null,  null); 
+commit;
+ 

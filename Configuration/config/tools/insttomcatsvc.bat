@@ -1,0 +1,7 @@
+rem @echo off
+call settings.bat
+rem ---------------------------------------
+echo Installing service %SERVICE_NAME%...
+rem %TOMCAT_PATH%\bin\tomcat.exe -install %TOMCAT_SERVICE_NAME% %JRE_PATH%\bin\client\jvm.dll -Xms128m -Xmx1536m -Djava.class.path=%TOMCAT_PATH%\bin\bootstrap.jar -Dcatalina.home=%TOMCAT_PATH% -Djava.endorsed.dirs=%TOMCAT_PATH%\common\endorsed -Djava.io.tmpdir=%TOMCAT_PATH%\temp -start org.apache.catalina.startup.BootstrapService -params start -config %TOMCAT_PATH%\conf\server.xml -stop org.apache.catalina.startup.BootstrapService -params stop -config %TOMCAT_PATH%\conf\server.xml -out %TOMCAT_PATH%\logs\stdout.log -err %TOMCAT_PATH%\logs\stderr.log -current %TOMCAT_PATH%\bin\ -path %JRE_PATH%\bin\client\ & net start %TOMCAT_SERVICE_NAME%
+
+%TOMCAT_PATH%\bin\tomcat5 //TS//%TOMCAT_SERVICE_NAME% --DisplayName=%TOMCAT_SERVICE_NAME% --Description="Compuware CAQS  : Apache Tomcat 5 Server" --Install=%TOMCAT_PATH%\bin\tomcat5.exe --Jvm=auto --StartMode=jvm --StopMode=jvm --Classpath=%TOMCAT_PATH%\bin\bootstrap.jar --StartClass=org.apache.catalina.startup.Bootstrap --StartParams=start --StopClass=org.apache.catalina.startup.Bootstrap --StopParams=stop --jvmMs=128 --jvmMx=1024 --jvmOptions=-Dcatalina.home=%TOMCAT_PATH%;-Djava.endorsed.dirs=%TOMCAT_PATH%\common\endorsed;-Djava.io.tmpdir=%TOMCAT_PATH%\temp;-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager --LogPath=%TOMCAT_PATH%\logs --LogLevel=error

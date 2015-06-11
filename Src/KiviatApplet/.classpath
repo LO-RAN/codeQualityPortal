@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/AppletFactory"/>
+	<classpathentry kind="var" path="MAVEN_REPO/jcommon/jars/jcommon-1.0.9.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/jfreechart/jars/jfreechart-1.0.5.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

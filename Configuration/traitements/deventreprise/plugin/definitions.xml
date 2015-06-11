@@ -1,0 +1,276 @@
+<DEFINITIONS>
+  <METRIC id="ELEM-VAR-NB" type="count">
+    <QUERY><![CDATA[
+		SELECT count(cw_objects.id) as nbElts 
+		FROM cw_objects, cw_attributes, cw_relationships rel
+		WHERE 
+			rel.obj_id_1 = ? and rel.obj_id_2 = cw_objects.id and rel.type_id =  13
+			AND cw_attributes.id = cw_objects.id
+			AND cw_attributes.attr_type_id = 64
+			AND cw_objects.type_id = 17
+			AND (
+    			   cw_attributes.attr_data_value like 'X%'
+               OR cw_attributes.attr_data_value like 'A%'
+               OR cw_attributes.attr_data_value like '+%'
+               OR cw_attributes.attr_data_value like 'S%'
+               OR cw_attributes.attr_data_value like '9%'
+               OR cw_attributes.attr_data_value like '-%'
+               OR cw_attributes.attr_data_value like 'CR%'
+               OR cw_attributes.attr_data_value like 'DB%'
+            )
+            and cw_objects.owner like ?
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	  <PARAM order="2" id="programName" type="string" comparison="startsWith" />
+	</PARAMS>
+	<RETURN id="nbElts" />
+  </METRIC>
+  
+  <METRIC id="MOVE-STMT-NB" type="count">
+    <QUERY><![CDATA[
+		SELECT count(rel_id) AS MOVESET
+            FROM CW_RELATIONSHIPS 
+            WHERE 
+              (OBJ_ID_RELATED = ?) 
+              AND (TYPE_ID = 2) 
+              AND (
+                (REL_DETAIL LIKE 'MOVE%') 
+                 OR (REL_DETAIL LIKE 'SET%')
+            )
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	</PARAMS>
+	<RETURN id="MOVESET" />
+  </METRIC>
+  
+  <METRIC id="TOTAL-CONST-NB" type="count">
+    <QUERY><![CDATA[
+		SELECT COUNT(rel_id) AS NbLiteraux 
+             FROM CW_RELATIONSHIPS AS rel 
+                INNER JOIN CW_OBJECTS ON rel.OBJ_ID_2 = CW_OBJECTS.ID 
+                INNER JOIN CW_ATTRIBUTES AS attr ON rel.OBJ_ID_2 = attr.ID 
+             WHERE (rel.OBJ_ID_1 = ?) 
+                AND (rel.TYPE_ID = 13) 
+                AND (CW_OBJECTS.TYPE_ID = 17) 
+                AND (attr.ATTR_TYPE_ID = 44) 
+                AND (attr.ATTR_DATA_VALUE = 'Yes')
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	</PARAMS>
+	<RETURN id="NbLiteraux" />
+  </METRIC>
+  
+  <METRIC id="TOTAL-VAR-NB" type="count">
+    <QUERY><![CDATA[
+		SELECT COUNT(rel_id) AS Total_var_Nb 
+              FROM CW_RELATIONSHIPS AS rel 
+                INNER JOIN CW_OBJECTS ON rel.OBJ_ID_2 = CW_OBJECTS.ID 
+              WHERE 
+                    (rel.OBJ_ID_1 = ?) 
+                AND (rel.TYPE_ID = 13) 
+                AND (CW_OBJECTS.TYPE_ID = 17)
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	</PARAMS>
+	<RETURN id="Total_var_Nb" />
+  </METRIC>
+
+  <METRIC id="NB_ARITHMETIC_OP_WITH_DISPLAY_OPERAND" type="violation">
+    <QUERY><![CDATA[
+		SELECT rel.obj_id_1 as obj_id_1, obj1.name as obj1_name, rel.obj_id_2 as obj_id_2, rel.rel_detail as corr, obj2.name as ownerName, obj2.type_id
+             FROM cw_relationships rel, cw_objects obj1, cw_relationships rel2, cw_objects obj2, cw_attributes attr01
+             WHERE
+             ( rel.rel_detail like 'COMPUTE;%'
+                or rel.rel_detail like 'ADD;%'
+                or rel.rel_detail like 'SUBTRACT;%'
+                or rel.rel_detail like 'MULTIPLY;%'
+                or rel.rel_detail like 'DIVIDE;%')
+             and obj1.id = rel.obj_id_1
+             and rel2.obj_id_1 = ? and rel2.obj_id_2 = obj1.id and rel2.type_id = 13
+             and obj1.owner like ?
+             and obj2.id = rel.obj_id_related
+             and attr01.id=obj1.id
+             and attr01.attr_type_id = 132
+             and attr01.attr_data_value in ('Display','')
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	  <PARAM order="2" id="programName" type="string" comparison="startsWith" />
+	</PARAMS>
+	<PREFIX_OWNER col="ownerName" ownerTypeCol="type_id" type="108" prefixValue="INCLUDE." />
+	<RETRIEVE_LINE from="relDetail" column="corr" />
+  </METRIC>
+  
+  <METRIC id="NB_ARITHMETIC_OP_WITH_UNSIGNED_OPERAND" type="violation">
+    <QUERY><![CDATA[
+		SELECT rel.obj_id_1 as obj_id_1, obj1.name as obj1_name, rel.obj_id_2 as obj_id_2, rel.rel_detail as corr, obj2.name as ownerName, obj2.type_id
+             FROM cw_relationships rel, cw_objects obj1, cw_relationships rel2, cw_objects obj2, cw_attributes attr01, cw_attributes attr02
+             WHERE
+             (
+                   rel.rel_detail like 'COMPUTE;%'
+                or rel.rel_detail like 'ADD;%'
+                or rel.rel_detail like 'SUBTRACT;%'
+                or rel.rel_detail like 'MULTIPLY;%'
+                or rel.rel_detail like 'DIVIDE;%'
+             )
+             and obj1.id = rel.obj_id_1
+             and rel2.obj_id_1 = ? and rel2.obj_id_2 = obj1.id and rel2.type_id = 13
+             and obj1.owner like ?
+             and obj2.id = rel.obj_id_related
+             and attr01.id=obj1.id
+             and attr01.attr_type_id = 132
+             and attr01.attr_data_value like '%'
+             and attr02.id=obj1.id
+             and attr02.attr_type_id = 64
+             and attr02.attr_data_value not like 'S%'
+             and attr02.attr_data_value <> ''
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	  <PARAM order="2" id="programName" type="string" comparison="startsWith" />
+	</PARAMS>
+	<PREFIX_OWNER col="ownerName" ownerTypeCol="type_id" type="108" prefixValue="INCLUDE." />
+	<RETRIEVE_LINE from="relDetail" column="corr" />
+  </METRIC>
+
+  <METRIC id="NB_ARITHMETIC_OP_WITH_UNSIGNED_OPERAND" type="violation">
+    <QUERY><![CDATA[
+		SELECT rel.obj_id_1 as obj_id_1, obj1.name as obj1_name, rel.obj_id_2 as obj_id_2, rel.rel_detail as corr, obj2.name as ownerName, obj2.type_id
+             FROM cw_relationships rel, cw_objects obj1, cw_relationships rel2, cw_objects obj2, cw_attributes attr01, cw_attributes attr02
+             WHERE
+             ( rel.rel_detail like 'COMPUTE;%'
+                or rel.rel_detail like 'ADD;%'
+                or rel.rel_detail like 'SUBTRACT;%'
+                or rel.rel_detail like 'MULTIPLY;%'
+                or rel.rel_detail like 'DIVIDE;%'
+             )
+             and obj1.id = rel.obj_id_1
+             and rel2.obj_id_1 = ? and rel2.obj_id_2 = obj1.id and rel2.type_id = 13
+             and obj1.owner like ?
+             and obj2.id = rel.obj_id_related
+             and attr01.id=obj1.id
+             and attr01.attr_type_id = 132
+             and attr01.attr_data_value like '%'
+             and attr02.id=obj1.id
+             and attr02.attr_type_id = 64
+             and attr02.attr_data_value not like 'S%'
+             and attr02.attr_data_value <> ''
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	  <PARAM order="2" id="programName" type="string" comparison="startsWith" />
+	</PARAMS>
+	<PREFIX_OWNER col="ownerName" ownerTypeCol="type_id" type="108" prefixValue="INCLUDE." />
+	<RETRIEVE_LINE from="relDetail" column="corr" />
+  </METRIC>
+  
+  <METRIC id="INITIALIZED-LINKAGE-VAR" type="violation">
+    <QUERY><![CDATA[
+		SELECT obj.id as objId, obj.owner
+             FROM cw_objects obj, cw_attributes attr02, cw_attributes attr03, cw_attributes attr04, cw_relationships rel
+             WHERE
+             obj.id not in (select attr01.id from cw_attributes attr01 WHERE  attr01.attr_type_id =  108 )
+             AND rel.obj_id_1 = ? and rel.obj_id_2 = obj.id and rel.type_id = 13
+             AND obj.type_id = 17
+             AND attr02.id = obj.id
+             AND attr02.attr_type_id = 43
+             AND attr02.attr_data_value = 'yes'
+             AND attr03.id = obj.id
+             AND attr03.attr_type_id = 94
+             AND attr04.id = obj.id
+             AND attr04.attr_type_id = 42
+             AND attr04.attr_data_value <> 88
+             AND obj.owner like ?
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	  <PARAM order="2" id="programName" type="string" comparison="startsWith" />
+	</PARAMS>
+	<PREFIX_OWNER col="owner" ownerTypeCol="" type="" prefixValue="" />
+	<RETRIEVE_LINE from="fileLine" column="objId" />
+  </METRIC>
+  
+  <METRIC id="LITERAL-IN-PROC-DIV" type="violation">
+    <QUERY><![CDATA[
+		SELECT obj.owner, rel.rel_detail 
+             FROM cw_objects obj, cw_attributes, cw_relationships rel 
+             WHERE
+             ( cw_attributes.id = rel.obj_id_1 
+              or cw_attributes.id = rel.obj_id_2)
+             and rel.obj_id_related = ? 
+             AND cw_attributes.attr_type_id = 44
+             AND cw_attributes.attr_data_value = 'yes' 
+             AND obj.id = cw_attributes.id
+             AND obj.name not like '%SPACE%'
+             AND obj.name not like '%ZERO%'
+             AND obj.name not like '%LOW-VALUE%'
+             AND obj.name <> '0'
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	</PARAMS>
+	<PREFIX_OWNER col="owner" ownerTypeCol="" type="" prefixValue="" />
+	<RETRIEVE_LINE from="relDetail" column="rel_detail" />
+  </METRIC>
+
+  <METRIC id="COPYLIB-INITIALIZED-LINKAGE-VAR" type="violation">
+    <QUERY><![CDATA[
+		SELECT obj.id as objId, obj.owner
+             FROM cw_objects obj, cw_attributes attr01, cw_attributes attr02, cw_relationships rel
+             WHERE obj.id = attr01.id
+             AND attr01.attr_type_id = 108
+             AND rel.obj_id_1 = ? and rel.obj_id_2 = obj.id and rel.type_id =  13
+             AND obj.type_id = 17
+             AND attr02.id = obj.id 
+             AND attr02.attr_type_id = 43 
+             AND attr02.attr_data_value = 'yes'
+             AND obj.owner like ?
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	  <PARAM order="2" id="programName" type="string" comparison="startsWith" />
+	</PARAMS>
+	<PREFIX_OWNER col="owner" ownerTypeCol="" type="" prefixValue="" />
+	<RETRIEVE_LINE from="fileLine" column="objId" />
+  </METRIC>
+
+
+  <METRIC id="COPIED-CONDITION-NOT-USED" type="violation">
+    <QUERY><![CDATA[
+		SELECT obj.id as objId, obj.owner 
+             FROM cw_objects as obj, cw_relationships as rel 
+             WHERE obj.id in (select cw_attributes.id from cw_attributes where cw_attributes.attr_type_id = 42
+             AND cw_attributes.attr_data_value = 88) 
+             AND rel.obj_id_2 = obj.id 
+             AND rel.type_id = 108
+             AND rel.obj_id_1 = ? 
+             AND obj.type_id =  17
+             AND obj.id not in (select obj_id_1 from cw_relationships)
+             AND obj.owner like ?
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	  <PARAM order="2" id="programName" type="string" comparison="startsWith" />
+	</PARAMS>
+	<PREFIX_OWNER col="owner" ownerTypeCol="" type="" prefixValue="" />
+	<RETRIEVE_LINE from="fileLine" column="objId" />
+  </METRIC>
+
+  <METRIC id="NB_DAYS_FROM_LAST_CHANGE" type="count">
+    <QUERY><![CDATA[
+		SELECT DATEDIFF(day, attr_data_value, getdate()) AS nbDays
+        From cw_attributes
+        Where attr_type_id=117
+        And id = ?
+	]]></QUERY>
+	<PARAMS>
+	  <PARAM order="1" id="programId" type="int" />
+	</PARAMS>
+	<RETURN id="nbDays" />
+  </METRIC>
+
+  </DEFINITIONS>

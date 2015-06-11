@@ -1,0 +1,20 @@
+<graph version="1.0">
+<cell id="0" x="60.0" y="520.0" doc="" el="exception" cap="exception" type="forward"/>
+<cell id="1" x="50.0" y="670.0" doc="" el="getCredentials" cap="getCredentials" type="forward"/>
+<cell id="2" x="240.0" y="220.0" doc="" el="/retrieveprojectlist" cap="/retrieveprojectlist" type="action"/>
+<cell id="3" x="240.0" y="370.0" el="/taskcompleted.jsp" cap="/taskcompleted.jsp" type="page"/>
+<cell id="4" x="0.0" y="810.0" el="/retrieveprojectlist.do" cap="/retrieveprojectlist.do" type="page"/>
+<cell id="5" x="260.0" y="70.0" el="/tasklist.jsp" cap="/tasklist.jsp" type="page"/>
+<cell id="6" x="60.0" y="220.0" doc="" el="/taskexec" cap="/taskexec" type="action"/>
+<cell id="7" x="250.0" y="520.0" el="/exception.jsp" cap="/exception.jsp" type="page"/>
+<cell id="8" x="80.0" y="740.0" el="/" cap="/" type="page"/>
+<cell id="9" x="510.0" y="220.0" el="/taskexec.jsp" cap="/taskexec.jsp" type="page"/>
+<cell id="10" x="250.0" y="670.0" el="/credentials.htm" cap="/credentials.htm" type="page"/>
+<cell id="11" x="70.0" y="70.0" doc="" el="/tasklist" cap="/tasklist" type="action"/>
+<edge id="12" src="0" tgt="7" doc="" el="exception" cap="exception" type="forward"/>
+<edge id="13" src="1" tgt="10" doc="" el="getCredentials" cap="getCredentials" type="forward"/>
+<edge id="14" src="11" tgt="5" doc="" el="success" cap="success" type="forward"/>
+<edge id="15" src="6" tgt="4" path="131.0;233.3780487804878;240.0;196.15853658536585" labx="500" laby="-10" doc="" el="success" cap="success" type="forward"/>
+<edge id="16" src="6" tgt="3" doc="" el="completion" cap="completion" type="forward"/>
+<edge id="17" src="2" tgt="9" path="300.5;245.5;440.0;240.0;440.0;240.0;555.5;245.5" labx="500" laby="-10" doc="" el="success" cap="success" type="forward"/>
+</graph>

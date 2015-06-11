@@ -1,0 +1,157 @@
+.x-tree-node img.domain-link, .x-tree-node-collapsed img.domain-link {
+	background-image:url(../images/customExt/domain-link.gif);
+}
+
+.x-tree-node img.prj-link, .x-tree-node-collapsed img.prj-link {
+	background-image:url(../images/customExt/prj-link.gif);
+}
+
+.x-tree-node img.domain, .x-tree-node-collapsed img.domain {
+	background-image:url(../images/customExt/domain.gif);
+}
+.x-tree-node-expanded img.domain {
+	background-image:url(../images/customExt/domain-open.gif);
+}
+
+.x-tree-node img.prj, .x-tree-node-collapsed img.prj {
+	background-image:url(../images/customExt/prj.gif);
+}
+.x-tree-node-expanded img.prj {
+	background-image:url(../images/customExt/prj-open.gif);
+}
+
+.x-tree-node img.ssp, .x-tree-node-collapsed img.ssp {
+	background-image:url(../images/customExt/ssp.gif);
+}
+.x-tree-node-expanded img.ssp {
+	background-image:url(../images/customExt/ssp-open.gif);
+}
+
+.x-tree-node img.ea, .x-tree-node-collapsed img.ea {
+	background-image:url(../images/customExt/ea.gif);
+}
+
+.x-tree-node img.entrypoint, .x-tree-node-collapsed img.entrypoint {
+	background-image:url(../images/customExt/entrypoint.gif);
+}
+
+.txtInfoMsg {
+	font-size:			14px;
+	margin-left:		5px;
+	margin-right:		10px;
+	background-color:	transparent;
+}
+
+.messageDivCls {
+	padding-left:		5px;
+	padding-top :		5px;
+	background-color:	white;
+}
+
+.messageSuppressImg {
+	background-color:	transparent;
+}
+
+.transparentPanel {
+	background-color:	transparent;	
+}
+
+.imgMsgIcon {
+
+}
+
+.smallStaticField {
+	font:           normal 12px tahoma, arial, helvetica, sans-serif;
+    display:        block;
+    margin-bottom:  0px;
+    width:          90%;
+}
+
+.smallStaticField label{
+	display:        block;
+	float:          left;
+	width:          100px;
+	padding:        3px;
+	padding-left:   0;
+	clear:          left;
+	z-index:        2;
+	position:       relative;
+}
+
+.ux-form-smallStaticField {
+	background: 	transparent;
+	border: 		none;
+	padding-top: 	0px !important;
+	padding-bottom: 0px !important;
+	height:         20px;
+	line-height:    18px;
+	vertical-align: middle;
+}
+
+.normalText {
+    font:           normal 12px tahoma, arial, helvetica, sans-serif;
+    margin-bottom:  0px;
+    width:          95%;
+}
+
+.smallerStaticField {
+    font:           normal 12px tahoma, arial, helvetica, sans-serif;
+    display:        block;
+    margin-bottom:  0px;
+    width:          95%;
+}
+
+.smallerStaticField label{
+	display:        block;
+	float:          left;
+	width:          100px;
+	padding:        3px;
+	padding-left:   0;
+	clear:          left;
+	z-index:        2;
+	position:       relative;
+}
+
+.ux-form-smallerStaticField {
+	background: 	transparent;
+	float: 			right;
+	border: 		none;
+	padding-top: 	0px !important;
+	padding-bottom: 0px !important;
+	height:         20px;
+	line-height:    18px;
+	vertical-align: middle;
+}
+
+.x-btn-bigicon .x-btn-center .x-btn-text {
+	background-position:	center;
+	background-repeat:		no-repeat;
+	cursor:					pointer;
+	width:					18px;
+	white-space:			nowrap;
+	padding:				0;
+}
+
+.x-grid3-hd-norow td {
+    line-height:0px;
+    vertical-align:middle;
+    border-left:0px;
+    border-right:0px;
+}
+
+#caqsAboutPage .x-window-body { background:#fff !important; }
+
+#caqsPortalToolbar table.x-table-layout {
+    width: 100%;
+}
+#activitiesButtonId {
+    float: right;
+    margin-right: 5px;
+}
+
+.imageAction {
+    cursor: pointer;
+}
+
+.mask-below-menu .ext-el-mask {z-index: 10995;} /* mask:10995, shim:10996, shadow:10997 */
+.mask-below-menu .ext-el-mask .ext-el-mask-msg {z-index: 10998;}

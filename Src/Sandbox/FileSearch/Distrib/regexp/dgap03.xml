@@ -1,0 +1,7 @@
+<xml>
+    <SEARCH name="dgap03" filter=".*\.java">
+    	<RULE regexp="[E|e]rror" />
+    	<RULE regexp="[M|m]essage" />
+    	<RULE regexp="[L|l]og" />
+    </SEARCH>
+</xml>

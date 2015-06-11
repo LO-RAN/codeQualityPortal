@@ -1,0 +1,5 @@
+<!-- 
+  CAQS Logs Context 
+  used to allow access to log files from web client
+-->
+<Context path="/CAQSlog" docBase="../Logs" debug="0" reloadable="true" />

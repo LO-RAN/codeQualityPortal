@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<document>
+
+  <properties>
+    <title>JCS</title>
+  </properties>
+  
+  <head>
+  </head>
+  
+  <body>
+
+    <section name="Introduction">
+      <p>
+		JCS est un framework Jakarta <a href="http://jakarta.apache.org/jcs/">http://jakarta.apache.org/jcs/</a> de gestion de cache. Il permet une gestion transparente de caches applicatifs supportant diverses règles de gestion et divers supports (mémoire, disque, distribué) pouvant travailler en complément les uns des autres.
+      </p>
+      <p>
+		Le but d'utiliser ce type de framework est d'alléger le serveur et la base de données afin de pouvoir accepter un maximum d'utilisateurs (la plupart accédant aux mêmes resources).
+      </p>
+	</section>
+    <section name="Mise en place">
+		<subsection name="Librairies">
+		  <p>
+			Télécharger la librairie jcs-1.2.6.jar<BR/>
+			Celle-ci utilise les autres librairies concurrent-1.3.4.jar et commons-collections-3.1.jar.
+		  </p>
+		</subsection>
+		<subsection name="Propriétés">
+		  <p>
+			Un fichier cache.ccf doit être présent dans le CLASSPATH. IL permet de configurer les différents supports de cache. On y trouve une configuration par défaut et un ensemble de régions de cache. Pour CAQS, nous avons défini une région qui se nomme caqsCache et qui sera utilisée par l'application CAQS.<BR/>
+			Notre fichier cache.ccf est de la forme:
+			<source>
+# DEFAULT CACHE REGION
+
+# sets the default aux value for any non configured caches
+jcs.default=DC
+jcs.default.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.default.cacheattributes.MaxObjects=1000
+jcs.default.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.default.elementattributes.IsEternal=false
+jcs.default.elementattributes.MaxLifeSeconds=3600
+jcs.default.elementattributes.IdleTime=1800
+jcs.default.elementattributes.IsSpool=true
+jcs.default.elementattributes.IsRemote=true
+jcs.default.elementattributes.IsLateral=true
+
+
+# CACHE REGIONS AVAILABLE
+
+# Regions preconfigured for caching
+jcs.region.caqsCache=DC
+jcs.region.caqsCache.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.region.caqsCache.cacheattributes.MaxObjects=1200
+jcs.region.caqsCache.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+jcs.region.caqsCache.elementattributes.IsEternal=false
+jcs.region.caqsCache.elementattributes.MaxLifeSeconds=7200
+jcs.region.caqsCache.elementattributes.IdleTime=1800
+jcs.region.caqsCache.elementattributes.IsSpool=true
+jcs.region.caqsCache.elementattributes.IsRemote=true
+jcs.region.caqsCache.elementattributes.IsLateral=true
+
+# AUXILIARY CACHES AVAILABLE
+
+# Primary Disk Cache -- faster than the rest because of memory key storage
+jcs.auxiliary.DC=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheFactory
+jcs.auxiliary.DC.attributes=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheAttributes
+jcs.auxiliary.DC.attributes.DiskPath=c:/Temp/cache
+jcs.auxiliary.DC.attributes.MaxPurgatorySize=10000
+jcs.auxiliary.DC.attributes.MaxKeySize=10000
+jcs.auxiliary.DC.attributes.OptimizeAtRemoveCount=300000
+jcs.auxiliary.DC.attributes.MaxRecycleBinSize=7500
+			</source>
+		  </p>
+		</subsection>
+	</section>
+	<section name="Intégration">
+		<subsection name="Classe spécifique">
+		  <p>
+			La classe <a href="xref/com/compuware/carscode/dbms/dataaccess/DataAccessCache.html">com.compuware.carscode.dbms.dataaccess.DataAccessCache</a> a été créée pour l'accès au cache. Un singleton permet aux autres classes de l'application d'y accéder.<BR/>
+			Elle intègre en plus des méthodes loadFromCache, storeToCache d'accès en lecture et écriture, deux méthodes de purge du cache: clearCache() et clearCache(String partId). La deuxième ne purge qu'une partie de la région du cache allouée à CAQS. Cette région est définie par l'application elle-même. En réalité, les regroupements sont fait par baseline. Cela permet lors d'un recalcul, d'une justification ou d'une saisie de métrique, de purger le cache correspondant à la baseline concernée sans impacter le reste.
+		  </p>
+		</subsection>
+		<subsection name="Utilisation">
+		  <p>
+			Pour accéder au cache: utiliser le singleton.<BR/>
+			<source>DataAccessCache dataCache = DataAccessCache.getInstance();</source>
+		  </p>
+		  <p>
+			Pour récupérer des données en cache: utiliser la méthode loadFromCache.<BR/>
+			<source>List result = (List) dataCache.loadFromCache("myKey");</source>
+		  </p>
+		  <p>
+			Pour mettre des données en cache: utiliser la méthode storeToCache. La clé "partKey" correspond à la partie du cache utilisée (en général l'identifiant de la baseline ou du projet).<BR/>
+			<source>dataCache.storeToCache("partKey", "myKey", result);</source>
+		  </p>
+		  <p>
+			Pour purger les données en cache: utiliser une des méthode clearCache. Sans paramètre, elle purge l'intégralité du cache. Avec le paramètre "partKey" elle purge la partie du cache correspondant (en général parkey correspond à l'identifiant de la baseline ou du projet).<BR/>
+			<source>
+dataCache.clearCache();
+dataCache.clearCache("partKey");
+			</source>
+		  </p>
+		</subsection>
+	</section>
+  </body>
+</document>

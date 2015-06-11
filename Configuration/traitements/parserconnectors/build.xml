@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="CParser" default="help" basedir=".">
+  <dirname property="CParser.basedir" file="${ant.file.CParser}"/>  
+
+  <!--
+  Attributes available to targets (given as parameters) : 
+  - ${baselineId}        : baseline ID.
+  - ${id_elt}            : element ID.
+  - ${lib_elt}           : element caption.
+  - ${id_pro}            : project ID.
+  - ${lib_pro}           : project caption.
+  - ${SRC_DIR}           : element source directory.
+  - ${DEST_DIR}          : goal destination directory. 
+  - ${DIALECTE}          : source language dialect selected for element
+  - ${SCM_REPOSITORY}    : Source Control Management repository
+  - ${SCM_MODULE}        : Source Control Management module
+  - ${PROJECT_FILE_PATH} : project file path (ex : relative path from ${SRC_DIR} to solution file 
+                                                   for .Net projects where many solution files are
+                                       in the same directory tree)
+  - ${INFO1}             : generic parameter 1. Its value can be set in project definition, at element level.
+  - ${INFO2}             : generic parameter 2. Its value can be set in project definition, at element level.
+  -->
+
+  <path id="parserconnector.classpath">
+      <fileset dir="${CParser.basedir}/lib">
+          <include name="**/*.jar"/>
+      </fileset>
+  </path>
+
+  <taskdef resource="parserconnector.properties">
+      <classpath refid="parserconnector.classpath"/>
+  </taskdef>
+
+  <path id="caqs.ant.task">
+    <pathelement path="${ant.root}/lib/anttask-1.3.jar"/>
+  </path>
+
+  <taskdef name="replaceregexp" classname="com.compuware.carscode.ant.taskdef.ReplaceRegexpTask">
+    <classpath refid="caqs.ant.task" />
+  </taskdef>
+   
+	<taskdef name="stringutil" classname="ise.antelope.tasks.StringUtilTask">
+	      <classpath refid="parserconnector.classpath"/>
+  </taskdef>
+
+  <taskdef name="flexpmd" classname="com.adobe.ac.pmd.ant.FlexPmdAntTask" classpathref="parserconnector.classpath"/>
+  <taskdef name="flexcpd" classname="com.adobe.ac.cpd.ant.FlexCpdAntTask" classpathref="parserconnector.classpath"/>
+  <taskdef name="flexmetrics" classname="com.adobe.ac.pmd.metrics.ant.FlexMetricsAntTask" classpathref="parserconnector.classpath"/>
+  
+
+	<!-- C extension set. -->
+  <patternset id='c.extensions'>
+         <include name="**/*.c"/>
+         <include name="**/*.pc"/>
+         <include name="**/*.h"/>
+  </patternset>
+  
+  <!-- C++ extension set. -->
+  <patternset id='cpp.extensions'>
+         <include name="**/*.pcc"/>
+         <include name="**/*.cpp"/>
+         <include name="**/*.C"/>
+         <include name="**/*.CPP"/>
+         <include name="**/*.cc"/>
+         <include name="**/*.CC"/>
+         <include name="**/*.cxx"/>
+         <include name="**/*.hpp"/>
+         <include name="**/*.H"/>
+  </patternset>
+
+  <!-- Check for C++ code using given dialect. -->
+  <condition property="is.cpp" >
+     <contains string="${DIALECTE}" substring="cpp" casesensitive="false"/>
+  </condition>
+
+  <!-- SAP Code Inspector Analysis. -->
+  <target name="codeinspectorAnalysis">
+    <delete dir="${SRC_DIR}/abapreports" />
+    <mkdir dir="${SRC_DIR}/abapreports" />
+    <mkdir dir="${SRC_DIR}/src" />
+
+    <!-- http://cwfr-d213.clients.emea.cpwr.corp:8080/sap/bc/bsp/sap/zcpwr_inspbis/get_analysed_datavbis.do?pkg=ZCPWR_CAQS -->
+    <!-- http://cwfr-d213.clients.emea.cpwr.corp:8080/sap/bc/bsp/sap/zhge_down_src/zdown_src.do?pkg=ZCPWR%25&obj=%25 -->
+    <abapconnector 
+          url="${SCM_REPOSITORY}?pkg=${SCM_MODULE}%25&amp;obj=%25" 
+          login="${INFO1}" 
+          password="${INFO2}" 
+          destFile="${SRC_DIR}/abapreports/result.xml" 
+          />
+    <abapformatter 
+          srcFile="${SRC_DIR}/abapreports/result.xml" 
+          destFile="${SRC_DIR}/abapreports/report.xml" 
+          srcPath="${SRC_DIR}/src"
+          />
+  </target>
+  
+  <!-- PMCCabe Analysis for C/C++ code. -->  
+  <target name="pmccabeAnalysis">
+    <delete dir="${SRC_DIR}/pmccabereports" />
+    <mkdir dir="${SRC_DIR}/pmccabereports" />
+
+    <pmccabeconnector 
+          options="-n" 
+          destFile="${SRC_DIR}/pmccabereports/fileReport.csv"
+          >
+     <source dir="${SRC_DIR}">
+           <patternset refid="c.extensions"/>
+           <patternset refid="cpp.extensions"/>
+     </source>
+    </pmccabeconnector>
+
+    <pmccabeformatter srcFile="${SRC_DIR}/pmccabereports/fileReport.csv"
+                      destFile="${SRC_DIR}/pmccabereports/fileReport.xml"
+                      columnHeader="CSL;CSLPCT;NCSL;NCSLPCT;NL;FileName"
+                      srcPath="${SRC_DIR}/src"
+                      separator=" " />
+
+    <pmccabeconnector options="-c" destFile="${SRC_DIR}/pmccabereports/fctReport.csv">
+     <source dir="${SRC_DIR}">
+           <patternset refid="c.extensions"/>
+           <patternset refid="cpp.extensions"/>
+     </source>
+    </pmccabeconnector>
+
+    <pmccabeformatter srcFile="${SRC_DIR}/pmccabereports/fctReport.csv"
+                      destFile="${SRC_DIR}/pmccabereports/fctReport.xml"
+                      srcPath="${SRC_DIR}/src"
+                      columnHeader="EVG;VG;NB_STMT;FIRST_LINE;LOC;FileName" />
+  </target>
+    
+  <!-- FlawFinder Analysis for C security detection. -->  
+  <target name="flawfinderAnalysis">
+    <delete dir="${SRC_DIR}/flawfinderreports" />
+    <mkdir dir="${SRC_DIR}/flawfinderreports" />
+    <flawfinderconnector 
+          options="-S -D" 
+          srcDir="${SRC_DIR}/src/" 
+          destDir="${SRC_DIR}/flawfinderreports/" 
+          flawFinderPath="${ant.root}/../FlawFinder/flawfinder" 
+          />
+    <flawfinderformatter 
+          srcFile="${SRC_DIR}/flawfinderreports/ffout.csv" 
+          destFile="${SRC_DIR}/flawfinderreports/report.xml" 
+          srcDirPath="${SRC_DIR}/src"
+          />
+  </target>
+    
+  <!-- cppcheck Analysis for C++ -->  
+  <target name="cppcheckAnalysis">
+    <delete dir="${SRC_DIR}/cppcheckreports" />
+    <mkdir dir="${SRC_DIR}/cppcheckreports" />
+    <cppcheckconnector 
+          cmd="cppcheck -f --xml --enable=all" 
+          srcDir="${SRC_DIR}/src/" 
+          destDir="${SRC_DIR}/cppcheckreports/" 
+          />
+    <cppcheckformatter 
+          srcFile="${SRC_DIR}/cppcheckreports/cppcheck.xml" 
+          destFile="${SRC_DIR}/cppcheckreports/report.xml" 
+          srcDirPath="${SRC_DIR}/src"
+          />
+  </target>
+    
+  <!-- CodeAnalyzerPro Analysis for C++. -->  
+  <target name="codeanalyzerproAnalysis">
+    <delete dir="${SRC_DIR}/codeanalyzerproreports" />
+    <mkdir dir="${SRC_DIR}/codeanalyzerproreports" />
+    
+    <java dir="${SRC_DIR}/codeanalyzerproreports" fork="true" classname="siv.LoC">
+         <classpath refid="parserconnector.classpath"/>
+         <arg line="-d -r -a ${SRC_DIR}/src"/>
+     </java>
+          
+    <codeanalayzerproformatter 
+          srcFile="${SRC_DIR}/codeanalyzerproreports/src_CodeStats.csv" 
+          destFile="${SRC_DIR}/codeanalyzerproreports/report.xml" 
+          srcPath="${SRC_DIR}/src"
+          columnHeader="Filename;Type;FuntionName;NL;LOC;LOC_CLOC;CLOC;BLANK;PCT_COMMENT;VG;NEST"
+          />   
+  </target>
+
+  <!-- Splint Analysis for C -->
+  <target name="splintAnalysis">
+  
+      <!-- splint does not like Pro*C constructs, so we comment them out before parsing -->
+    <replaceregexp regexp="^\s*(EXEC\s+SQL\s+[^;]*;)"
+                   value="/*$1*/"
+                   multiline="true">
+          <fileset dir="${SRC_DIR}/src">
+           <patternset refid="c.extensions"/>
+          </fileset>
+    </replaceregexp>
+
+    <replaceregexp regexp="^\s*(EXEC\s+ORACLE\s+[^;]*;)"
+                   value="/*$1*/"
+                   multiline="true">
+          <fileset dir="${SRC_DIR}/src">
+           <patternset refid="c.extensions"/>
+          </fileset>
+    </replaceregexp>
+
+    <replaceregexp regexp="^\s*(sql_cursor\s+[^;]*;)"
+                   value="/*$1*/"
+                   multiline="true">
+          <fileset dir="${SRC_DIR}/src">
+           <patternset refid="c.extensions"/>
+          </fileset>
+    </replaceregexp>
+
+    <replaceregexp regexp="^\s*(END_EXEC\s+[^;]*;)"
+                   value="/*$1*/"
+                   multiline="true">
+          <fileset dir="${SRC_DIR}/src">
+           <patternset refid="c.extensions"/>
+          </fileset>
+    </replaceregexp>
+
+    <replaceregexp regexp="^\s*(END\s+[^;]*;)"
+                   value="/*$1*/"
+                   multiline="true">
+          <fileset dir="${SRC_DIR}/src">
+           <patternset refid="c.extensions"/>
+          </fileset>
+    </replaceregexp>
+
+    <delete dir="${SRC_DIR}/splintreports" />
+    <mkdir dir="${SRC_DIR}/splintreports" />
+
+    <antcall target="_splintAnalysis.if.c"/>
+    <antcall target="_splintAnalysis.if.cpp"/>
+  </target>
+
+  <target name="_splintAnalysis.if.c" unless="is.cpp">
+    <splintconnector 
+          options="-warnposix -nestcomment -usevarargs -preproc +posixlib -fileextensions"
+          destFile="${SRC_DIR}/splintreports/report.csv"
+          >
+     <source dir="${SRC_DIR}/src">
+       <include name="**/*.c"/>
+       <include name="**/*.pc"/>
+     </source>
+     <lib dir="${SRC_DIR}/src">
+       <include name="**/"/>
+     </lib>
+    </splintconnector>
+    <splintformatter 
+          srcFile="${SRC_DIR}/splintreports/report.csv"
+          destFile="${SRC_DIR}/splintreports/report.xml"
+          srcDirPath="${SRC_DIR}/src"
+          />
+  </target>
+
+  <!-- Avoid splint analysis for C++ code. -->
+  <target name="_splintAnalysis.if.cpp" if="is.cpp">
+         <echo message="&lt;Result&gt;&lt;/Result&gt;" file="${SRC_DIR}/splintreports/report.xml"/>
+  </target>
+  
+  <!-- PHP analysis -->
+  <target name="phpcsAnalysis">
+    <delete dir="${SRC_DIR}/phpcsreports" />
+    <mkdir dir="${SRC_DIR}/phpcsreports" />
+
+  <!-- PHP CodeSniffer analysis. -->
+    <phpcsconnector srcPath="${SRC_DIR}/src" scriptPath="${ant.root}/../codeSniffer/scripts/phpcs.php" scriptOptions="--standard=caqs" options="-n" outputFile="${SRC_DIR}/phpcsreports/report.xml">
+     <dirset dir="${ant.root}/..">
+       <include name="codeSniffer" />
+       <include name="codeSniffer/PEAR-1.6.2" />
+     </dirset>
+    </phpcsconnector>
+
+  <!-- PHP CPD analysis. -->
+    <phpcpdconnector srcPath="${SRC_DIR}/src" scriptPath="${ant.root}/../codeSniffer/scripts/phpcpd" options="-n" outputFile="${SRC_DIR}/phpcsreports/cpd.xml">
+     <dirset dir="${ant.root}/..">
+      <include name="codeSniffer/PEAR-1.6.2/PEAR" />
+     </dirset>
+    </phpcpdconnector>
+
+  </target>    
+
+  <!-- DevEnterprise connector. -->
+  <target name="deventrepriseAnalysis">
+    <delete dir="${SRC_DIR}/src"/>
+    <mkdir dir="${SRC_DIR}/src"/>
+    <delete dir="${SRC_DIR}/deventreprisereports"/>
+    <mkdir dir="${SRC_DIR}/deventreprisereports"/>
+    <deventrepriseconnector srcDir="${SRC_DIR}/src" scriptPath="${ant.root}/../deventreprise/plugin/startAnalyse.bat" collectionName="${INFO1}" resultsDir="${SRC_DIR}/deventreprisereports" sqlserverconfig="${ant.root}/../deventreprise/plugin">
+    </deventrepriseconnector>
+  </target>
+
+  <available file="${SRC_DIR}/src/WEB-INF" type="dir" property="web.present"/>
+  <!-- JSP analysis based on regexp.
+   - A WEB-INF directory is needed. 
+  -->
+  <target name="jspAnalysis" if="web.present">
+    <delete dir="${SRC_DIR}/jspreports" />
+    <mkdir dir="${SRC_DIR}/jspreports" />
+    <jspparser
+        destFile="${SRC_DIR}/jspreports/report.xml"
+        linkDestFile="${SRC_DIR}/jspreports/report.csv"
+        baseDir="${SRC_DIR}/src/">
+      <source dir="${SRC_DIR}/src">
+       <include name="**/*.jsp"/>
+      </source>
+      <config dir="${SRC_DIR}/src/WEB-INF">
+       <include name="mappings.xml"/>
+       <include name="screendefinitions*US*.xml"/>
+      </config>
+    </jspparser>
+  </target>
+    
+  <!-- Eclipse JDT Compiler with warning extraction.
+     - Adapt the bin/ target directory if the compilation has already been done.
+     - Add a lib/ directory and set the javac classpath to perform a real compiling.
+     - Adjust the -warn argument to enable/disable the detected warnings : 
+
+   Warning options:
+      -deprecation     + deprecation outside deprecated code
+      -nowarn -warn:none disable all warnings
+      -warn:<warnings separated by ,>    enable exactly the listed warnings
+      -warn:+<warnings separated by ,>   enable additional warnings
+      -warn:-<warnings separated by ,>   disable specific warnings
+        allDeprecation       deprecation including inside deprecated code
+        allJavadoc           invalid or missing javadoc
+        assertIdentifier   + 'assert' used as identifier
+        boxing               autoboxing conversion
+        charConcat         + char[] in String concat
+        conditionAssign      possible accidental boolean assignment
+        constructorName    + method with constructor name
+        dep-ann              missing @Deprecated annotation
+        deprecation        + deprecation outside deprecated code
+        discouraged        + use of types matching a discouraged access rule
+        emptyBlock           undocumented empty block
+        enumSwitch           incomplete enum switch
+        fallthrough          possible fall-through case
+        fieldHiding          field hiding another variable
+        finalBound           type parameter with final bound
+        finally            + finally block not completing normally
+        forbidden          + use of types matching a forbidden access rule
+        hiding               macro for fieldHiding, localHiding, typeHiding and
+                             maskedCatchBlock
+        incomplete-switch    same as enumSwitch
+        indirectStatic       indirect reference to static member
+        intfAnnotation     + annotation type used as super interface
+        intfNonInherited   + interface non-inherited method compatibility
+        javadoc              invalid javadoc
+        localHiding          local variable hiding another variable
+        maskedCatchBlock   + hidden catch block
+        nls                  string literal lacking non-nls tag //$NON-NLS-<n>$
+        noEffectAssign     + assignment without effect
+        null                 potential missing or redundant null check
+        nullDereference      missing null check
+        over-ann             missing @Override annotation
+        paramAssign          assignment to a parameter
+        pkgDefaultMethod   + attempt to override package-default method
+        raw                + usage of raw type
+        semicolon            unnecessary semicolon, empty statement
+        serial             + missing serialVersionUID
+        specialParamHiding   constructor or setter parameter hiding another field
+        static-access        macro for indirectStatic and staticReceiver
+        staticReceiver     + non-static reference to static member
+        super                overriding a method without making a super invocation
+        suppress           + enable @SuppressWarnings
+        synthetic-access     same as syntheticAccess
+        syntheticAccess      synthetic access for innerclass
+        tasks(<tags separated by |>) tasks identified by tags inside comments
+        typeHiding         + type parameter hiding another type
+        unchecked          + unchecked type operation
+        unnecessaryElse      unnecessary else clause
+        unqualified-field-access same as unqualifiedField
+        unqualifiedField     unqualified reference to field
+        unused               macro for unusedArgument, unusedImport, unusedLabel,
+                                 unusedLocal, unusedPrivate and unusedThrown
+        unusedArgument       unread method parameter
+        unusedImport       + unused import declaration
+        unusedLabel        + unused label
+        unusedLocal        + unread local variable
+        unusedPrivate      + unused private member declaration
+        unusedThrown         unused declared thrown exception
+        uselessTypeCheck     unnecessary cast/instanceof operation
+        varargsCast        + varargs argument need explicit cast
+        warningToken       + unhandled warning token in @SuppressWarnings
+  -->
+  <target name="jdtAnalysis">
+    <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+    <delete dir="${SRC_DIR}/jdtbin"/>
+    <mkdir dir="${SRC_DIR}/jdtbin"/>
+    <delete dir="${SRC_DIR}/jdtreports"/>
+    <mkdir dir="${SRC_DIR}/jdtreports"/>
+	
+    <stringutil string="${DIALECTE}" property="java_version">
+      <substring beginindex="8"/>
+    </stringutil>
+
+	<echo message="Dialect=${DIALECTE}"/>
+	<echo message="Java version=${java_version}"/>
+
+    <javac srcdir="${SRC_DIR}/src"
+           destdir="${SRC_DIR}/jdtbin"
+           failonerror="false"
+		   source="${java_version}"
+		   target="${java_version}">
+           <compilerarg line="-proceedOnError -referenceInfo -warn:+null,nullDereference -log ${SRC_DIR}/jdtreports/compilationReport.xml"/>
+    </javac>
+    <replace encoding="UTF-8" file="${SRC_DIR}/jdtreports/compilationReport.xml" token='&lt;!DOCTYPE compiler PUBLIC "-//Eclipse.org//DTD Eclipse JDT 3.2.003 Compiler//EN" "http://www.eclipse.org/jdt/core/compiler_32_003.dtd">' value=""/>
+    <jdtformatter 
+        srcFile="${SRC_DIR}/jdtreports/compilationReport.xml"
+        destFile="${SRC_DIR}/jdtreports/report.xml"
+        srcDirPath="${SRC_DIR}/src"
+        />
+  </target>
+
+  <!-- Generic Parser connector. -->
+  <target name="genericparserAnalysis">
+    <delete dir="${SRC_DIR}/genericparserreports"/>
+    <mkdir dir="${SRC_DIR}/genericparserreports"/>
+    <genericparserconnector scriptPath="${ant.root}/../genericParser/startAnalyse" srcDir="${SRC_DIR}/src" fileList="${INFO2}" resultsDir="${SRC_DIR}/genericparserreports" language="${DIALECTE}" genericParserLanguagePath="${ant.root}/../genericParser/languages">
+    </genericparserconnector>
+  </target>
+
+  <target name="flexpmdAnalysis">
+  
+    <delete dir="${SRC_DIR}/flexpmdreports" />
+    <mkdir dir="${SRC_DIR}/flexpmdreports" />
+    
+    <flexmetrics sourcedirectory="${SRC_DIR}/src" outputfile="${SRC_DIR}/flexpmdreports/ncss.xml"/>
+    <xslt in="${SRC_DIR}/flexpmdreports/ncss.xml" 
+          out="${SRC_DIR}/flexpmdreports/traited_ncss.xml" 
+          style="${CParser.basedir}/xsl/ncss2caqs.xsl"
+           />
+
+    <flexpmd sourceDirectory="${SRC_DIR}/src" outputDirectory="${SRC_DIR}/flexpmdreports"/>
+    <flexpmdformatter 
+          srcFile="${SRC_DIR}/flexpmdreports/pmd.xml" 
+          destFile="${SRC_DIR}/flexpmdreports/traited_pmd.xml" 
+          srcDirPath="${SRC_DIR}/src"
+          />
+           
+    <flexcpd minimumTokenCount="50" outputFile="${SRC_DIR}/flexpmdreports/cpd.xml">
+      <fileset dir="${SRC_DIR}/src">
+        <include name="**/*.as"/>
+        <include name="**/*.mxml"/>
+      </fileset>
+    </flexcpd>
+        
+  </target>
+
+    <target name="restnatAnalysis">
+
+    <delete dir="${SRC_DIR}/restnatreports" />
+    <mkdir dir="${SRC_DIR}/restnatreports" />
+    
+    <property file="${CParser.basedir}/cft.properties"/>  
+    
+    <!-- fill the request to send through CFT -->
+    <echo message="${INFO1}" file="${cft.file}" />
+    
+    <delete file="${cft_met.zip}" quiet="true" />
+    <delete file="${cft_src.zip}" quiet="true"/>
+    
+    
+    <!-- send file with library name for analysis -->
+        <restnatconnector
+          command="${CParser.basedir}/cftAnalysis.bat"
+          options=""
+          destDir="${SRC_DIR}/restnatreports"
+          logFile="${SRC_DIR}/restnatreports/cft.log"
+          resultFile="${cft_met.zip}"
+          codeFile="${cft_src.zip}"
+          frequency="10000"
+          maxWait="3600000"
+          />
+        
+    	<!-- extract related metrics files -->
+        <unzip src="${cft_met.zip}" dest="${SRC_DIR}/restnatreports"/>
+
+        <restnatformatter srcFile="${SRC_DIR}/restnatreports/ANA${INFO1}/qual.xml"
+                      destFile="${SRC_DIR}/restnatreports/qualConstructReport.xml"
+                      srcDirPath="${SRC_DIR}/src"
+                      libraryName="${INFO1}"
+                      />
+    
+        <restnatformatter srcFile="${SRC_DIR}/restnatreports/ANA${INFO1}/SAG/qual.xml"
+                      destFile="${SRC_DIR}/restnatreports/qualReport.xml"
+                      srcDirPath="${SRC_DIR}/src"
+                      libraryName="${INFO1}"
+                      />
+
+        <restnatformatter srcFile="${SRC_DIR}/restnatreports/ANA${INFO1}/ano.xml"
+                      destFile="${SRC_DIR}/restnatreports/anoConstructReport.xml"
+                      srcDirPath="${SRC_DIR}/src"
+                      libraryName="${INFO1}"
+                      />
+
+        <restnatformatter srcFile="${SRC_DIR}/restnatreports/ANA${INFO1}/SAG/ano.xml"
+                      destFile="${SRC_DIR}/restnatreports/anoReport.xml"
+                      srcDirPath="${SRC_DIR}/src"
+                      libraryName="${INFO1}"
+                      />
+
+    	<!-- extract related source files -->
+    	<unzip src="${cft_src.zip}" dest="${SRC_DIR}/src"/>
+
+  	<move todir="${SRC_DIR}/src">
+    		<fileset dir="${SRC_DIR}/src/${INFO1}">
+	        	<include name="**/*.*"/>
+	        </fileset>    		
+  	</move>
+
+ </target>
+ 
+  <target name="agilityAnalysis">
+  
+  
+  	<condition property="agilityReportExists">
+  		<available file="${SRC_DIR}/agilityreports/report.xml"/>
+  	</condition >
+  	<antcall target="_createAgilityReport"/>
+  	
+  	<!-- remove package names in parameter types for methods -->
+        <replaceregexp regexp='([\(\,\s*])[\.\w]*\.(\w*[\)\,\s*])'  value='$1$2'>
+          <fileset file="${SRC_DIR}/agilityreports/report.xml" />
+        </replaceregexp>
+
+  </target>
+  
+  <target name="_createAgilityReport" unless="agilityReportExists">
+  	<mkdir dir="${SRC_DIR}/agilityreports"/>
+       	<echo message="&lt;Result&gt;&lt;/Result&gt;" file="${SRC_DIR}/agilityreports/report.xml"/>
+  </target>
+
+</project>

@@ -1,0 +1,19 @@
+<xml>
+    <SEARCH name="closing" filter=".*\.java">
+    	<RULE regexp="Statement" />
+    	<RULE regexp="ResultSet" />
+    	<RULE regexp="close" />
+    </SEARCH>
+    <SEARCH name="select*" filter=".*\.java">
+    	<RULE regexp="[S|s]elect" />
+    	<RULE regexp="SELECT" />
+    </SEARCH>
+    <SEARCH name="update" filter=".*\.java">
+    	<RULE regexp="[U|u]pdate" />
+    	<RULE regexp="UPDATE" />
+    	<RULE regexp="autoCommit" />
+    </SEARCH>
+    <SEARCH name="JDBC_09" filter=".*\.java">
+    	<RULE regexp="executeBatch" />
+    </SEARCH>
+</xml>

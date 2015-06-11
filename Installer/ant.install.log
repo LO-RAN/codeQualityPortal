@@ -1,0 +1,14 @@
+Logger initialized
+Ant basedir:D:\projects\CAQS\Development\Installer
+Filter: org.tp23.antinstaller.runtime.exe.LoadConfigFilter
+Config loaded
+Filter: org.tp23.antinstaller.runtime.exe.CreateUIFilter
+Setting look and feel:org.tp23.jgoodies.plaf.plastic.PlasticXPLookAndFeel
+Created UI classes
+Filter: org.tp23.antinstaller.runtime.exe.PropertyLoaderFilter
+Checking for predefined properties
+Loading pre-defined properties from file D:\projects\CAQS\Development\Installer\ant.install.properties
+No predefined properties
+Filter: org.tp23.antinstaller.runtime.exe.ExecuteRunnerFilter
+Aborted
+Finalizing

@@ -1,0 +1,132 @@
+<project name="hsqldb2h2" default="hsqldb2h2" basedir=".">
+  <taskdef name="jdbcexport" classname="net.sourceforge.jdbcexporter.ant.JDBCExporterTask"/>
+  <dirname property="hsqldb2h2.basedir" file="${ant.file.hsqldb2h2}"/>
+  <property file="${hsqldb2h2.basedir}/build.properties"/>
+  <property name="DEST_DIR" value="${hsqldb2h2.basedir}/results"/>
+  
+  <!-- migrate Exo data from hsqldb to h2 -->
+    <target name="hsqldb2h2">
+      <antcall target="exportFromHsqldb"/>
+      <antcall target="importToH2"/>
+    </target>
+    
+    
+    <target name="exportFromHsqldb">
+      <echo message="Source driver=${source.db.driver}"/>
+      <echo message="Source url=${source.db.url}"/>
+      <echo message="Source user=${source.db.user}"/>
+      <echo message="Source password=${source.db.password}"/>
+
+      <mkdir dir="${DEST_DIR}"/>
+
+      <jdbcexport>
+      <property name="columntranslator.replaceAll" value="net.sourceforge.jdbcimporter.columntranslator.ReplaceAllColumnTranslator"/>
+        <connection type="jdbc">
+          <property name="driver" value="${source.db.driver}"/>
+          <property name="url" value="${source.db.url}"/>
+          <property name="username" value="${source.db.user}"/>
+          <property name="password" value="${source.db.password}"/>
+        </connection>
+        
+        <entity table="exo_user" target="${DEST_DIR}/exo_user.csv" encoding="UTF-8" where="USERNAME != 'admin' AND USERNAME != 'administrator' AND USERNAME != 'cdp1' AND USERNAME != 'dev1' AND USERNAME != 'jack' AND USERNAME != 'james' AND USERNAME != 'john' AND USERNAME != 'man1' AND USERNAME != 'qua1' AND USERNAME != 'root'">
+          <delimiter type="csv">
+            <property name="columnDelimiter" value=","/>
+            <property name="enclosedDelimiter" value="'"/>
+            <property name="enclosedOptional" value="true"/>
+          </delimiter>
+          <column name="ID"/>
+          <column name="USERNAME"/>
+          <column name="PASSWORD"/>
+          <column name="FIRSTNAME"/>
+          <column name="LASTNAME"/>
+          <column name="EMAIL"/>
+          <column name="CREATEDDATE"/>
+          <column name="LASTLOGINTIME"/>
+        </entity>
+
+        <entity table="exo_user_profile" target="${DEST_DIR}/exo_user_profile.csv" encoding="UTF-8" where="USERNAME != 'admin' AND USERNAME != 'administrator' AND USERNAME != 'cdp1' AND USERNAME != 'dev1' AND USERNAME != 'jack' AND USERNAME != 'james' AND USERNAME != 'john' AND USERNAME != 'man1' AND USERNAME != 'qua1' AND USERNAME != 'root'">
+          <delimiter type="csv">
+            <property name="columnDelimiter" value=","/>
+            <property name="enclosedDelimiter" value="'"/>
+            <property name="enclosedOptional" value="true"/>
+          </delimiter>
+          <column name="USERNAME"/>
+          <column name="PROFILE" SQLType="VARCHAR">
+        			<translator type="replaceAll" >
+        				<property name="searchString" value="\n"/>
+				        <property name="replaceString" value=""/>
+			        </translator>
+          </column>
+        </entity>
+
+        <entity table="exo_membership" target="${DEST_DIR}/exo_membership.csv" encoding="UTF-8" where="USERNAME != 'admin' AND USERNAME != 'administrator' AND USERNAME != 'cdp1' AND USERNAME != 'dev1' AND USERNAME != 'jack' AND USERNAME != 'james' AND USERNAME != 'john' AND USERNAME != 'man1' AND USERNAME != 'qua1' AND USERNAME != 'root'">
+          <delimiter type="csv">
+            <property name="columnDelimiter" value=","/>
+            <property name="enclosedDelimiter" value="'"/>
+            <property name="enclosedOptional" value="true"/>
+          </delimiter>
+          <column name="ID"/>
+          <column name="MEMBERSHIPTYPE"/>
+          <column name="USERNAME"/>
+          <column name="GROUPID"/>
+        </entity>
+
+      </jdbcexport>
+    </target>
+
+    <target name="importToH2">
+      <echo message="Target driver=${target.db.driver}"/>
+      <echo message="Target url=${target.db.url}"/>
+      <echo message="Target user=${target.db.user}"/>
+      <echo message="Target password=${target.db.password}"/>
+      <mkdir dir="${DEST_DIR}"/>
+
+      <jdbcimport batchCount="1000" engine="net.sourceforge.jdbcimporter.engine.UpdateEngine" failonerror="true">
+        <connection type="jdbc">
+          <property name="driver" value="${target.db.driver}"/>
+          <property name="url" value="${target.db.url}"/>
+          <property name="username" value="${target.db.user}"/>
+          <property name="password" value="${target.db.password}"/>
+        </connection>
+
+        <entity table="exo_user" source="${DEST_DIR}/exo_user.csv" encoding="UTF-8">
+          <delimiter type="csv">
+            <property name="columnDelimiter" value=","/>
+            <property name="enclosedDelimiter" value="'"/>
+            <property name="enclosedOptional" value="true"/>
+          </delimiter>
+          <column name="ID"/>
+          <column name="USERNAME"/>
+          <column name="PASSWORD"/>
+          <column name="FIRSTNAME"/>
+          <column name="LASTNAME"/>
+          <column name="EMAIL"/>
+          <column name="CREATEDDATE"/>
+          <column name="LASTLOGINTIME"/>
+        </entity>
+
+        <entity table="exo_user_profile" source="${DEST_DIR}/exo_user_profile.csv" encoding="UTF-8">
+          <delimiter type="csv">
+            <property name="columnDelimiter" value=","/>
+            <property name="enclosedDelimiter" value="'"/>
+            <property name="enclosedOptional" value="true"/>
+          </delimiter>
+          <column name="USERNAME"/>
+          <column name="PROFILE" SQLType="VARCHAR">
+          </column>
+        </entity>
+
+        <entity table="exo_membership" source="${DEST_DIR}/exo_membership.csv" encoding="UTF-8">
+          <delimiter type="csv">
+            <property name="columnDelimiter" value=","/>
+            <property name="enclosedDelimiter" value="'"/>
+            <property name="enclosedOptional" value="true"/>
+          </delimiter>
+          <column name="ID"/>
+          <column name="MEMBERSHIPTYPE"/>
+          <column name="USERNAME"/>
+          <column name="GROUPID"/>
+        </entity>
+      </jdbcimport>
+    </target>
+  </project>

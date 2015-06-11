@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="CustomFXCopRules_VS2003">
+</Property><Property Name="Solution File" Value="D:\projects\fxcop_custom\CustomFXCopRules_VS2003.sln">
+</Property><Property Name="User Options File" Value="D:\projects\fxcop_custom\CustomFXCopRules_VS2003.suo">
+</Property><Property Name="Date" Value="mercredi 22 décembre 2010">
+</Property><Property Name="Time" Value="17:39">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="CustomFXCopRules_VS2003.sln" Description="File successfully backed up as D:\projects\fxcop_custom\Backup\CustomFXCopRules_VS2003.sln">
+</Event><Event ErrorLevel="0" Project="" Source="CustomFXCopRules_VS2003.suo" Description="File successfully backed up as D:\projects\fxcop_custom\Backup\CustomFXCopRules_VS2003.suo">
+</Event><Event ErrorLevel="0" Project="CustomFXCopRules_VS2003" Source="CustomFXCopRules_VS2003.csproj" Description="Project file successfully backed up as D:\projects\fxcop_custom\Backup\CustomFXCopRules_VS2003.csproj">
+</Event><Event ErrorLevel="0" Project="CustomFXCopRules_VS2003" Source="CustomFXCopRules_VS2003.csproj.user" Description="Project user file successfully backed up as D:\projects\fxcop_custom\Backup\CustomFXCopRules_VS2003.csproj.user">
+</Event><Event ErrorLevel="0" Project="CustomFXCopRules_VS2003" Source="BaseFXCopRule.cs" Description="File successfully backed up as D:\projects\fxcop_custom\Backup\BaseFXCopRule.cs">
+</Event><Event ErrorLevel="0" Project="CustomFXCopRules_VS2003" Source="EmptyRule.cs" Description="File successfully backed up as D:\projects\fxcop_custom\Backup\EmptyRule.cs">
+</Event><Event ErrorLevel="0" Project="CustomFXCopRules_VS2003" Source="ExampleRule.cs" Description="File successfully backed up as D:\projects\fxcop_custom\Backup\ExampleRule.cs">
+</Event><Event ErrorLevel="2" Project="CustomFXCopRules_VS2003" Source="Globals\Constants.cs" Description="Failed to backup file as D:\projects\fxcop_custom\Backup\Globals\Constants.cs">
+</Event><Event ErrorLevel="2" Project="CustomFXCopRules_VS2003" Source="Properties\AssemblyInfo.cs" Description="Failed to backup file as D:\projects\fxcop_custom\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="CustomFXCopRules_VS2003" Source="Rules.xml" Description="File successfully backed up as D:\projects\fxcop_custom\Backup\Rules.xml">
+</Event><Event ErrorLevel="0" Project="CustomFXCopRules_VS2003" Source="CustomFXCopRules_VS2003.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="CustomFXCopRules_VS2003" Source="CustomFXCopRules_VS2003.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="CustomFXCopRules_VS2003.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="CustomFXCopRules_VS2003.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="CustomFXCopRules_VS2003" Source="CustomFXCopRules_VS2003.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

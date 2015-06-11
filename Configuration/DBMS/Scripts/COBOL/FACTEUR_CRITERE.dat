@@ -1,0 +1,82 @@
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'MAIN', 'MAIN', 'Maintenabilité-Maintenabilité', 'Maintenabilité-Maintenabilité'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'MAIN', 'COMP', 'Maintenabilité-Compréhension', 'Maintenabilité-Compréhension'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'MAIN', 'ANTI_COPIER_COLLER', 'Maintenabilité-CopierColler', 'Maintenabilité-CopierColler'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'MAIN', 'DEST', 'Maintenabilité-Destructuration', 'Maintenabilité-Destructuration'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'MAIN', 'PLOG', 'Maintenabilité-Poids Logique', 'Maintenabilité-Poids Logique'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'MAIN', 'ANTI_SPAG', 'Maintenabilité-Spaghetti', 'Maintenabilité-Spaghetti'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'EVOL', 'COMP', 'Evolutivité-Compréhension', 'Evolutivité-Compréhension'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'EVOL', 'DEST', 'Evolutivité-Destructuration', 'Evolutivité-Destructuration'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'EVOL', 'PLOG', 'Evolutivité-PoidsLogique', 'Evolutivité-PoidsLogique'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'EVOL', 'TPRO', 'Evolutivité-TailleProc', 'Evolutivité-TailleProc'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'ROBU', 'TCOU', 'Robustesse-Tx Couverture', 'Robustesse-Tx Couverture'
+, 8,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'PERT', 'ANTI_RECURSIVITE', 'Architecture-Récursivité', 'Architecture-Récursivité'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'REUT', 'ANTI_RECURSIVITE', 'Réutilisation-Récursivité', 'Réutilisation-Récursivité'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'REUT', 'CTRA', 'Réutilisation-CouplageT', 'Réutilisation-CouplageTraditionnel'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'REUT', 'ANTI_COPIER_COLLER', 'Réutilisation-Copier', 'Réutilisation-CopierColler'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'FIAB', 'ANTI_COPIER_COLLER', 'Fiabilité-CopierColler', 'Fiabilité-CopierColler'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'FIAB', 'CTRA', 'Fiabilité-CouplageT', 'Fiabilité-CouplageTraditionnel'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'FIAB', 'DEST', 'Fiabilité-Destructuration', 'Fiabilité-Destructuration'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'FIAB', 'INTE', 'Fiabilité-Intégration', 'Fiabilité-Intégration'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'COBOL', 'FIAB', 'PLOG', 'Fiabilité-Poids Logique', 'Fiabilité-Poids Logique'
+, 6,  null,  null); 
+commit;
+ 

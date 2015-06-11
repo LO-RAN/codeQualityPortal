@@ -1,0 +1,94 @@
+/* styles used for syntax highlighted source files */
+
+/* COMMENT1 */
+.syntax1 {
+color: #cc0000;
+}
+/* COMMENT2 */
+.syntax2 {
+color: #ff8400;
+}
+/* COMMENT3 */
+.syntax3 {
+color: #6600cc;
+}
+/* COMMENT4 */
+.syntax4 {
+color: #cc6600;
+}
+/* DIGIT */
+.syntax5 {
+color: #ff0000;
+}
+/* FUNCTION */
+.syntax6 {
+color: #9966ff;
+}
+/* INVALID */
+.syntax7 {
+background: #ffffcc;
+color: #ff0066;
+}
+/* KEYWORD1 */
+.syntax8 {
+color: #006699;
+font-weight: bold;
+}
+/* KEYWORD2 */
+.syntax9 {
+color: #009966;
+font-weight: bold;
+}
+/* KEYWORD3 */
+.syntax10 {
+color: #0099ff;
+font-weight: bold;
+}
+/* KEYWORD4 */
+.syntax11 {
+color: #66ccff;
+font-weight: bold;
+}
+/* LABEL */
+.syntax12 {
+color: #02b902;
+}
+/* LITERAL1 */
+.syntax13 {
+color: #ff00cc;
+}
+/* LITERAL2 */
+.syntax14 {
+color: #cc00cc;
+}
+/* LITERAL3 */
+.syntax15 {
+color: #9900cc;
+}
+/* LITERAL4 */
+.syntax16 {
+color: #6600cc;
+}
+/* MARKUP */
+.syntax17 {
+color: #0000ff;
+}
+/* OPERATOR */
+.syntax18 {
+color: #000000;
+font-weight: bold;
+}
+/* gutter with line number */
+.gutter {
+	color: #000000;
+	font-size: smaller;
+	background-color: #E0E0E0;
+}
+/* error highlighted line */
+.errorLine{
+	background-color: #FEFF77;
+}
+/* default style */
+body {
+background-color:white;
+}

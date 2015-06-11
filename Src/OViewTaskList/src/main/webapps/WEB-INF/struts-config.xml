@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_0.dtd">
+
+<struts-config>
+
+
+  <!-- ========== Global Forward Definitions ============================== -->
+  <global-forwards>
+
+     <forward   name="exception"                       path="/exception.jsp"/>
+     <forward   name="getCredentials"                  path="/credentials.htm"/>
+
+  </global-forwards>
+
+
+  <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+
+    <action path="/retrieveprojectlist" type="com.compuware.carscode.action.RetrieveProjectAction">
+
+    	<forward name="success" path="/taskexec.jsp"/>
+
+    </action>
+
+    <action    path="/tasklist"
+               type="com.compuware.optimalview.tasklist.TaskListAction">
+       <forward name="success"              path="/tasklist.jsp"/>
+    </action>
+
+    <action    path="/taskexec"
+               type="com.compuware.optimalview.tasklist.TaskExecAction">
+       <forward name="success"              path="/retrieveprojectlist.do"/>
+       <forward name="completion"           path="/taskcompleted.jsp"/>
+    </action>
+
+
+  </action-mappings>
+
+</struts-config>

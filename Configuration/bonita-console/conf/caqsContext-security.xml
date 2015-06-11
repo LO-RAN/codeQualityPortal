@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Application context containing authentication, channel
+  - security and web URI beans.
+  -
+  - Only used by "filter" artifact.
+  -->
+
+<b:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:b="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.1.xsd">
+
+<!-- >>>>>> uncomment this part for LDAP authentication and local identification  (in this case, comment out the local part) >>>>>> -->
+
+   <!-- adapt url, manager-dn and manager-password according to LDAP settings -->
+<!--
+    <ldap-server 
+        id="caqsLdap" 
+        url="ldap://cwfr-d083:389/dc=compuware,dc=fr" 
+        manager-dn="cn=Manager,dc=compuware,dc=fr" 
+        manager-password="secret" 
+        />
+
+    <b:bean 
+        id="userSearch"
+        class="org.springframework.security.ldap.search.FilterBasedLdapUserSearch"
+        >
+      <b:constructor-arg index="0" value=""/>
+      <b:constructor-arg index="1" value="(cn={0})"/>
+      <b:constructor-arg index="2" ref="caqsLdap" />
+    </b:bean>
+
+    <b:bean id="ldapAuthProvider"
+            class="org.springframework.security.providers.ldap.LdapAuthenticationProvider">
+      <b:constructor-arg>
+        <b:bean class="org.springframework.security.providers.ldap.authenticator.BindAuthenticator">
+          <b:constructor-arg ref="caqsLdap"/>        
+          <b:property name="userSearch" ref="userSearch" />
+        </b:bean>
+      </b:constructor-arg>
+      <b:constructor-arg>
+  	    <b:bean class="com.compuware.caqs.security.ldap.impl.JdbcAuthoritiesPopulator">
+  	      <b:constructor-arg ref="caqsLdap"/>
+  	      <b:constructor-arg value="ou=Groups"/>
+  	      <b:property name="userService" ref="jdbcUserService"/>
+  	    </b:bean>
+  	  </b:constructor-arg>
+      <b:property name="userDetailsContextMapper">
+        <b:bean class="org.springframework.security.userdetails.ldap.InetOrgPersonContextMapper" />
+      </b:property>
+      <custom-authentication-provider/>
+    </b:bean>
+
+   <jdbc-user-service
+            id="jdbcUserService"
+            data-source-ref="authDataSource"
+            users-by-username-query="select ID_USER, PASSWORD, 1 from CAQS_USER where ID_USER=?"
+            authorities-by-username-query="select ID_USER, ID_ROLE from USER_ROLE where ID_USER=?" />
+-->
+<!-- <<<<<< uncomment this part for LDAP authentication and local identification <<<<<< -->
+
+<!-- >>>>>> uncomment this part for local authentication/identification only (in this case, comment out the LDAP part) >>>>> -->
+
+   <authentication-provider>
+       <jdbc-user-service
+            data-source-ref="authDataSource"
+            users-by-username-query="select ID_USER, PASSWORD, 1 from CAQS_USER where ID_USER=?"
+            authorities-by-username-query="select ID_USER, ID_ROLE from USER_ROLE where ID_USER=?" />
+   </authentication-provider>
+<!-- <<<<<< uncomment this part for local authentication only <<<<<< -->
+
+	<authentication-manager alias="caqsAuthenticationManager"/>
+
+    <http>
+        <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/servlet/*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/**.do*" access="IS_AUTHENTICATED_FULLY"/>
+        <intercept-url pattern="/**.jsp*" access="IS_AUTHENTICATED_FULLY"/>
+        <intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+
+        <form-login login-page="/login.jsp"
+                    default-target-url="/caqsPortal.do"
+                    always-use-default-target='true'
+                    authentication-failure-url="/login.jsp?login_error=1"/>
+        <anonymous />
+        <logout logout-success-url="/login.jsp"/>
+
+    </http>
+
+</b:beans>

@@ -1,0 +1,32 @@
+#--------------------------------------------------------------------
+# Compuware Corporation License Certificate: 91635
+# Copyright (C) Compuware Corp. 2003
+#
+# Created: 29-OCT-2003 13:57:38
+# For    : 10000-1
+#        : COMPUWARE CORPORATION-HQ
+# CLTD ID: MARY MARCHANT
+#--------------------------------------------------------------------
+#
+# Thank you for your purchase/trial of the following
+# Compuware products:
+#
+#      OptimalAdvisor Code Analysis 01.00
+#
+# If you have any questions regarding this document, please contact
+# the Compuware Hotline: 1-800-538-7822 Toll Free (North America only)
+# For International and European customers, please contact your local
+# Compuware subsidiary or distributor.
+#
+#--------------------------------------------------------------------
+#
+# FEATURE RECORDS SECTION: 1 to N per certificate
+FEATURE OptimalAdvisor compuware 01.00 \
+	31-may-2005 0 9DF13671AF92833313B2 \
+	VENDOR_STRING=989898;0;TRIAL HOSTID=DEMO \
+	ck=239
+
+#--------------------------------------------------------------------
+#Call Tracking Number
+
+# End of certificate

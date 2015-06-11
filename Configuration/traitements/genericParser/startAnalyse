@@ -1,0 +1,3 @@
+#!/bin/sh
+
+java -Xmx512m -classpath ../Traitements/genericParser/:../Traitements/genericParser/log4j-1.2.14.jar:../Traitements/genericParser/genericparser-1.0.jar:../Traitements/genericParser/toolbox-2.5.jar com.compuware.caqs.business.parser.GenericParser $1 $2 $3 $4 $5

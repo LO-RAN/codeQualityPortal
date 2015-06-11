@@ -1,0 +1,837 @@
+/* Copyright (c) 2010, Compuware Corporation.
+ * All rights reserved.
+ *
+ * Author : Laurent IZAC (laurent.izac@compuware.com)
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *     * Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of Compuware Corporation, Inc. nor the names of its
+ *       contributors may be used to endorse or promote products derived from
+ *       this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+options {
+//  DEBUG_PARSER = true;
+//  DEBUG_LOOKAHEAD = true;
+//  DEBUG_TOKEN_MANAGER = true;
+//  FORCE_LA_CHECK = true;
+	USER_CHAR_STREAM = true;
+	NODE_USES_PARSER=true;
+  JAVA_UNICODE_ESCAPE = true; 	  
+	  
+	IGNORE_CASE = true; 
+	STATIC = false; 
+	
+	MULTI=true;
+	VISITOR=true; }
+
+PARSER_BEGIN(UnifaceParser)
+
+/*
+Beware : continuation markers (aka "%\") should be removed before parsing
+         as they will not be handled by this grammar.
+         In the context of Proc code compiling,
+         this special construct is handled by some pre-processing,
+         before actual compilation occurs.
+*/
+
+package com.compuware.pmd.uniface.ast;
+
+/** A Uniface 9.4.01 Grammar. */
+public class UnifaceParser {
+
+  /** Main entry point. */
+/*
+  public static void main(String args[]) {
+    UnifaceParser parser;
+    if (args.length == 0) {
+          System.out.println("Reading from standard input...");
+          parser = new UnifaceParser(System.in);
+    } else if (args.length == 1) {
+      System.out.println("Reading from file " + args[0] + " . . .");
+      try {
+        parser = new UnifaceParser(new java.io.FileInputStream(args[0]));
+      } catch (java.io.FileNotFoundException e) {
+        System.out.println("File " + args[0] + " not found.");
+        return;
+      }
+    } else {
+      System.out.println("Usage is one of:");
+      System.out.println("         java UnifaceParser < inputfile");
+      System.out.println("OR");
+      System.out.println("         java UnifaceParser inputfile");
+      return;
+    }
+    try {
+      SimpleNode node = parser.Start();
+      node.dump("");
+      System.out.println("Uniface program parsed successfully.");
+    } catch (Exception e) {
+      System.out.println("Encountered errors during parse.");
+      //System.out.println(e.getMessage());
+      e.printStackTrace();
+    }
+  }
+  */
+}
+
+PARSER_END(UnifaceParser)
+
+SKIP : /* WHITE SPACES */
+{
+  " "
+| "\t"
+}
+
+TOKEN :
+{
+  < BR: (["\n","\r"])+ >
+| < COMMA : "," >
+| < COLON : ":" >
+| < SEMICOLON : ";" >
+| < DOLLAR : "$" >
+| < LPAREN: "(" >
+| < RPAREN: ")" >
+| < LBRACKET: "[" >
+| < RBRACKET: "]" >
+| < AT: "@" >
+| < UNDERSCORE: "_" >
+| < DOT: "." >
+}
+
+
+/* OPERATORS */
+TOKEN :/* arithmetic operators */
+{
+  < MULTIPLY: "*" >
+| < DIVIDE: "/" > 
+| < MODULO: "%" >
+| < PLUS: "+" >
+| < MINUS: "-" >
+| < COMPUTE: "compute" >
+}
+
+TOKEN :/* relational operators */
+{
+  < EQUAL: "=" >
+| < LT: "<" >
+| < GT: ">" >
+| < EQ: "==" >
+| < LE: "<=" >
+| < GE: ">=" >
+| < NE: "!=" >
+}
+
+TOKEN :/* assignment operators */
+{
+  < PLUSASSIGN: "+=" >
+| < MINUSASSIGN: "-=" >
+| < STARASSIGN: "*=" >
+| < SLASHASSIGN: "/=" >
+| < REMASSIGN: "%=" >
+}
+
+TOKEN :/* logical operators */
+{
+  < NOT: "!" >
+| < OR: "|" >
+| < AND: "&" >
+}
+
+TOKEN :
+{
+  <COMMENT: <SEMICOLON> (~["\n", "\r"])* >
+} 
+
+TOKEN : /* literals */
+{
+  < INTEGER_LITERAL:
+        <DECIMAL_LITERAL> (["l","L"])?
+      | <HEX_LITERAL> (["l","L"])?
+      | <OCTAL_LITERAL> (["l","L"])?
+  >
+| < #DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])* >
+| < #HEX_LITERAL: "0" ["x","X"] (["0"-"9","a"-"f","A"-"F"])+ >
+| < #OCTAL_LITERAL: "0" (["0"-"7"])* >
+| < FLOATING_POINT_LITERAL:
+        <DECIMAL_FLOATING_POINT_LITERAL>
+      | <HEXADECIMAL_FLOATING_POINT_LITERAL>
+  >
+| < #DECIMAL_FLOATING_POINT_LITERAL:
+        (["0"-"9"])+ "." (["0"-"9"])* (<DECIMAL_EXPONENT>)? (["f","F","d","D"])?
+      | "." (["0"-"9"])+ (<DECIMAL_EXPONENT>)? (["f","F","d","D"])?
+      | (["0"-"9"])+ <DECIMAL_EXPONENT> (["f","F","d","D"])?
+      | (["0"-"9"])+ (<DECIMAL_EXPONENT>)? ["f","F","d","D"]
+  >
+| < #DECIMAL_EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ >
+| < #HEXADECIMAL_FLOATING_POINT_LITERAL:
+        "0" ["x", "X"] (["0"-"9","a"-"f","A"-"F"])+ (".")? <HEXADECIMAL_EXPONENT> (["f","F","d","D"])?
+      | "0" ["x", "X"] (["0"-"9","a"-"f","A"-"F"])* "." (["0"-"9","a"-"f","A"-"F"])+ <HEXADECIMAL_EXPONENT> (["f","F","d","D"])?
+  >
+| < #HEXADECIMAL_EXPONENT: ["p","P"] (["+","-"])? (["0"-"9"])+ >
+| < SYNTAX_STRING_LITERAL:
+      "'"
+      (   (~["'","\\","\n","\r"])
+        | ("\\"
+            ( ["n","t","b","r","f","\\","'","\""]
+            | ["0"-"7"] ( ["0"-"7"] )?
+            | ["0"-"3"] ["0"-"7"] ["0"-"7"]
+            )
+          )
+      )
+      "'"
+  >
+| < STRING_LITERAL:
+      "\""
+      (   (~["\"","\\","\n","\r"])
+        | ("\\"
+            ( ["n","t","b","r","f","\\","'","\""]
+            | ["0"-"7"] ( ["0"-"7"] )?
+            | ["0"-"3"] ["0"-"7"] ["0"-"7"]
+            )
+          )
+      )*
+      "\""
+  >
+}
+
+
+TOKEN : /* parameter and variable blocks */
+{
+  < PARAMS: "params" >
+| < ENDPARAMS: "endparams" >
+| < VARIABLES: "variables" >
+| < ENDVARIABLES: "endvariables" >
+}
+
+TOKEN : 
+{
+  < IF: "if" >
+| < ELSEIF: "elseif" >
+| < ELSE: "else" >
+| < ENDIF: "endif" >
+| < WHILE: "while" >
+| < ENDWHILE: "endwhile" >
+| < REPEAT: "repeat" >
+| < UNTIL: "until" >
+| < SELECTCASE: "selectcase" >
+| < CASE: "case" >
+| < ELSECASE: "elsecase" >
+| < ENDSELECTCASE: "endselectcase" >
+}
+
+TOKEN : /* data types */
+{
+  < BOOLEAN: "boolean" >
+| < DATE: "date" >
+| < DATETIME: "datetime" >
+| < FLOAT: "float" >
+| < HANDLE: "handle" >
+| < IMAGE: "image" >
+| < LINEARDATE: "lineardate" >
+| < LINEARDATETIME: "lineardatetime" >
+| < LINEARTIME: "lineartime" >
+| < NUMERIC: "numeric" >
+| < RAW: "raw" >
+| < STRING: "string" >
+| < TIME: "time" >
+| < ANY: "any" >
+| < ENTITY: "entity" >
+| < OCCURRENCE: "occurrence" >
+| < XMLSTREAM: "xmlstream" >
+}
+
+TOKEN : 
+{
+  < FUNCTION : <DOLLAR> <IDENTIFIER> >
+}
+
+
+TOKEN : /* statements : Components and Component Instances */
+{
+  < DELETEINSTANCE : "deleteinstance" >
+| < NEWINSTANCE: "newinstance" >
+| < SETFORMFOCUS: "setformfocus" >
+}
+
+TOKEN : /* statements : Data Conversion and System Information */
+{
+  < ENTITYCOPY : "entitycopy" >
+}
+
+TOKEN : /* statements : Data Manipulation */
+{
+  < ADDMONTHS : "addmonths" >      
+| < COMPARE : "compare" >        
+| < DISPLAYLENGTH : "displaylength" >  
+| < LENGTH : "length" >         
+| < LOWERCASE : "lowercase" >      
+| < RESET : "reset" >          
+| < SCAN : "scan" >           
+| < SET : "set" >            
+| < STRIPATTRIBUTES : "stripattributes" >
+| < UPPERCASE : "uppercase" >
+  }
+
+TOKEN : /* statements : DBMS Path I/O */
+{
+  < CLOSE : "close" >   
+| < COMMIT : "commit" > 
+| < OPEN : "open" >
+| < ROLLBACK : "rollback" >
+| < SQL : "sql" >
+}
+
+TOKEN : /* statements : Process flow */
+{
+  < ACTIVATE : "activate" >   
+| < APEXIT : "apexit" > 
+| < APSTART : "apstart" >
+| < BREAK : "break" >
+| < DISPLAY : "display" >
+| < DONE : "done" >
+| < EDIT : "edit" >
+| < EXIT : "exit" >
+| < GOTO : "goto" >
+| < MACRO : "macro" >
+| < PERFORM : "perform" >
+| < PULLDOWN : "pulldown" >
+| < RETURN : "return" >
+| < RUN : "run" >
+| < SPAWN : "spawn" >
+}
+
+
+
+
+
+TOKEN : /* statements : Message Text and Display */
+{
+  < CLRMESS : "clrmess" >   
+| < ASKMESS : "askmess" > 
+| < MESSAGE : "message" >
+| < PUTMESS : "putmess" >
+}
+
+TOKEN : /* statements : other */
+{
+  < DEBUG : "debug" >   
+}
+
+TOKEN : /* parameter directions */
+{
+  < IN: "in"  >
+| < OUT: "out" >
+| < INOUT: "inout" >
+}
+
+TOKEN : /* switches */
+{
+  < SYNC_SWITCH: "/sync"  >
+| < ASYNC_SWITCH: "/async" >
+| < ATTACHED_SWITCH: "/attached" >
+| < PREVIOUS_SWITCH: "/previous" >
+| < NEXT_SWITCH: "/next" >
+| < PRINT_SWITCH: "/print" >
+| < INIT_SWITCH: "/init" >
+| < LIST_SWITCH: "/list" >
+| < STATELESS_SWITCH: "/stateless" >
+| < MENU_SWITCH: "/menu" >
+| < FROM: "from" >
+}
+
+TOKEN : /* identifiers */
+{
+  < IDENTIFIER: <LETTER> (<LETTER>|<DIGIT>|<UNDERSCORE>|<DOT>)* >
+| < #LETTER: ["a"-"z","A"-"Z"] >
+| < DIGIT: ["0"-"9"] >
+}
+
+
+TOKEN :
+{
+  < REGISTER : <DOLLAR><DIGIT>(<DIGIT>)? >
+| < GLOBALVARIABLE : <DOLLAR> <DOLLAR> <IDENTIFIER> >
+| < COMPONENTVARIABLE : <DOLLAR> <IDENTIFIER> <DOLLAR> >
+}
+
+
+TOKEN : /* compile time constants */
+{
+  < CMPSTATEMANAGEDBY: "<$cmpStateManagedBy>" >
+| < COMPONENTNAME: "<$componentName>" >
+| < COMPONENTTYPE: "<$componentType>" >    
+| < ENTNAME: "<$entName>" >          
+| < FIELDNAME: "<$fieldName>" >        
+| < LIBRARYNAME: "<$libraryName>" >      
+| < MODELNAME: "<$modelName>" >        
+| < TABLENAME: "<$tableName>" >        
+| < TRIGGERABBR: "<$triggerAbbr>" >      
+}
+  
+/** Main production. */
+ASTCompilationUnit CompilationUnit() : {}
+{
+  (LOOKAHEAD(2) CommentLine())* (ParameterBlock())? (LOOKAHEAD(2) CommentLine())* (VariableBlock())? ( Instruction() )* <EOF>
+  { return jjtThis; }
+}
+
+/**            */
+
+void Argument() : {}
+{
+  Expression() ( LOOKAHEAD(2) <COMMA> Argument() )*
+}
+
+void Expression() : {}
+{
+  //Source [ Start {: Num|, End}] 
+  LogicalExpression() ( <LBRACKET> LogicalExpression() (<COLON>|<COMMA>) LogicalExpression() <RBRACKET> )?
+}
+
+void CompileTimeConstant() : {}
+{
+  (
+    <CMPSTATEMANAGEDBY>
+|   <COMPONENTNAME>    
+|   <COMPONENTTYPE>    
+|   <ENTNAME>          
+|   <FIELDNAME>        
+|   <LIBRARYNAME>      
+|   <MODELNAME>        
+|   <TABLENAME>        
+|   <TRIGGERABBR>
+)
+}
+
+void Constant() : {}
+{
+   (<LT> <IDENTIFIER> <GT>|CompileTimeConstant()) 
+}
+
+void ExpressionList() : {}
+{
+  Expression() (<COMMA> Expression())*
+}
+
+/** A logical Expression. */
+void LogicalExpression() : {}
+{
+  RelationalExpression() ( ( <NOT> | <AND>| <OR>) RelationalExpression() )*
+}
+
+/** An relational Expression. */
+void RelationalExpression() : {}
+{
+  AdditiveExpression() ( ( <LT> | <GT>| <LE>| <GE> | <EQUAL>| <EQ>| <NE>) AdditiveExpression() )*
+}
+
+/** An Additive Expression. */
+void AdditiveExpression() : {}
+{
+  MultiplicativeExpression() ( ( <PLUS> | <MINUS> ) MultiplicativeExpression() )*
+}
+
+/** A Multiplicative Expression. */
+void MultiplicativeExpression() : {}
+{
+  UnaryExpression() ( ( <MULTIPLY> | <DIVIDE> | <MODULO> ) UnaryExpression() )*
+}
+
+/** A Unary Expression. */
+void UnaryExpression() : {}
+{
+  <LPAREN> Expression() <RPAREN>
+| Constant()
+| Integer()
+| UserDefinedFunction()
+| String()
+| Function()
+| Register()
+| GlobalVariable()
+| ComponentVariable()
+}
+
+void UserDefinedFunction() : {}
+{
+  Identifier() ( LOOKAHEAD(2) <LPAREN> Expression() (<COMMA> Expression())? <RPAREN> )?
+}
+
+/** A String. */
+void String() : {}
+{
+  <STRING_LITERAL>
+| <SYNTAX_STRING_LITERAL>
+}
+
+/** An Identifier. */
+void Identifier() : {}
+{
+  <IDENTIFIER>
+}
+
+void Register() : {}
+{
+  <REGISTER>
+}
+
+void GlobalVariable() : {}
+{
+  <GLOBALVARIABLE>
+}
+
+void ComponentVariable() : {}
+{
+  <COMPONENTVARIABLE>
+}
+
+void IdentifierList() : {}
+{
+  Identifier() (<COMMA> Identifier())*
+}
+
+/** An Integer. */
+void Integer() : {}
+{
+  <INTEGER_LITERAL>
+}
+
+/** A Datatype. */
+void Datatype() : {}
+{
+  <BOOLEAN>
+| <DATE>
+| <DATETIME>
+| <FLOAT>
+| <HANDLE>
+| <IMAGE>
+| <LINEARDATE>
+| <LINEARDATETIME>
+| <LINEARTIME>
+| <NUMERIC>
+| <RAW>
+| <STRING>
+| <TIME>
+| <ANY>
+| <ENTITY>
+| <OCCURRENCE>
+| <XMLSTREAM>
+}
+
+/** A Direction. */
+void Direction() : {}
+{
+  <IN>
+| <OUT>
+| <INOUT>
+}
+
+/** A variable definition*/
+void VariableDefinition() : {}
+{
+  Datatype() Identifier() (<COMMA> Identifier())* (Comment())? <BR>
+}
+
+/** A parameter */
+void Parameter() : {}
+{
+  Datatype() Identifier() <COLON> Direction() (Comment())? <BR>
+}
+
+/** A parameter block */
+void ParameterBlock() : {}
+{
+   <PARAMS>  (Comment())? <BR> ( Parameter() | CommentLine() )* <ENDPARAMS>  (Comment())? <BR>
+}
+/** A variable block */
+void VariableBlock() : {}
+{
+   <VARIABLES>  (Comment())? <BR> ( VariableDefinition()  | CommentLine() )* <ENDVARIABLES>  (Comment())? <BR>
+}
+
+void Comment() : {}
+{
+  <COMMENT>
+}
+
+void CommentLine() : {}
+{
+  Comment() <BR>
+}
+
+/** An Instruction. */
+void Instruction() : {}
+{
+ (
+    LOOKAHEAD(2) ProcStatement() (Comment())? <BR>
+  | IfStatement()
+  | WhileStatement()
+  | RepeatStatement()
+  | SelectCaseStatement()
+  | LabelStatement()
+  | CommentLine()
+ )
+}
+
+
+void ProcStatement() : {}
+{
+   Statement() 
+|  Assignment()
+}
+
+void Indirection() : {}
+{
+  <AT>
+}
+
+void Compute() : {}
+{
+  <COMPUTE>
+}
+/** An assignment. */
+void Assignment() : {}
+{
+ (Compute())? (Indirection())? (
+                     Identifier()
+                   | Register()
+                   | GlobalVariable()
+                   | ComponentVariable()
+                   | Function()
+                  ) (<INIT_SWITCH>)? <EQUAL> (Indirection())? Expression()
+}
+/** A function. */
+void Function() : {}
+{
+ <FUNCTION> ( LOOKAHEAD(2) <LPAREN> (ExpressionList())? <RPAREN> )?
+}
+
+void IfStatement() :
+{}
+{
+<IF> <LPAREN> Expression() <RPAREN>
+(
+  LOOKAHEAD(3) Instruction()
+| 
+  (Comment())? <BR> ( Instruction() )* ( <ELSEIF> <LPAREN> Expression() <RPAREN> (Comment())? <BR> ( Instruction() )*)* ( <ELSE> (Comment())? <BR> ( Instruction() )*)? <ENDIF> (Comment())? <BR>
+)
+}
+
+void WhileStatement() :
+{}
+{
+<WHILE> <LPAREN> Expression() <RPAREN> (Comment())? <BR> ( Instruction() )* <ENDWHILE> (Comment())? <BR>
+}
+
+void RepeatStatement() :
+{}
+{
+<REPEAT> (Comment())? <BR> ( Instruction() )* <UNTIL> <LPAREN> Expression() <RPAREN> (Comment())? <BR>
+}
+
+void SelectCaseStatement() :
+{}
+{
+<SELECTCASE> Expression() (Comment())? <BR> ( Instruction() )* ( <CASE> Expression() (Comment())? <BR> ( Instruction() )*)* ( <ELSECASE> (Comment())? <BR> ( Instruction() )*)? <ENDSELECTCASE> (Comment())? <BR>
+}
+
+void LabelStatement() :
+{}
+{
+Identifier() <COLON> (Comment())? <BR>
+}
+
+/** A Statement. */
+void Statement() : {}
+{
+  Deleteinstance()
+| Newinstance()
+| Setformfocus()
+| Entitycopy()
+| Addmonths()      
+| Compare()        
+| Displaylength()  
+| Length()         
+| Lowercase()      
+| Reset()          
+| Scan()           
+| Set()            
+| Stripattributes()
+| Uppercase()
+| Close()   
+| Commit()  
+| Open()    
+| Rollback()
+| Sql()
+| Goto()
+| Clrmess()
+| Debug()
+| Activate()
+| Display()
+}
+
+/** Statements */
+
+void Deleteinstance() : {}
+{
+  // deleteinstance InstanceName 
+  <DELETEINSTANCE> Expression()
+}
+
+void Newinstance() : {}
+{
+  // newinstance{/sync | /async}{ /attached} ComponentName , Handle | InstanceName {, InstProperties} 
+  <NEWINSTANCE> (<SYNC_SWITCH> | <ASYNC_SWITCH>)? (<ATTACHED_SWITCH>)? Expression() <COMMA> Expression() ( <COMMA> Expression() )?
+}
+
+void Setformfocus() : {}
+{
+  // setformfocus {InstanceName}
+  <SETFORMFOCUS> ( LOOKAHEAD(2) Expression() )?
+}
+
+void Entitycopy() : {}
+{
+  // entitycopy Source , Target {, Options}
+  <ENTITYCOPY> Expression() <COMMA> Expression() ( <COMMA> Expression() )?
+}
+
+void Addmonths() : {}
+{
+  // addmonths Months , Date{, ReferenceDate} 
+  <ADDMONTHS> Expression() <COMMA> Expression() ( <COMMA> Expression() )?
+}
+
+void Compare() : {}
+{
+  // compare{/previous | /next} (FieldList) {from Entity}  
+  <COMPARE> (<PREVIOUS_SWITCH> | <NEXT_SWITCH>)? (Identifier()|<LPAREN> IdentifierList()<RPAREN>) (<FROM> Expression())?
+}
+
+void Displaylength() : {}
+{
+  // displaylength String 
+  <DISPLAYLENGTH> Expression()
+}
+
+void Length() : {}
+{
+  // length String 
+  <LENGTH> Expression()
+}
+
+void Lowercase() : {}
+{
+  // lowercase Source , Target 
+  <LOWERCASE> Expression()<COMMA> Expression()
+}
+
+void Reset() : {}
+{
+  // reset LitProcFunctionName  
+  <RESET> Function()
+}
+
+void Scan() : {}
+{
+  // scan String , Profile   
+  <SCAN> Expression() <COMMA> Expression() 
+}
+
+void Set() : {}
+{
+  // set LitProcFunctionName 
+  <SET> Function()
+}
+
+void Stripattributes() : {}
+{
+  // stripattributes Source, Target  
+  <STRIPATTRIBUTES> Expression() <COMMA> Expression()
+}
+
+void Uppercase() : {}
+{
+  // uppercase Source , Target   
+  <UPPERCASE> Expression()<COMMA> Expression()
+}
+
+void Close() : {}
+{
+  // close {" PathString "}   
+  <CLOSE> ( LOOKAHEAD(2) Expression() )?
+}
+
+void Commit() : {}
+{
+  // commit {" PathString "}    
+  <COMMIT> ( LOOKAHEAD(2) Expression() )?
+}
+
+void Open() : {}
+{
+  // open LogonParameters , " PathString " {/net}    
+  <OPEN> ( LOOKAHEAD(2) Expression() <COMMA > )? Expression()
+}
+
+void Rollback() : {}
+{
+  // rollback {" PathString "}     
+  <ROLLBACK> ( LOOKAHEAD(2) Expression() )?
+}
+
+void Sql() : {}
+{
+  // sql{/print} DMLStatement , " PathString "      
+  <SQL> (<PRINT_SWITCH>)? Expression()<COMMA> Expression()
+}
+
+void Activate() : {}
+{
+  // activate {/list | /sync | /async | /stateless} InstName {. LitOperationName ( {ArgumentList}) }   
+  <ACTIVATE> (<LIST_SWITCH> | <SYNC_SWITCH> | <ASYNC_SWITCH> | <STATELESS_SWITCH>)? Expression()  (<DOT> Identifier() <LPAREN> (ExpressionList())? <RPAREN>)?
+}
+
+void Display() : {}
+{
+  // display{/menu}{LitFieldName} 
+  <DISPLAY> (<MENU_SWITCH>)? Expression()
+}
+
+void Goto() : {}
+{
+  // goto Label    
+  <GOTO> Identifier()
+}
+
+
+
+void Clrmess() : {}
+{
+  // clrmess    
+  <CLRMESS>
+}
+
+void Debug() : {}
+{
+  // debug    
+  <DEBUG>
+}

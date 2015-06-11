@@ -1,0 +1,8 @@
+<xml>
+    <SEARCH name="psj06" filter=".*\.java">
+    	<RULE regexp="session[ \t]*==[ \t]*null" />
+    	<RULE regexp="session[ \t]*!=[ \t]*null" />
+    	<RULE regexp="[S|s]ession[ \t]*\([ \t]*\)[ \t]*==[ \t]*null" />
+    	<RULE regexp="[S|s]ession[ \t]*\([ \t]*\)[ \t]*!=[ \t]*null" />
+    </SEARCH>
+</xml>

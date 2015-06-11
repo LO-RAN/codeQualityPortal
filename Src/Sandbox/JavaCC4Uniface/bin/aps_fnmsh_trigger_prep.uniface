@@ -1,0 +1,51 @@
+variables
+  string ls_user_id
+  string ls_language                                                                                
+endvariables                                                                                        
+if ($logical("DEBUG") == "TRUE")                                                                    
+  clrmess                                                                                           
+  debug                                                                                             
+endif
+activate "FNMSU_RESOURCE".check_resource($instancename)
+if ($status < 0)
+; if URD authentication has been enabled
+; and we have a user/password
+; NOTA: this technique does not allow for free resources
+; (those that could be made available without logging in first)
+; NOTA: as it is implemented now, it is not possible for the user
+;       to log out and log in again without closing his/her client
+;       navigator program !
+; NOTA: DANGER: this does not allow a per session context identification
+;               but only a per user context identification.
+;               This means that we can not distinguish context data from
+;               two or more sessions opened by a same user on different
+;               browsers/machines.
+if ($user != "" & $password != "")
+  ; we just check given user against database
+  activate "FNMSU_USER".check_user($user, $password, ls_user_id)
+else
+  ; let's try to check from URD session ID
+  ; NOTA: !!! requires Web Client to allow cookies !!!
+  ; NOTA: we will be able to grant access on the following conditions:
+  ; is there a user already associated with given session
+  ; (item("SESSION",$webinfo("ApplicationContext"))
+  ; NOTA: user will be able to log out, then log in again, without leaving
+  ;       his/her client navigator session !
+  ; NOTA: we can handle different sessions for a same user ;-)
+  activate "FNMSU_SESSION".check_access($item("SESSION",$webinfo("ApplicationContext")), ls_user_id)
+endif
+; if user authentication failed so far
+if ($status < 0)
+  ; we want to force user authentication
+  activate "FNMSP_LOGIN".display_data()
+  ; and abort original request
+  return -9
+endif
+; let's try to localize page according to user's preferences
+if (ls_user_id != "")
+  activate "FNMSU_USER".get_language(ls_user_id, ls_language)
+  if (ls_language != "")
+    $language=ls_language
+  endif
+endif
+endif

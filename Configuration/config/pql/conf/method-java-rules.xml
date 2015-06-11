@@ -1,0 +1,1368 @@
+
+<METHOD>
+    <USAGE id="JAVA-RULES">
+		
+        <CRITDEF id="AVOIDSTARIMPORTCHECK" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDSTARIMPORTCHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="HIDDENFIELDCHECK" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="HIDDENFIELDCHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="MAGICNUMBERCHECK" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="MAGICNUMBERCHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="NEEDBRACESCHECK" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="NEEDBRACESCHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="DECLARATIONORDERCHECK" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="DECLARATIONORDERCHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="JAVADOCSYNTAX" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="JAVADOCSTYLECHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="JAVADOCMISSING" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="JAVADOCMETHODCHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="JAVADOCTYPECHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="UNUSEDLOCALORPRIVATE" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="UNUSEDLOCALVARIABLE" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="UNUSEDFORMALPARAMETER" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="UNUSEDPRIVATEFIELD" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="UNUSEDPRIVATEMETHOD" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+
+        
+
+
+		
+        <CRITDEF id="R3" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0003" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+
+
+		
+        <CRITDEF id="R5" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0005" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R7" telt="CLS">
+            <AGGREG id="EXCLUS" telt="ALL">
+                <PARAM id="DEFAULT" value="4.0" type="NUMERIC" />
+                <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+            </AGGREG>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0007" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R8" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0008" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R9" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0009" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R11" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0011" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R12" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0012" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R14" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0014" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+
+
+		
+        <CRITDEF id="R16" telt="CLS">
+            <AGGREG id="EXCLUS" telt="ALL">
+                <PARAM id="DEFAULT" value="4.0" type="NUMERIC" />
+                <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+            </AGGREG>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0016" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R19" telt="CLS">
+            <AGGREG id="EXCLUS" telt="ALL">
+                <PARAM id="DEFAULT" value="4.0" type="NUMERIC" />
+                <PARAM id="VALUE_EXCLUS" value="1.0" type="NUMERIC" />
+            </AGGREG>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0019" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R20" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0020" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R21" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0021" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R22" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0022" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+
+        
+
+
+		
+        <CRITDEF id="R25" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0025" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R26" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0026" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R27" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0027" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R28" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R0028" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+
+
+		
+        <CRITDEF id="R1004" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R1004" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+		
+        <CRITDEF id="R1007" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R1007" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+
+        
+
+        
+
+        
+
+
+		
+        <CRITDEF id="R1017" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R1017" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+
+
+		
+        <CRITDEF id="R1036" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R1036" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+
+        
+
+
+		
+        <CRITDEF id="R1064" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R1064" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+
+
+		
+        <CRITDEF id="R1076" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R1076" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+
+		
+        <CRITDEF id="ONLYONERETURN">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="ONLYONERETURN" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="TPRO" telt="MET">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="NL" type="NUMERIC" />
+                    <VAL value="110" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="2">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="le" type="BOOLEAN">
+                        <VAR id="NL" type="NUMERIC" />
+                        <VAL value="110" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="NL" type="NUMERIC" />
+                        <VAL value="80" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="3">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="le" type="BOOLEAN">
+                        <VAR id="NL" type="NUMERIC" />
+                        <VAL value="80" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="NL" type="NUMERIC" />
+                        <VAL value="50" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="le" type="BOOLEAN">
+                        <VAR id="NL" type="NUMERIC" />
+                        <VAL value="50" type="NUMERIC" />
+                    </OP>
+                    <OP id="ge" type="BOOLEAN">
+                        <VAR id="NL" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="DEST" telt="MET">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="EVG" type="NUMERIC" />
+                    <VAL value="10" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="2">
+                <OP id="ge" type="BOOLEAN">
+                    <VAR id="EVG" type="NUMERIC" />
+                    <VAL value="7" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="3">
+                <OP id="ge" type="BOOLEAN">
+                    <VAR id="EVG" type="NUMERIC" />
+                    <VAL value="4" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <OP id="ge" type="BOOLEAN">
+                    <VAR id="EVG" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="PLOG" telt="MET">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="ge" type="BOOLEAN">
+                        <VAR id="VG" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="ge" type="BOOLEAN">
+                        <VAR id="EVG" type="NUMERIC" />
+                        <VAL value="7" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="2">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="ge" type="BOOLEAN">
+                        <VAR id="VG" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="lt" type="BOOLEAN">
+                        <VAR id="EVG" type="NUMERIC" />
+                        <VAL value="7" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="3">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="lt" type="BOOLEAN">
+                        <VAR id="VG" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="ge" type="BOOLEAN">
+                        <VAR id="EVG" type="NUMERIC" />
+                        <VAL value="4" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="lt" type="BOOLEAN">
+                        <VAR id="VG" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="lt" type="BOOLEAN">
+                        <VAR id="EVG" type="NUMERIC" />
+                        <VAL value="4" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="HARDCODEDIP">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="HARDCODEDIP" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="POSITIONLITERALSFIRSTINCOMPARISONS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="POSITIONLITERALSFIRSTINCOMPARISONS" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="UNCOMMENTEDEMPTYCONSTRUCTOR">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="UNCOMMENTEDEMPTYCONSTRUCTOR" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="USELESSOVERRIDINGMETHOD">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="USELESSOVERRIDINGMETHOD" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="AVOIDREASSIGNINGPARAMETERS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDREASSIGNINGPARAMETERS" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="IMMUTABLEFIELD">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="IMMUTABLEFIELD" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="CTRA" telt="MET">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="2">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="FANOUT" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="IVG" type="NUMERIC" />
+                        <OP id="/" type="BOOLEAN">
+                            <VAR id="FANOUT" type="NUMERIC" />
+                            <VAL value="2" type="NUMERIC" />
+                        </OP>
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="IVG" type="NUMERIC" />
+                        <VAL value="4" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="3">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="FANOUT" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="le" type="BOOLEAN">
+                        <VAR id="IVG" type="NUMERIC" />
+                        <OP id="/" type="BOOLEAN">
+                            <VAR id="FANOUT" type="NUMERIC" />
+                            <VAL value="2" type="NUMERIC" />
+                        </OP>
+                    </OP>
+                    <OP id="ge" type="BOOLEAN">
+                        <VAR id="IVG" type="NUMERIC" />
+                        <VAL value="4" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="FANOUT" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="le" type="BOOLEAN">
+                        <VAR id="IVG" type="NUMERIC" />
+                        <VAL value="4" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <OP id="le" type="BOOLEAN">
+                    <VAR id="FANOUT" type="NUMERIC" />
+                    <VAL value="10" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="INTE" telt="MET">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="ge" type="BOOLEAN">
+                        <VAR id="FANOUT" type="NUMERIC" />
+                        <VAL value="30" type="NUMERIC" />
+                    </OP>
+                    <OP id="eq" type="BOOLEAN">
+                        <VAR id="IVG" type="NUMERIC" />
+                        <VAR id="FANOUT" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="2">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="FANOUT" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="IVG" type="NUMERIC" />
+                        <OP id="/" type="NUMERIC">
+                            <VAR id="FANOUT" type="NUMERIC" />
+                            <VAL value="2" type="NUMERIC" />
+                        </OP>
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="IVG" type="NUMERIC" />
+                        <VAL value="4" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="3">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="FANOUT" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="le" type="BOOLEAN">
+                        <VAR id="IVG" type="NUMERIC" />
+                        <OP id="/" type="NUMERIC">
+                            <VAR id="FANOUT" type="NUMERIC" />
+                            <VAL value="2" type="NUMERIC" />
+                        </OP>
+                    </OP>
+                    <OP id="ge" type="BOOLEAN">
+                        <VAR id="IVG" type="NUMERIC" />
+                        <VAL value="4" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <OP id="OR" type="BOOLEAN">
+                    <OP id="AND" type="BOOLEAN">
+                        <OP id="gt" type="BOOLEAN">
+                            <VAR id="FANOUT" type="NUMERIC" />
+                            <VAL value="10" type="NUMERIC" />
+                        </OP>
+                        <OP id="le" type="BOOLEAN">
+                            <VAR id="IVG" type="NUMERIC" />
+                            <VAL value="4" type="NUMERIC" />
+                        </OP>
+                    </OP>
+                    <OP id="le" type="BOOLEAN">
+                        <VAR id="FANOUT" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="COMP">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="3">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="eq" type="BOOLEAN">
+                        <VAR id="CLOC" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                    <OP id="lt" type="BOOLEAN">
+                        <VAR id="LOC" type="NUMERIC" />
+                        <VAL value="8" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="eq" type="BOOLEAN">
+                        <VAR id="CLOC" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="LOC" type="NUMERIC" />
+                        <VAL value="7" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="2">
+                <OP id="OR" type="BOOLEAN">
+                    <OP id="AND" type="BOOLEAN">
+                        <OP id="lt" type="BOOLEAN">
+                            <VAR id="VG" type="NUMERIC" />
+                            <VAL value="10" type="NUMERIC" />
+                        </OP>
+                        <OP id="lt" type="BOOLEAN">
+                            <VAR id="CLOC" type="NUMERIC" />
+                            <OP id="*" type="NUMERIC">
+                                <VAL value="0.2" type="NUMERIC" />
+                                <VAR id="LOC" type="NUMERIC" />
+                            </OP>
+                        </OP>
+                    </OP>
+                    <OP id="AND" type="BOOLEAN">
+                        <OP id="ge" type="BOOLEAN">
+                            <VAR id="VG" type="NUMERIC" />
+                            <VAL value="10" type="NUMERIC" />
+                        </OP>
+                        <OP id="lt" type="BOOLEAN">
+                            <VAR id="CLOC" type="NUMERIC" />
+                            <OP id="*" type="NUMERIC">
+                                <VAL value="0.3" type="NUMERIC" />
+                                <VAR id="LOC" type="NUMERIC" />
+                            </OP>
+                        </OP>
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="3">
+                <OP id="AND" type="BOOLEAN">
+                    <OP id="lt" type="BOOLEAN">
+                        <VAR id="VG" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="lt" type="BOOLEAN">
+                        <VAR id="CLOC" type="NUMERIC" />
+                        <OP id="*" type="NUMERIC">
+                            <VAL value="0.3" type="NUMERIC" />
+                            <VAR id="LOC" type="NUMERIC" />
+                        </OP>
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <OP id="OR" type="BOOLEAN">
+                    <OP id="lt" type="BOOLEAN">
+                        <VAR id="VG" type="NUMERIC" />
+                        <VAL value="10" type="NUMERIC" />
+                    </OP>
+                    <OP id="AND" type="BOOLEAN">
+                        <OP id="ge" type="BOOLEAN">
+                            <VAR id="VG" type="NUMERIC" />
+                            <VAL value="10" type="NUMERIC" />
+                        </OP>
+                        <OP id="ge" type="BOOLEAN">
+                            <VAR id="CLOC" type="NUMERIC" />
+                            <OP id="*" type="NUMERIC">
+                                <OP id="+" type="NUMERIC">
+                                    <VAL value="0.3" type="NUMERIC" />
+                                    <OP id="/" type="NUMERIC">
+                                        <OP id="-" type="NUMERIC">
+                                            <VAR id="VG" type="NUMERIC" />
+                                            <VAL value="10" type="NUMERIC" />
+                                        </OP>
+                                        <VAL value="100" type="NUMERIC" />
+                                    </OP>
+                                </OP>
+                                <VAR id="LOC" type="NUMERIC" />
+                            </OP>
+                        </OP>
+                    </OP>
+                </OP>
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="CYCLICDEPENDENCY">
+            <AGGREG id="EXCLUS" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="lt" type="BOOLEAN">
+                    <VAR id="ADPR_CLASS_LEVEL" type="NUMERIC" />
+                    <VAL value="100" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="SIGNATURE_INTERFACE_USE">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="lt" type="BOOLEAN">
+                    <VAR id="SIGNATURE_INTERFACE_USE" type="NUMERIC" />
+                    <VAL value="50" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="2">
+                <OP id="lt" type="BOOLEAN">
+                    <VAR id="SIGNATURE_INTERFACE_USE" type="NUMERIC" />
+                    <VAL value="100" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="NORMALIZED_DISTANCE">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="NORMALIZED_DISTANCE" type="NUMERIC" />
+                    <VAL value="0.9" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="2">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="NORMALIZED_DISTANCE" type="NUMERIC" />
+                    <VAL value="0.75" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="3">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="NORMALIZED_DISTANCE" type="NUMERIC" />
+                    <VAL value="0.5" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="UNINITIALIZEDFIELDS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R1012" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="2">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="R1013" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="3">
+                <OP id="OR" type="BOOLEAN">
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="R1010" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="R1011" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="COMPAREOBJECTSWITHEQUALS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="COMPAREOBJECTSWITHEQUALS" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="EQUALS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="OR" type="BOOLEAN">
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="R0001" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="R1046" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="R1069" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="R1028" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="R0030" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                    <OP id="gt" type="BOOLEAN">
+                        <VAR id="R0002" type="NUMERIC" />
+                        <VAL value="0" type="NUMERIC" />
+                    </OP>
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="EMPTYCATCHBLOCK">
+            <AGGREG id="EXCLUS" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="EMPTYCATCHBLOCK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="R4" telt="CLS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="CONSTANTNAMECHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="LOCALVARIABLENAMECHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="MEMBERNAMECHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="METHODNAMECHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="PARAMETERNAMECHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="STATICVARIABLENAMECHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="TYPENAMECHECK" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="AVOIDENUMASIDENTIFIER">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDENUMASIDENTIFIER" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="IFSTMTRULES">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDDEEPLYNESTEDIFSTMTS" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="COLLAPSIBLEIFSTATEMENTS" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="SWITCHSTMTRULES">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="SWITCHDENSITY" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="SWITCHSTMTSSHOULDHAVEDEFAULT" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="MISSINGBREAKINSWITCH" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="USESINGLETON">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="USESINGLETON" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="NONTHREADSAFESINGLETON">
+            <AGGREG id="EXCLUS" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="NONTHREADSAFESINGLETON" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="ARRAYISSTOREDDIRECTLY">
+            <AGGREG id="EXCLUS" telt="ALL">				    
+              <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+            </AGGREG>
+            <FORMULA value="2">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="ARRAYISSTOREDDIRECTLY" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="COUPLINGBETWEENOBJECTS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="COUPLINGBETWEENOBJECTS" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="LOOSECOUPLING">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="LOOSECOUPLING" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="EXCEPTIONRULES">
+            <AGGREG id="EXCLUS" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDCATCHINGNPE" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDCATCHINGTHROWABLE" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDINSTANCEOFCHECKSINCATCHCLAUSE" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDTHROWINGNULLPOINTEREXCEPTION" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="SIMPLIFYBOOLEANEXPRESSIONS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="SIMPLIFYBOOLEANEXPRESSIONS" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="EMPTYSTATEMENTNOTINLOOP">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="EMPTYSTATEMENTNOTINLOOP" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="AVOIDDUPLICATELITERALS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDDUPLICATELITERALS" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="AVOIDINSTANTIATINGOBJECTSINLOOPS">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDINSTANTIATINGOBJECTSINLOOPS" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="AVOIDPRINTSTACKTRACE">
+            <AGGREG id="AVG" telt="ALL" />
+            <FORMULA value="1">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="AVOIDPRINTSTACKTRACE" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+        <CRITDEF id="METHODRETURNSINTERNALARRAY">
+            <AGGREG id="EXCLUS" telt="ALL">				    
+              <PARAM id="VALUE_EXCLUS" value="2.0" type="NUMERIC" />
+            </AGGREG>
+            <FORMULA value="2">
+                <OP id="gt" type="BOOLEAN">
+                    <VAR id="METHODRETURNSINTERNALARRAY" type="NUMERIC" />
+                    <VAL value="0" type="NUMERIC" />
+                </OP>
+            </FORMULA>
+            <FORMULA value="4">
+                <VAL value="true" type="BOOLEAN" />
+            </FORMULA>
+        </CRITDEF>
+    </USAGE>
+</METHOD>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Global.iml" filepath="$PROJECT_DIR$/Global.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OptimalAdvisorPlugin/advisorplugin.iml" filepath="$PROJECT_DIR$/OptimalAdvisorPlugin/advisorplugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AntTask/anttask.iml" filepath="$PROJECT_DIR$/AntTask/anttask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AppletFactory/applet-factory.iml" filepath="$PROJECT_DIR$/AppletFactory/applet-factory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AppletArchitecture/architecture-applet.iml" filepath="$PROJECT_DIR$/AppletArchitecture/architecture-applet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CaqsWorkFlow/caqsworkflow.iml" filepath="$PROJECT_DIR$/CaqsWorkFlow/caqsworkflow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Base/carscode.iml" filepath="$PROJECT_DIR$/Base/carscode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sandbox/Code2HTML/code2html.iml" filepath="$PROJECT_DIR$/Sandbox/Code2HTML/code2html.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CodePageTransform/cptransform.iml" filepath="$PROJECT_DIR$/CodePageTransform/cptransform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DevEntreprisePlugin/deventreprise-plugin.iml" filepath="$PROJECT_DIR$/DevEntreprisePlugin/deventreprise-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DevpartnerPlugin/devpartner-plugin.iml" filepath="$PROJECT_DIR$/DevpartnerPlugin/devpartner-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GenericParser/genericparser.iml" filepath="$PROJECT_DIR$/GenericParser/genericparser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GraphApplet/graph-applet.iml" filepath="$PROJECT_DIR$/GraphApplet/graph-applet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JDBCImporter/importExport.iml" filepath="$PROJECT_DIR$/JDBCImporter/importExport.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MetricExtractor/metric-extractor.iml" filepath="$PROJECT_DIR$/MetricExtractor/metric-extractor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MetricGeneration/metricgeneration.iml" filepath="$PROJECT_DIR$/MetricGeneration/metricgeneration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ParserConnector/parserconnector.iml" filepath="$PROJECT_DIR$/ParserConnector/parserconnector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PmdFormatter/pmdformatter.iml" filepath="$PROJECT_DIR$/PmdFormatter/pmdformatter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScatterPlot/scatterplot-applet.iml" filepath="$PROJECT_DIR$/ScatterPlot/scatterplot-applet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Security/security.iml" filepath="$PROJECT_DIR$/Security/security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SecurityViewer/securityviewer.iml" filepath="$PROJECT_DIR$/SecurityViewer/securityviewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ToolBox/toolbox.iml" filepath="$PROJECT_DIR$/ToolBox/toolbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserMgmt/usermgmt.iml" filepath="$PROJECT_DIR$/UserMgmt/usermgmt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XmlCalcul/xmlcalcul.iml" filepath="$PROJECT_DIR$/XmlCalcul/xmlcalcul.iml" />
+    </modules>
+  </component>
+</project>
+

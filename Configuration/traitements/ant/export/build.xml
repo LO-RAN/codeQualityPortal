@@ -1,0 +1,1228 @@
+<project name="importsExports" default="help" basedir=".">  
+  <!-- to pass as argument on the command line -->
+  <!--
+    <property name="ID_PRO" value="20081113141535312666542"/>
+  <property name="ID_USA" value="JAVA-RULES"/>
+  -->  
+  
+    
+  <taskdef name="jdbcimport" classname="net.sourceforge.jdbcimporter.ant.JDBCImporterTask"/>  
+  <taskdef name="datagenerate" classname="net.sourceforge.datagenerator.ant.DataGeneratorTask"/>  
+  <taskdef name="jdbcexport" classname="net.sourceforge.jdbcexporter.ant.JDBCExporterTask"/>     
+  <dirname property="importsExports.basedir" file="${ant.file.importsExports}"/>  
+  <property file="${importsExports.basedir}/build.properties"/>  
+  <!-- import projet -->  
+  <target name="importProject">    
+    <echo message="Importing project from ${DEST_DIR}/${DEST_ZIP_FILE} ..."/>    
+    <unzip src="${DEST_DIR}/${DEST_ZIP_FILE}" dest="${DEST_DIR}"/>    
+    <jdbcimport batchCount="1000"  engine="net.sourceforge.jdbcimporter.engine.UpdateEngine" failonerror="true">          
+      <connection type="jdbc">        
+        <property name="driver" value="${db.driver}"/>        
+        <property name="url"    value="${db.url}"/>        
+        <property name="username" value="${db.user}"/>        
+        <property name="password" value="${db.password}"/>
+      </connection>      
+      <entity table="projet" source="${DEST_DIR}/projet.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_PRO"/>        
+        <column name="lib_pro"/>        
+        <column name="desc_pro"/>        
+        <column name="dinst_pro"/>        
+        <column name="dmaj_pro"/>        
+        <column name="dclos_pro"/>        
+        <column name="type"/>
+      </entity>      
+      <entity table="baseline" source="${DEST_DIR}/baseline.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="id_bline"/>        
+        <column name="type_bline"/>        
+        <column name="lib_bline"/>        
+        <column name="desc_bline"/>        
+        <column name="pro_blinre"/>        
+        <column name="dinst_bline"/>        
+        <column name="dmaj_bline"/>        
+        <column name="dapplication_bline"/>        
+        <column name="dpremption_bline"/>        
+        <column name="cuser_bline"/>      
+      </entity>      
+      <entity table="element" source="${DEST_DIR}/element_structure.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_USA"/>        
+        <column name="ID_TELT"/>        
+        <column name="ID_MAIN_ELT"/>        
+        <column name="ID_PACK"/>        
+        <column name="STREAM_ELT"/>        
+        <column name="ID_DIALECTE"/>        
+        <column name="LIB_ELT"/>        
+        <column name="DESC_ELT"/>        
+        <column name="CUSER_ELT"/>        
+        <column name="DINST_ELT"/>        
+        <column name="DPEREMPTION"/>        
+        <column name="DMAJ_ELT"/>        
+        <column name="POIDS_ELT"/>        
+        <column name="PVOBNAME"/>        
+        <column name="VOBMOUNTPOINT"/>        
+        <column name="MAKEFILE_DIR"/>        
+        <column name="SOURCE_DIR"/>        
+        <column name="BIN_DIR"/>        
+        <column name="PERIODIC_DIR"/>        
+        <column name="LIB"/>        
+        <column name="FILEPATH"/>        
+        <column name="LINEPOS"/>        
+        <column name="ID_STEREOTYPE"/>        
+        <column name="INFO1"/>        
+        <column name="INFO2"/>        
+        <column name="SCM_REPOSITORY"/>        
+        <column name="SCM_MODULE"/>        
+        <column name="PROJECT_FILE_PATH"/>		
+      </entity>      
+      <entity table="package" source="${DEST_DIR}/package.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_PACK"/>        
+        <column name="ID_NIV"/>        
+        <column name="LIB_PACK"/>        
+        <column name="DESC_PACK"/>        
+        <column name="DINST_PACK"/>        
+        <column name="DMAJ_PACK"/>        
+        <column name="DAPPLICATION_PACK"/>        
+        <column name="DPEREMPTION_PACK"/>        
+        <column name="COEFF_PACK"/>        
+        <column name="ID_PROJ"/>        
+        <column name="X"/>        
+        <column name="Y"/>        
+        <column name="WIDTH"/>        
+        <column name="HEIGHT"/>        
+        <column name="ZORDER"/>        
+        <column name="TYPE"/>        
+        <column name="PARENT_PACKAGE"/>        
+      </entity>      
+      <entity table="element" source="${DEST_DIR}/element.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_USA"/>        
+        <column name="ID_TELT"/>        
+        <column name="ID_MAIN_ELT"/>        
+        <column name="ID_PACK"/>        
+        <column name="STREAM_ELT"/>        
+        <column name="ID_DIALECTE"/>        
+        <column name="LIB_ELT"/>        
+        <column name="DESC_ELT"/>        
+        <column name="CUSER_ELT"/>        
+        <column name="DINST_ELT"/>        
+        <column name="DPEREMPTION"/>        
+        <column name="DMAJ_ELT"/>        
+        <column name="POIDS_ELT"/>        
+        <column name="PVOBNAME"/>        
+        <column name="VOBMOUNTPOINT"/>        
+        <column name="MAKEFILE_DIR"/>        
+        <column name="SOURCE_DIR"/>        
+        <column name="BIN_DIR"/>        
+        <column name="PERIODIC_DIR"/>        
+        <column name="LIB"/>        
+        <column name="FILEPATH"/>        
+        <column name="LINEPOS"/>        
+        <column name="ID_STEREOTYPE"/>        
+        <column name="INFO1"/>        
+        <column name="INFO2"/>        
+        <column name="SCM_REPOSITORY"/>        
+        <column name="SCM_MODULE"/>        
+        <column name="PROJECT_FILE_PATH"/>	  
+      </entity>      
+      <entity table="copy_paste_ref" source="${DEST_DIR}/copy_paste_ref.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_COPY"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_ELT"/>        
+        <column name="LINE"/>        
+        <column name="LENGTH"/>        
+      </entity>      
+      <entity table="action_plan" source="${DEST_DIR}/action_plan.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_ACTION_PLAN"/>        
+        <column name="ID_ELT"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ACTION_PLAN_COMMENT"/>        
+        <column name="COMMENT_USER"/>        
+      </entity>      
+      <entity table="action_plan_criterion" source="${DEST_DIR}/action_plan_criterion.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_ACTION_PLAN"/>        
+        <column name="ID_CRIT"/>        
+        <column name="PRIORITY"/>        
+        <column name="SELECTED"/>        
+        <column name="CRITERION_COMMENT"/>        
+        <column name="COMMENT_USER"/>        
+        <column name="MASTER_ELEMENT"/>        
+      </entity>      
+      <entity table="elt_links" source="${DEST_DIR}/elt_links_prj.xml" encoding="UTF-8">
+        <delimiter type="xml"/>          
+        <column name="ELT_PERE" generate="true">
+			<generator type="choice">
+				<property name="choices" value="ENTRYPOINT"/>
+			</generator>       
+        </column>        
+        <column name="ELT_FILS"/>        
+        <column name="DINST_LINKS"/>        
+        <column name="DMAJ_LINKS"/>        
+        <column name="DAPPLICATION_LINKS"/>        
+        <column name="DPEREMPTION_LINKS"/>        
+        <column name="TYPE"/>        
+      </entity>      
+      <entity table="elt_links" source="${DEST_DIR}/elt_links.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ELT_PERE"/>        
+        <column name="ELT_FILS"/>        
+        <column name="DINST_LINKS"/>        
+        <column name="DMAJ_LINKS"/>        
+        <column name="DAPPLICATION_LINKS"/>        
+        <column name="DPEREMPTION_LINKS"/>        
+        <column name="TYPE"/>        
+      </entity>      
+      <entity table="qametrique" source="${DEST_DIR}/qametrique.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_MET"/>        
+        <column name="ID_BLINE"/>        
+        <column name="DINST_QAMET"/>        
+        <column name="DMAJ_QAMET"/>        
+        <column name="CUSER_QAMET"/>        
+        <column name="DAPPLICATION_QAMET"/>        
+        <column name="DPEREMPTION_QAMET"/>        
+        <column name="VALBRUTE_QAMET"/>        
+        <column name="NOTECALC_QAMET"/>        
+        <column name="JUST_MET"/>        
+        <column name="JUST_VALBRUT_QAMET"/>        
+        <column name="JUST_NOTECALC_QAMET"/>        
+        <column name="TENDANCE"/>        
+        <column name="LIGNES"/>
+      </entity>      
+      <entity table="justification" source="${DEST_DIR}/justification_link.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_JUST"/>        
+        <column name="LIB_JUST"/>        
+        <column name="DESC_JUST"/>        
+        <column name="DINST_JUST"/>        
+        <column name="DMAJ_JUST"/>        
+        <column name="STATUT_JUST"/>        
+        <column name="PROPAGATION_JUST"/>        
+        <column name="CUSER_JUST"/>        
+        <column name="JUST_LINK"/>
+      </entity>      
+      <entity table="justification" source="${DEST_DIR}/justification.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_JUST"/>        
+        <column name="LIB_JUST"/>        
+        <column name="DESC_JUST"/>        
+        <column name="DINST_JUST"/>        
+        <column name="DMAJ_JUST"/>        
+        <column name="STATUT_JUST"/>        
+        <column name="PROPAGATION_JUST"/>        
+        <column name="CUSER_JUST"/>        
+        <column name="JUST_LINK"/>
+      </entity>      
+      <entity table="critere_bline" source="${DEST_DIR}/critere_bline.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_CRIT"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_ELT"/>        
+        <column name="DINST_CRIBL"/>        
+        <column name="DMAJ_CRIBL"/>        
+        <column name="NOTE_CRIBL"/>        
+        <column name="ID_JUST"/>        
+        <column name="JUST_NOTE_CRIBL"/>        
+        <column name="TENDANCE"/>        
+        <column name="COST"/>        
+        <column name="CRITERION_COMMENT"/>
+      </entity>      
+      <entity table="criterenoterepartition" source="${DEST_DIR}/criterenoterepartition.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_CRIT"/>        
+        <column name="SEUIL"/>        
+        <column name="TOTAL"/>
+      </entity>      
+      <entity table="element_baseline_info" source="${DEST_DIR}/element_baseline_info.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_MAIN_ELT"/>        
+        <column name="NOTE1"/>        
+        <column name="NOTE2"/>        
+        <column name="NOTE3"/>        
+        <column name="NOTE4"/>        
+        <column name="NBBETTER"/>        
+        <column name="NBWORST"/>        
+        <column name="NBSTABLE"/>        
+        <column name="START_LINE"/>        
+      </entity>      
+      <entity table="labellisation" source="${DEST_DIR}/labellisation_link.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_LABEL"/>        
+        <column name="CUSER_LABEL"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_TYPLAB"/>        
+        <column name="LIB_LABEL"/>        
+        <column name="DESC_LABEL"/>        
+        <column name="DINST_LABEL"/>        
+        <column name="DMAJ_LABEL"/>        
+        <column name="STATUT_LABEL"/>        
+        <column name="LABEL_LINK"/>
+      </entity>      
+      <entity table="labellisation" source="${DEST_DIR}/labellisation.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_LABEL"/>        
+        <column name="CUSER_LABEL"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_TYPLAB"/>        
+        <column name="LIB_LABEL"/>        
+        <column name="DESC_LABEL"/>        
+        <column name="DINST_LABEL"/>        
+        <column name="DMAJ_LABEL"/>        
+        <column name="STATUT_LABEL"/>        
+        <column name="LABEL_LINK"/>
+      </entity>      
+      <entity table="facteur_bline" source="${DEST_DIR}/facteur_bline.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_FAC"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_ELT"/>        
+        <column name="DINST_FACBL"/>        
+        <column name="DMAJ_FACBL"/>        
+        <column name="NOTE_FACBL"/>        
+        <column name="ID_LABEL"/>        
+        <column name="LABEL_NOTE_FACBL"/>        
+        <column name="TENDANCE"/>
+        <column name="FACTEUR_COMMENT"/>
+      </entity>      
+      <entity table="poids_fact_crit" source="${DEST_DIR}/poids_fact_crit.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_FACT"/>        
+        <column name="ID_CRIT"/>        
+        <column name="BLINE_POIDS"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_ELT"/>        
+        <column name="DINST_POIDS"/>        
+        <column name="DMAJ_POIDS"/>        
+        <column name="CUSER_POIDS"/>        
+        <column name="DAPPLICATION_POIDS"/>        
+        <column name="DPEREMPTION_POIDS"/>        
+        <column name="VALEUR_POIDS"/>
+      </entity>      
+      <entity table="link_real" source="${DEST_DIR}/link_real.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_LINK"/>        
+        <column name="ID_FROM"/>        
+        <column name="ID_TO"/>        
+        <column name="ID_PROJ"/>        
+        <column name="ID_BLINE"/>        
+        <column name="STATE"/>
+      </entity>      
+      <entity table="link_elt_bline" source="${DEST_DIR}/link_elt_bline.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="LINK_ID"/>        
+        <column name="ELT_FROM_ID"/>        
+        <column name="ELT_TO_ID"/>        
+        <column name="ID_BLINE"/>        
+        <column name="REAL_LINK_ID"/>        
+        <column name="TYPE"/>
+      </entity>      
+      <entity table="archi_link" source="${DEST_DIR}/archi_link.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_LINK"/>        
+        <column name="ID_FROM"/>        
+        <column name="ID_TO"/>        
+        <column name="ID_PROJ"/>        
+        <column name="TYPE"/>	  
+      </entity>      
+      <entity table="volumetry" source="${DEST_DIR}/volumetry.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_TELT"/>        
+        <column name="ID_BLINE"/>        
+        <column name="TOTAL"/>        
+        <column name="CREATED"/>        
+        <column name="DELETED"/>	  
+      </entity>      
+      <entity table="baseline_links" source="${DEST_DIR}/baseline_links.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="parent_id_bline"/>        
+        <column name="child_id_bline"/>        
+        <column name="child_id_elt"/>      
+      </entity>	
+    </jdbcimport>      
+    <unzip src="${DEST_DIR}/data.zip"   dest="${GlobalDir}/Data"/>
+    <unzip src="${DEST_DIR}/report.zip" dest="${GlobalDir}/Rapports"/>    
+    <delete>      
+      <fileset dir="${DEST_DIR}" includes="*.xml"/>      
+      <fileset dir="${DEST_DIR}" includes="data.zip"/>      
+      <fileset dir="${DEST_DIR}" includes="report.zip"/>    
+    </delete>   
+  </target>  
+  <!-- export projet -->  
+  <target name="exportProject">    
+    <mkdir dir="${DEST_DIR}"/>    
+    <echo message="Exporting project ${LIB_PRO} (${ID_PRO}) to ${DEST_DIR}/${LIB_PRO}.zip ..."/>    
+    <echo message="    Exporting html colored source code ..."/>    
+    <zip destfile="${DEST_DIR}/data.zip" basedir="${GlobalDir}/Data" includes="${LIB_PRO}-${ID_PRO}/**/*" whenempty="create"/>    
+    <echo message="    Exporting html reports ..."/>    
+    <zip destfile="${DEST_DIR}/report.zip" basedir="${GlobalDir}/Rapports" includes="${LIB_PRO}-${ID_PRO}/**/*" whenempty="create"/>    
+    <echo message="    Exporting data ..."/>    
+    <jdbcexport>      
+      <connection type="jdbc">        
+        <property name="driver" value="${db.driver}"/>        
+        <property name="url"    value="${db.url}"/>        
+        <property name="username" value="${db.user}"/>        
+        <property name="password" value="${db.password}"/>
+      </connection>      
+      <entity table="projet" 
+      target="${DEST_DIR}/projet.xml" 
+      encoding="UTF-8"
+      where="ID_PRO = '${ID_PRO}'"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_PRO"/>        
+        <column name="lib_pro"/>        
+        <column name="desc_pro"/>        
+        <column name="dinst_pro"/>        
+        <column name="dmaj_pro"/>        
+        <column name="dclos_pro"/>        
+        <column name="type"/>
+      </entity>      
+      <entity       table="baseline" 
+      target="${DEST_DIR}/baseline.xml" 
+      encoding="UTF-8"
+      where="PRO_BLINRE = '${ID_PRO}'"
+      >        
+        <delimiter type="xml"/>          
+        <column name="id_bline"/>        
+        <column name="type_bline"/>        
+        <column name="lib_bline"/>        
+        <column name="desc_bline"/>        
+        <column name="pro_blinre"/>        
+        <column name="dinst_bline"/>        
+        <column name="dmaj_bline"/>        
+        <column name="dapplication_bline"/>        
+        <column name="dpremption_bline"/>        
+        <column name="cuser_bline"/>      
+      </entity>      
+      <entity       table="element" 
+      target="${DEST_DIR}/element_structure.xml" 
+      encoding="UTF-8"
+      where="ID_PRO='${ID_PRO}' AND (ID_TELT='PRJ' OR ID_TELT='SSP' OR ID_TELT='EA')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_USA"/>        
+        <column name="ID_TELT"/>        
+        <column name="ID_MAIN_ELT"/>        
+        <column name="ID_PACK"/>        
+        <column name="STREAM_ELT"/>        
+        <column name="ID_DIALECTE"/>        
+        <column name="LIB_ELT"/>        
+        <column name="DESC_ELT"/>        
+        <column name="CUSER_ELT"/>        
+        <column name="DINST_ELT"/>        
+        <column name="DPEREMPTION"/>        
+        <column name="DMAJ_ELT"/>        
+        <column name="POIDS_ELT"/>        
+        <column name="PVOBNAME"/>        
+        <column name="VOBMOUNTPOINT"/>        
+        <column name="MAKEFILE_DIR"/>        
+        <column name="SOURCE_DIR"/>        
+        <column name="BIN_DIR"/>        
+        <column name="PERIODIC_DIR"/>        
+        <column name="LIB"/>        
+        <column name="FILEPATH"/>        
+        <column name="LINEPOS"/>        
+        <column name="ID_STEREOTYPE"/>        
+        <column name="INFO1"/>        
+        <column name="INFO2"/>        
+        <column name="SCM_REPOSITORY"/>        
+        <column name="SCM_MODULE"/>        
+        <column name="PROJECT_FILE_PATH"/>	  
+      </entity>      
+      <entity       table="package" 
+      target="${DEST_DIR}/package.xml" 
+      encoding="UTF-8"
+      where="ID_PACK in (Select ID_PACK From Element Where ID_PRO='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_PACK"/>        
+        <column name="ID_NIV"/>        
+        <column name="LIB_PACK"/>        
+        <column name="DESC_PACK"/>        
+        <column name="DINST_PACK"/>        
+        <column name="DMAJ_PACK"/>        
+        <column name="DAPPLICATION_PACK"/>        
+        <column name="DPEREMPTION_PACK"/>        
+        <column name="COEFF_PACK"/>        
+        <column name="ID_PROJ"/>        
+        <column name="X"/>        
+        <column name="Y"/>        
+        <column name="WIDTH"/>        
+        <column name="HEIGHT"/>        
+        <column name="ZORDER"/>        
+        <column name="TYPE"/>        
+        <column name="PARENT_PACKAGE"/>        
+      </entity>      
+      <entity       table="element" 
+      target="${DEST_DIR}/element.xml" 
+      encoding="UTF-8"
+      where="ID_PRO='${ID_PRO}' AND (ID_TELT&lt;&gt;'PRJ' AND ID_TELT&lt;&gt;'SSP' AND ID_TELT&lt;&gt;'EA')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_USA"/>        
+        <column name="ID_TELT"/>        
+        <column name="ID_MAIN_ELT"/>        
+        <column name="ID_PACK"/>        
+        <column name="STREAM_ELT"/>        
+        <column name="ID_DIALECTE"/>        
+        <column name="LIB_ELT"/>        
+        <column name="DESC_ELT"/>        
+        <column name="CUSER_ELT"/>        
+        <column name="DINST_ELT"/>        
+        <column name="DPEREMPTION"/>        
+        <column name="DMAJ_ELT"/>        
+        <column name="POIDS_ELT"/>        
+        <column name="PVOBNAME"/>        
+        <column name="VOBMOUNTPOINT"/>        
+        <column name="MAKEFILE_DIR"/>        
+        <column name="SOURCE_DIR"/>        
+        <column name="BIN_DIR"/>        
+        <column name="PERIODIC_DIR"/>        
+        <column name="LIB"/>        
+        <column name="FILEPATH"/>        
+        <column name="LINEPOS"/>        
+        <column name="ID_STEREOTYPE"/>        
+        <column name="INFO1"/>        
+        <column name="INFO2"/>        
+        <column name="SCM_REPOSITORY"/>        
+        <column name="SCM_MODULE"/>        
+        <column name="PROJECT_FILE_PATH"/>	  
+      </entity>      
+      <entity       table="copy_paste_ref" 
+      target="${DEST_DIR}/copy_paste_ref.xml" 
+      encoding="UTF-8"
+      where="ID_ELT in (Select ID_ELT From Element Where ID_PRO='${ID_PRO}') and id_bline in (select id_bline FROM Baseline WHERE PRO_BLINRE = '${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_COPY"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_ELT"/>        
+        <column name="LINE"/>        
+        <column name="LENGTH"/>        
+      </entity>      
+      <entity table="action_plan" 
+      target="${DEST_DIR}/action_plan.xml" 
+      encoding="UTF-8"
+      where="ID_ELT in (Select ID_ELT From Element Where ID_PRO='${ID_PRO}') and id_bline in (select id_bline FROM Baseline WHERE PRO_BLINRE = '${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_ACTION_PLAN"/>        
+        <column name="ID_ELT"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ACTION_PLAN_COMMENT"/>        
+        <column name="COMMENT_USER"/>        
+      </entity> 
+      
+      <entity table="action_plan_criterion" 
+      target="${DEST_DIR}/action_plan_criterion.xml" 
+      encoding="UTF-8"
+      where="ID_ACTION_PLAN in (select id_action_plan from action_plan where ID_ELT in (Select ID_ELT From Element Where ID_PRO='${ID_PRO}') and id_bline in (select id_bline FROM Baseline WHERE PRO_BLINRE = '${ID_PRO}'))"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_ACTION_PLAN"/>        
+        <column name="ID_CRIT"/>        
+        <column name="PRIORITY"/>        
+        <column name="SELECTED"/>        
+        <column name="CRITERION_COMMENT"/>        
+        <column name="COMMENT_USER"/>        
+        <column name="MASTER_ELEMENT"/>        
+      </entity>      
+
+           
+      <entity       table="elt_links" 
+      target="${DEST_DIR}/elt_links_prj.xml" 
+      encoding="UTF-8"
+      where="ELT_FILS in (Select ID_ELT From Element Where ID_PRO='${ID_PRO}' and id_telt = 'PRJ')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ELT_FILS"/>        
+        <column name="DINST_LINKS"/>        
+        <column name="DMAJ_LINKS"/>        
+        <column name="DAPPLICATION_LINKS"/>        
+        <column name="DPEREMPTION_LINKS"/>        
+        <column name="TYPE"/>        
+      </entity>      
+      <entity       table="elt_links" 
+      target="${DEST_DIR}/elt_links.xml" 
+      encoding="UTF-8"
+      where="ELT_FILS in (Select ID_ELT From Element Where ID_PRO='${ID_PRO}' and id_telt &lt;&gt; 'PRJ')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ELT_PERE"/>        
+        <column name="ELT_FILS"/>        
+        <column name="DINST_LINKS"/>        
+        <column name="DMAJ_LINKS"/>        
+        <column name="DAPPLICATION_LINKS"/>        
+        <column name="DPEREMPTION_LINKS"/>        
+        <column name="TYPE"/>        
+      </entity>      
+      <entity       table="qametrique" 
+      target="${DEST_DIR}/qametrique.xml" 
+      encoding="UTF-8"
+      where="ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_MET"/>        
+        <column name="ID_BLINE"/>        
+        <column name="DINST_QAMET"/>        
+        <column name="DMAJ_QAMET"/>        
+        <column name="CUSER_QAMET"/>        
+        <column name="DAPPLICATION_QAMET"/>        
+        <column name="DPEREMPTION_QAMET"/>        
+        <column name="VALBRUTE_QAMET"/>        
+        <column name="NOTECALC_QAMET"/>        
+        <column name="JUST_MET"/>        
+        <column name="JUST_VALBRUT_QAMET"/>        
+        <column name="JUST_NOTECALC_QAMET"/>        
+        <column name="TENDANCE"/>        
+        <column name="LIGNES"/>
+      </entity>      
+      <entity       table="justification" 
+      target="${DEST_DIR}/justification_link.xml" 
+      encoding="UTF-8"
+      where="ID_JUST in (Select j.JUST_LINK From Justification j, Critere_bline c Where c.ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}') AND c.ID_JUST IS NOT NULL AND c.ID_JUST=j.ID_JUST)"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_JUST"/>        
+        <column name="LIB_JUST"/>        
+        <column name="DESC_JUST"/>        
+        <column name="DINST_JUST"/>        
+        <column name="DMAJ_JUST"/>        
+        <column name="STATUT_JUST"/>        
+        <column name="PROPAGATION_JUST"/>        
+        <column name="CUSER_JUST"/>        
+        <column name="JUST_LINK"/>
+      </entity>      
+      <entity       table="justification" 
+      target="${DEST_DIR}/justification.xml" 
+      encoding="UTF-8"
+      where="ID_JUST in (Select distinct j.ID_JUST From Justification j, Critere_bline c Where c.ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}') AND c.ID_JUST IS NOT NULL AND c.ID_JUST=j.ID_JUST)"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_JUST"/>        
+        <column name="LIB_JUST"/>        
+        <column name="DESC_JUST"/>        
+        <column name="DINST_JUST"/>        
+        <column name="DMAJ_JUST"/>        
+        <column name="STATUT_JUST"/>        
+        <column name="PROPAGATION_JUST"/>        
+        <column name="CUSER_JUST"/>        
+        <column name="JUST_LINK"/>
+      </entity>      
+      <entity       table="critere_bline" 
+      target="${DEST_DIR}/critere_bline.xml" 
+      encoding="UTF-8"
+      where="ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_CRIT"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_ELT"/>        
+        <column name="DINST_CRIBL"/>        
+        <column name="DMAJ_CRIBL"/>        
+        <column name="NOTE_CRIBL"/>        
+        <column name="ID_JUST"/>        
+        <column name="JUST_NOTE_CRIBL"/>        
+        <column name="TENDANCE"/>        
+        <column name="COST"/>        
+        <column name="CRITERION_COMMENT"/>
+      </entity>      
+      <entity       table="criterenoterepartition" 
+      target="${DEST_DIR}/criterenoterepartition.xml" 
+      encoding="UTF-8"
+      where="ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_CRIT"/>        
+        <column name="SEUIL"/>        
+        <column name="TOTAL"/>
+      </entity>      
+      <entity       table="element_baseline_info" 
+      target="${DEST_DIR}/element_baseline_info.xml" 
+      encoding="UTF-8"
+      where="ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_MAIN_ELT"/>        
+        <column name="NOTE1"/>        
+        <column name="NOTE2"/>        
+        <column name="NOTE3"/>        
+        <column name="NOTE4"/>        
+        <column name="NBBETTER"/>        
+        <column name="NBWORST"/>        
+        <column name="NBSTABLE"/>        
+        <column name="START_LINE"/>        
+      </entity>      
+      <entity       table="labellisation" 
+      target="${DEST_DIR}/labellisation_link.xml" 
+      encoding="UTF-8"
+      where="ID_LABEL in (Select distinct l.LABEL_LINK From Labellisation l, Facteur_bline f Where f.ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}') AND f.ID_LABEL IS NOT NULL AND f.ID_LABEL=l.ID_LABEL)"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_LABEL"/>        
+        <column name="CUSER_LABEL"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_TYPLAB"/>        
+        <column name="LIB_LABEL"/>        
+        <column name="DESC_LABEL"/>        
+        <column name="DINST_LABEL"/>        
+        <column name="DMAJ_LABEL"/>        
+        <column name="STATUT_LABEL"/>        
+        <column name="LABEL_LINK"/>
+      </entity>      
+      <entity       table="labellisation" 
+      target="${DEST_DIR}/labellisation.xml" 
+      encoding="UTF-8"
+      where="ID_LABEL in (Select distinct l.ID_LABEL From Labellisation l, Facteur_bline f Where f.ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}') AND f.ID_LABEL IS NOT NULL AND f.ID_LABEL=l.ID_LABEL)"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_LABEL"/>        
+        <column name="CUSER_LABEL"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_TYPLAB"/>        
+        <column name="LIB_LABEL"/>        
+        <column name="DESC_LABEL"/>        
+        <column name="DINST_LABEL"/>        
+        <column name="DMAJ_LABEL"/>        
+        <column name="STATUT_LABEL"/>        
+        <column name="LABEL_LINK"/>
+      </entity>      
+      <entity       table="facteur_bline" 
+      target="${DEST_DIR}/facteur_bline.xml" 
+      encoding="UTF-8"
+      where="ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_FAC"/>        
+        <column name="ID_BLINE"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_ELT"/>        
+        <column name="DINST_FACBL"/>        
+        <column name="DMAJ_FACBL"/>        
+        <column name="NOTE_FACBL"/>        
+        <column name="ID_LABEL"/>        
+        <column name="LABEL_NOTE_FACBL"/>        
+        <column name="TENDANCE"/>
+        <column name="FACTEUR_COMMENT"/>
+      </entity>      
+      <entity       table="poids_fact_crit" 
+      target="${DEST_DIR}/poids_fact_crit.xml" 
+      encoding="UTF-8"
+      where="BLINE_POIDS in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_FACT"/>        
+        <column name="ID_CRIT"/>        
+        <column name="BLINE_POIDS"/>        
+        <column name="ID_PRO"/>        
+        <column name="ID_ELT"/>        
+        <column name="DINST_POIDS"/>        
+        <column name="DMAJ_POIDS"/>        
+        <column name="CUSER_POIDS"/>        
+        <column name="DAPPLICATION_POIDS"/>        
+        <column name="DPEREMPTION_POIDS"/>        
+        <column name="VALEUR_POIDS"/>
+      </entity>      
+      <entity       table="link_real" 
+      target="${DEST_DIR}/link_real.xml" 
+      encoding="UTF-8"
+      where="ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_LINK"/>        
+        <column name="ID_FROM"/>        
+        <column name="ID_TO"/>        
+        <column name="ID_PROJ"/>        
+        <column name="ID_BLINE"/>        
+        <column name="STATE"/>
+      </entity>      
+      <entity       table="link_elt_bline" 
+      target="${DEST_DIR}/link_elt_bline.xml" 
+      encoding="UTF-8"
+      where="ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="LINK_ID"/>        
+        <column name="ELT_FROM_ID"/>        
+        <column name="ELT_TO_ID"/>        
+        <column name="ID_BLINE"/>        
+        <column name="REAL_LINK_ID"/>        
+        <column name="TYPE"/>      
+      </entity>      
+      <entity       table="archi_link" 
+      target="${DEST_DIR}/archi_link.xml" 
+      encoding="UTF-8"
+      where="ID_PROJ in (SELECT id_elt From Element Where ID_PRO='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_LINK"/>        
+        <column name="ID_FROM"/>        
+        <column name="ID_TO"/>        
+        <column name="ID_PROJ"/>        
+        <column name="TYPE"/>      
+      </entity>      
+      <entity       table="volumetry" 
+      target="${DEST_DIR}/volumetry.xml" 
+      encoding="UTF-8"
+      where="ID_BLINE in (Select id_bline From Baseline where PRO_BLINRE='${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_ELT"/>        
+        <column name="ID_TELT"/>        
+        <column name="ID_BLINE"/>        
+        <column name="TOTAL"/>        
+        <column name="CREATED"/>        
+        <column name="DELETED"/>      
+      </entity>      
+      <entity       table="baseline_links" 
+      target="${DEST_DIR}/baseline_links.xml" 
+      encoding="UTF-8"
+      where="parent_id_bline in (select id_bline from baseline where PRO_BLINRE = '${ID_PRO}') or child_id_bline in (select id_bline from baseline where PRO_BLINRE = '${ID_PRO}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="parent_id_bline"/>        
+        <column name="child_id_bline"/>        
+        <column name="child_id_elt"/>      
+      </entity>           
+    </jdbcexport>    
+    <zip destfile="${DEST_DIR}/${LIB_PRO}.zip" basedir="${DEST_DIR}" includes="*.xml,data.zip,report.zip"/>    
+    <delete>      
+      <fileset dir="${DEST_DIR}" includes="*.xml"/>      
+      <fileset dir="${DEST_DIR}" includes="data.zip"/>      
+      <fileset dir="${DEST_DIR}" includes="report.zip"/>	
+    </delete>
+  </target>  
+  
+  
+  
+  
+  <!-- export modele -->  
+  <target name="exportModele">      
+    <mkdir dir="${DEST_DIR}"/>    
+    <echo message="Exporting model ${ID_USA} to ${DEST_DIR}/${ID_USA}.zip ..."/>    
+    <jdbcexport>      
+      <connection type="jdbc">        
+        <property name="driver" value="${db.driver}"/>        
+        <property name="url"    value="${db.url}"/>        
+        <property name="username" value="${db.user}"/>        
+        <property name="password" value="${db.password}"/>      
+      </connection>      
+      <entity 
+      table="type_element" 
+      target="${DEST_DIR}/type_element.xml" 
+      encoding="UTF-8"
+      where="ID_TELT in (Select distinct id_telt FROM critere_usage WHERE ID_USA='${ID_USA}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_TELT"/>        
+        <column name="HAS_SOURCE"/>      
+      </entity>      
+      <entity 
+      table="outils" 
+      target="${DEST_DIR}/outils.xml" 
+      encoding="UTF-8"
+      where="ID_OUTILS in (Select distinct OUTIL_MET From Metrique m, Regle r Where m.ID_MET = r.ID_MET AND r.ID_USA='${ID_USA}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_OUTILS"/>        
+      </entity>      
+      <entity 
+      table="metrique" 
+      target="${DEST_DIR}/metrique.xml" 
+      encoding="UTF-8"
+      where="OUTIL_MET in (Select distinct OUTIL_MET From Metrique m, Regle r Where m.ID_MET = r.ID_MET AND r.ID_USA='${ID_USA}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_MET"/>        
+        <column name="TYPE_MET"/>        
+        <column name="CAT_MET"/>        
+        <column name="OUTIL_MET"/>        
+        <column name="TECHNO_MET"/>        
+        <column name="DINST_MET"/>        
+        <column name="DMAJ_MET"/>        
+        <column name="DAPPLICATION_MET"/>        
+        <column name="DPEREMPTION_MET"/>        
+        <column name="COST_CORRECTION"/>      
+      </entity>      
+      <entity 
+      table="critere" 
+      target="${DEST_DIR}/critere.xml" 
+      encoding="UTF-8"
+      where="ID_CRIT in (Select distinct ID_CRIT From CRITERE_USAGE Where ID_USA='${ID_USA}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_CRIT"/>        
+        <column name="DINST_CRIT"/>        
+        <column name="DMAJ_CRIT"/>        
+        <column name="DAPPLICATION_CRIT"/>        
+        <column name="DPEREMPTION_CRIT"/>        
+      </entity>      
+      <entity 
+      table="facteur" 
+      target="${DEST_DIR}/facteur.xml" 
+      encoding="UTF-8"
+      where="ID_FACT in (Select distinct ID_FACT From FACTEUR_CRITERE Where ID_USA='${ID_USA}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_FACT"/>        
+        <column name="DINST_FACT"/>        
+        <column name="DMAJ_FACT"/>        
+        <column name="DAPPLICATION_FACT"/>        
+        <column name="DPEREMPTION_FACT"/>
+      </entity>      
+      <entity 
+      table="modele" 
+      target="${DEST_DIR}/modele.xml" 
+      encoding="UTF-8"
+      where="ID_USA='${ID_USA}'"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_USA"/>        
+        <column name="DINTS_USA"/>        
+        <column name="DMAJ_USA"/>        
+        <column name="DAPPLICATION_USA"/>        
+        <column name="DPEREMPTION_USA"/>        
+        <column name="APU_LIMIT_MEDIUM"/>        
+        <column name="APU_LIMIT_LONG"/>        
+      </entity>      
+      <entity 
+      table="critere_usage" 
+      target="${DEST_DIR}/critere_usage.xml" 
+      encoding="UTF-8"
+      where="ID_USA='${ID_USA}'"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_CRIT"/>        
+        <column name="ID_USA"/>        
+        <column name="ID_TELT"/>
+      </entity>      
+      <entity 
+      table="regle" 
+      target="${DEST_DIR}/regle.xml" 
+      encoding="UTF-8"
+      where="ID_USA='${ID_USA}'"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_CRIT"/>        
+        <column name="ID_MET"/>        
+        <column name="ID_USA"/>        
+        <column name="DINST_REG"/>        
+        <column name="DMAJ_REG"/>      
+      </entity>      
+      <entity 
+      table="facteur_critere" 
+      target="${DEST_DIR}/facteur_critere.xml" 
+      encoding="UTF-8"
+      where="ID_USA='${ID_USA}'"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_USA"/>        
+        <column name="ID_FACT"/>        
+        <column name="ID_CRIT"/>        
+        <column name="POIDS"/>        
+        <column name="DINST_REG"/>        
+        <column name="DMAJ_REG"/>      
+      </entity>             
+      <entity 
+      table="outils_modele" 
+      target="${DEST_DIR}/outils_modele.xml" 
+      encoding="UTF-8"
+      where="ID_USA='${ID_USA}'"
+      >        
+        <delimiter type="xml"/>          
+        <column name="ID_USA"/>        
+        <column name="ID_OUTILS"/>      
+      </entity>      
+      <entity 
+      table="langue" 
+      target="${DEST_DIR}/langue.xml" 
+      encoding="UTF-8"
+      where="">        
+        <delimiter type="xml"/>          
+        <column name="ID"/>        
+        <column name="LIB"/>        
+        <column name="DESCRIPTION"/>      
+      </entity>      
+      <entity 
+      table="i18n" 
+      target="${DEST_DIR}/i18n_type_element.xml" 
+      encoding="UTF-8"
+      where="table_name='type_element' and id_table in (select id_telt FROM critere_usage where id_usa='${ID_USA}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>      
+      </entity>      
+      <entity 
+      table="i18n" 
+      target="${DEST_DIR}/i18n_outils.xml" 
+      encoding="UTF-8"
+      where="table_name='outils' and id_table in (select ID_OUTILS from outils_modele where id_usa='${ID_USA}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>
+      </entity>      
+      <entity 
+      table="i18n" 
+      target="${DEST_DIR}/i18n_metrique.xml" 
+      encoding="UTF-8"
+      where="table_name='metrique' and id_table in (select ID_MET FROM metrique WHERE OUTIL_MET in (Select distinct OUTIL_MET From Metrique m, Regle r Where m.ID_MET = r.ID_MET AND r.ID_USA='${ID_USA}'))"
+      >        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>
+      </entity>      
+      <entity 
+      table="i18n" 
+      target="${DEST_DIR}/i18n_critere.xml" 
+      encoding="UTF-8"
+      where="table_name='critere' and id_table in (Select distinct ID_CRIT From CRITERE_USAGE Where ID_USA='${ID_USA}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>
+      </entity>      
+      <entity 
+      table="i18n" 
+      target="${DEST_DIR}/i18n_facteur.xml" 
+      encoding="UTF-8"
+      where="table_name='facteur' and id_table in (Select distinct ID_FACT From FACTEUR_CRITERE Where ID_USA='${ID_USA}')"
+      >        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>      
+      </entity>      
+      <entity 
+      table="i18n" 
+      target="${DEST_DIR}/i18n_modele.xml" 
+      encoding="UTF-8"
+      where="table_name='modele' and id_table='${ID_USA}'"
+      >        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>      
+      </entity>    
+    </jdbcexport>    
+    <zip destfile="${DEST_DIR}/${ID_USA}.zip">    
+      <fileset dir="${DEST_DIR}">      
+        <include name="*.xml"/>    
+      </fileset>     
+      <fileset dir="${GlobalDir}/config" casesensitive="no">      
+        <include name="method-${ID_USA}.xml"/>      
+      </fileset>     
+    </zip>       
+    <delete>      
+      <fileset dir="${DEST_DIR}" includes="*.xml"/>      
+    </delete>      
+  </target>  
+  
+  
+  
+  
+  <!-- import modele -->  
+  <target name="importModele">    
+    <echo message="Importing model from ${DEST_DIR}/${DEST_ZIP_FILE} ..."/>    
+    <unzip src="${DEST_DIR}/${DEST_ZIP_FILE}" dest="${GlobalDir}/config">      
+      <patternset>        
+        <include name="method-*.xml"/>      
+      </patternset>    
+    </unzip>      
+    <unzip src="${DEST_DIR}/${DEST_ZIP_FILE}" dest="${DEST_DIR}"/>    
+    <jdbcimport batchCount="1000" engine="net.sourceforge.jdbcimporter.engine.UpdateEngine" failonerror="true">          
+      <connection type="jdbc">        
+        <property name="driver" value="${db.driver}"/>        
+        <property name="url"    value="${db.url}"/>        
+        <property name="username" value="${db.user}"/>        
+        <property name="password" value="${db.password}"/>      
+      </connection>      
+      <entity table="type_element" source="${DEST_DIR}/type_element.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_TELT"/>        
+        <column name="HAS_SOURCE"/>      
+      </entity>      
+      <entity table="outils" source="${DEST_DIR}/outils.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_OUTILS"/>        
+      </entity>      
+      <entity table="metrique" source="${DEST_DIR}/metrique.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_MET"/>        
+        <column name="TYPE_MET"/>        
+        <column name="CAT_MET"/>        
+        <column name="OUTIL_MET"/>        
+        <column name="TECHNO_MET"/>        
+        <column name="DINST_MET"/>        
+        <column name="DMAJ_MET"/>        
+        <column name="DAPPLICATION_MET"/>        
+        <column name="DPEREMPTION_MET"/>        
+        <column name="COST_CORRECTION"/>      
+      </entity>      
+      <entity table="critere" source="${DEST_DIR}/critere.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_CRIT"/>        
+        <column name="DINST_CRIT"/>        
+        <column name="DMAJ_CRIT"/>        
+        <column name="DAPPLICATION_CRIT"/>        
+        <column name="DPEREMPTION_CRIT"/>        
+      </entity>      
+      <entity table="facteur" source="${DEST_DIR}/facteur.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_FACT"/>        
+        <column name="DINST_FACT"/>        
+        <column name="DMAJ_FACT"/>        
+        <column name="DAPPLICATION_FACT"/>        
+        <column name="DPEREMPTION_FACT"/>
+      </entity>      
+      <entity table="modele" source="${DEST_DIR}/modele.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_USA"/>        
+        <column name="DINTS_USA"/>        
+        <column name="DMAJ_USA"/>        
+        <column name="DAPPLICATION_USA"/>        
+        <column name="DPEREMPTION_USA"/>        
+        <column name="APU_LIMIT_MEDIUM"/>        
+        <column name="APU_LIMIT_LONG"/>
+		<beforeImport query="DELETE FROM REGLE WHERE id_usa = ?" parameters="0" />
+		<beforeImport query="DELETE FROM FACTEUR_CRITERE WHERE id_usa = ?" parameters="0" />
+		<beforeImport query="DELETE FROM CRITERE_USAGE WHERE id_usa = ?" parameters="0" />
+      </entity>      
+      <entity table="critere_usage" source="${DEST_DIR}/critere_usage.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_CRIT"/>        
+        <column name="ID_USA"/>        
+        <column name="ID_TELT"/>
+      </entity>      
+      <entity table="regle" source="${DEST_DIR}/regle.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_CRIT"/>        
+        <column name="ID_MET"/>        
+        <column name="ID_USA"/>        
+        <column name="DINST_REG"/>        
+        <column name="DMAJ_REG"/>
+      </entity>      
+      <entity table="facteur_critere" source="${DEST_DIR}/facteur_critere.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_USA"/>        
+        <column name="ID_FACT"/>        
+        <column name="ID_CRIT"/>        
+        <column name="POIDS"/>        
+        <column name="DINST_REG"/>        
+        <column name="DMAJ_REG"/>      
+      </entity>      
+      <entity table="outils_modele" source="${DEST_DIR}/outils_modele.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID_USA"/>        
+        <column name="ID_OUTILS"/>      
+      </entity>      
+      <entity table="langue" source="${DEST_DIR}/langue.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="ID"/>        
+        <column name="LIB"/>        
+        <column name="DESCRIPTION"/>      
+      </entity>      
+      <entity table="i18n" source="${DEST_DIR}/i18n_type_element.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>      
+      </entity>      
+      <entity table="i18n" source="${DEST_DIR}/i18n_outils.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>      
+      </entity>      
+      <entity table="i18n" source="${DEST_DIR}/i18n_metrique.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>
+      </entity>      
+      <entity table="i18n" source="${DEST_DIR}/i18n_critere.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>
+      </entity>      
+      <entity table="i18n" source="${DEST_DIR}/i18n_facteur.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>        
+      </entity>      
+      <entity table="i18n" source="${DEST_DIR}/i18n_modele.xml" encoding="UTF-8">        
+        <delimiter type="xml"/>          
+        <column name="TABLE_NAME"/>        
+        <column name="COLUMN_NAME"/>        
+        <column name="ID_TABLE"/>        
+        <column name="ID_LANGUE"/>        
+        <column name="TEXT"/>        
+      </entity>        
+    </jdbcimport>    
+    <delete>      
+      <fileset dir="${DEST_DIR}" includes="*.xml"/>    
+    </delete>  
+  </target>  
+  <target name="help">  
+  </target>
+</project>

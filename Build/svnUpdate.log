@@ -1,0 +1,54 @@
+Buildfile: scripts\compile\build.xml
+
+init-properties:
+
+svnupdate:
+     [echo] Updating Src...
+     [java] Skipped 'svn://parvw3caqsap001.clients.emea.cpwr.corp/caqs/Development/Src/trunk'
+     [java] At revision 8810.
+
+
+     [echo] Updating Installer...
+     [java] Skipped 'svn://parvw3caqsap001.clients.emea.cpwr.corp/caqs/Development/Installer/trunk'
+     [java] Restored 'autorun.inf'
+     [java] At revision 8810.
+
+
+     [echo] Updating config...
+     [java] Skipped 'svn://parvw3caqsap001.clients.emea.cpwr.corp/caqs/Development/Configuration/config/trunk'
+     [java] At revision 8810.
+
+
+     [echo] Updating DBMS...
+     [java] Skipped 'svn://parvw3caqsap001.clients.emea.cpwr.corp/caqs/Development/Configuration/DBMS/trunk'
+     [java] At revision 8810.
+
+
+     [echo] Updating Models...
+     [java] Skipped 'svn://parvw3caqsap001.clients.emea.cpwr.corp/caqs/Development/Configuration/Models/trunk'
+     [java] At revision 8810.
+
+
+     [echo] Updating traitements...
+     [java] Skipped 'svn://parvw3caqsap001.clients.emea.cpwr.corp/caqs/Development/Configuration/traitements/trunk'
+     [java] At revision 8810.
+
+
+     [echo] Updating Linux...
+     [java] Skipped 'svn://parvw3caqsap001.clients.emea.cpwr.corp/caqs/Development/Configuration/Linux/trunk'
+     [java] At revision 8810.
+
+
+     [echo] Updating Nova Bonita...
+     [java] Skipped 'svn://parvw3caqsap001.clients.emea.cpwr.corp/caqs/Development/Configuration/bonita-console/trunk'
+     [java] At revision 8810.
+
+
+     [echo] Updating Documentation...
+     [java] Skipped 'svn://parvw3caqsap001.clients.emea.cpwr.corp/caqs/Development/Documentation/trunk'
+     [java] At revision 8810.
+
+
+
+BUILD SUCCESSFUL
+Total time: 6 minutes 13 seconds

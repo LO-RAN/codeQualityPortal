@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# Run-level Startup script for the Apache Tomcat Java Web Applications server
+#
+# chkconfig: 345 91 21
+# description: Startup/Shutdown Apache Tomcat Java Web Applications server
+
+TOMCAT_HOME="/opt/Compuware/caqs/bin"
+TOMCAT_OWNR="caqs"
+
+# if the executables do not exist -- display error
+
+if [ ! -f $TOMCAT_HOME/caqs.sh -o ! -d $TOMCAT_HOME ]
+then
+        echo "tomcat startup: cannot start"
+        exit 1
+fi
+
+# depending on parameter -- startup, shutdown, restart 
+# of the instance and listener or usage display 
+
+case "$1" in
+    start)
+        # Apache Tomcat Java Web Applications server startup
+        echo -n "Starting Apache Tomcat Java Web Applications server: "
+        su - $TOMCAT_OWNR -c "$TOMCAT_HOME/caqs.sh start"
+
+        touch $TOMCAT_HOME/tomcat.lock
+        echo "OK"
+        ;;
+    stop)
+        # Apache Tomcat Java Web Applications server shutdown
+        echo -n "Shutdown Apache Tomcat Java Web Applications server: "
+
+        su - $TOMCAT_OWNR -c "$TOMCAT_HOME/caqs.sh stop -force"
+        rm -f $TOMCAT_HOME/tomcat.lock
+        rm -f $TOMCAT_HOME/../temp/data/exodb.lck
+        echo "OK"
+        ;;
+    reload|restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 start|stop|restart|reload"
+        exit 1
+esac
+exit 0

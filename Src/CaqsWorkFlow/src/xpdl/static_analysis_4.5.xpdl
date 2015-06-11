@@ -1,0 +1,1258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://www.wfmc.org/2002/XPDL1.0" xmlns:xpdl="http://www.wfmc.org/2002/XPDL1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wfmc.org/2002/XPDL1.0 http://wfmc.org/standards/docs/TC-1025_schema_10_xpdl.xsd" Id="CAQS_Workflow" Name="CAQS Workflow">
+  <PackageHeader>
+    <XPDLVersion>1.0</XPDLVersion>
+    <Vendor>Bonita Project Team</Vendor>
+    <Created>2011-04-04T16:48:12.104+0200</Created>
+  </PackageHeader>
+  <RedefinableHeader>
+    <Version>4.5</Version>
+  </RedefinableHeader>
+  <ConformanceClass GraphConformance="NON_BLOCKED" />
+  <WorkflowProcesses>
+    <WorkflowProcess AccessLevel="PUBLIC" Name="analysis" Id="analysis">
+      <ProcessHeader />
+      <RedefinableHeader>
+        <Version>4.5</Version>
+      </RedefinableHeader>
+      <DataFields>
+        <DataField Id="HTTP_SERVER_CONTEXT_PATH" Name="HTTP_SERVER_CONTEXT_PATH">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="HTTP_SERVER_CONTEXT_PATH_2" Name="HTTP_SERVER_CONTEXT_PATH_2">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="PROJECT_ID" Name="PROJECT_ID">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="PROJECT_NAME" Name="PROJECT_NAME">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="USER_ID" Name="USER_ID">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="BASELINE_NAME" Name="BASELINE_NAME">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="EA_LIST" Name="EA_LIST">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="EA_OPTION_LIST" Name="EA_OPTION_LIST">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="result" Name="result">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="message" Name="message">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="lastUrl" Name="lastUrl">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="BASELINE_ID" Name="BASELINE_ID">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="progress" Name="progress">
+          <DataType>
+            <BasicType Type="INTEGER" />
+          </DataType>
+          <InitialValue>0</InitialValue>
+          <Description>Process progress bar rate in percent</Description>
+        </DataField>
+        <DataField Id="step" Name="step">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+          <Description>Main step: analysis, load, calculation...</Description>
+        </DataField>
+        <DataField Id="USER_EMAIL" Name="USER_EMAIL">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="RUN_JAVA_ANALYSIS" Name="RUN_JAVA_ANALYSIS">
+          <DataType>
+            <BasicType Type="BOOLEAN" />
+          </DataType>
+          <InitialValue>false</InitialValue>
+        </DataField>
+        <DataField Id="RUN_VB_ANALYSIS" Name="RUN_VB_ANALYSIS">
+          <DataType>
+            <BasicType Type="BOOLEAN" />
+          </DataType>
+          <InitialValue>false</InitialValue>
+        </DataField>
+        <DataField Id="RUN_COBOL_ANALYSIS" Name="RUN_COBOL_ANALYSIS">
+          <DataType>
+            <BasicType Type="BOOLEAN" />
+          </DataType>
+          <InitialValue>false</InitialValue>
+        </DataField>
+        <DataField Id="RUN_CPP_ANALYSIS" Name="RUN_CPP_ANALYSIS">
+          <DataType>
+            <BasicType Type="BOOLEAN" />
+          </DataType>
+          <InitialValue>false</InitialValue>
+        </DataField>
+        <DataField Id="RUN_PHP_ANALYSIS" Name="RUN_PHP_ANALYSIS">
+          <DataType>
+            <BasicType Type="BOOLEAN" />
+          </DataType>
+          <InitialValue>false</InitialValue>
+        </DataField>
+        <DataField Id="ACTIVITY_LABEL" Name="ACTIVITY_LABEL">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="RUN_CS_ANALYSIS" Name="RUN_CS_ANALYSIS">
+          <DataType>
+            <BasicType Type="BOOLEAN" />
+          </DataType>
+          <InitialValue>false</InitialValue>
+        </DataField>
+        <DataField Id="RUN_ABAP_ANALYSIS" Name="RUN_ABAP_ANALYSIS">
+          <DataType>
+            <BasicType Type="BOOLEAN" />
+          </DataType>
+          <InitialValue>false</InitialValue>
+        </DataField>
+        <DataField Id="HTTP_SERVER_CONTEXT_PATH_3" Name="HTTP_SERVER_CONTEXT_PATH_3">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="RUN_FLEX_ANALYSIS" Name="RUN_FLEX_ANALYSIS">
+          <DataType>
+            <BasicType Type="BOOLEAN" />
+          </DataType>
+          <InitialValue>false</InitialValue>
+        </DataField>
+        <DataField Id="RUN_NATURAL_ANALYSIS" Name="RUN_NATURAL_ANALYSIS">
+          <DataType>
+            <BasicType Type="BOOLEAN" />
+          </DataType>
+          <InitialValue>false</InitialValue>
+        </DataField>
+      </DataFields>
+      <Participants>
+        <Participant Id="john" Name="john">
+          <ParticipantType Type="HUMAN" />
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="NewParticipant" Value="true" />
+            <ExtendedAttribute Name="XOffset" Value="0" />
+            <ExtendedAttribute Name="YOffset" Value="300" />
+          </ExtendedAttributes>
+        </Participant>
+        <Participant Id="admin" Name="admin">
+          <ParticipantType Type="ROLE" />
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="Mapper" Value="Instance Initiator" />
+            <ExtendedAttribute Name="NewParticipant" Value="true" />
+            <ExtendedAttribute Name="XOffset" Value="0" />
+            <ExtendedAttribute Name="YOffset" Value="150" />
+          </ExtendedAttributes>
+        </Participant>
+        <Participant Id="system" Name="system">
+          <ParticipantType Type="SYSTEM" />
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="NewParticipant" Value="true" />
+            <ExtendedAttribute Name="XOffset" Value="0" />
+            <ExtendedAttribute Name="YOffset" Value="0" />
+          </ExtendedAttributes>
+        </Participant>
+      </Participants>
+      <Activities>
+        <Activity Id="RestNat" Name="RestNat">
+          <Route />
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="XOffset" Value="625" />
+            <ExtendedAttribute Name="YOffset" Value="389" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="114" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Flex" Name="Flex">
+          <Route />
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="XOffset" Value="562" />
+            <ExtendedAttribute Name="YOffset" Value="249" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="80" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="ABAP" Name="ABAP">
+          <Route />
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="XOffset" Value="940" />
+            <ExtendedAttribute Name="YOffset" Value="249" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="80" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Cobol" Name="Cobol">
+          <Route />
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="437" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="34" />
+            <ExtendedAttribute Name="XOffset" Value="1113" />
+            <ExtendedAttribute Name="YOffset" Value="249" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="80" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="VBorCS" Name="VBorCS">
+          <Route />
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="1011" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="2" />
+            <ExtendedAttribute Name="XOffset" Value="766" />
+            <ExtendedAttribute Name="YOffset" Value="244" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="80" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="PHP" Name="PHP">
+          <Route />
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="1635" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="2" />
+            <ExtendedAttribute Name="XOffset" Value="379" />
+            <ExtendedAttribute Name="YOffset" Value="240" />
+            <ExtendedAttribute Name="CellHeight" Value="37" />
+            <ExtendedAttribute Name="CellWidth" Value="90" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Java" Name="Java">
+          <Route />
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="1925" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="105" />
+            <ExtendedAttribute Name="XOffset" Value="192" />
+            <ExtendedAttribute Name="YOffset" Value="243" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="97" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="BonitaEnd" Name="BonitaEnd">
+          <Implementation>
+            <No />
+          </Implementation>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="621" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="56" />
+            <ExtendedAttribute Name="XOffset" Value="1385" />
+            <ExtendedAttribute Name="YOffset" Value="670" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="BonitaInit" Name="BonitaInit">
+          <Implementation>
+            <No />
+          </Implementation>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="AND" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="63" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="56" />
+            <ExtendedAttribute Name="XOffset" Value="41" />
+            <ExtendedAttribute Name="YOffset" Value="16" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="AnalysisToLoadSwitch" Name="AnalysisToLoadSwitch">
+          <Route />
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="651" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="2" />
+            <ExtendedAttribute Name="XOffset" Value="312" />
+            <ExtendedAttribute Name="YOffset" Value="78" />
+            <ExtendedAttribute Name="CellHeight" Value="54" />
+            <ExtendedAttribute Name="CellWidth" Value="175" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Start_process" Name="Start process">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>john</Performer>
+          <StartMode>
+            <Manual />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="27" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="302" />
+            <ExtendedAttribute Name="XOffset" Value="12" />
+            <ExtendedAttribute Name="YOffset" Value="109" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="97" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.MessageInitProcessHook">
+              <HookEventName>task:onReady</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Succes" Name="Succes">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="2424" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="98" />
+            <ExtendedAttribute Name="XOffset" Value="1326" />
+            <ExtendedAttribute Name="YOffset" Value="618" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="80" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.SuccessMessageHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Echec" Name="Echec">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="355" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="2" />
+            <ExtendedAttribute Name="XOffset" Value="1189" />
+            <ExtendedAttribute Name="YOffset" Value="671" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="80" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.FailedMessageHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_JSP" Name="Analyse JSP">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="AND" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="847" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="34" />
+            <ExtendedAttribute Name="XOffset" Value="163" />
+            <ExtendedAttribute Name="YOffset" Value="622" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="162" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeJspParserHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_Checkstyle" Name="Analyse Checkstyle">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="549" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="98" />
+            <ExtendedAttribute Name="XOffset" Value="162" />
+            <ExtendedAttribute Name="YOffset" Value="474" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="157" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeCheckstyleHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Start_Load" Name="Start Load">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="996" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="98" />
+            <ExtendedAttribute Name="XOffset" Value="990" />
+            <ExtendedAttribute Name="YOffset" Value="30" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="97" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.StartLoadHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Debut_Analysis" Name="Debut Analysis">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="1095" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="2" />
+            <ExtendedAttribute Name="XOffset" Value="136" />
+            <ExtendedAttribute Name="YOffset" Value="89" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="117" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.StartAnalysisHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="InitBaseline" Name="InitBaseline">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="27" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="2" />
+            <ExtendedAttribute Name="XOffset" Value="13" />
+            <ExtendedAttribute Name="YOffset" Value="194" />
+            <ExtendedAttribute Name="CellHeight" Value="29" />
+            <ExtendedAttribute Name="CellWidth" Value="96" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.BaselineHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Calcul" Name="Calcul">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="914" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="66" />
+            <ExtendedAttribute Name="XOffset" Value="1310" />
+            <ExtendedAttribute Name="YOffset" Value="471" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="80" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.CalculationHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Update_Baseline" Name="Update Baseline">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="241" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="66" />
+            <ExtendedAttribute Name="XOffset" Value="1291" />
+            <ExtendedAttribute Name="YOffset" Value="544" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="120" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.BaselineUpdateHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Coloration_des_sources" Name="Coloration des sources">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="453" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="2" />
+            <ExtendedAttribute Name="XOffset" Value="1265" />
+            <ExtendedAttribute Name="YOffset" Value="404" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="170" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.SourceCopyHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_PHP_CodeSniffer" Name="Analyse PHP CodeSniffer">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="1438" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="34" />
+            <ExtendedAttribute Name="XOffset" Value="343" />
+            <ExtendedAttribute Name="YOffset" Value="312" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="168" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeCodeSnifferHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_JDT" Name="Analyse JDT">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="1140" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="98" />
+            <ExtendedAttribute Name="XOffset" Value="162" />
+            <ExtendedAttribute Name="YOffset" Value="392" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="157" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeJDTCompilerHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_SAP_Code_Inspector" Name="Analyse SAP Code Inspector">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="XOffset" Value="889" />
+            <ExtendedAttribute Name="YOffset" Value="452" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="182" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeCodeInspectorHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="CMS_Load" Name="CMS Load">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="348" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="98" />
+            <ExtendedAttribute Name="XOffset" Value="12" />
+            <ExtendedAttribute Name="YOffset" Value="271" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="103" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.LoadCMSHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_CAQS" Name="Analyse CAQS">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="113" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="34" />
+            <ExtendedAttribute Name="XOffset" Value="157" />
+            <ExtendedAttribute Name="YOffset" Value="309" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="162" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeCsMetricGenerationHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_DevPartner" Name="Analyse DevPartner">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="2080" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="34" />
+            <ExtendedAttribute Name="XOffset" Value="776" />
+            <ExtendedAttribute Name="YOffset" Value="364" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="173" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeDevpartnerHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_FlexPMD" Name="Analyse FlexPMD">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="XOffset" Value="488" />
+            <ExtendedAttribute Name="YOffset" Value="368" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="105" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeFlexPMDHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_RestNat" Name="Analyse RestNat">
+          <Implementation>
+            <No />
+          </Implementation>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="XOffset" Value="659" />
+            <ExtendedAttribute Name="YOffset" Value="476" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="110" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeRestNatHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_DevEnterprise" Name="Analyse DevEnterprise">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="2255" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="66" />
+            <ExtendedAttribute Name="XOffset" Value="1070" />
+            <ExtendedAttribute Name="YOffset" Value="313" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="167" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeDevEnterpriseHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_GenericParser" Name="Analyse GenericParser">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="2591" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="98" />
+            <ExtendedAttribute Name="XOffset" Value="1080" />
+            <ExtendedAttribute Name="YOffset" Value="388" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="145" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeGenericParserHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Analyse_OptimalAdvisor" Name="Analyse OptimalAdvisor">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="375" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="66" />
+            <ExtendedAttribute Name="XOffset" Value="159" />
+            <ExtendedAttribute Name="YOffset" Value="555" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="166" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalyzeOptimalAdvisorHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Fin_Analyse" Name="Fin Analyse">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="1299" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="2" />
+            <ExtendedAttribute Name="XOffset" Value="1280" />
+            <ExtendedAttribute Name="YOffset" Value="249" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="137" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.AnalysisEndHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+      </Activities>
+      <Transitions>
+        <Transition Id="Analyse_CAQS_Analyse_JDT" Name="Analyse CAQS_Analyse JDT" From="Analyse_CAQS" To="Analyse_JDT">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+        </Transition>
+        <Transition Id="Analyse_Checkstyle_Analyse_OptimalAdvisor" Name="Analyse Checkstyle_Analyse OptimalAdvisor" From="Analyse_Checkstyle" To="Analyse_OptimalAdvisor">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+        </Transition>
+        <Transition Id="Analyse_DevEnterprise_Echec" Name="Analyse DevEnterprise_Echec" From="Analyse_DevEnterprise" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="1104.0-690.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Start_Start_process" Name="Start_Start process" From="BonitaInit" To="Start_process" />
+        <Transition Id="InitBaseline_CMS_Load" Name="InitBaseline_CMS Load" From="InitBaseline" To="CMS_Load">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="60.0-258.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="InitBaseline_Echec" Name="InitBaseline_Echec" From="InitBaseline" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0 || BASELINE_ID.compareTo("") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="30.0-684.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Analyse_CAQS_Echec" Name="Analyse CAQS_Echec" From="Analyse_CAQS" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="174.0-684.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Analyse_DevEnterprise_AnalyzeGenericParserHook" Name="Analyse DevEnterprise_AnalyzeGenericParserHook" From="Analyse_DevEnterprise" To="Analyse_GenericParser">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+        </Transition>
+        <Transition Id="CMS_Load_Debut_Analysis" Name="CMS Load_Debut Analysis" From="CMS_Load" To="Debut_Analysis">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="150.0-288.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="RestNat_Analyse_RestNat" Name="RestNat_Analyse RestNat" From="RestNat" To="Analyse_RestNat">
+          <Condition Type="CONDITION">RUN_NATURAL_ANALYSIS.compareTo(Boolean.valueOf("true")) == 0</Condition>
+        </Transition>
+        <Transition Id="RestNat_VBorCS" Name="RestNat_VBorCS" From="RestNat" To="VBorCS">
+          <Condition Type="CONDITION">RUN_NATURAL_ANALYSIS.compareTo(Boolean.valueOf("false")) == 0</Condition>
+        </Transition>
+        <Transition Id="Analyse_RestNat_VBorCS" Name="Analyse RestNat_VBorCS" From="Analyse_RestNat" To="VBorCS">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+        </Transition>
+        <Transition Id="Analyse_RestNat_Echec" Name="Analyse RestNat_Echec" From="Analyse_RestNat" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="708.0-666.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Analyse_OptimalAdvisor_Analyse_JSP" Name="Analyse OptimalAdvisor_Analyse JSP" From="Analyse_OptimalAdvisor" To="Analyse_JSP">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="240.0-612.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Calcul_Update_Baseline" Name="Calcul_Update Baseline" From="Calcul" To="Update_Baseline">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+        </Transition>
+        <Transition Id="VB_ABAP" Name="VB_ABAP" From="VBorCS" To="ABAP">
+          <Condition Type="CONDITION">RUN_VB_ANALYSIS.compareTo(Boolean.valueOf("false")) == 0 &amp;&amp; RUN_CS_ANALYSIS.compareTo(Boolean.valueOf("false")) == 0</Condition>
+        </Transition>
+        <Transition Id="Flex_RestNat" Name="Flex_RestNat" From="Flex" To="RestNat">
+          <Condition Type="CONDITION">RUN_FLEX_ANALYSIS.compareTo(Boolean.valueOf("false")) == 0</Condition>
+        </Transition>
+        <Transition Id="Analyse_FlexPMD_Echec" Name="Analyse FlexPMD_Echec" From="Analyse_FlexPMD" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="564.0-672.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Analyse_SAP_Code_Inspector_Cobol" Name="Analyse SAP Code Inspector_Cobol" From="Analyse_SAP_Code_Inspector" To="Cobol">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="1038.0-264.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Coloration_des_sources_Calcul" Name="Coloration des sources_Calcul" From="Coloration_des_sources" To="Calcul">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+        </Transition>
+        <Transition Id="AnalysisToLoadSwitch_Java" Name="AnalysisToLoadSwitch_Java" From="AnalysisToLoadSwitch" To="Java">
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="240.0-168.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Fin_Analyse_Coloration_des_sources" Name="Fin Analyse_Coloration des sources" From="Fin_Analyse" To="Coloration_des_sources">
+          <Condition Type="CONDITION">result.compareTo("false") != 0 &amp;&amp; step.compareTo("load") == 0</Condition>
+        </Transition>
+        <Transition Id="Java_Analyse_CAQS" Name="Java_Analyse CAQS" From="Java" To="Analyse_CAQS">
+          <Condition Type="CONDITION">RUN_JAVA_ANALYSIS.compareTo(Boolean.valueOf("true")) == 0</Condition>
+        </Transition>
+        <Transition Id="Java_PHP" Name="Java_PHP" From="Java" To="PHP">
+          <Condition Type="CONDITION">RUN_JAVA_ANALYSIS.compareTo(Boolean.valueOf("false")) == 0</Condition>
+        </Transition>
+        <Transition Id="Analyse_JDT_Analyse_Checkstyle" Name="Analyse JDT_Analyse Checkstyle" From="Analyse_JDT" To="Analyse_Checkstyle">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+        </Transition>
+        <Transition Id="Analyse_JDT_Echec" Name="Analyse JDT_Echec" From="Analyse_JDT" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="180.0-690.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="PHP_Flex" Name="PHP_Flex" From="PHP" To="Flex">
+          <Condition Type="CONDITION">RUN_PHP_ANALYSIS.compareTo(Boolean.valueOf("false")) == 0</Condition>
+        </Transition>
+        <Transition Id="Coloration_des_sources_Echec" Name="Coloration des sources_Echec" From="Coloration_des_sources" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="1128.0-486.0" />
+            <ExtendedAttribute Name="BreakPoint" Value="1128.0-678.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Analyse_OptimalAdvisor_Echec" Name="Analyse OptimalAdvisor_Echec" From="Analyse_OptimalAdvisor" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="192.0-684.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="ABAP_Cobol" Name="ABAP_Cobol" From="ABAP" To="Cobol">
+          <Condition Type="CONDITION">RUN_ABAP_ANALYSIS.compareTo(Boolean.valueOf("false")) == 0</Condition>
+        </Transition>
+        <Transition Id="Analyse_SAP_Code_Inspector_Echec" Name="Analyse SAP Code Inspector_Echec" From="Analyse_SAP_Code_Inspector" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="996.0-672.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Cobol_Analyse_DevEnterprise" Name="Cobol_Analyse DevEnterprise" From="Cobol" To="Analyse_DevEnterprise">
+          <Condition Type="CONDITION">RUN_COBOL_ANALYSIS.compareTo(Boolean.valueOf("true")) == 0</Condition>
+        </Transition>
+        <Transition Id="AnalyzeGenericParserHook_Echec" Name="AnalyzeGenericParserHook_Echec" From="Analyse_GenericParser" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="1116.0-690.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Start_process_InitBaseline" Name="Start process_InitBaseline" From="Start_process" To="InitBaseline" />
+        <Transition Id="Fin_Analyse_Start_Load" Name="Fin Analyse_Start Load" From="Fin_Analyse" To="Start_Load">
+          <Condition Type="CONDITION">result.compareTo("false") != 0 &amp;&amp; step.compareTo("analyse") == 0</Condition>
+        </Transition>
+        <Transition Id="Succes_End" Name="Succes_End" From="Succes" To="BonitaEnd" />
+        <Transition Id="Analyse_PHP_CodeSniffer_Flex" Name="Analyse PHP CodeSniffer_Flex" From="Analyse_PHP_CodeSniffer" To="Flex">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="492.0-258.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="AnalyzeGenericParserHook_Fin_Analyse" Name="AnalyzeGenericParserHook_Fin Analyse" From="Analyse_GenericParser" To="Fin_Analyse">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="1230.0-366.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Analyse_DevPartner_ABAP" Name="Analyse DevPartner_ABAP" From="Analyse_DevPartner" To="ABAP">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="864.0-258.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="CMS_Load_Echec" Name="CMS Load_Echec" From="CMS_Load" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="36.0-678.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Analyse_Checkstyle_Echec" Name="Analyse Checkstyle_Echec" From="Analyse_Checkstyle" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="186.0-678.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Update_Baseline_Echec" Name="Update Baseline_Echec" From="Update_Baseline" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+        </Transition>
+        <Transition Id="Cobol_Fin_Analyse" Name="Cobol_Fin Analyse" From="Cobol" To="Fin_Analyse">
+          <Condition Type="CONDITION">RUN_COBOL_ANALYSIS.compareTo(Boolean.valueOf("false")) == 0</Condition>
+        </Transition>
+        <Transition Id="Calcul_Echec" Name="Calcul_Echec" From="Calcul" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="1170.0-534.0" />
+            <ExtendedAttribute Name="BreakPoint" Value="1170.0-684.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="VB_Analyse_DevPartner" Name="VB_Analyse DevPartner" From="VBorCS" To="Analyse_DevPartner">
+          <Condition Type="CONDITION">RUN_VB_ANALYSIS.compareTo(Boolean.valueOf("true")) == 0 || RUN_CS_ANALYSIS.compareTo(Boolean.valueOf("true")) == 0</Condition>
+        </Transition>
+        <Transition Id="PHP_Analyse_PHP_CodeSniffer" Name="PHP_Analyse PHP CodeSniffer" From="PHP" To="Analyse_PHP_CodeSniffer">
+          <Condition Type="CONDITION">RUN_PHP_ANALYSIS.compareTo(Boolean.valueOf("true")) == 0</Condition>
+        </Transition>
+        <Transition Id="Update_Baseline_Succes" Name="Update Baseline_Succes" From="Update_Baseline" To="Succes">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+        </Transition>
+        <Transition Id="Flex_Analyse_FlexPMD" Name="Flex_Analyse FlexPMD" From="Flex" To="Analyse_FlexPMD">
+          <Condition Type="CONDITION">RUN_FLEX_ANALYSIS.compareTo(Boolean.valueOf("true")) == 0</Condition>
+        </Transition>
+        <Transition Id="Analyse_FlexPMD_VBorCS" Name="Analyse FlexPMD_VBorCS" From="Analyse_FlexPMD" To="VBorCS">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="684.0-258.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Analyse_JSP_PHP" Name="Analyse JSP_PHP" From="Analyse_JSP" To="PHP">
+          <Condition Type="CONDITION">result.compareTo("false") != 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="240.0-672.0" />
+            <ExtendedAttribute Name="BreakPoint" Value="330.0-672.0" />
+            <ExtendedAttribute Name="BreakPoint" Value="330.0-258.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Echec_End" Name="Echec_End" From="Echec" To="BonitaEnd" />
+        <Transition Id="ABAP_Analyse_SAP_Code_Inspector" Name="ABAP_Analyse SAP Code Inspector" From="ABAP" To="Analyse_SAP_Code_Inspector">
+          <Condition Type="CONDITION">RUN_ABAP_ANALYSIS.compareTo(Boolean.valueOf("true")) == 0</Condition>
+        </Transition>
+        <Transition Id="Start_Analysis_AnalysisToLoadSwitch" Name="Start Analysis_AnalysisToLoadSwitch" From="Debut_Analysis" To="AnalysisToLoadSwitch" />
+        <Transition Id="Analyse_DevPartner_Echec" Name="Analyse DevPartner_Echec" From="Analyse_DevPartner" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="816.0-684.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Start_Load_AnalysisToLoadSwitch" Name="Start Load_AnalysisToLoadSwitch" From="Start_Load" To="AnalysisToLoadSwitch">
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="396.0-42.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Analyse_PHP_CodeSniffer_Echec" Name="Analyse PHP CodeSniffer_Echec" From="Analyse_PHP_CodeSniffer" To="Echec">
+          <Condition Type="CONDITION">result.compareTo("false") == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="390.0-684.0" />
+          </ExtendedAttributes>
+        </Transition>
+      </Transitions>
+    </WorkflowProcess>
+  </WorkflowProcesses>
+  <ExtendedAttributes>
+    <ExtendedAttribute Name="MadeBy" Value="ProEd" />
+    <ExtendedAttribute Name="View" Value="Activity" />
+  </ExtendedAttributes>
+</Package>
+

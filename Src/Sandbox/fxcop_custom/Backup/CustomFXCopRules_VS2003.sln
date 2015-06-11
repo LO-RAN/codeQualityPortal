@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomFXCopRules_VS2003", "CustomFXCopRules_VS2003.csproj", "{67BE4FA1-8EC1-456F-AC34-73D5B58EA603}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{67BE4FA1-8EC1-456F-AC34-73D5B58EA603}.Debug.ActiveCfg = Debug|.NET
+		{67BE4FA1-8EC1-456F-AC34-73D5B58EA603}.Debug.Build.0 = Debug|.NET
+		{67BE4FA1-8EC1-456F-AC34-73D5B58EA603}.Release.ActiveCfg = Release|.NET
+		{67BE4FA1-8EC1-456F-AC34-73D5B58EA603}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

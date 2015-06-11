@@ -1,0 +1,2 @@
+set JAVA_PATH=%JAVA_HOME%
+"%JAVA_PATH%/bin/java.exe" -Xmx512m -cp "%JAVA_PATH%/lib/tools.jar;../traitements/devpartnerstudio/plugin/log4j-1.2.14.jar;../traitements/devpartnerstudio/plugin/;../traitements/devpartnerstudio/plugin/devpartner-plugin-1.3.jar;../traitements/devpartnerstudio/plugin/toolbox-2.5.jar;../traitements/devpartnerstudio/plugin/commons-pool-1.2.jar;../traitements/devpartnerstudio/plugin/commons-dbcp-1.2.jar" com.compuware.carscode.plugin.devpartner.DevPartnerAnalyzer %2result.mdb %1 %2 %3

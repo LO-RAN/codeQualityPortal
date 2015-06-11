@@ -1,0 +1,4 @@
+web.xml :
+- ajouter dans context-param/param-value : classpath:caqsContext-ws.xml
+
+placer le fichier caqsContext-ws dans le répertoire conf de bonita

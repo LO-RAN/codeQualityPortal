@@ -1,0 +1,50 @@
+<project name="oviewExport" default="oviewExport" basedir=".">                                            
+  <taskdef name="jdbcexport" classname="net.sourceforge.jdbcexporter.ant.JDBCExporterTask"/>                                               
+  <dirname property="oviewExport.basedir" file="${ant.file.oviewExport}"/>                                            
+  <property file="${oviewExport.basedir}/build.properties"/>                                          
+  <property name="DEST_DIR" value="${oviewExport.basedir}/results"/>                                         
+  <!-- export UnifaceView users -->                                                         
+  <target name="oviewExport">                                                                          
+    <echo message="driver=${source.db.driver}"/>                                    
+    <echo message="url=${source.db.url}"/>                                    
+    <echo message="user=${source.db.user}"/>                                    
+    <echo message="password=${source.db.password}"/>                                      
+    <mkdir dir="${DEST_DIR}"/>                                                                
+    <jdbcexport engine="net.sourceforge.jdbcexporter.engine.SQLStmtEngine">                                                                                                        
+      <property name="columntranslator.lookup" value="net.sourceforge.jdbcimporter.columntranslator.DbLookupTableColumnTranslator"/>                                                       
+      <connection type="jdbc">                                                                                                                                      
+        <property name="driver" value="${source.db.driver}"/>                                                                                                                                      
+        <property name="url"    value="${source.db.url}"/>                                                                                                                                      
+        <property name="username" value="${source.db.user}"/>                                                                                                                                      
+        <property name="password" value="${source.db.password}"/>                                                                                                 
+      </connection>                                                                                                                          
+
+      <entity table="userpsd" target="${DEST_DIR}/users.csv" encoding="UTF-8">                                                                                                                                               
+        <property name="selectStmt" value="select lower(trim(USER_ID)),trim(USER_FNAME),trim(USER_LNAME),trim(USER_EMAIL)  from USERPSD"/>                                                                                                               
+        <delimiter type="csv">                                                                                                          
+          <property name="columnDelimiter" value=";"/>                                                                                       
+        </delimiter>                                                                                  
+        <column name="user_id"/>                                                                                                                                        
+        <column name="user_fname"/>                                                                                                                                        
+        <column name="user_lname"/>                                                                                                                                        
+        <column name="user_email"/>                                                                                                          
+      </entity>                                                                                                                          
+
+      <entity table="userpsd_sec" target="${DEST_DIR}/roles.csv" encoding="UTF-8">                                                                                                                                      
+        <property name="selectStmt" value="select lower(trim(user_id)), sec_id from userpsd_sec"/>                                                                                                               
+        <delimiter type="csv">                                                                                                          
+          <property name="columnDelimiter" value=";"/>                                                                                       
+        </delimiter>                                                                                  
+        <column name="user_id"/>                                                                           
+        <column name="role" SQLType="VARCHAR">                                                                           
+        <translator type="lookup">                                                                                            
+          <property name="lookupTable" value="sec"/>                                                                                            
+          <property name="sourceColumn" value="sec_id"/>                                                                                            
+          <property name="lookupColumn" value="concat('/Caqs/',replace(replace(replace(trim(sec_desc),'Admin/auteurs gaux','Administrateur'),'Utilisateur du portail','ROLE_USER'),'Chef de Projet','ChefDeProjet'))"/>                                                                           
+        </translator>                                                                        
+        </column>                                                         
+      </entity>                                                                                  
+
+    </jdbcexport>                                              
+  </target>                               
+</project>

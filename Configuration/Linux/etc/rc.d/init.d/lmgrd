@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+# Run-level Startup script for the Flex License Manager server for Compuware products
+#
+# chkconfig: 345 91 20
+# description: Startup/Shutdown Flex License Mananer server for Compuware products
+
+LMGRD_HOME="/opt/Compuware/lmgrd/cpwr_4.0"
+
+# if the executables do not exist -- display error
+
+if [ ! -f $LMGRD_HOME/cpwr.sh -o ! -d $LMGRD_HOME ]
+then
+        echo "lmgrd startup: cannot start"
+        exit 1
+fi
+
+# depending on parameter -- startup, shutdown, restart 
+# of the instance and listener or usage display 
+
+case "$1" in
+    start)
+        # Flex License Manager server startup
+        echo -n "Starting Flex License Manager server: "
+        $LMGRD_HOME/cpwr.sh -start
+
+        touch /var/lock/subsys/lmgrd
+        echo "OK"
+        ;;
+    stop)
+        # Flex License Manager server shutdown
+        echo -n "Shutdown Flex License Manager server: "
+
+        $LMGRD_HOME/cpwr.sh -stop
+        rm -f /var/lock/subsys/lmgrd
+        echo "OK"
+        ;;
+    reload|restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 start|stop|restart|reload"
+        exit 1
+esac
+exit 0

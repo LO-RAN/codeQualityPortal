@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+  <endpoint implementation="com.compuware.caqs.webservices.impl.LoginWSImpl" name="LoginWS" url-pattern="/services/LoginWS"/>
+  <endpoint implementation="com.compuware.caqs.webservices.impl.ProjectsListForUserWSImpl" name="ProjectsListForUserWS" url-pattern="/services/ProjectsListForUserWS"/>
+  <endpoint implementation="com.compuware.caqs.webservices.impl.ProjectInfosWSImpl" name="ProjectInfosWS" url-pattern="/services/ProjectInfosWS"/>
+</endpoints> 

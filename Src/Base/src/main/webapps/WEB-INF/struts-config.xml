@@ -1,0 +1,1354 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<!--
+     This is the Struts configuration file for the Optimalflow webconsole
+     application.
+-->
+
+
+<struts-config>
+  
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+
+    <!-- Label form bean -->
+    <form-bean      name="labelForm"
+                    type="com.compuware.caqs.presentation.consult.forms.LabelForm"/>
+      <!-- Stereotype element retrieve form bean -->
+      <form-bean      name="elementRetrieveFilterForm"
+                      type="com.compuware.caqs.presentation.admin.forms.ElementRetrieveFilterForm"/>
+      <!-- Stereotype form bean -->
+      <form-bean      name="stereotypeForm"
+                      type="com.compuware.caqs.presentation.admin.forms.StereotypeForm"/>
+    <!-- Qametrique form bean -->
+    <form-bean      name="qametriqueForm"
+                    type="com.compuware.caqs.presentation.consult.forms.QametriqueForm"/>
+                    
+	<form-bean		name="intlUploadForm"
+					type="com.compuware.caqs.presentation.admin.forms.i18n.InternationalizationUploadForm"/>
+
+	<form-bean		name="importUploadForm"
+					type="com.compuware.caqs.presentation.admin.forms.impexp.ImportUploadForm"/>
+
+	<form-bean		name="uploadDataForm"
+					type="com.compuware.caqs.presentation.consult.forms.UploadDataForm"/>
+  </form-beans>
+
+  <global-exceptions>
+  	<exception 
+        key="error.unexpected"
+        path="/errorPage.jsp"
+        scope="request"
+        type="java.lang.Exception" />
+  </global-exceptions>
+
+  <!-- ========== Global Forward Definitions ==== and Forward from JSPs ==== -->
+  <global-forwards>
+    <forward   name="sessiontimeout" path="/sessiontimedout.jsp"/>
+  </global-forwards>
+
+  <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+
+	<action path="/gestionQualite" forward="/gestionqualite/gestionQualite.jsp"/>
+	<action path="/labellisation" forward="/labellisationCont.jsp"/>
+	<action path="/architecture" forward="/architecture/architecture.jsp"/>
+	<action path="/justification" forward="/justificationCont.jsp"/>
+	
+    <action path="/tooManyUsers" forward="/topmessagedisplay.jsp?target=tooManyUsers"/>
+    <action path="/userAlreadyConnected" forward="/topmessagedisplay.jsp?target=userAlreadyConnected"/>
+    <action path="/invalidMacAddress" forward="/topmessagedisplay.jsp?target=invalidMacAddress"/>
+    <action path="/licenseExpired" forward="/topmessagedisplay.jsp?target=licenseExpired"/>
+    <action path="/invalidLicense" forward="/topmessagedisplay.jsp?target=invalidLicense"/>
+    
+    <action path="/mainFrame" forward="/gestionqualite/mainFrame.jsp" />
+
+	<action path="/logon"
+            type="org.apache.struts.webapp.example.LogonAction" />
+
+    <action path="/caqsPortal" type="com.compuware.caqs.presentation.consult.actions.CaqsPortalAction">
+      <forward name="success" path="/caqsPortal.jsp"/>
+    </action>
+
+    <!-- Process a user logon -->
+    <action path="/RetrieveMetricsAsCsv" type="com.compuware.caqs.presentation.consult.actions.RetrieveMetricsAsCsvAction"/>
+
+    <action path="/ExportAsCsv" type="com.compuware.caqs.presentation.common.actions.ExportAsCsvAction"/>
+
+    <action path="/Kiviat" type="com.compuware.caqs.presentation.consult.actions.KiviatAction"/>
+
+    <action   path="/SyntheseSelect"
+              type="com.compuware.caqs.presentation.consult.actions.SyntheseSelectAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/gestionqualite/synthese.jsp"/>
+    </action>
+
+    <action   path="/ElementSelect"
+              type="com.compuware.caqs.presentation.consult.actions.ElementSelectAction"
+              scope="request"
+              validate="false">
+      <forward name="successPRJ" path="/ProjectSynthesis.do"/>
+      <forward name="success" path="/FactorBrowse.do"/>
+      <forward name="successLabel" path="/SyntheseSelect.do"/>
+      <forward name="computing" path="/gestionqualite/nowComputing.jsp"/>
+    </action>
+
+    <action   path="/AdminTrash" input="/admin/trash.jsp">
+    </action>
+
+    <action   path="/ElementAdminDelete"
+              type="com.compuware.caqs.presentation.admin.actions.ElementDeleteAction"
+              scope="request">
+    </action>
+
+      <action   path="/StereotypeMgmtElementRetrieve"
+                type="com.compuware.caqs.presentation.admin.actions.StereotypeMgmtElementRetrieveAction"
+                name="elementRetrieveFilterForm"
+                scope="request"
+                validate="false">
+        <forward name="success" path="/stereotypemgmt.jsp"/>
+      </action>
+
+      <action   path="/StereotypeMgmtElementUpdate"
+                type="com.compuware.caqs.presentation.admin.actions.StereotypeMgmtElementUpdateAction"
+                scope="request"
+                validate="false">
+        <forward name="success" path="/StereotypeMgmtElementRetrieve.do"/>
+      </action>
+
+      <action   path="/StereotypeNew"
+                type="com.compuware.caqs.presentation.admin.actions.StereotypeNewAction"
+                name="stereotypeForm"
+                scope="request"
+                validate="false">
+        <forward name="success" path="/stereotypeMaintChange.jsp"/>
+      </action>
+
+      <action   path="/StereotypeSelect"
+                type="com.compuware.caqs.presentation.admin.actions.StereotypeSelectAction"
+                name="stereotypeForm"
+                scope="request"
+                validate="false">
+        <forward name="success" path="/stereotypeMaintChange.jsp"/>
+      </action>
+
+      <action   path="/StereotypeUpdate"
+                type="com.compuware.caqs.presentation.admin.actions.StereotypeUpdateAction"
+                name="stereotypeForm"
+                scope="request"
+                validate="true">
+        <forward name="success" path="/StereotypeMgmtElementRetrieve.do"/>
+      </action>
+
+
+    <action   path="/QametriqueSelect"
+              type="com.compuware.caqs.presentation.consult.actions.QametriqueSelectAction"
+              scope="request">
+    </action>
+
+    <action   path="/QametriqueUpdate"
+              type="com.compuware.caqs.presentation.consult.actions.QametriqueUpdateAction"
+              scope="request">
+    </action>
+
+    <action   path="/FactorBrowse"
+              type="com.compuware.caqs.presentation.consult.actions.FactorBrowseAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/gestionqualite/mainFrame.jsp"/>
+      <forward name="failure" path="/gestionqualite/mainFrame.jsp"/>
+    </action>
+
+    <action   path="/LabelSelect"
+              type="com.compuware.caqs.presentation.consult.actions.LabelSelectAction"
+              name="labelForm"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/label.jsp"/>
+      <forward name="successFromLabellisation" path="/labellisationValid.jsp"/>
+    </action>
+
+    <action   path="/LabelSelectAjax"
+              type="com.compuware.caqs.presentation.consult.actions.LabelSelectAjaxAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/LabelListRetrieve"
+              type="com.compuware.caqs.presentation.consult.actions.LabelListRetrieveAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/labellisation.jsp"/>
+    </action>
+
+    <action   path="/LabelUpdateAjax"
+              type="com.compuware.caqs.presentation.consult.actions.LabelUpdateAjaxAction"
+              scope="request">
+    </action>
+
+    <action   path="/LabelUpdate"
+              type="com.compuware.caqs.presentation.consult.actions.LabelUpdateAction"
+              name="labelForm"
+              scope="request"
+              validate="true"
+              cancellable="true">
+      <forward name="successSynthesis" path="/SyntheseSelect.do?id_fact=SYNTH"/>
+      <forward name="successLabel" path="/LabelListRetrieve.do"/>
+      <forward name="failure" path="/LabelSelect.do"/>
+    </action>
+
+    <action   path="/CritereSelect"
+              type="com.compuware.caqs.presentation.consult.actions.CritereSelectAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/gestionqualite/critere.jsp"/>
+      <forward name="successVersionImprimable" path="/critereVersionImprimable.jsp"/>
+    </action>
+
+    <action   path="/CrossProjectReport"
+              type="com.compuware.caqs.presentation.consult.actions.CrossProjectReportAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/SyntheseSelect.do"/>
+    </action>
+
+    <action   path="/Report"
+              type="com.compuware.caqs.presentation.report.actions.ReportAction"
+              scope="request"
+              validate="false">
+    </action>
+
+      <action   path="/NoteRepartitionCalcul"
+                type="com.compuware.caqs.presentation.consult.actions.NoteRepartitionCalculAction"
+                scope="request"
+                validate="false">
+        <forward name="success" path="/done.jsp"/>
+      </action>
+
+      <action   path="/RetrieveSourceFile"
+                type="com.compuware.caqs.presentation.consult.actions.RetrieveSourceFileAction"
+                scope="request"
+                validate="false">
+        <forward name="failure" path="/nogen.jsp"/>
+        <forward name="success" path="/common/displaySourceFile.jsp"/>
+      </action>
+
+      <action   path="/RetrievePrintableSourceFile"
+                type="com.compuware.caqs.presentation.consult.actions.RetrievePrintableSourceFileAction"
+                scope="request"
+                validate="false">
+      </action>
+
+      <action   path="/RetrieveADPFile"
+                type="com.compuware.caqs.presentation.consult.actions.RetrieveADPFileAction"
+                scope="request"
+                validate="false">
+        <forward name="failure" path="/nogen.jsp"/>
+      </action>
+
+      <action   path="/ScatterPlotPrepareAction"
+                type="com.compuware.caqs.presentation.consult.actions.ScatterPlotPrepareAction"
+                scope="request"
+                validate="false">
+        <forward name="success" path="/scatterplot.jsp"/>
+      </action>
+
+    <action   path="/InternationalizationExtract"
+              type="com.compuware.caqs.presentation.admin.actions.i18n.InternationalizationExtractAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/InternationalizationUpdate"
+              type="com.compuware.caqs.presentation.admin.actions.i18n.InternationalizationUpdateAction"
+              scope="request"
+			  name="intlUploadForm"
+              validate="false">
+      <forward name="success" path="/admin/intlupload.jsp?result=1"/>
+    </action>
+
+    <action   path="/InternationalizationUploadPre"
+              type="com.compuware.caqs.presentation.admin.actions.i18n.InternationalizationUploadPreAction"
+              scope="request"
+			  name="intlUploadForm"
+              validate="false">
+      <forward name="success" path="/admin/intlupload.jsp"/>
+    </action>
+
+    <action   path="/UploadData"
+              type="com.compuware.caqs.presentation.consult.actions.UploadDataAction"
+              scope="request"
+			  name="uploadDataForm"
+              validate="false">
+      <forward name="success" path="/upload.jsp?result=success"/>
+      <forward name="failure" path="/upload.jsp?result=failure"/>
+    </action>
+
+    <action   path="/UploadDataPre"
+              type="com.compuware.caqs.presentation.consult.actions.UploadDataPreAction"
+              scope="request"
+			  name="uploadDataForm"
+              validate="false">
+      <forward name="success" path="/upload.jsp"/>
+    </action>
+
+    <action   path="/ExportModele"
+              type="com.compuware.caqs.presentation.admin.actions.impexp.ExportModeleAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ImportModel"
+              type="com.compuware.caqs.presentation.admin.actions.impexp.ImportAction"
+              scope="request"
+              name="importUploadForm"
+              validate="false">
+    </action>
+
+    <action   path="/ImportZipFile"
+              type="com.compuware.caqs.presentation.admin.actions.impexp.ImportZipAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ImportProject"
+              type="com.compuware.caqs.presentation.admin.actions.impexp.ImportAction"
+              scope="request"
+              name="importUploadForm"
+              validate="false">
+    </action>
+
+    <action   path="/ImportEASrc"
+              type="com.compuware.caqs.presentation.admin.actions.impexp.ImportAction"
+              scope="request"
+              name="importUploadForm"
+              validate="false">
+    </action>
+
+    <action   path="/Export"
+              type="com.compuware.caqs.presentation.admin.actions.impexp.ExportAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/LinkSelect"
+              type="com.compuware.caqs.presentation.consult.actions.LinkSelectAction"
+              scope="request"
+              validate="false">
+      <forward name="successArchi" path="/archilink.jsp"/>
+      <forward name="successCopy" path="/copypastelink.jsp"/>
+    </action>
+
+    <action   path="/CallRetrieve"
+              type="com.compuware.caqs.presentation.consult.actions.CallRetrieveAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ExtractYEdGraphML"
+              type="com.compuware.caqs.presentation.consult.actions.ExtractYEdGraphMLAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/JustificationRetrieve"
+              type="com.compuware.caqs.presentation.consult.actions.JustificationRetrieveAction"
+              scope="request"
+              validate="false">
+      <forward name="successDemand" path="/justificatif.jsp"/>
+      <forward name="successValid" path="/justificationValid.jsp"/>
+    </action>
+
+    <action   path="/JustificationListRetrieve"
+              type="com.compuware.caqs.presentation.consult.actions.JustificationListRetrieveAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/justification.jsp"/>
+    </action>
+
+    <action   path="/BaselineAdmin"
+              type="com.compuware.caqs.presentation.admin.actions.BaselineAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/admin/trash.jsp"/>
+    </action>
+
+    <action   path="/AdminProjectTree"
+              type="com.compuware.caqs.presentation.admin.actions.ProjectTree"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ProjectAdmin"
+              type="com.compuware.caqs.presentation.admin.actions.ProjectAdminAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/admin/adminProjects.jsp"/>
+    </action>
+
+    <action   path="/AdminProjectTreeDD"
+              type="com.compuware.caqs.presentation.admin.actions.ProjectTreeDD"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ConsultProjectsTree"
+              type="com.compuware.caqs.presentation.consult.actions.projecttree.ProjectsTree"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ArchitectureProjectsTree"
+              type="com.compuware.caqs.presentation.architecture.actions.projecttree.ProjectsTree"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/BaselineListAjax"
+              type="com.compuware.caqs.presentation.common.projecttree.BaselineList"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveMessages"
+              type="com.compuware.caqs.presentation.messages.actions.RetrieveMessagesAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/SetMessageAsSeen"
+              type="com.compuware.caqs.presentation.messages.actions.SetMessageAsSeenAction"
+              scope="request"
+              validate="false">
+    </action>
+    
+    <action   path="/GestionQualiteRecalcul"
+              type="com.compuware.caqs.presentation.consult.actions.RecalculAction"
+              scope="request"
+              validate="false">
+    </action>
+        
+    <action   path="/AdminProjectAnalysisLaunchAnalyse"
+              type="com.compuware.caqs.presentation.admin.actions.ProjectAnalysisLaunchAnalyseAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/SyntheseJustificationsPopup"
+              type="com.compuware.caqs.presentation.consult.actions.SyntheseJustificationsPopup"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/CritereListAjax"
+              type="com.compuware.caqs.presentation.consult.actions.CritereListAjax"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/BottomUpSyntheseListAjax"
+              type="com.compuware.caqs.presentation.consult.actions.BottomUpSyntheseListAjaxAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/BottomUpDetailList"
+              type="com.compuware.caqs.presentation.consult.actions.BottomUpDetailListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/EvolutionListAjax"
+              type="com.compuware.caqs.presentation.consult.actions.EvolutionListAjax"
+              scope="request"
+              validate="false">
+    </action>
+
+<!--  preferences -->
+    <action   path="/GetPreferencesListAction"
+              type="com.compuware.caqs.presentation.consult.actions.GetPreferencesListAction"/>
+              
+    <action path="/UserPreferencesSave" type="com.compuware.caqs.presentation.consult.actions.UserPreferencesSaveAction"/>
+    <action path="/UserPreferencesNonListLoad" type="com.compuware.caqs.presentation.consult.actions.UserPreferencesNonListLoadAction"/>
+<!--  fin des préférences -->
+
+    <action   path="/ActionPlanCriterionList"
+              type="com.compuware.caqs.presentation.consult.actions.actionplan.ActionPlanCriterionList"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action path="/ActionPlanKiviat" type="com.compuware.caqs.presentation.consult.actions.actionplan.ActionPlanKiviat"/>
+    <action path="/ActionPlanManageSavesAction" type="com.compuware.caqs.presentation.consult.actions.actionplan.ManageActionPlanSavesAction"/>
+    <action path="/ActionPlanPieChart" type="com.compuware.caqs.presentation.consult.actions.actionplan.ActionPlanPieChartAction"/>
+    <action path="/ActionPlanPrint" type="com.compuware.caqs.presentation.consult.actions.actionplan.ActionPlanPrintAction"/>
+    <action path="/ActionPlanImpactedEltsList" type="com.compuware.caqs.presentation.consult.actions.actionplan.ActionPlanImpactedEltsList"/>
+    <action path="/RemoveActionPlanLock" type="com.compuware.caqs.presentation.consult.actions.actionplan.RemoveActionPlanLock"/>
+
+    <action path="/RetrieveUserRights" type="com.compuware.caqs.presentation.admin.actions.RetrieveUserRightsAction">
+    </action>
+    <action path="/UserRightsSave" type="com.compuware.caqs.presentation.admin.actions.UserRightsSaveAction">
+    </action>
+
+    <action path="/RetrieveUsers" type="com.compuware.caqs.presentation.admin.actions.RetrieveUsersAction">
+    </action>
+    <action path="/RetrieveUserInfos" type="com.compuware.caqs.presentation.admin.actions.RetrieveUserInfosAction">
+    </action>
+    <action path="/SaveUserInfos" type="com.compuware.caqs.presentation.admin.actions.UserSaveAction">
+    </action>
+    <action   path="/RolesCB"
+              type="com.compuware.caqs.presentation.admin.actions.RetrieveRolesListAction"
+              scope="request"
+              validate="false">
+    </action>
+    
+    <action   path="/ManageEltFavorites"
+              type="com.compuware.caqs.presentation.consult.actions.ManageEltFavorites"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/GetFavoriteInfos"
+              type="com.compuware.caqs.presentation.consult.actions.GetFavoriteInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/FacteurSyntheseListAjax"
+              type="com.compuware.caqs.presentation.consult.actions.FacteurSyntheseListAjaxAction"
+              scope="request"
+              validate="false">
+    </action>
+
+   	<action   path="/CopyPasteRetrieve"
+              type="com.compuware.caqs.presentation.consult.actions.copypaste.CopyPasteRetrieveAction"
+              scope="request"
+              validate="false">
+    	<forward name="success" path="/gestionqualite/copypaste.jsp"/>
+    </action>
+
+   	<action   path="/DomainSynthesis"
+              type="com.compuware.caqs.presentation.consult.actions.DomainSynthesisAction"
+              scope="request"
+              validate="false">
+    	<forward name="success" path="/gestionqualite/domainSynthesis.jsp"/>
+    </action>
+	
+	<action path="/DomainSynthesisKiviat" type="com.compuware.caqs.presentation.consult.actions.DomainSynthesisKiviatAction"/>
+    
+   	<action   path="/CopyPasteRetrieveSource"
+              type="com.compuware.caqs.presentation.consult.actions.copypaste.CopyPasteRetrieveSourceAction"
+              scope="request"
+              validate="false">
+    </action>
+
+   	<action   path="/DownloadReport"
+              type="com.compuware.caqs.presentation.consult.actions.DownloadReport"
+              scope="request"
+              validate="false">
+    </action>
+   	<action   path="/DownloadModel"
+              type="com.compuware.caqs.presentation.admin.actions.DownloadModel"
+              scope="request"
+              validate="false">
+    </action>
+
+   <action   path="/DownloadProject"
+              type="com.compuware.caqs.presentation.admin.actions.DownloadProject"
+              scope="request"
+              validate="false">
+    </action>
+
+   <action   path="/RepartitionSynthesisChart"
+              type="com.compuware.caqs.presentation.consult.actions.RepartitionSynthesisChartServlet"
+              scope="request"
+              validate="false">
+    </action>
+    
+   <action   path="/DomainTreeMap"
+              type="com.compuware.caqs.presentation.consult.actions.DomainTreeMapAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveTreeMapMetrics"
+              type="com.compuware.caqs.presentation.consult.actions.RetrieveTreeMapMetrics"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveTreeGoalsList"
+              type="com.compuware.caqs.presentation.consult.actions.RetrieveTreeMapGoalsList"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveDomainLanguageGroupsList"
+              type="com.compuware.caqs.presentation.consult.actions.RetrieveDomainLanguageGroupsListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/DomainSynthesisRepartitionFactorDetail"
+              type="com.compuware.caqs.presentation.consult.actions.DomainSynthesisRepartitionFactorDetailAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/DomainSynthesisRepartitionGrid"
+              type="com.compuware.caqs.presentation.consult.actions.DomainSynthesisRepartitionGridAction"
+              scope="request"
+              validate="false">
+    </action>
+
+   <action   path="/DomainSynthesisVolumetry"
+              type="com.compuware.caqs.presentation.consult.actions.DomainSynthesisVolumetryAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ElementManageSymbolicLink"
+              type="com.compuware.caqs.presentation.admin.actions.ElementManageSymbolicLinkAction"
+              scope="request"
+              validate="false">
+    </action>
+
+   	<action   path="/FacteurSyntheseManageComment"
+              type="com.compuware.caqs.presentation.consult.actions.FacteurSyntheseManageCommentAction"
+              scope="request"
+              validate="false">
+    </action>
+
+   	<action   path="/GetSynthesisVolumetry"
+              type="com.compuware.caqs.presentation.consult.actions.GetSynthesisVolumetryAction"
+              scope="request"
+              validate="false">
+    </action>
+
+   	<action   path="/AdminBlRetrieveBaselinesForProject"
+              type="com.compuware.caqs.presentation.admin.actions.RetrieveBaselinesForProjectAction"
+              scope="request"
+              validate="false">
+    </action>
+
+   	<action   path="/RetrievePeremptedElements"
+              type="com.compuware.caqs.presentation.admin.actions.RetrievePeremptedElementsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+   	<action   path="/ManagePeremptedElements"
+              type="com.compuware.caqs.presentation.admin.actions.ManagePeremptedElementsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action path="/ScatterPlot" type="com.compuware.caqs.presentation.consult.actions.scatterplot.ScatterPlotAction">
+    </action>
+    <action path="/ScatterPlotMetrics" type="com.compuware.caqs.presentation.consult.actions.scatterplot.ScatterPlotMetricsAction">
+    </action>
+    <action path="/ScatterPlotElementType" type="com.compuware.caqs.presentation.consult.actions.scatterplot.ScatterPlotElementTypeAction">
+    </action>
+
+    <action path="/Evolution" type="com.compuware.caqs.presentation.consult.actions.evolution.EvolutionAction">
+    </action>
+
+    <action path="/Repartition" type="com.compuware.caqs.presentation.consult.actions.RepartitionAction">
+    </action>
+
+    <action path="/Justification" type="com.compuware.caqs.presentation.consult.actions.justification.JustificationAction">
+    </action>
+
+    <action path="/DashboardRetrieveProjects" type="com.compuware.caqs.presentation.consult.actions.dashboard.RetrieveProjectsAction">
+    </action>
+
+    <action   path="/DashboardRetrieveElementInfos"
+              type="com.compuware.caqs.presentation.consult.actions.dashboard.RetrieveElementInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/DashboardElementKiviat"
+              type="com.compuware.caqs.presentation.consult.actions.dashboard.KiviatAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/DashboardElementEvolution"
+              type="com.compuware.caqs.presentation.consult.actions.dashboard.EvolutionAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/DashboardElementTimeplotNumberOfAnalysis"
+              type="com.compuware.caqs.presentation.consult.actions.dashboard.TimeplotNumberOfAnalysisAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/DashboardElementTimeplotConnectionStats"
+              type="com.compuware.caqs.presentation.consult.actions.dashboard.TimeplotConnectionStatsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/UploadRetrieveFileTypes"
+              type="com.compuware.caqs.presentation.consult.actions.UploadRetrieveFileTypesAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/BottomUpRepartitionSelect"
+              type="com.compuware.caqs.presentation.consult.actions.BottomUpRepartitionSelectAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveTextForAnalysisFailed"
+              type="com.compuware.caqs.presentation.messages.actions.RetrieveTextForAnalysisFailedAction"
+              scope="request"
+              validate="false">
+    </action>
+    
+    <action   path="/ActionPlanAutoFill"
+              type="com.compuware.caqs.presentation.consult.actions.actionplan.ActionPlanAutoFillAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/AdminPrjGenerateBatchParameters"
+              type="com.compuware.caqs.presentation.admin.actions.GenerateProjectAnalysisBatchParametersAction"
+              scope="request"
+              validate="false">
+    </action>
+
+
+    <action   path="/ModelEditorRetrieveModels"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveModelSearchScreenResultsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveGoals"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveGoalSearchScreenResultsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveCriterions"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveCriterionSearchScreenResultsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveMetrics"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveMetricSearchScreenResultsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveTools"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveToolSearchScreenResultsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveElementTypes"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveElementTypeSearchScreenResultsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveLangues"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveLangueSearchScreenResultsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveLanguages"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveLanguageSearchScreenResultsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveDialectes"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveDialecteSearchScreenResultsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveActionPlanUnits"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveActionPlanUnitSearchScreenResultsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorToolsCB"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveToolsListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorLanguagesCB"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveLangagesListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorSaveDialectInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveDialectInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveDialectInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveDialecteInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveLangueInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveLangueInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorSaveLangueInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveLanguageInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveLanguageInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveLanguageInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorSaveLanguageInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveLanguageInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveElementTypeInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveElementTypeInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorSaveElementTypeInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveElementTypeInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveActionPlanUnitInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveActionPlanUnitInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorSaveActionPlanUnitInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveActionPlanUnitInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveToolInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveToolInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorSaveToolInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveToolInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveToolsAssociatedMetrics"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveToolsAssociatedMetricsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveLanguagesAssociatedDialects"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveLanguagesAssociatedDialectsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveMetricInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveMetricInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorSaveMetricInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveMetricInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveCriterionInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveCriterionInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorSaveCriterionInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveCriterionInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveGoalInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveGoalInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorSaveGoalInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveGoalInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveModelInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveModelInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorSaveModelInfos"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveModelInfosAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorActionPlanUnitsCB"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveActionPlanUnitListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveAssociatedTools"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveAssociatedToolsGridAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ToolModelAssociationSave"
+              type="com.compuware.caqs.presentation.modeleditor.editors.ToolModelAssociationSaveAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveAssociatedGoals"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveAssociatedGoalsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorRetrieveAddableElements"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveAddableElementsForModel"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveGoalsAssociatedCriterions"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveGoalsAssociatedCriterionsAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ElementTypeList"
+              type="com.compuware.caqs.presentation.modeleditor.common.ElementTypeListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/SaveGoalCriterionModification"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveGoalCriterionModificationAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/SaveCriterionGoalModelAssociation"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveCriterionGoalModelAssociationAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/DeleteCriterionGoalModelAssociation"
+              type="com.compuware.caqs.presentation.modeleditor.editors.DeleteCriterionGoalModelAssociationAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveFormulaForCriterionAndModel"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveFormulaForCriterionAndModelAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveAgregationsForCriterionAndModel"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveAgregationsForCriterionAndModelAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/SaveAgregationsForCriterionAndModel"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveAgregationsForCriterionAndModelAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveMetricsRegardingCriterion"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveMetricsRegardingCriterionAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ManageRegle"
+              type="com.compuware.caqs.presentation.modeleditor.editors.ManageRegleAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/UpdateFormula"
+              type="com.compuware.caqs.presentation.modeleditor.editors.UpdateFormulaAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/MoveFormula"
+              type="com.compuware.caqs.presentation.modeleditor.editors.MoveFormulaAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/SaveFormulas"
+              type="com.compuware.caqs.presentation.modeleditor.editors.SaveFormulasAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/DuplicateModel"
+              type="com.compuware.caqs.presentation.modeleditor.DuplicateModelAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ArchiveModel"
+              type="com.compuware.caqs.presentation.modeleditor.ArchiveModelAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveModelPrintableVersion"
+              type="com.compuware.caqs.presentation.modeleditor.RetrieveModelPrintableVersionAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RemoveGoalFromModel"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RemoveGoalFromModelAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/AgregationList"
+              type="com.compuware.caqs.presentation.modeleditor.editors.AgregationListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/CritereDisplayFormulas"
+              type="com.compuware.caqs.presentation.consult.actions.CritereDisplayFormulasAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveModelsCriterionsForElementType"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveModelsCriterionsForElementTypeAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ActionPlanGoalsList"
+              type="com.compuware.caqs.presentation.consult.actions.actionplan.ActionPlanGoalsList"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ActionPlanProjectCostList"
+              type="com.compuware.caqs.presentation.consult.actions.actionplan.ActionPlanProjectCostList"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ModelEditorCheckIFPUGFormula"
+              type="com.compuware.caqs.presentation.modeleditor.editors.CheckIFPUGFormulaAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ProjectSynthesisRetrieveTreeMapGoalsList"
+              type="com.compuware.caqs.presentation.consult.actions.projectsynthesis.RetrieveTreeMapGoalsList"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ProjectSynthesis"
+              type="com.compuware.caqs.presentation.consult.actions.projectsynthesis.ProjectSynthesisAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/gestionqualite/projectSynthesis/projectSynthesis.jsp"/>
+    </action>
+
+   <action   path="/ProjectTreeMap"
+              type="com.compuware.caqs.presentation.consult.actions.projectsynthesis.ProjectTreeMapAction"
+              scope="request"
+              validate="false">
+    </action>
+
+   <action   path="/RetrieveProjectLanguageGroupsList"
+              type="com.compuware.caqs.presentation.consult.actions.projectsynthesis.RetrieveProjectLanguageGroupsListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ProjectSynthesisRepartitionFactorDetail"
+              type="com.compuware.caqs.presentation.consult.actions.projectsynthesis.ProjectSynthesisRepartitionFactorDetailAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ProjectSynthesisRepartitionGrid"
+              type="com.compuware.caqs.presentation.consult.actions.projectsynthesis.ProjectSynthesisRepartitionGridAction"
+              scope="request"
+              validate="false">
+    </action>
+
+   <action   path="/ProjectSynthesisVolumetry"
+              type="com.compuware.caqs.presentation.consult.actions.projectsynthesis.ProjectSynthesisVolumetryAction"
+              scope="request"
+              validate="false">
+    </action>
+    
+   <action   path="/SearchByNamePanelDatas"
+              type="com.compuware.caqs.presentation.common.actions.SearchByNamePanelDatasAction"
+              scope="request"
+              validate="false">
+    </action>
+
+
+   <action   path="/BottomUpVolumetry"
+              type="com.compuware.caqs.presentation.consult.actions.BottomUpVolumetryAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RepartitionSelect"
+              type="com.compuware.caqs.presentation.consult.actions.RepartitionSelectAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/repartitionChart.jsp"/>
+    </action>
+
+    <action   path="/RetrieveEAsForModel"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveEAsForModelAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveEAsForDialecte"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveEAsForDialecteAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveModelsGoalsForCriterion"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveModelsGoalsForCriterionAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveModelsCriterionsForMetric"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveModelsCriterionsForMetricAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveModelsForGoal"
+              type="com.compuware.caqs.presentation.modeleditor.editors.RetrieveModelsForGoalAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveActionPlanGlobalProperties"
+              type="com.compuware.caqs.presentation.consult.actions.actionplan.RetrieveActionPlanGlobalPropertiesAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveActionPlanUnitsList"
+              type="com.compuware.caqs.presentation.consult.actions.actionplan.ActionPlanUnitsListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveAllDialectsList"
+              type="com.compuware.caqs.presentation.admin.actions.RetrieveAllDialectsListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveAllModelsList"
+              type="com.compuware.caqs.presentation.admin.actions.RetrieveAllModelsListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveElementData"
+              type="com.compuware.caqs.presentation.admin.actions.RetrieveElementDataAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/SaveElementData"
+              type="com.compuware.caqs.presentation.admin.actions.SaveElementDataAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveDomainsListForUser"
+              type="com.compuware.caqs.presentation.consult.actions.dashboard.RetrieveDomainsListForUserAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveActionPlanPriorities"
+              type="com.compuware.caqs.presentation.consult.actions.domainsynthesis.RetrieveActionPlanPrioritiesAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/UploadEASrcFile"
+              type="com.compuware.caqs.presentation.admin.actions.UploadEASrcFileAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/GenerateDomainSynthesisReport"
+              type="com.compuware.caqs.presentation.consult.actions.domainsynthesis.GenerateReportAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveEvolutionGraphDatas"
+              type="com.compuware.caqs.presentation.consult.actions.evolution.RetrieveEvolutionGraphDatasAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveElementsEvolutionGraphDatas"
+              type="com.compuware.caqs.presentation.consult.actions.evolution.RetrieveElementsEvolutionGraphDatasAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveElementsEvolutionGridList"
+              type="com.compuware.caqs.presentation.consult.actions.evolution.ElementsGridListAjax"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveActionsPlanEvolutionGraphDatas"
+              type="com.compuware.caqs.presentation.consult.actions.evolution.RetrieveActionsPlanEvolutionGraphDatasAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveActionsPlanElementsGridList"
+              type="com.compuware.caqs.presentation.consult.actions.evolution.ActionsPlanElementsGridListAjax"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/ElementsEvolutionsPieChart"
+              type="com.compuware.caqs.presentation.consult.actions.evolution.ElementsEvolutionsPieChartAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/EvolutionRetrievePreviousBaselinesList"
+              type="com.compuware.caqs.presentation.consult.actions.evolution.RetrievePreviousBaselinesListAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/EvolutionFactorEvolutionsList"
+              type="com.compuware.caqs.presentation.consult.actions.evolution.FacteurEvolutionListAjaxAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/LaunchReportGeneration"
+              type="com.compuware.caqs.presentation.report.actions.LaunchReportGenerationAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/LoadCritereDatas"
+              type="com.compuware.caqs.presentation.consult.actions.LoadCritereDatasAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveJustificationForDemand"
+              type="com.compuware.caqs.presentation.consult.actions.RetrieveJustificationForDemandAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/SetDemandJustification"
+              type="com.compuware.caqs.presentation.consult.actions.justification.SetDemandJustificationAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/LoadMainFrame"
+              type="com.compuware.caqs.presentation.consult.actions.LoadMainFrameAction"
+              scope="request"
+              validate="false">
+    </action>
+
+    <action   path="/RetrieveVolumetryEvolutionGraphDatas"
+              type="com.compuware.caqs.presentation.consult.actions.evolution.RetrieveVolumetryEvolutionGraphDatasAction"
+              scope="request"
+              validate="false">
+    </action>
+
+     <action   path="/EvolutionRepartitionChartSelect"
+              type="com.compuware.caqs.presentation.consult.actions.evolution.EvolutionRepartitionChartSelectAction"
+              scope="request"
+              validate="false">
+      <forward name="success" path="/evolutionChart.jsp"/>
+    </action>
+  </action-mappings>
+
+  <message-resources
+	key="org.apache.struts.action.MESSAGE"
+	parameter="com.compuware.caqs.Resources.resources"
+	null="false">
+  </message-resources>
+    
+</struts-config>

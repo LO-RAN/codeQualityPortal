@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://www.wfmc.org/2002/XPDL1.0" xmlns:xpdl="http://www.wfmc.org/2002/XPDL1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wfmc.org/2002/XPDL1.0 http://wfmc.org/standards/docs/TC-1025_schema_10_xpdl.xsd" Id="report_generator" Name="report_generator">
+  <PackageHeader>
+    <XPDLVersion>1.0</XPDLVersion>
+    <Vendor>Bonita Project Team</Vendor>
+    <Created>2010-02-23T11:20:06.828+0100</Created>
+  </PackageHeader>
+  <RedefinableHeader>
+    <Version>1.0</Version>
+  </RedefinableHeader>
+  <ConformanceClass GraphConformance="NON_BLOCKED" />
+  <WorkflowProcesses>
+    <WorkflowProcess AccessLevel="PUBLIC" Name="report_generator" Id="report_generator">
+      <ProcessHeader />
+      <RedefinableHeader>
+        <Version>1.0</Version>
+      </RedefinableHeader>
+      <DataFields>
+        <DataField Id="URL" Name="URL">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+          <InitialValue>/caqs/report</InitialValue>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="PropertyActivity" />
+          </ExtendedAttributes>
+        </DataField>
+        <DataField Id="HTTP_SERVER_CONTEXT_PATH" Name="HTTP_SERVER_CONTEXT_PATH">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+          <InitialValue>http://localhost:8080/caqs</InitialValue>
+          <Description>http://localhost:8080/caqs</Description>
+        </DataField>
+        <DataField Id="PROJECT_ID" Name="PROJECT_ID">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="ID_EA" Name="ID_EA">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="BASELINE_ID" Name="BASELINE_ID">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="USER_ID" Name="USER_ID">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="LANGUAGE_ID" Name="LANGUAGE_ID">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="ID_MESS" Name="ID_MESS">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+        <DataField Id="lastUrl" Name="lastUrl">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+      </DataFields>
+      <Participants>
+        <Participant Id="system" Name="system">
+          <ParticipantType Type="SYSTEM" />
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="NewParticipant" Value="true" />
+            <ExtendedAttribute Name="XOffset" Value="0" />
+            <ExtendedAttribute Name="YOffset" Value="0" />
+          </ExtendedAttributes>
+        </Participant>
+        <Participant Id="admin" Name="admin">
+          <ParticipantType Type="ROLE" />
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="Mapper" Value="Instance Initiator" />
+            <ExtendedAttribute Name="NewParticipant" Value="true" />
+            <ExtendedAttribute Name="XOffset" Value="0" />
+            <ExtendedAttribute Name="YOffset" Value="150" />
+          </ExtendedAttributes>
+        </Participant>
+        <Participant Id="john" Name="john">
+          <ParticipantType Type="HUMAN" />
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="NewParticipant" Value="true" />
+            <ExtendedAttribute Name="XOffset" Value="0" />
+            <ExtendedAttribute Name="YOffset" Value="300" />
+          </ExtendedAttributes>
+        </Participant>
+      </Participants>
+      <Activities>
+        <Activity Id="BonitaEnd" Name="BonitaEnd">
+          <Implementation>
+            <No />
+          </Implementation>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="621" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="56" />
+            <ExtendedAttribute Name="XOffset" Value="683" />
+            <ExtendedAttribute Name="YOffset" Value="166" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="BonitaInit" Name="BonitaInit">
+          <Implementation>
+            <No />
+          </Implementation>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="AND" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="63" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="56" />
+            <ExtendedAttribute Name="XOffset" Value="23" />
+            <ExtendedAttribute Name="YOffset" Value="166" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="InitReportGeneration" Name="InitReportGeneration">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>john</Performer>
+          <StartMode>
+            <Manual />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="0" />
+            <ExtendedAttribute Name="XOffset" Value="191" />
+            <ExtendedAttribute Name="YOffset" Value="188" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="140" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.InitReportGenerationProcessHook">
+              <HookEventName>task:onReady</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Generate_Report" Name="Generate Report">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>system</Performer>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="27" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="302" />
+            <ExtendedAttribute Name="XOffset" Value="442" />
+            <ExtendedAttribute Name="YOffset" Value="178" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="98" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="property" Value="URL" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.ReportGenerationHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>true</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+      </Activities>
+      <Transitions>
+        <Transition Id="InitreportGeneration_Generate_Report" Name="InitreportGeneration_Generate Report" From="InitReportGeneration" To="Generate_Report" />
+        <Transition Id="Generate_Report_End" Name="Generate Report_End" From="Generate_Report" To="BonitaEnd" />
+        <Transition Id="Start_InitreportGeneration" Name="Start_InitreportGeneration" From="BonitaInit" To="InitReportGeneration" />
+      </Transitions>
+    </WorkflowProcess>
+  </WorkflowProcesses>
+  <ExtendedAttributes>
+    <ExtendedAttribute Name="MadeBy" Value="ProEd" />
+    <ExtendedAttribute Name="View" Value="Activity" />
+  </ExtendedAttributes>
+</Package>
+

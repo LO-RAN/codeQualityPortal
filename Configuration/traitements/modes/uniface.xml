@@ -1,0 +1,465 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE MODE SYSTEM "xmode.dtd">
+
+<!-- UNIFACE mode, by laurent.izac@compuware.com -->
+<MODE>
+	<PROPS>
+		<PROPERTY NAME="lineComment" VALUE=";" />
+	</PROPS>
+
+	<RULES IGNORE_CASE="TRUE" HIGHLIGHT_DIGITS="TRUE">
+
+		<SPAN TYPE="LITERAL1" ESCAPE="%%" NO_LINE_BREAK="TRUE">
+			<BEGIN>"</BEGIN>
+			<END>"</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL1" NO_LINE_BREAK="TRUE">
+			<BEGIN>'</BEGIN>
+			<END>'</END>
+		</SPAN>
+		<SPAN TYPE="LITERAL4" NO_LINE_BREAK="TRUE">
+			<BEGIN>&lt;</BEGIN>
+			<END>&gt;</END>
+		</SPAN>
+
+		<EOL_SPAN TYPE="COMMENT1">;</EOL_SPAN>
+		
+		<SEQ TYPE="OPERATOR">=</SEQ>
+		<SEQ TYPE="OPERATOR">!</SEQ>
+		<SEQ TYPE="OPERATOR">&gt;=</SEQ>
+		<SEQ TYPE="OPERATOR">&lt;=</SEQ>
+		<SEQ TYPE="OPERATOR">+</SEQ>
+		<SEQ TYPE="OPERATOR">-</SEQ>
+		<SEQ TYPE="OPERATOR">/</SEQ>
+		<SEQ TYPE="OPERATOR">*</SEQ>
+		<SEQ TYPE="OPERATOR">&gt;</SEQ>
+		<SEQ TYPE="OPERATOR">&lt;</SEQ>
+		<SEQ TYPE="OPERATOR">%</SEQ>
+		<SEQ TYPE="OPERATOR">&amp;</SEQ>
+		<SEQ TYPE="OPERATOR">|</SEQ>
+		<SEQ TYPE="OPERATOR">^</SEQ>
+		<SEQ TYPE="OPERATOR">~</SEQ>
+		
+<!-- proc label reachable with a goto statement -->
+    <MARK_PREVIOUS TYPE="LABEL" MATCH_TYPE="OPERATOR" AT_LINE_START="TRUE">:</MARK_PREVIOUS>
+
+		<KEYWORDS>
+
+<!-- pre-compiler directives -->
+      <LITERAL2>#define</LITERAL2>
+      <LITERAL2>#if</LITERAL2>
+      <LITERAL2>#endif</LITERAL2>
+      <LITERAL2>#ifdefined</LITERAL2>
+      <LITERAL2>#comment</LITERAL2>
+      <LITERAL2>#error</LITERAL2>
+      <LITERAL2>#ifundefined</LITERAL2>
+      <LITERAL2>#include</LITERAL2>
+      <LITERAL2>#info</LITERAL2>
+      <LITERAL2>#undefine</LITERAL2>
+      <LITERAL2>#warning</LITERAL2>
+
+<!-- compile time constants -->
+      <LITERAL3>&lt;$cmpStateManagedBy&gt;</LITERAL3>
+      <LITERAL3>&lt;$componentName&gt;</LITERAL3>
+      <LITERAL3>&lt;$componentType&gt;</LITERAL3>
+      <LITERAL3>&lt;$entName&gt;</LITERAL3>
+      <LITERAL3>&lt;$fieldName&gt;</LITERAL3>
+      <LITERAL3>&lt;$libraryName&gt;</LITERAL3>
+      <LITERAL3>&lt;$modelName&gt;</LITERAL3>
+      <LITERAL3>&lt;$tableName&gt;</LITERAL3>
+      <LITERAL3>&lt;$triggerAbbr&gt;</LITERAL3>
+
+<!-- proc statements -->
+			<KEYWORD1>addmonths</KEYWORD1>
+			<KEYWORD1>compare</KEYWORD1>
+			<KEYWORD1>displaylength</KEYWORD1>
+			<KEYWORD1>length</KEYWORD1>
+			<KEYWORD1>lowercase</KEYWORD1>
+			<KEYWORD1>reset</KEYWORD1>
+			<KEYWORD1>scan</KEYWORD1>
+			<KEYWORD1>set</KEYWORD1>
+			<KEYWORD1>stripattributes</KEYWORD1>
+			<KEYWORD1>uppercase</KEYWORD1>
+			<KEYWORD1>close</KEYWORD1>
+			<KEYWORD1>commit</KEYWORD1>
+			<KEYWORD1>open</KEYWORD1>
+			<KEYWORD1>rollback</KEYWORD1>
+			<KEYWORD1>sql</KEYWORD1>
+			<KEYWORD1>clear</KEYWORD1>
+			<KEYWORD1>creocc</KEYWORD1>
+			<KEYWORD1>curoccvideo</KEYWORD1>
+			<KEYWORD1>discard</KEYWORD1>
+			<KEYWORD1>erase</KEYWORD1>
+			<KEYWORD1>moveocc</KEYWORD1>
+			<KEYWORD1>release</KEYWORD1>
+			<KEYWORD1>remocc</KEYWORD1>
+			<KEYWORD1>retrieve</KEYWORD1>
+			<KEYWORD1>retrieve/a</KEYWORD1>
+			<KEYWORD1>retrieve/o</KEYWORD1>
+			<KEYWORD1>retrieve/x</KEYWORD1>
+			<KEYWORD1>selectdb</KEYWORD1>
+			<KEYWORD1>setocc</KEYWORD1>
+			<KEYWORD1>sort</KEYWORD1>
+			<KEYWORD1>store</KEYWORD1>
+			<KEYWORD1>u_condition</KEYWORD1>
+			<KEYWORD1>u_where</KEYWORD1>
+			<KEYWORD1>validate</KEYWORD1>
+			<KEYWORD1>validatekey</KEYWORD1>
+			<KEYWORD1>validateocc</KEYWORD1>
+			<KEYWORD1>fieldsyntax</KEYWORD1>
+			<KEYWORD1>fieldvideo</KEYWORD1>
+			<KEYWORD1>validatefield</KEYWORD1>
+			<KEYWORD1>dircreate</KEYWORD1>
+			<KEYWORD1>dirdelete</KEYWORD1>
+			<KEYWORD1>dirrename</KEYWORD1>
+			<KEYWORD1>filebox</KEYWORD1>
+			<KEYWORD1>filecopy</KEYWORD1>
+			<KEYWORD1>filedelete</KEYWORD1>
+			<KEYWORD1>filemove</KEYWORD1>
+			<KEYWORD1>filerename</KEYWORD1>
+			<KEYWORD1>filedump</KEYWORD1>
+			<KEYWORD1>fileload</KEYWORD1>
+			<KEYWORD1>flush</KEYWORD1>
+			<KEYWORD1>ldircreate</KEYWORD1>
+			<KEYWORD1>ldirdelete</KEYWORD1>
+			<KEYWORD1>ldirrename</KEYWORD1>
+			<KEYWORD1>lfilecopy</KEYWORD1>
+			<KEYWORD1>lfiledelete</KEYWORD1>
+			<KEYWORD1>lfiledump</KEYWORD1>
+			<KEYWORD1>lfileload</KEYWORD1>
+			<KEYWORD1>lfilemove</KEYWORD1>
+			<KEYWORD1>lfilerename</KEYWORD1>
+			<KEYWORD1>lflush</KEYWORD1>
+			<KEYWORD1>postmessage</KEYWORD1>
+			<KEYWORD1>delitem</KEYWORD1>
+			<KEYWORD1>getitem</KEYWORD1>
+			<KEYWORD1>getlistitems</KEYWORD1>
+			<KEYWORD1>putitem</KEYWORD1>
+			<KEYWORD1>putlistitems</KEYWORD1>
+			<KEYWORD1>sort/list</KEYWORD1>
+			<KEYWORD1>askmess</KEYWORD1>
+			<KEYWORD1>clrmess</KEYWORD1>
+			<KEYWORD1>message</KEYWORD1>
+			<KEYWORD1>putmess</KEYWORD1>
+			<KEYWORD1>delete</KEYWORD1>
+			<KEYWORD1>findkey</KEYWORD1>
+			<KEYWORD1>lock</KEYWORD1>
+			<KEYWORD1>lookup</KEYWORD1>
+			<KEYWORD1>read</KEYWORD1>
+			<KEYWORD1>reload</KEYWORD1>
+			<KEYWORD1>write</KEYWORD1>
+			<KEYWORD1>eject</KEYWORD1>
+			<KEYWORD1>print</KEYWORD1>
+			<KEYWORD1>printbreak</KEYWORD1>
+			<KEYWORD1>skip</KEYWORD1>
+			<KEYWORD1>activate</KEYWORD1>
+			<KEYWORD1>apstart</KEYWORD1>
+			<KEYWORD1>call</KEYWORD1>
+			<KEYWORD1>display</KEYWORD1>
+			<KEYWORD1>done</KEYWORD1>
+			<KEYWORD1>edit</KEYWORD1>
+			<KEYWORD1>macro</KEYWORD1>
+			<KEYWORD1>perform</KEYWORD1>
+			<KEYWORD1>pulldown</KEYWORD1>
+			<KEYWORD1>return</KEYWORD1>
+			<KEYWORD1>run</KEYWORD1>
+			<KEYWORD1>spawn</KEYWORD1>
+			<KEYWORD1>callfieldtrigger</KEYWORD1>
+			<KEYWORD1>web</KEYWORD1>
+			<KEYWORD1>webgen</KEYWORD1>
+			<KEYWORD1>webget</KEYWORD1>
+			<KEYWORD1>webdefinitions</KEYWORD1>
+			<KEYWORD1>weblayout</KEYWORD1>
+			<KEYWORD1>webload</KEYWORD1>
+			<KEYWORD1>webmessage</KEYWORD1>
+			<KEYWORD1>websave</KEYWORD1>
+			<KEYWORD1>websetocc</KEYWORD1>
+			<KEYWORD1>reconnect</KEYWORD1>
+			<KEYWORD1>retrieve/reconnect</KEYWORD1>
+			<KEYWORD1>xmlload</KEYWORD1>
+			<KEYWORD1>xmlsave</KEYWORD1>
+			<KEYWORD1>xmlvalidate</KEYWORD1>
+			<KEYWORD1>blockdata</KEYWORD1>
+			<KEYWORD1>debug</KEYWORD1>
+			<KEYWORD1>help</KEYWORD1>
+			<KEYWORD1>nodebug</KEYWORD1>
+			<KEYWORD1>numgen</KEYWORD1>
+			<KEYWORD1>numset</KEYWORD1>
+			<KEYWORD1>pragma</KEYWORD1>
+			<KEYWORD1>proccompile</KEYWORD1>
+			<KEYWORD1>refresh</KEYWORD1>
+			<KEYWORD1>returns</KEYWORD1>
+			<KEYWORD1>show</KEYWORD1>
+			<KEYWORD1>sleep</KEYWORD1>
+			<KEYWORD1>compute</KEYWORD1>
+			<KEYWORD1>entitycopy</KEYWORD1>
+			<KEYWORD1>setformfocus</KEYWORD1>            		
+			<KEYWORD1>newinstance</KEYWORD1>            		
+			<KEYWORD1>deleteinstance</KEYWORD1>            		
+<!-- flow control statements -->
+			<KEYWORD2>if</KEYWORD2>
+			<KEYWORD2>elseif</KEYWORD2>
+			<KEYWORD2>else</KEYWORD2>
+			<KEYWORD2>endif</KEYWORD2>
+			<KEYWORD2>while</KEYWORD2>
+			<KEYWORD2>endwhile</KEYWORD2>
+			<KEYWORD2>repeat</KEYWORD2>
+			<KEYWORD2>until</KEYWORD2>
+			<KEYWORD2>selectcase</KEYWORD2>
+			<KEYWORD2>case</KEYWORD2>
+			<KEYWORD2>elsecase</KEYWORD2>
+			<KEYWORD2>endselectcase</KEYWORD2>
+			<KEYWORD1>apexit</KEYWORD1>
+			<KEYWORD1>break</KEYWORD1>
+			<KEYWORD1>exit</KEYWORD1>
+			<KEYWORD1>goto</KEYWORD1>
+
+<!-- Proc module definition -->
+			<KEYWORD2>entry</KEYWORD2>
+			<KEYWORD2>operation</KEYWORD2>
+			<KEYWORD2>trigger</KEYWORD2>
+			<KEYWORD2>end</KEYWORD2>
+
+<!-- data types -->
+			<KEYWORD3>boolean</KEYWORD3>
+			<KEYWORD3>date</KEYWORD3>
+			<KEYWORD3>datetime</KEYWORD3>
+			<KEYWORD3>float</KEYWORD3>
+			<KEYWORD3>handle</KEYWORD3>
+			<KEYWORD3>image</KEYWORD3>
+			<KEYWORD3>lineardate</KEYWORD3>
+			<KEYWORD3>lineardatetime</KEYWORD3>
+			<KEYWORD3>lineartime</KEYWORD3>
+			<KEYWORD3>numeric</KEYWORD3>
+			<KEYWORD3>raw</KEYWORD3>
+			<KEYWORD3>string</KEYWORD3>
+			<KEYWORD3>time</KEYWORD3>
+			<KEYWORD3>any</KEYWORD3>
+			<KEYWORD3>entity</KEYWORD3>
+			<KEYWORD3>occurrence</KEYWORD3>
+			<KEYWORD3>xmlstream</KEYWORD3>
+
+<!-- parameters direction -->
+			<KEYWORD4>in</KEYWORD4>
+			<KEYWORD4>out</KEYWORD4>
+			<KEYWORD4>inout</KEYWORD4>
+
+<!-- parameters and variables blocks -->
+			<KEYWORD4>params</KEYWORD4>
+			<KEYWORD4>endparams</KEYWORD4>
+			<KEYWORD4>variables</KEYWORD4>
+			<KEYWORD4>endvariables</KEYWORD4>
+
+<!-- functions -->
+      <FUNCTION>$applname</FUNCTION>
+      <FUNCTION>$applproperties</FUNCTION>
+      <FUNCTION>$appltitle</FUNCTION>
+      <FUNCTION>$batch</FUNCTION>
+      <FUNCTION>$detachedinstances</FUNCTION>
+      <FUNCTION>$display</FUNCTION>
+      <FUNCTION>$gui</FUNCTION>
+      <FUNCTION>$ioprint</FUNCTION>
+      <FUNCTION>$keyboard</FUNCTION>
+      <FUNCTION>$language</FUNCTION>
+      <FUNCTION>$logical</FUNCTION>
+      <FUNCTION>$nmforms</FUNCTION>
+      <FUNCTION>$password</FUNCTION>
+      <FUNCTION>$proc_tracing</FUNCTION>
+      <FUNCTION>$proc_tracing_addition</FUNCTION>
+      <FUNCTION>$putmess</FUNCTION>
+      <FUNCTION>$result</FUNCTION>
+      <FUNCTION>$text</FUNCTION>
+      <FUNCTION>$textexist</FUNCTION>
+      <FUNCTION>$user</FUNCTION>
+      <FUNCTION>$variation</FUNCTION>
+      <FUNCTION>$web</FUNCTION>
+      <FUNCTION>$componentinfo</FUNCTION>
+      <FUNCTION>$componentname</FUNCTION>
+      <FUNCTION>$componenttype</FUNCTION>
+      <FUNCTION>$entname</FUNCTION>
+      <FUNCTION>$instancechildren</FUNCTION>
+      <FUNCTION>$instancedb</FUNCTION>
+      <FUNCTION>$instancedbmod</FUNCTION>
+      <FUNCTION>$instancehandle</FUNCTION>
+      <FUNCTION>$instancemod</FUNCTION>
+      <FUNCTION>$instancename</FUNCTION>
+      <FUNCTION>$instanceparent</FUNCTION>
+      <FUNCTION>$instancevalidation</FUNCTION>
+      <FUNCTION>$modelname</FUNCTION>
+      <FUNCTION>$bold</FUNCTION>
+      <FUNCTION>$clock</FUNCTION>
+      <FUNCTION>$condition</FUNCTION>
+      <FUNCTION>$date</FUNCTION>
+      <FUNCTION>$datim</FUNCTION>
+      <FUNCTION>$decode</FUNCTION>
+      <FUNCTION>$encode</FUNCTION>
+      <FUNCTION>$expression</FUNCTION>
+      <FUNCTION>$italic</FUNCTION>
+      <FUNCTION>$oprsys</FUNCTION>
+      <FUNCTION>$replace</FUNCTION>
+      <FUNCTION>$string</FUNCTION>
+      <FUNCTION>$stripattributes</FUNCTION>
+      <FUNCTION>$syntax</FUNCTION>
+      <FUNCTION>$typed</FUNCTION>
+      <FUNCTION>$ude</FUNCTION>
+      <FUNCTION>$underline</FUNCTION>
+      <FUNCTION>$uuid</FUNCTION>
+      <FUNCTION>$webinfo</FUNCTION>
+      <FUNCTION>$concat</FUNCTION>
+      <FUNCTION>$displaylength</FUNCTION>
+      <FUNCTION>$lowercase</FUNCTION>
+      <FUNCTION>$ltrim</FUNCTION>
+      <FUNCTION>$nlslocalelist</FUNCTION>
+      <FUNCTION>$nlstimezonelist</FUNCTION>
+      <FUNCTION>$number</FUNCTION>
+      <FUNCTION>$rscan</FUNCTION>
+      <FUNCTION>$rtrim</FUNCTION>
+      <FUNCTION>$scan</FUNCTION>
+      <FUNCTION>$split</FUNCTION>
+      <FUNCTION>$uppercase</FUNCTION>
+      <FUNCTION>$collhandle</FUNCTION>
+      <FUNCTION>$curhits</FUNCTION>
+      <FUNCTION>$curkey</FUNCTION>
+      <FUNCTION>$curocc</FUNCTION>
+      <FUNCTION>$curoccvideo</FUNCTION>
+      <FUNCTION>$dbocc</FUNCTION>
+      <FUNCTION>$entinfo</FUNCTION>
+      <FUNCTION>$entityproperties</FUNCTION>
+      <FUNCTION>$foreign</FUNCTION>
+      <FUNCTION>$hits</FUNCTION>
+      <FUNCTION>$keycheck</FUNCTION>
+      <FUNCTION>$keyfields</FUNCTION>
+      <FUNCTION>$keymod</FUNCTION>
+      <FUNCTION>$keytype</FUNCTION>
+      <FUNCTION>$keyvalidation</FUNCTION>
+      <FUNCTION>$occcheck</FUNCTION>
+      <FUNCTION>$occcrc</FUNCTION>
+      <FUNCTION>$occdbmod</FUNCTION>
+      <FUNCTION>$occdel</FUNCTION>
+      <FUNCTION>$occhandle</FUNCTION>
+      <FUNCTION>$occmod</FUNCTION>
+      <FUNCTION>$occstatus</FUNCTION>
+      <FUNCTION>$occvalidation</FUNCTION>
+      <FUNCTION>$paintedocc</FUNCTION>
+      <FUNCTION>$relation</FUNCTION>
+      <FUNCTION>$rettype</FUNCTION>
+      <FUNCTION>$selectlist</FUNCTION>
+      <FUNCTION>$storetype</FUNCTION>
+      <FUNCTION>$subsetreturn</FUNCTION>
+      <FUNCTION>$totdbocc</FUNCTION>
+      <FUNCTION>$totkeys</FUNCTION>
+      <FUNCTION>$totocc</FUNCTION>
+      <FUNCTION>$dataerrorcontext</FUNCTION>
+      <FUNCTION>$dberror</FUNCTION>
+      <FUNCTION>$dberrortext</FUNCTION>
+      <FUNCTION>$error</FUNCTION>
+      <FUNCTION>$procerror</FUNCTION>
+      <FUNCTION>$procerrorcontext</FUNCTION>
+      <FUNCTION>$procreturncontext</FUNCTION>
+      <FUNCTION>$status</FUNCTION>
+      <FUNCTION>$curline</FUNCTION>
+      <FUNCTION>$curword</FUNCTION>
+      <FUNCTION>$fieldcheck</FUNCTION>
+      <FUNCTION>$fielddbmod</FUNCTION>
+      <FUNCTION>$fielddbvalue</FUNCTION>
+      <FUNCTION>$fieldendmod</FUNCTION>
+      <FUNCTION>$fieldindb</FUNCTION>
+      <FUNCTION>$fieldinfo</FUNCTION>
+      <FUNCTION>$fieldmod</FUNCTION>
+      <FUNCTION>$fieldname</FUNCTION>
+      <FUNCTION>$fieldprofile</FUNCTION>
+      <FUNCTION>$fieldproperties</FUNCTION>
+      <FUNCTION>$fieldvalidation</FUNCTION>
+      <FUNCTION>$fieldvalrep</FUNCTION>
+      <FUNCTION>$fieldvideo</FUNCTION>
+      <FUNCTION>$format</FUNCTION>
+      <FUNCTION>$next</FUNCTION>
+      <FUNCTION>$ocxhandle</FUNCTION>
+      <FUNCTION>$paintedfieldproperties</FUNCTION>
+      <FUNCTION>$previous</FUNCTION>
+      <FUNCTION>$properties</FUNCTION>
+      <FUNCTION>$valrep</FUNCTION>
+      <FUNCTION>$dirlist</FUNCTION>
+      <FUNCTION>$fileexists</FUNCTION>
+      <FUNCTION>$fileproperties</FUNCTION>
+      <FUNCTION>$ldir</FUNCTION>
+      <FUNCTION>$ldirlist</FUNCTION>
+      <FUNCTION>$lfileexists</FUNCTION>
+      <FUNCTION>$lfileproperties</FUNCTION>
+      <FUNCTION>$ude</FUNCTION>
+      <FUNCTION>$cellinfo</FUNCTION>
+      <FUNCTION>$char</FUNCTION>
+      <FUNCTION>$direction</FUNCTION>
+      <FUNCTION>$editmode</FUNCTION>
+      <FUNCTION>$formdb</FUNCTION>
+      <FUNCTION>$formdbmod</FUNCTION>
+      <FUNCTION>$formfocus</FUNCTION>
+      <FUNCTION>$formmod</FUNCTION>
+      <FUNCTION>$formmodality</FUNCTION>
+      <FUNCTION>$formname</FUNCTION>
+      <FUNCTION>$formtitle</FUNCTION>
+      <FUNCTION>$interactive</FUNCTION>
+      <FUNCTION>$labelproperties</FUNCTION>
+      <FUNCTION>$printing</FUNCTION>
+      <FUNCTION>$prompt</FUNCTION>
+      <FUNCTION>$runmode</FUNCTION>
+      <FUNCTION>$selblk</FUNCTION>
+      <FUNCTION>$windowproperties</FUNCTION>
+      <FUNCTION>$instancepath</FUNCTION>
+      <FUNCTION>$instances</FUNCTION>
+      <FUNCTION>$msgdata</FUNCTION>
+      <FUNCTION>$msgdst</FUNCTION>
+      <FUNCTION>$msgid</FUNCTION>
+      <FUNCTION>$msginfo</FUNCTION>
+      <FUNCTION>$msgsrc</FUNCTION>
+      <FUNCTION>$idpart</FUNCTION>
+      <FUNCTION>$item</FUNCTION>
+      <FUNCTION>$itemcount</FUNCTION>
+      <FUNCTION>$itemnr</FUNCTION>
+      <FUNCTION>$sortlist</FUNCTION>
+      <FUNCTION>$sortlistid</FUNCTION>
+      <FUNCTION>$valuepart</FUNCTION>
+      <FUNCTION>$abs</FUNCTION>
+      <FUNCTION>$acos</FUNCTION>
+      <FUNCTION>$asin</FUNCTION>
+      <FUNCTION>$atan</FUNCTION>
+      <FUNCTION>$cos</FUNCTION>
+      <FUNCTION>$e</FUNCTION>
+      <FUNCTION>$exp</FUNCTION>
+      <FUNCTION>$exp10</FUNCTION>
+      <FUNCTION>$fact</FUNCTION>
+      <FUNCTION>$frac</FUNCTION>
+      <FUNCTION>$int</FUNCTION>
+      <FUNCTION>$log</FUNCTION>
+      <FUNCTION>$log10</FUNCTION>
+      <FUNCTION>$pi</FUNCTION>
+      <FUNCTION>$power</FUNCTION>
+      <FUNCTION>$sin</FUNCTION>
+      <FUNCTION>$sqrt</FUNCTION>
+      <FUNCTION>$tan</FUNCTION>
+      <FUNCTION>$check</FUNCTION>
+      <FUNCTION>$disable</FUNCTION>
+      <FUNCTION>$hide</FUNCTION>
+      <FUNCTION>$inlinemenu</FUNCTION>
+      <FUNCTION>$about</FUNCTION>
+      <FUNCTION>$occproperties</FUNCTION>
+      <FUNCTION>$empty</FUNCTION>
+      <FUNCTION>$framedepth</FUNCTION>
+      <FUNCTION>$lines</FUNCTION>
+      <FUNCTION>$occdepth</FUNCTION>
+      <FUNCTION>$page</FUNCTION>
+      <FUNCTION>$totlines</FUNCTION>
+      <FUNCTION>$webrequesttype</FUNCTION>
+      <FUNCTION>$webresponsetype</FUNCTION>
+      <FUNCTION>$nlscase</FUNCTION>
+      <FUNCTION>$nlsformat</FUNCTION>
+      <FUNCTION>$nlsinternaltime</FUNCTION>
+      <FUNCTION>$nlslocale</FUNCTION>
+      <FUNCTION>$nlssortorder</FUNCTION>
+      <FUNCTION>$nlstimezone</FUNCTION>
+      <FUNCTION>$ude</FUNCTION>
+
+		</KEYWORDS>
+	</RULES>
+</MODE>

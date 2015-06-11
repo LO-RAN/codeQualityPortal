@@ -1,0 +1,54 @@
+TD {
+    border-bottom: none;
+    border-right: none;
+}
+
+.front-off {
+    background-image: url("../images/front_off.gif")
+}
+.front-on {
+    background-image: url("../images/front_on.gif")
+}
+.rightoff-leftoff {
+    background-image: url("../images/rightoff_leftoff.gif")
+}
+.rightoff-lefton {
+    background-image: url("../images/rightoff_lefton.gif")
+}
+.righton-leftoff {
+    background-image: url("../images/righton_leftoff.gif")
+}
+.center-off {
+    background-image: url("../images/center_off.gif");
+	font-size: 12;
+}
+.center-on {
+	background-image: url("../images/center_on.gif");
+	font-size: 12;
+}
+.right-off {
+    background-image: url("../images/right_off.gif")
+}
+.right-on {
+    background-image: url("../images/right_on.gif")
+}
+
+.borderleft {
+    border-left: thin solid black
+}
+.borderleftright {
+    border-left: thin solid black;
+    border-right: thin solid black;
+}
+.borderleftrighttop {
+    border-left: thin solid black;
+    border-right: thin solid black;
+    border-top: thin solid black;
+}
+.borderlefttop {
+    border-left: thin solid black;
+    border-top: thin solid black;
+}
+.bordertop {
+    border-top: thin solid black;
+}

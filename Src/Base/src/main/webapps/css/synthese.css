@@ -1,0 +1,82 @@
+.info {
+    color: #335588;
+    text-align: center;
+    border: thin solid #335588;
+}
+
+TD.info {
+    color: #335588;
+    text-align: center;
+    border: thin solid #335588;
+}
+
+TD.result {
+    color: red;
+    text-align: center;
+    border: thin solid red;
+}
+
+TR.factorResult {
+    background-color: gray;
+}
+
+TD.factorResult {
+    color: white;
+    border-right: none;
+    text-align: right;
+}
+
+TD.facteursyntheseLegend {
+    text-align:left;
+    font-size: 80%;
+}
+
+TD.scatterLegend {
+    border: thin solid gray;
+    text-align: center;
+}
+
+TD.blc {
+    border-left: thin solid black;
+    border-right: none;
+    text-align: center;
+}
+
+TD.blcNumber {
+/*    border-left: thin solid black; */
+    border-right: none;
+    border-left: none;
+    text-align: right;
+}
+
+.toJustif {
+    color: red;
+    font-weight: bold;
+}
+
+.demandJustif {
+    color: red;
+    font-weight: bold;
+}
+
+.rejetJustif {
+    color: red;
+    font-weight: bold;
+}
+
+.validJustif {
+    //background-color: gray;
+    color: black;
+    font-weight: bold;
+}
+
+.validJustifTotal {
+    color: yellow;
+    font-weight: bold;
+}
+
+.hint {
+    border: none;
+    text-align: center;
+    font-size: 75%;
+}

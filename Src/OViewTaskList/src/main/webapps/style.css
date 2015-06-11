@@ -1,0 +1,104 @@
+body { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt} 
+h1 {  font-size: 14pt; clip:   rect(   ); font-family: Verdana, Arial, Helvetica, sans-serif}
+h2 {  font-size: 12pt; font-style: normal; font-weight: bold; text-transform: capitalize; font-family: "Arial Black"}
+h3 {  font-size: 10pt; font-style: normal; font-weight: bold; font-family: "Arial Black"; clip:   rect(   ); vertical-align: bottom}
+h4 {  font-size: 10pt; font-weight: bold; line-height: 12px; vertical-align: bottom; border-color: #999999 black black; text-align: left; border-top-width: thin}
+th {  font-weight: bold; font-size: 10px; }
+.ThinLine {  border-color: black black #CCCCCC; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px}
+p {  font-size: 8pt; vertical-align: top; margin-top: 4px; padding-top: 0px}
+.NavLink {  font-size: 8pt; }
+.TaskName {  font-size: 14px; font-weight: bold; border-color: #666666 black black; border-top-width: 1px}
+.ThickLine { border-color: black black #000000; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px}
+.EditControl {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt}
+.Box {  border: #CCCCCC; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; float: right; }
+.SectionHeading {
+	font-size: 9pt;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+.Uncritical {  color: #707070; height: 4px; padding-top: 4px}
+.Critical {  color: #FF0000; clip:   rect(   ); padding-top: 4px; height: 4px}
+.TaskParameter {  font-style: italic; font-weight: bold; padding-left: 12px}
+.DataBox { border: 1px #CCCCCC solid; background-color: #E0E0E0}
+.UncriticalInline { color: #707070; clip:  rect(   )}
+.CriticalInline { color: #FF0000; clip:  rect(   )}
+.NavBox { border: #CCCCCC; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; float: right}
+.PageTitle { font-size: 14pt; clip: rect( ); font-family: Verdana, Arial, Helvetica, sans-serif ; font-weight: bold; color: #004080;}
+.TableHeading {
+	font-size: 9pt;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	border-top: thin solid #CCCCCC;
+	border-right: thin solid #CCCCCC;
+	border-bottom: thin none #CCCCCC;
+	border-left: thin solid #CCCCCC;
+
+}
+.Cell {
+	border-top: none #336699;
+	border-right: none #336699;
+	border-bottom: 1px solid #336699;
+	border-left: 1px solid #336699;
+	padding: 2px;
+	background-color: #CCCCFF;
+
+
+
+}
+.CellRight {
+	border-top: 1px none #336699;
+	border-bottom: 1px solid #336699;
+	border-left: 1px solid #336699;
+	padding: 2px;
+	background-color: #CCCCFF;
+	border-right-style: solid;
+	border-right-color: #336699;
+	border-right-width: 1px;
+
+
+
+
+
+}
+.CellControls {
+	padding: 2px;
+	border: none;
+
+
+
+
+
+}
+.RecordTable {
+border: 1px #CCCCCC solid
+}
+.DialogButton {
+	padding: 2px;
+	background-color: #CCCCFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #333366;
+	border: 1px solid #336699;
+	font-variant: normal;
+
+
+}
+.CellSelected {
+
+	border-top: none #336699;
+	border-right: none #336699;
+	border-bottom: none #336699;
+	border-left: none #336699;
+	background-color: #FFFF99;
+}
+.DialogButtonPressed {
+
+	padding: 2px;
+	background-color: #336699;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #333366;
+	border: 1px solid #336699;
+	font-variant: small-caps;
+}

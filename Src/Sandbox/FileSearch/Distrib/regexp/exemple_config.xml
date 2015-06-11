@@ -1,0 +1,9 @@
+<xml>
+    <SEARCH name="firstSearch" filter=".*\.java">
+    	<RULE regexp="[A|a]pplet" />
+    	<RULE regexp="Servlet" />
+    </SEARCH>
+    <SEARCH name="secondSearch" filter=".*\.java">
+    	<RULE regexp="JPanel" />
+    </SEARCH>
+</xml>

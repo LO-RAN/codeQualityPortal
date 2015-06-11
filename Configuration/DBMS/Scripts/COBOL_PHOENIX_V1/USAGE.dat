@@ -1,0 +1,4 @@
+INSERT INTO MODELE (ID_USA,LIB_USA,DESC_USA,DINTS_USA) values (
+'COBOL_PHOENIX_V1','COBOL_PHOENIX_V1','MQ Cobol basé sur les analyses Phoenix',null
+);
+commit;

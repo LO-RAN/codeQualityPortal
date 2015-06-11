@@ -1,0 +1,16 @@
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-PACBASE', 'MAIN', 'C00001', 'Maintenabilité-Taille'     , 'Maintenabilité-Taille'     , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-PACBASE', 'MAIN', 'C00002', 'Maintenabilité-Complexité' , 'Maintenabilité-Complexité' , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-PACBASE', 'MAIN', 'C00003', 'Maintenabilité-Lisibilité' , 'Maintenabilité-Lisibilité' , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-PACBASE', 'MAIN', 'C00004', 'Maintenabilité-Modularité' , 'Maintenabilité-Modularité' , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-PACBASE', 'MAIN', 'C00005', 'Maintenabilité-Portabilité', 'Maintenabilité-Portabilité', 1,  null,  null); 
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-PACBASE', 'REUT', 'C00003', 'Réutilisation-Lisibilité' , 'Réutilisation-Lisibilité' , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-PACBASE', 'REUT', 'C00004', 'Réutilisation-Modularité' , 'Réutilisation-Modularité' , 1,  null,  null); 
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-PACBASE', 'FIAB', 'C00001', 'Fiabilité-Taille'     , 'Fiabilité-Taille'     , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-PACBASE', 'FIAB', 'C00002', 'Fiabilité-Complexité' , 'Fiabilité-Complexité' , 1,  null,  null); 
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-PACBASE', 'EVOL', 'C00005', 'Evolutivité-Portabilité', 'Evolutivité-Portabilité', 1,  null,  null); 
+
+commit;
+ 

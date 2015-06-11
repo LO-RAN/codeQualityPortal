@@ -1,0 +1,11 @@
+<config>
+   <connection_timeout>10</connection_timeout>
+  <broadcast_attrib>
+    <user_case>upper</user_case>
+    <host_case>upper</host_case>
+  </broadcast_attrib>
+  <proxy_server>
+    <port>7199</port>
+  </proxy_server>
+   <license>/opt/Compuware/Licenses/licenseOptimalAdvisor4.3.xml</license>
+</config>

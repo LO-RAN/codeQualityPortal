@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.0//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_0.dtd">
+
+<!--
+     This is the Struts configuration file for the Optimalflow webconsole
+     application.
+-->
+
+
+<struts-config>
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+
+      <form-bean      name="searchForm"
+                      type="com.compuware.form.SearchForm"/>
+
+  </form-beans>
+
+
+  <!-- ========== Global Forward Definitions ==== and Forward from JSPs ==== -->
+  <global-forwards>
+  </global-forwards>
+
+  <!-- ========== Action Mapping Definitions ============================== -->
+  <action-mappings>
+
+    <!-- Process a user logon -->
+      <action   path="/CreateIndex"
+                type="com.compuware.action.CreateIndexAction"
+                scope="request"
+                validate="false">
+        <forward name="success" path="/synthese.jsp"/>
+      </action>
+
+      <action   path="/Search"
+                type="com.compuware.action.SearchAction"
+                name="searchForm"
+                scope="request"
+                validate="true">
+        <forward name="success" path="/result.jsp"/>
+      </action>
+
+  </action-mappings>
+<!--
+<message-resources parameter="com.compuware.carscode.Resources.resources" null="false" >
+</message-resources>
+-->
+
+
+</struts-config>

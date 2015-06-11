@@ -1,0 +1,4 @@
+INSERT INTO LANGUE (ID,LIB,DESCRIPTION) VALUES ('fr','Français','Français');
+INSERT INTO LANGUE (ID,LIB,DESCRIPTION) VALUES ('en','English','English');
+INSERT INTO LANGUE (ID,LIB,DESCRIPTION) VALUES ('es','Español','Español');
+

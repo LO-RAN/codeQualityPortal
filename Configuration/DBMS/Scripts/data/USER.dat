@@ -1,0 +1,14 @@
+insert into caqs_user (ID_USER,PASSWORD,FIRSTNAME,LASTNAME,EMAIL) values ('qua1', 'qua1','qua1','qua1','qua1@company.com');
+insert into caqs_user (ID_USER,PASSWORD,FIRSTNAME,LASTNAME,EMAIL) values ('adm1', 'adm1','adm1','adm1','adm1@company.com');
+insert into caqs_user (ID_USER,PASSWORD,FIRSTNAME,LASTNAME,EMAIL) values ('arc1', 'arc1','arc1','arc1','arc1@company.com');
+insert into caqs_user (ID_USER,PASSWORD,FIRSTNAME,LASTNAME,EMAIL) values ('man1', 'man1','man1','man1','man1@company.com');
+insert into caqs_user (ID_USER,PASSWORD,FIRSTNAME,LASTNAME,EMAIL) values ('prj1', 'prj1','prj1','prj1','prj1@company.com');
+insert into caqs_user (ID_USER,PASSWORD,FIRSTNAME,LASTNAME,EMAIL) values ('dev1', 'dev1','dev1','dev1','dev1@company.com');
+
+INSERT INTO USER_ROLE (ID_USER,ID_ROLE) VALUES ('adm1','ADMINISTRATOR');
+INSERT INTO USER_ROLE (ID_USER,ID_ROLE) VALUES ('arc1','ARCHITECT');
+INSERT INTO USER_ROLE (ID_USER,ID_ROLE) VALUES ('dev1','DEVELOPER');
+INSERT INTO USER_ROLE (ID_USER,ID_ROLE) VALUES ('man1','MANAGER');
+INSERT INTO USER_ROLE (ID_USER,ID_ROLE) VALUES ('prj1','PROJECTMANAGER');
+INSERT INTO USER_ROLE (ID_USER,ID_ROLE) VALUES ('qua1','QUALITYEXPERT');
+

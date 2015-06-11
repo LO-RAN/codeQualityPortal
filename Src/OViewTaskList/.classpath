@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ToolBox"/>
+	<classpathentry kind="var" path="MAVEN_REPO/unifaceflow/uniface_flow/1.0/uniface_flow-1.0.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/unifaceflow/unet/1.0/unet-1.0.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/commons-dbcp/commons-dbcp/1.2/commons-dbcp-1.2.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/commons-pool/commons-pool/1.2/commons-pool-1.2.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/log4j/log4j/1.2.14/log4j-1.2.14.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/struts/struts/1.0.2/struts-1.0.2.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/unifaceview/ovtasklist/1.0/ovtasklist-1.0.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

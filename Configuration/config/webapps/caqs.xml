@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/caqs">
+  <Logger className="org.apache.catalina.logger.FileLogger" 
+          prefix="localhost_pql_log." 
+          suffix=".txt" 
+          timestamp="true"
+        />
+  <Environment name="caqs.home" type="java.lang.String" value=".."/>
+  <Environment name="pql.conf.dir" type="java.lang.String" value="../config/"/>
+  <Environment name="conf.dir" type="java.lang.String" value="../config/"/>
+<!-- repository connexion settings -->          
+   <Resource   name="jdbc/PqlDS" 
+            auth="Container"
+            type="javax.sql.DataSource" 
+            driverClassName="%DBDRIVER%"
+            url="%DBURL%"
+            username="%DBUSER%" 
+            password="%DBPASSWORD%" 
+            maxActive="20" 
+            maxIdle="10"
+            maxWait="-1"
+         /> 
+</Context>

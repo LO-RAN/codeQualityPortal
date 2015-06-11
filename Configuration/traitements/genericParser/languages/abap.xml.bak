@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<parserConfiguration>
+  <comments>
+    <comment regexp="^\s*\*.*" dotAll="false" casesensitive="false" />
+  </comments>
+  <emptyLines>
+    <emptyLine regexp="^\s*$" dotAll="false" casesensitive="false" />
+  </emptyLines>
+  <sections>
+    <!--
+    <section name="FILE" nameGroup="1" openBlockGroup="2" closingBlock="" endsWith="END_OF_FILE" regexp="^[A-Z0-9]{0,6}[\s|D]PROGRAM-ID\.\s+([A-Z0-9-]+)(\.)\s*$" dotAll="false" casesensitive="false" multiline="true">
+      <section name="PROC" nameGroup="1" openBlockGroup="2" closingBlock="" endsWith="OTHER_SECTION" regexp="^[A-Z0-9\s]{0,6}[\s|D]([A-Z0-9-]+)(\.)\s*$" dotAll="false" casesensitive="false" multiline="true">
+      </section>
+    </section>
+    -->
+    <section name="FILE" nameGroup="1" openBlockGroup="2" closingBlock="" endsWith="END_OF_FILE" regexp="^().*$" dotAll="false" casesensitive="false" multiline="true">
+      <!--
+      <section name="PROCEDURE" nameGroup="1" openBlockGroup="2" closingBlock="" endsWith="OTHER_SECTION" regexp="^[A-Z0-9\s]{0,6}[\s|D]([A-Z0-9-]+)(\sSECTION)?(\.)\s*$" dotAll="false" casesensitive="false" multiline="true">
+      </section>
+      -->
+    </section>
+  </sections>
+  <detectors>
+    <detector id="NL" commentUseStrategy="KEEP_COMMENTS">
+      <rule regexp=".*" dotAll="true" casesensitive="false" group="0" countType="COUNT_LINES" />
+    </detector>
+    <detector id="LOC" commentUseStrategy="CLEAR_COMMENTS">
+      <rule regexp=".*" dotAll="true" casesensitive="false" group="0" countType="COUNT_NON_EMPTY_LINES" />
+    </detector>
+    <detector id="CLOC" commentUseStrategy="COMMENTS_ONLY">
+      <rule regexp=".*" dotAll="true" casesensitive="false" group="0" countType="COUNT_NON_EMPTY_LINES" />
+    </detector>
+  </detectors>
+</parserConfiguration>

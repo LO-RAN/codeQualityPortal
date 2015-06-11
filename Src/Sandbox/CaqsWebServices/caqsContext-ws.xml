@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:jaxws="http://cxf.apache.org/jaxws"
+		  xmlns:security="http://www.springframework.org/schema/security" 
+          xsi:schemaLocation="http://www.springframework.org/schema/beans
+				http://www.springframework.org/schema/beans/spring-beans.xsd
+				http://www.springframework.org/schema/security
+				http://www.springframework.org/schema/security/spring-security-2.0.1.xsd
+				http://cxf.apache.org/jaxws
+				http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-jaxrs-binding.xml"/> 
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+<!--
+  <jaxws:endpoint implementor="#LoginWSBean" id="LoginWSEndpoint" address="/services/LoginWS">
+  </jaxws:endpoint>
+
+
+  <bean id="LoginWSBean" class="com.compuware.caqs.webservices.impl.LoginWSImpl" >
+  </bean>
+  -->
+  <bean id="caqsCommonWSS4JInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+		<constructor-arg>
+			<map>
+				<entry key="action" value="UsernameToken" />
+				<entry key="passwordType" value="PasswordText" />
+				<entry key="passwordCallbackClass" value="com.compuware.caqs.webservices.interceptors.ServerPasswordCallback" />
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean id="caqsCommonAuthenticationInterceptor" class="com.compuware.caqs.webservices.interceptors.WSAuthenticationInterceptor">
+		<property name="authenticationManager" ref="caqsAuthenticationManager"/>
+	</bean>
+    
+  <jaxws:endpoint implementor="com.compuware.caqs.webservices.impl.LoginWSImpl" id="LoginWS" address="/LoginWS">
+	  <jaxws:inInterceptors>
+            <ref bean="caqsCommonWSS4JInterceptor"/>
+			<ref bean="caqsCommonAuthenticationInterceptor"/>
+        </jaxws:inInterceptors> 
+  </jaxws:endpoint>
+  <jaxws:endpoint implementor="com.compuware.caqs.webservices.impl.ProjectsListForUserWSImpl" id="ProjectsListForUserWS" address="/ProjectsListForUserWS">
+	  <jaxws:inInterceptors>
+            <ref bean="caqsCommonWSS4JInterceptor"/>
+			<ref bean="caqsCommonAuthenticationInterceptor"/>
+        </jaxws:inInterceptors> 
+  </jaxws:endpoint>
+  <jaxws:endpoint implementor="com.compuware.caqs.webservices.impl.ProjectInfosWSImpl" id="ProjectInfosWS" address="/ProjectInfosWS">
+	  <jaxws:inInterceptors>
+            <ref bean="caqsCommonWSS4JInterceptor"/>
+			<ref bean="caqsCommonAuthenticationInterceptor"/>
+        </jaxws:inInterceptors> 
+  </jaxws:endpoint>
+  
+  <bean id="springSecurityFilterChain" class="org.springframework.security.util.FilterChainProxy">
+        <security:filter-chain-map path-type="ant">
+            <security:filter-chain pattern="/**" filters="contextIntegrationFilter"/>
+        </security:filter-chain-map>
+   </bean>
+   <bean id="contextIntegrationFilter" class="org.springframework.security.context.HttpSessionContextIntegrationFilter" /> 
+</beans>

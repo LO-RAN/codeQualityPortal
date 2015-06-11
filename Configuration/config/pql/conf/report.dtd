@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE REPORT SYSTEM "report.dtd">
+
+    <REPORT>
+    ...
+    </REPORT>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT MET EMPTY>
+<!ATTLIST MET
+    value CDATA #IMPLIED
+    desc CDATA #IMPLIED
+    lib CDATA #IMPLIED
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT METRIQUES (MET)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT ELT (MET)*>
+<!ATTLIST ELT
+    note CDATA #IMPLIED
+    desc CDATA #IMPLIED
+    lib CDATA #IMPLIED
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT CRIT_DETAIL (METRIQUES|ELT)*>
+<!ATTLIST CRIT_DETAIL
+    desc CDATA #IMPLIED
+    lib CDATA #IMPLIED
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT CRITERE EMPTY>
+<!ATTLIST CRITERE
+    weight CDATA #IMPLIED
+    note CDATA #IMPLIED
+    desc CDATA #IMPLIED
+    lib CDATA #IMPLIED
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT FACTOR (CRITERE)*>
+<!ATTLIST FACTOR
+    note CDATA #IMPLIED
+    desc CDATA #IMPLIED
+    lib CDATA #IMPLIED
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT BASELINE EMPTY>
+<!ATTLIST BASELINE
+    desc CDATA #IMPLIED
+    lib CDATA #IMPLIED
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT ELEMENT EMPTY>
+<!ATTLIST ELEMENT
+    desc CDATA #IMPLIED
+    lib CDATA #IMPLIED
+    id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT REPORT (CRIT_DETAIL|FACTOR|BASELINE|ELEMENT)*>

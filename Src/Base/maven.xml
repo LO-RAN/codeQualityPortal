@@ -1,0 +1,78 @@
+<project xmlns:j="jelly:core" xmlns:ant="jelly:ant" xmlns:u="jelly:util">
+
+  <postGoal name="war:webapp">
+    <attainGoal name="about" />
+    <attainGoal name="setExtJSNotDebug" />
+    <attainGoal name="cleanJsps" />
+  </postGoal>
+
+  <goal name="setExtJSNotDebug">
+    <ant:echo message="Setting ExtJS as not debug..."/>
+
+    <ant:replaceregexp match="ext-all-debug.js" replace="ext-all.js" flags="g" byline="false">
+      <fileset dir="${maven.build.dir}/carscode/" includes="ext/common/includes.jsp"/>
+    </ant:replaceregexp>
+  </goal>
+  
+  <goal name="cleanJsps">
+    <ant:echo message="Striping white spaces from JSP files..."/>
+
+    <!-- Strip whitespace -->
+    <ant:replaceregexp match="&gt;\s*&lt;" replace="&gt;&lt;" flags="g" byline="false">
+      <fileset dir="${maven.build.dir}/carscode/" includes="**/*.html,**/*.htm,**/*.jsp,**/*.tag"/>
+    </ant:replaceregexp>
+
+    <ant:replaceregexp match="\n\s*&lt;" replace="&lt;" flags="g" byline="false">
+      <fileset dir="${maven.build.dir}/carscode/" includes="**/*.html,**/*.htm,**/*.jsp,**/*.tag"/>
+    </ant:replaceregexp>
+
+  </goal>
+  
+  <goal name="about">
+    <ant:echo message="Filling about.jsp file..."/>
+
+    <ant:replaceregexp match="%CAQS_VERSION%" replace="${pom.currentVersion}" flags="g" byline="false">
+      <fileset dir="${maven.build.dir}/carscode/WEB-INF/classes/com/compuware/caqs/Resources/" includes="resources.properties"/>
+    </ant:replaceregexp>
+
+    <ant:replaceregexp match="%CAQS_ORGANISATION%" replace="${pom.organization.name}" flags="g" byline="false">
+      <fileset dir="${maven.build.dir}/carscode/" includes="about.jsp"/>
+    </ant:replaceregexp>
+
+    <ant:replaceregexp match="%CAQS_ORGANISATION_URL%" replace="${pom.organization.url}" flags="g" byline="false">
+      <fileset dir="${maven.build.dir}/carscode/" includes="about.jsp"/>
+    </ant:replaceregexp>
+    
+	  <tstamp>
+	    <format property="NOW_UK" pattern="yyyy-MM-dd" locale="en"/>
+	  </tstamp>
+
+    <ant:replaceregexp match="%CAQS_DATE%" replace="${NOW_UK}" flags="g" byline="false">
+      <fileset dir="${maven.build.dir}/carscode/" includes="about.jsp"/>
+    </ant:replaceregexp>
+    
+  </goal>
+  
+  <goal name="nightly-build">
+    <attainGoal name="scm:update-project" />
+    <attainGoal name="war:war" />
+    
+    <ant:delete dir="${maven.appserver.dir}/webapps/carscode/" />
+    <ant:mkdir dir="${maven.appserver.dir}/webapps/carscode/" />
+    <ant:copy toDir="${maven.appserver.dir}/webapps/carscode/">
+      <ant:fileset dir="${maven.build.dir}/carscode/"  />
+    </ant:copy>
+    
+    <attainGoal name="site:war" />
+    <ant:delete dir="${maven.appserver.dir}/webapps/carscode-site/" />
+    <copy file="${maven.build.dir}/${maven.final.name}-site.war" tofile="${maven.appserver.dir}/webapps/carscode-site.war" />
+    
+    <j:thread>
+      <attainGoal name="sql" />
+    </j:thread>
+    <j:thread>
+      <attainGoal name="appserver:start" />
+    </j:thread>
+    <sleep seconds="60"/>
+  </goal>
+</project>

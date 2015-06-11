@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="src/forms"/>
+	<classpathentry kind="src" path="src/xpdl"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="MAVEN_REPO"/>
+	<classpathentry kind="var" path="MAVEN_REPO/org/ow2/bonita/bonita-client/5.3.2/bonita-client-5.3.2.jar"/>
+	<classpathentry kind="var" path="MAVEN_REPO/javax/mail/mail/1.4/mail-1.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,148 @@
+BODY {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    background-color: transparent;
+    font-size: 100%;
+}
+
+H2 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #335588;
+}
+
+H3 {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    color: #335588;
+}
+
+A {
+    color: #335588;
+    text-decoration: none;
+}
+
+A:Visited {
+    color: #335588;
+}
+
+A:Hover {
+    color: #6682BB;
+}
+
+A:Active {
+    color: #CCCCCC;
+}
+
+.error {
+ background:inherit;
+ color:red;
+}
+
+TH {
+    vertical-align: text-bottom;
+    background-image: url(../images/nav-lev1_repeat.gif);
+    color: #335588;
+    font-size: 80%;
+}
+
+TD {
+    font-size: 80%;
+}
+
+.arial12 {
+    font: 12px arial
+}
+
+span.outset {
+	border-style: solid;
+	border-width: 1px;
+	font-style: italic;
+	text-align: center;
+}
+
+TD.filterSearch {
+    padding-left: 0.5cm;
+}
+
+SELECT.multiselect {
+    width:400px;
+}
+
+.defTooltipHeader {
+    background:#F3F0E7;
+    color:#335588;
+    font-family:arial;
+    font-size:12px;
+    font-weight:bold;
+    border:1px solid #335588;
+    padding:5px;
+    width:500px;
+ }
+ 
+.defTooltipBody {
+    background:#FFFFFF;
+    font-family:arial;
+    font-size:12px;
+    border-left:1px solid #335588;
+    border-right:1px solid #335588;
+    border-bottom:1px solid #335588;
+    padding:5px;
+    width:500px;
+}
+
+.defLongTooltipHeader {
+    background:#F3F0E7;
+    color:#335588;
+    font-family:arial;
+    font-size:12px;
+    font-weight:bold;
+    border:1px solid #335588;
+    padding:5px;
+ }
+ 
+.defLongTooltipBody {
+    background:#FFFFFF;
+    font-family:arial;
+    font-size:12px;
+    border-left:1px solid #335588;
+    border-right:1px solid #335588;
+    border-bottom:1px solid #335588;
+    padding:5px;
+}
+
+.defMiddleTooltipHeader {
+    background:#F3F0E7;
+    color:#335588;
+    font-family:arial;
+    font-size:12px;
+    font-weight:bold;
+    border:1px solid #335588;
+    padding:5px;
+    width:350px;
+ }
+ 
+.defMiddleTooltipBody {
+    background:#FFFFFF;
+    font-family:arial;
+    font-size:12px;
+    border-left:1px solid #335588;
+    border-right:1px solid #335588;
+    border-bottom:1px solid #335588;
+    padding:5px;
+    width:350px;
+}
+
+.centeredMessage {
+	text-align: center;
+	padding: 5em; 
+	border:1px solid #335588;
+	top:30%;
+	left:30%;
+	position: absolute;
+}
+
+.normalFont {
+	font-size: 12px;	
+}
+

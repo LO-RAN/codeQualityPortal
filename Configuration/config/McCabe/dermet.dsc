@@ -1,0 +1,15 @@
+SUM_ALL_CODE "all_code" PROGRAM 1035194501 "FXA" "sum ( all_code )" NO 0 100000 "" 11
+SUM_VG "vg" PROGRAM 1035194503 "FXA" "sum ( vg )" NO 0 10000 "" 11
+SUM_BLANKS "blanks" PROGRAM 1035194504 "FXA" "sum ( blanks )" NO 0 10000 "" 11
+SUM_BRANCH "branch" PROGRAM 1035194505 "FXA" "sum ( branch )" NO 0 10000 "" 11
+SUM_CALL_PAIR "call_pair" PROGRAM 1035194506 "FXA" "sum ( call_pair )" NO 0 10000 "" 11
+SUM_CBO "cbo" PROGRAM 1035194507 "FXA" "sum ( cbo )" NO 0 10000 "" 11
+SUM_CD "cd" PROGRAM 1035194508 "FXA" "sum ( cd )" NO 0 10000 "" 11
+SUM_CODE "code" PROGRAM 1035194510 "FXA" "sum ( code )" NO 0 10000 "" 11
+SUM_EDGES "edges" PROGRAM 1035194511 "FXA" "sum ( edges )" NO 0 10000 "" 11
+SUM_EVG "evg" PROGRAM 1035194512 "FXA" "sum ( evg )" NO 0 10000 "" 11
+SUM_IVG "ivg" PROGRAM 1035194513 "FXA" "sum ( ivg )" NO 0 10000 "" 11
+SUM_VG2 "vg" PROGRAM 1035194514 "FXA" "sum ( vg )" NO 0 10000 "" 11
+MAX_EVG2 "max_evg" PROGRAM 1035194515 "FXA" "max ( evg )" NO 0 100000 "" 11
+MAX_VG2 "max_vg" PROGRAM 1035194516 "FXA" "max ( vg )" NO 0 100000 "" 11
+SUM_COMMENTS "comments"  PROGRAM 1035194517 "FXA" "sum ( comments )" NO 0 100000 "" 11

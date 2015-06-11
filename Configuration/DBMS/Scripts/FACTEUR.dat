@@ -1,0 +1,17 @@
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('MAIN','Maintenabilité','Cet objectif a pour but d''évaluer la capacité de corriger à chaud l''application avec un minimum d''effets de bord.',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('EVOL','Evolutivité','Cet objectif a pour but d''évaluer la facilité d''ajout de fonctionnalités à l''application.',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('REUT','Réutilisation','Cet objectif a pour but d''évaluer la possibilité de réutiliser des portions de l''application dans d''autres applications.',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('FIAB','Fiabilité','Cet objectif a pour but d''évaluer l''effort pour atteindre la fiabilité de l''application (effort de test en particulier).',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('PERT','Architecture','Architecture',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('ROBU','Robustesse','Cet objectif permet d''évaluer la capacité de l''application à rester opérationnelle (montée en charge, etc).',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('SECU','Sécurité','Sécurité',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('PORTABILITY','Portabilité','Portabilité',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('TEST','Tests Unitaires','Fiabilité des tests réalisés',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('ANO','Anomalies','une erreur dans cet objectif signifie un risque de problème de compilation et donc de justesse de l''analyse',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('NAMINGCONVENTIONS','Nommage','Nommage',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('BESTPRACTICES','Best Practices','Best Practices',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('DEADCODE','Code Mort','Code Mort',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('ARCHITECTURE','Architecture','Architecture',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('PERFORMANCES','Performances','Performances',null,null,null,null);
+INSERT INTO FACTEUR (ID_FACT,LIB_FACT,DESC_FACT,DINST_FACT,DMAJ_FACT,DAPPLICATION_FACT,DPEREMPTION_FACT) VALUES ('DOCUMENTATION','Documentation','Documentation',null,null,null,null);
+

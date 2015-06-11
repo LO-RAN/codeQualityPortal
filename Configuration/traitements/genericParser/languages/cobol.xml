@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<parserConfiguration>
+  <comments>
+    <comment regexp="[0-9\s]{6}\*.*" dotAll="false" casesensitive="false" />
+  </comments>
+  <emptyLines>
+    <emptyLine regexp="^\s*$" dotAll="false" casesensitive="false" />
+    <emptyLine regexp="^\s*[A-Z0-9]{6}$" dotAll="false" casesensitive="false" />
+    <emptyLine regexp="^[A-Z0-9]{6}\s{66}[A-Z0-9]{4,6}$" dotAll="false" casesensitive="false" />
+  </emptyLines>
+  <sections>
+    <!--
+    <section name="FILE" nameGroup="1" openBlockGroup="2" closingBlock="" endsWith="END_OF_FILE" regexp="^[A-Z0-9]{0,6}[\s|D]PROGRAM-ID\.\s+([A-Z0-9-]+)(\.)\s*$" dotAll="false" casesensitive="false" multiline="true">
+      <section name="PROC" nameGroup="1" openBlockGroup="2" closingBlock="" endsWith="OTHER_SECTION" regexp="^[A-Z0-9\s]{0,6}[\s|D]([A-Z0-9-]+)(\.)\s*$" dotAll="false" casesensitive="false" multiline="true">
+      </section>
+    </section>
+    -->
+    <section name="FILE" nameGroup="1" openBlockGroup="2" closingBlock="" endsWith="END_OF_FILE" regexp="^().*$" dotAll="false" casesensitive="false" multiline="true">
+      <!--
+      <section name="PROCEDURE" nameGroup="1" openBlockGroup="2" closingBlock="" endsWith="OTHER_SECTION" regexp="^[A-Z0-9\s]{0,6}[\s|D]([A-Z0-9-]+)(\sSECTION)?(\.)\s*$" dotAll="false" casesensitive="false" multiline="true">
+      </section>
+      -->
+    </section>
+  </sections>
+  <detectors>
+  <!--
+    <detector id="NL" commentUseStrategy="KEEP_COMMENTS">
+      <rule regexp=".*" dotAll="true" casesensitive="false" group="0" countType="COUNT_LINES" />
+    </detector>
+    <detector id="LOC" commentUseStrategy="CLEAR_COMMENTS">
+      <rule regexp=".*" dotAll="true" casesensitive="false" group="0" countType="COUNT_NON_EMPTY_LINES" />
+    </detector>
+    <detector id="CLOC" commentUseStrategy="COMMENTS_ONLY">
+      <rule regexp=".*" dotAll="true" casesensitive="false" group="0" countType="COUNT_NON_EMPTY_LINES" />
+    </detector>
+    <detector id="PROCEDURE_DIV_LOC" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule regexp="PROCEDURE DIVISION.*" dotAll="true" casesensitive="false" group="0" countType="COUNT_NON_EMPTY_LINES" />
+    </detector>
+    <detector id="PROCEDURE_DIV_CLOC" commentUseStrategy="COMMENTS_ONLY" target="FILE">
+      <rule regexp="PROCEDURE DIVISION.*" dotAll="true" casesensitive="false" group="0" countType="COUNT_NON_EMPTY_LINES" />
+    </detector>
+    -->
+    <detector id="NB_ALTER" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule regexp="\sALTER\s" dotAll="false" casesensitive="false" group="0" countType="COUNT_DETECT" />
+    </detector>
+    <detector id="NB_EXECUTE" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule regexp='\sEXECUTE\s' dotAll="false" casesensitive="false" group="0" countType="COUNT_DETECT" />
+    </detector>
+    <detector id="NB_STRING" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule regexp="\sSTRING\s" dotAll="false" casesensitive="false" group="0" countType="COUNT_DETECT" />
+    </detector>
+    <detector id="NB_UNSTRING" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule regexp="\sUNSTRING\s" dotAll="false" casesensitive="false" group="0" countType="COUNT_DETECT" />
+    </detector>
+    <detector id="NB_ADDCORRESPONDING" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule regexp="\sADD\s+CORRESPONDING\s" dotAll="false" casesensitive="false" group="0" countType="COUNT_DETECT" />
+      <rule regexp="\sADD\s+CORR\s" dotAll="false" casesensitive="false" group="0" countType="COUNT_DETECT" />
+    </detector>
+    <detector id="NB_MOVECORRESPONDING" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule regexp="\sMOVE\s+CORRESPONDING\s" dotAll="false" casesensitive="false" group="0" countType="COUNT_DETECT" />
+      <rule regexp="\sMOVE\s+CORR\s" dotAll="false" casesensitive="false" group="0" countType="COUNT_DETECT" />
+    </detector>
+    <detector id="NB_SUBSTRACTCORRESPONDING" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule regexp="\sSUBTRACT\s+CORRESPONDING\s" dotAll="false" casesensitive="false" group="0" countType="COUNT_DETECT" />
+      <rule regexp="\sSUBTRACT\s+CORR\s" dotAll="false" casesensitive="false" group="0" countType="COUNT_DETECT" />
+    </detector>
+    <detector id="NB_CALL" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule regexp="\s(CALL)\s" dotAll="false" casesensitive="false" group="1" countType="COUNT_DETECT" />
+    </detector>
+    <detector id="NB_TWO_OPERANDS_COMPUTE" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule regexp='^([^"\n]*\s)(COMPUTE\s+[A-Z0-9\(\)-]+\s*=\s*[A-Z0-9\(\)-]+\s*\+\s*[A-Z0-9\(\)-]+\s*)\.\s*$' dotAll="false" casesensitive="false" group="2" countType="COUNT_DETECT" multiline="true" />
+      <rule regexp='^([^"\n]*\s)(COMPUTE\s+[A-Z0-9\(\)-]+\s*=\s*[A-Z0-9\(\)-]+\s*\*\s*[A-Z0-9\(\)-]+\s*)\.\s*$' dotAll="false" casesensitive="false" group="2" countType="COUNT_DETECT" multiline="true" />
+      <rule regexp='^([^"\n]*\s)(COMPUTE\s+[A-Z0-9\(\)-]+\s*=\s*[A-Z0-9\(\)-]+\s+-\s+[A-Z0-9\(\)-]+\s*)\.\s*$' dotAll="false" casesensitive="false" group="2" countType="COUNT_DETECT" multiline="true" />
+      <rule regexp='^([^"\n]*\s)(COMPUTE\s+[A-Z0-9\(\)-]+\s*=\s*[A-Z0-9\(\)-]+\s*/\s*[A-Z0-9\(\)-]+\s*)\.\s*$' dotAll="false" casesensitive="false" group="2" countType="COUNT_DETECT" multiline="true" />
+      <rule regexp='^([^"\n]*\s)(COMPUTE\s+[A-Z0-9\(\)-]+\s*=\s*[A-Z0-9\(\)-]+\s*)\.\s*$' dotAll="false" casesensitive="false" group="2" countType="COUNT_DETECT" multiline="true" />
+    </detector>
+
+    <detector id="NO_WHEN_OTHER_IN_EVALUATE" commentUseStrategy="CLEAR_COMMENTS" target="FILE">
+      <rule compareRegexp=".*WHEN\s+OTHER.*" compareType="notequal" regexp="(EVALUATE\s.*?)END-EVALUATE" dotAll="true" casesensitive="false" group="1" countType="COUNT_DETECT" />
+    </detector>
+    
+    <detector id="ENTETE" commentUseStrategy="COMMENTS_ONLY" target="FILE">
+      <rule regexp="\*\s*RENSEIGNEMENTS\s+GENERAUX\s+.*\*\s*DESCRIPTION\s+SYNTHETIQUE\s+.*\*\s*INFORMATIONS\s+TECHNIQUES\s+.*\*\s*MODIFICATIONS\s+.*" dotAll="true" casesensitive="false" group="0" countType="COUNT_DETECT" />
+    </detector>
+
+    <detector id="COMMENT_BEFORE_PARAGRAPH" commentUseStrategy="KEEP_COMMENTS" target="FILE">
+      <rule regexp="\n\s*[^\*\n]+[\n]+[A-Z0-9\s]{0,6}[\s|D]([A-Z0-9-]+)(\sSECTION)?\.\s*\n" dotAll="false" casesensitive="false" group="1" countType="COUNT_DETECT" />
+    </detector>
+
+  </detectors>
+</parserConfiguration>

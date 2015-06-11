@@ -1,0 +1,5 @@
+.error{background-image:url(/ext/plugins/notification/exclamation.gif);}
+.information{background-image:url(/ext/plugins/notification/information.gif) ! important;}
+.x-notification .x-window-body{margin: 0;padding-top:1em ! important; padding-bottom: 1em ! important;}
+.x-notification .x-tool-close{display: none}
+.x-notification.fixed .x-tool-close{display: block}

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:process="http://www.bonitasoft.org/ns/studio/process">
+  <process:MainProcess xmi:id="_q8O7oBjfEeC4E4kKkm-5MQ" name="report_generator" label="report_generator" bonitaVersion="5.3">
+    <elements xmi:type="process:Pool" xmi:id="_q8Z6wBjfEeC4E4kKkm-5MQ" name="report_generator" label="report_generator">
+      <elements xmi:type="process:EndEvent" xmi:id="_q8jEsBjfEeC4E4kKkm-5MQ" name="BonitaEnd" label="BonitaEnd" incoming="_q9F3QBjfEeC4E4kKkm-5MQ"/>
+      <elements xmi:type="process:Activity" xmi:id="_q8pLUBjfEeC4E4kKkm-5MQ" name="BonitaInit" label="BonitaInit" outgoing="_q9HscBjfEeC4E4kKkm-5MQ"/>
+      <elements xmi:type="process:Task" xmi:id="_q8xuMBjfEeC4E4kKkm-5MQ" name="InitReportGeneration" label="InitReportGeneration" outgoing="_q9ECEBjfEeC4E4kKkm-5MQ" incoming="_q9HscBjfEeC4E4kKkm-5MQ" groups="_q8h2mhjfEeC4E4kKkm-5MQ" overrideGroupsOfTheLane="true">
+        <connectors xmi:type="process:Connector" xmi:id="_q8yVQxjfEeC4E4kKkm-5MQ" name="com_compuware_caqs_workflow_common_InitReportGenerationProcessHook" label="com.compuware.caqs.workflow.common.InitReportGenerationProcessHook" connectorId="HookProcessConnector" event="taskOnReady">
+          <parameters xmi:type="process:Parameter" xmi:id="_q8yVRBjfEeC4E4kKkm-5MQ" key="setClassName" value="ACED0005740042636F6D2E636F6D7075776172652E636171732E776F726B666C6F772E636F6D6D6F6E2E496E69745265706F727447656E65726174696F6E50726F63657373486F6F6B"/>
+        </connectors>
+      </elements>
+      <elements xmi:type="process:Activity" xmi:id="_q86REBjfEeC4E4kKkm-5MQ" name="Generate_Report" label="Generate Report" outgoing="_q9F3QBjfEeC4E4kKkm-5MQ" incoming="_q9ECEBjfEeC4E4kKkm-5MQ">
+        <connectors xmi:type="process:Connector" xmi:id="_q87fMBjfEeC4E4kKkm-5MQ" name="com_compuware_caqs_workflow_common_ReportGenerationHook" label="com.compuware.caqs.workflow.common.ReportGenerationHook" connectorId="HookProcessConnector" event="automaticOnEnter">
+          <parameters xmi:type="process:Parameter" xmi:id="_q87fMRjfEeC4E4kKkm-5MQ" key="setClassName" value="ACED0005740037636F6D2E636F6D7075776172652E636171732E776F726B666C6F772E636F6D6D6F6E2E5265706F727447656E65726174696F6E486F6F6B"/>
+        </connectors>
+        <data xmi:type="process:Data" xmi:id="_q87fMhjfEeC4E4kKkm-5MQ" name="URL" label="URL" dataType="_q8O7pxjfEeC4E4kKkm-5MQ" defaultValue="/caqs/report"/>
+      </elements>
+      <errorTemplate xmi:type="process:AssociatedFile" xmi:id="_rHphchjfEeC4E4kKkm-5MQ" path="Provided/black/html/error.html"/>
+      <processTemplate xmi:type="process:AssociatedFile" xmi:id="_rHphcRjfEeC4E4kKkm-5MQ" path="Provided/black/html/process.html"/>
+      <pageTemplate xmi:type="process:AssociatedFile" xmi:id="_rHphcxjfEeC4E4kKkm-5MQ" path="Provided/black/html/page.html"/>
+      <consultationTemplate xmi:type="process:AssociatedFile" xmi:id="_rHphdRjfEeC4E4kKkm-5MQ" path="Provided/black/html/consultation.html"/>
+      <data xmi:type="process:Data" xmi:id="_q8h2kBjfEeC4E4kKkm-5MQ" name="HTTP_SERVER_CONTEXT_PATH" label="HTTP_SERVER_CONTEXT_PATH" dataType="_q8O7pxjfEeC4E4kKkm-5MQ" defaultValue="http://localhost:8080/caqs"/>
+      <data xmi:type="process:Data" xmi:id="_q8h2kRjfEeC4E4kKkm-5MQ" name="PROJECT_ID" label="PROJECT_ID" dataType="_q8O7pxjfEeC4E4kKkm-5MQ"/>
+      <data xmi:type="process:Data" xmi:id="_q8h2khjfEeC4E4kKkm-5MQ" name="ID_EA" label="ID_EA" dataType="_q8O7pxjfEeC4E4kKkm-5MQ"/>
+      <data xmi:type="process:Data" xmi:id="_q8h2kxjfEeC4E4kKkm-5MQ" name="BASELINE_ID" label="BASELINE_ID" dataType="_q8O7pxjfEeC4E4kKkm-5MQ"/>
+      <data xmi:type="process:Data" xmi:id="_q8h2lBjfEeC4E4kKkm-5MQ" name="USER_ID" label="USER_ID" dataType="_q8O7pxjfEeC4E4kKkm-5MQ"/>
+      <data xmi:type="process:Data" xmi:id="_q8h2lRjfEeC4E4kKkm-5MQ" name="LANGUAGE_ID" label="LANGUAGE_ID" dataType="_q8O7pxjfEeC4E4kKkm-5MQ"/>
+      <data xmi:type="process:Data" xmi:id="_q8h2lhjfEeC4E4kKkm-5MQ" name="ID_MESS" label="ID_MESS" dataType="_q8O7pxjfEeC4E4kKkm-5MQ"/>
+      <data xmi:type="process:Data" xmi:id="_q8h2lxjfEeC4E4kKkm-5MQ" name="lastUrl" label="lastUrl" dataType="_q8O7pxjfEeC4E4kKkm-5MQ"/>
+      <confirmationTemplate xmi:type="process:AssociatedFile" xmi:id="_rHphdBjfEeC4E4kKkm-5MQ" path="Provided/black/html/confirmation.html"/>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_q9ECEBjfEeC4E4kKkm-5MQ" name="InitreportGeneration_Generate_Report" label="InitreportGeneration_Generate Report" source="_q8xuMBjfEeC4E4kKkm-5MQ" target="_q86REBjfEeC4E4kKkm-5MQ"/>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_q9F3QBjfEeC4E4kKkm-5MQ" name="Generate_Report_End" label="Generate Report_End" source="_q86REBjfEeC4E4kKkm-5MQ" target="_q8jEsBjfEeC4E4kKkm-5MQ"/>
+      <connections xmi:type="process:SequenceFlow" xmi:id="_q9HscBjfEeC4E4kKkm-5MQ" name="Start_InitreportGeneration" label="Start_InitreportGeneration" source="_q8pLUBjfEeC4E4kKkm-5MQ" target="_q8xuMBjfEeC4E4kKkm-5MQ"/>
+    </elements>
+    <groups xmi:type="process:Group" xmi:id="_q8h2mBjfEeC4E4kKkm-5MQ" name="system" label="system"/>
+    <groups xmi:type="process:Group" xmi:id="_q8h2mRjfEeC4E4kKkm-5MQ" name="admin" label="admin" connectorId="ProcessInitiatior"/>
+    <groups xmi:type="process:Group" xmi:id="_q8h2mhjfEeC4E4kKkm-5MQ" name="john" label="john" connectorId="User List">
+      <parameters xmi:type="process:Parameter" xmi:id="_q8h2mxjfEeC4E4kKkm-5MQ" key="setUsers" value="ACED00057400046A6F686E"/>
+    </groups>
+    <datatypes xmi:type="process:BooleanType" xmi:id="_q8O7oxjfEeC4E4kKkm-5MQ" name="Boolean" label="Boolean"/>
+    <datatypes xmi:type="process:IntegerType" xmi:id="_q8O7pRjfEeC4E4kKkm-5MQ" name="Integer" label="Integer"/>
+    <datatypes xmi:type="process:FloatType" xmi:id="_q8O7phjfEeC4E4kKkm-5MQ" name="Decimal" label="Decimal"/>
+    <datatypes xmi:type="process:StringType" xmi:id="_q8O7pxjfEeC4E4kKkm-5MQ" name="Text" label="Text"/>
+    <datatypes xmi:type="process:AttachmentType" xmi:id="_q8O7qBjfEeC4E4kKkm-5MQ" name="Attachment" label="Attachment"/>
+    <datatypes xmi:type="process:JavaType" xmi:id="_q8O7qRjfEeC4E4kKkm-5MQ" name="Java_object" label="Java object"/>
+    <datatypes xmi:type="process:XMLType" xmi:id="_q8O7qhjfEeC4E4kKkm-5MQ" name="XML" label="XML"/>
+    <datatypes xmi:type="process:DateType" xmi:id="_rHP40BjfEeC4E4kKkm-5MQ" name="Date" label="Date"/>
+    <datatypes xmi:type="process:AttachmentType" xmi:id="_rHTjMBjfEeC4E4kKkm-5MQ" name="Attachment" label="Attachment"/>
+    <datatypes xmi:type="process:JavaType" xmi:id="_rHWmgBjfEeC4E4kKkm-5MQ" name="Java_object" label="Java object"/>
+    <datatypes xmi:type="process:XMLType" xmi:id="_rH6nMBjfEeC4E4kKkm-5MQ" name="XML" label="XML"/>
+    <includedEntries>bonita/bonita-5.3.2.jar</includedEntries>
+    <includedEntries>report_generator_1.0-classes.jar</includedEntries>
+  </process:MainProcess>
+  <notation:Diagram xmi:id="_q8O7oRjfEeC4E4kKkm-5MQ" type="Process" element="_q8O7oBjfEeC4E4kKkm-5MQ" name="dest2125761287174114505.proc" measurementUnit="Pixel">
+    <children xmi:type="notation:Node" xmi:id="_q8ah0BjfEeC4E4kKkm-5MQ" type="2007" element="_q8Z6wBjfEeC4E4kKkm-5MQ">
+      <children xmi:type="notation:DecorationNode" xmi:id="_q8ah1RjfEeC4E4kKkm-5MQ" type="5008"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_q8ah1hjfEeC4E4kKkm-5MQ" type="7001">
+        <children xmi:type="notation:Shape" xmi:id="_q8jEsRjfEeC4E4kKkm-5MQ" type="3003" element="_q8jEsBjfEeC4E4kKkm-5MQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_q8jEsxjfEeC4E4kKkm-5MQ" type="5025">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_q8jEtBjfEeC4E4kKkm-5MQ" y="5"/>
+          </children>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_q8jEshjfEeC4E4kKkm-5MQ" x="663" y="146"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_q8pyYBjfEeC4E4kKkm-5MQ" type="3006" element="_q8pLUBjfEeC4E4kKkm-5MQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_q8pyYhjfEeC4E4kKkm-5MQ" type="5006"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_q8pyYRjfEeC4E4kKkm-5MQ" x="3" y="146"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_q8yVQBjfEeC4E4kKkm-5MQ" type="3005" element="_q8xuMBjfEeC4E4kKkm-5MQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_q8yVQhjfEeC4E4kKkm-5MQ" type="5005"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_q8yVQRjfEeC4E4kKkm-5MQ" x="171" y="168" width="120" height="60"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_q864IBjfEeC4E4kKkm-5MQ" type="3006" element="_q86REBjfEeC4E4kKkm-5MQ">
+          <children xmi:type="notation:DecorationNode" xmi:id="_q864IhjfEeC4E4kKkm-5MQ" type="5006"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_q864IRjfEeC4E4kKkm-5MQ" x="422" y="158" width="120" height="60"/>
+        </children>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_q8ah0RjfEeC4E4kKkm-5MQ"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_q8ah0hjfEeC4E4kKkm-5MQ"/>
+      <styles xmi:type="notation:LineStyle" xmi:id="_q8ah0xjfEeC4E4kKkm-5MQ"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_q8ah1BjfEeC4E4kKkm-5MQ" width="712" height="300"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_q8O7ohjfEeC4E4kKkm-5MQ"/>
+    <edges xmi:type="notation:Connector" xmi:id="_q9ECERjfEeC4E4kKkm-5MQ" type="4001" element="_q9ECEBjfEeC4E4kKkm-5MQ" source="_q8yVQBjfEeC4E4kKkm-5MQ" target="_q864IBjfEeC4E4kKkm-5MQ" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_q9EpIBjfEeC4E4kKkm-5MQ" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q9EpIRjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_q9EpIhjfEeC4E4kKkm-5MQ" type="6002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q9EpIxjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_q9ECEhjfEeC4E4kKkm-5MQ"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_q9ECExjfEeC4E4kKkm-5MQ" points="[0, 0, -251, 10]$[251, -10, 0, 0]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_q9F3QRjfEeC4E4kKkm-5MQ" type="4001" element="_q9F3QBjfEeC4E4kKkm-5MQ" source="_q864IBjfEeC4E4kKkm-5MQ" target="_q8jEsRjfEeC4E4kKkm-5MQ" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_q9GeUBjfEeC4E4kKkm-5MQ" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q9GeURjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_q9GeUhjfEeC4E4kKkm-5MQ" type="6002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q9GeUxjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_q9F3QhjfEeC4E4kKkm-5MQ"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_q9F3QxjfEeC4E4kKkm-5MQ" points="[0, 0, 422, 158]$[-422, -158, 0, 0]"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_q9HscRjfEeC4E4kKkm-5MQ" type="4001" element="_q9HscBjfEeC4E4kKkm-5MQ" source="_q8pyYBjfEeC4E4kKkm-5MQ" target="_q8yVQBjfEeC4E4kKkm-5MQ" roundedBendpointsRadius="10" routing="Rectilinear">
+      <children xmi:type="notation:DecorationNode" xmi:id="_q9ITgBjfEeC4E4kKkm-5MQ" type="6001">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q9ITgRjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_q9ITghjfEeC4E4kKkm-5MQ" type="6002">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_q9ITgxjfEeC4E4kKkm-5MQ" y="-10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_q9HschjfEeC4E4kKkm-5MQ"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_q9HscxjfEeC4E4kKkm-5MQ" points="[0, 0, -146, -22]$[146, 22, 0, 0]"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>

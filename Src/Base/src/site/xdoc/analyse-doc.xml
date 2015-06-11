@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<document>
+
+  <properties>
+    <title>Analyses</title>
+  </properties>
+  
+  <head>
+  </head>
+  
+  <body>
+	<section name="Lancement d'une analyse">
+		<p>
+		Pour lancer une analyse, il faut appeler la servlet com.compuware.carscode.servlet.AnalyseStatiqueServlet en lui passant les paramètres suivants:<BR/>
+<table>
+	<tr>
+		<th>Paramètre</th><th>Facultatif</th><th>Description</th>
+	</tr>
+	<tr>
+		<td>projectId</td>
+		<td>Non</td>
+		<td>L'identifiant du projet.</td>
+	</tr>
+	<tr>
+		<td>baselineId</td>
+		<td>Non</td>
+		<td>L'identifiant de la baseline.</td>
+	</tr>
+	<tr>
+		<td>tool</td>
+		<td>Non</td>
+		<td>L'outil utilisé pour l'analyse parmis mccabe,checkstyle,optimaladvisor,cast,flawfinder,pqc,uml.</td>
+	</tr>
+	<tr>
+		<td>step</td>
+		<td>Non</td>
+		<td>L'étape de l'analyse à exécuter parmis analyse (analyse seule),load (chargement seul), analyseandload (analyse et chargement).</td>
+	</tr>
+	<tr>
+		<td>master</td>
+		<td>Oui</td>
+		<td>Indique si l'analyse à exécuter est l'analyse principale ou non. Les valeurs sont true et false. Par défaut: false.</td>
+	</tr>
+</table>
+		</p>
+	</section>
+	<section name="Exécution d'un script ant">
+		<p>
+		Il est possible d'exécuter un script ant sur un projet et une baseline donnée. Cela permet par exemple d'obtenir les fichiers sources, de les compiler, de les tranformer en html pour les visualiser par la suite, etc...<BR/>
+		Un fichier build.xml doit être présent dans le répertoire spécifié pour les sources de chaque entité applicative.<BR/>
+		Pour exécuter une cible d'un script ant il faut exécuter la servlet com.compuware.carscode.servlet.SourceManagerServlet en passant les paramètres suivants:
+<table>
+	<tr>
+		<th>Paramètre</th><th>Facultatif</th><th>Description</th>
+	</tr>
+	<tr>
+		<td>id_pro</td>
+		<td>Oui</td>
+		<td>L'identifiant du projet.</td>
+	</tr>
+	<tr>
+		<td>id_bline</td>
+		<td>Non</td>
+		<td>L'identifiant de la baseline.</td>
+	</tr>
+	<tr>
+		<td>eaId</td>
+		<td>Oui</td>
+		<td>L'identifiant de l'entité applicative. Obligatoire si l'identifiant du projet est absent.</td>
+	</tr>
+	<tr>
+		<td>goal</td>
+		<td>Oui</td>
+		<td>La cible du script ant à exécuter. Pour la recopie des sources au format HTML pour visualisation dans CAQS, la cible est "transformAndCopy".</td>
+	</tr>
+</table>
+		</p>
+	</section>
+	<section name="Exécution des calculs">
+		<p>
+		Les calculs sont exécutés sur un projet pour une baseline donnée.<BR/>
+		Pour lancer un calcul il faut exécuter la servlet com.compuware.carscode.presentation.consult.servlets.CalculServlet en passant les paramètres suivants:
+<table>
+	<tr>
+		<th>Paramètre</th><th>Facultatif</th><th>Description</th>
+	</tr>
+	<tr>
+		<td>id_pro</td>
+		<td>Non</td>
+		<td>L'identifiant du projet.</td>
+	</tr>
+	<tr>
+		<td>id_bline</td>
+		<td>Non</td>
+		<td>L'identifiant de la baseline.</td>
+	</tr>
+	<tr>
+		<td>metrics</td>
+		<td>Non</td>
+		<td>Indique si les métriques doivent être calculées également ou non (copier-coller, volumétrie, etc...). Les valeurs possibles sont true ou false.</td>
+	</tr>
+</table>
+		</p>
+	</section>
+	<section name="Fichier CSV consolidé">
+	  <p>
+		Le format de fichier CSV consolidé et intégrable dans l'application CAQS doit contenir la première ligne suivante:
+		<source>
+eltIdentifier;eltSrcPath;eltSrcLine;{une liste d'identifiant de métrique en majuscule}
+		</source>
+Les colonnes indiquées correspondent:
+<table>
+	<tr><td>eltIdentifier</td><td>la description complète de l'élément.</td></tr>
+	<tr><td>eltSrcPath</td><td>le path complet d'accès au fichier source, nom de fichier inclu.</td></tr>
+	<tr><td>eltSrcLine</td><td>la ligne dans le fichier où se trouve l'élément.</td></tr>
+	<tr><td>METID</td><td>l'identifiant de la métrique associée à l'erreur détectée.</td></tr>
+</table>
+	  </p>
+	</section>
+    <section name="Checkstyle">
+		<subsection name="Fichier XML généré">
+		  <p>
+			Le format du fichier XML généré par Checkstyle est du type:<BR/>
+			<source>
+	<checkstyle version="3.4">
+		<file name="{FULL_PATH}\{NOM_CLASS}.java">
+<error line="{ligne de l'erreur}" column="{colonne de l erreur}" severity="{la sévérité}" message="{le message associé}" source="{le nom complet de la_classe de détection d'erreur}"/>
+<error line="{ligne de l'erreur}" column="{colonne de l erreur}" severity="{la sévérité}" message="{le message associé}" source="{le nom complet de la_classe de détection d'erreur}"/>
+etc...
+		</file>
+	</checkstyle>
+			</source>
+		  </p>
+		</subsection>
+		<subsection name="Fichier CSV généré">
+		  <p>
+			Un premier fichier CSV est généré via le fichier "traitements\Configuration\Ressources\checkstyle\checkstyle-csv.xsl". Chaque ligne du fichier généré est de la forme:
+			<source>
+{FULL_PATH}\{NOM_CLASS}.java;{ligne de l'erreur};{colonne de l erreur};{la sévérité};{le message associé};{le nom complet de la_classe de détection d'erreur}
+			</source>
+		  </p>
+		</subsection>
+	</section>
+  </body>
+</document>

@@ -1,0 +1,632 @@
+<?xml version="1.0"?>
+ <project>
+   <pomVersion>1</pomVersion>
+   <groupId>caqs</groupId>
+   <id>carscode</id>
+   <currentVersion>4.1</currentVersion>
+   <name>CaqsBase</name>
+
+   <!--         Project Management section  goes here        -->
+	<organization>
+      <name>Compuware-France</name>
+      <url>http://www.compuware.fr</url>
+      <logo>http://www.compuware.com/images/masthead/masthead_left_tagline.jpg</logo>
+   </organization>
+
+   <inceptionYear>2005</inceptionYear>
+   <package>com.compuware.*</package>
+   <logo>http://www.compuware.com/project-logo.jpg</logo>
+   <description>CAQS Project</description>
+   <shortDescription>CAQS Project</shortDescription>
+   <url>http://www.compuware.com</url>
+   <issueTrackingUrl>http://cwfr-d144/cgi-win/itemview.dll</issueTrackingUrl>
+   <siteAddress>http://localhost:8080/docs/</siteAddress>
+   <siteDirectory>D:/Tomcat 4.1/webapps/docs</siteDirectory>
+   <distributionDirectory>D:/CarsCode/Maven/Build</distributionDirectory>
+
+   <repository>
+      <connection>scm:svn:svn://cwfr-s934/caqs/Development/Src/trunk/Base</connection>
+      <url>http://www.compuware.com</url>
+   </repository>
+
+   <mailingLists>
+      <mailingList>
+         <name>Dev List</name>
+         <subscribe>subscribe-caqs-dev@compuware.com</subscribe>
+         <unsubscribe>unsubscribe-caqs-dev@compuware.com</unsubscribe>
+      </mailingList>
+   </mailingLists>
+
+   <developers>
+      <developer>
+         <name>Dubois Frederic</name>
+         <id>fdubois</id>
+         <email>Frederic.Dubois@compuware.com</email>
+      </developer>
+
+      <developer>
+         <name>Albouy Francois-Xavier</name>
+         <id>falbouy</id>
+         <email>Francois.Xavier.Albouy@compuware.com</email>
+      </developer>
+
+      <developer>
+         <name>Izac Laurent</name>
+         <id>lizac</id>
+         <email>Laurent.Izac@compuware.com</email>
+      </developer>
+
+      <developer>
+         <name>Zysman David</name>
+         <id>dzysman</id>
+         <email>David.Zysman@compuware.com</email>
+      </developer>
+
+      <developer>
+         <name>Albanese Isabelle</name>
+         <id>ialbanese</id>
+         <email>Isabelle.Albanese@compuware.com</email>
+      </developer>
+   </developers>
+
+   <!--         Project Dependency section  goes here        -->
+	<dependencies>
+
+  <!--	
+    <dependency>
+        <groupId>aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+        <version>1.5.2a</version>
+        <url>http://www.eclipse.org/aspectj</url>
+        <properties>
+            <war.bundle>true</war.bundle>
+        </properties>
+    </dependency>
+  -->
+  
+  	  <dependency>
+    		<groupId>axis</groupId>
+    		<artifactId>axis</artifactId>
+    		<version>1.4</version>
+  		  <properties>
+  			 <war.bundle>true</war.bundle>
+  		  </properties>
+  	  </dependency>
+
+       <dependency>
+         <groupId>axis</groupId>
+         <artifactId>axis-jaxrpc</artifactId>
+         <version>1.2</version>
+  		  <properties>
+  			 <war.bundle>true</war.bundle>
+  		  </properties>
+       </dependency>
+
+     <dependency>
+         <groupId>axis</groupId>
+         <artifactId>axis-saaj</artifactId>
+         <version>1.2</version>
+  		  <properties>
+  			 <war.bundle>true</war.bundle>
+  		  </properties>
+     </dependency>
+
+     <dependency>
+         <groupId>commons-discovery</groupId>
+         <artifactId>commons-discovery</artifactId>
+         <version>0.2</version>
+  		  <properties>
+  			 <war.bundle>true</war.bundle>
+  		  </properties>
+     </dependency>
+
+     <dependency>
+         <groupId>wsdl4j</groupId>
+         <artifactId>wsdl4j</artifactId>
+         <version>1.5.1</version>
+  		  <properties>
+  			 <war.bundle>true</war.bundle>
+  		  </properties>
+     </dependency>
+  
+     <dependency>
+         <groupId>caqs</groupId>
+         <artifactId>uvwsconnector</artifactId>
+         <version>1.0</version>
+  		  <properties>
+  			 <war.bundle>true</war.bundle>
+  		  </properties>
+     </dependency>
+        	
+		<dependency>
+		  <groupId>unifaceview</groupId>
+		  <artifactId>optimalviewconnector</artifactId>
+		  <version>8.4.0</version>
+		  <properties>
+			 <war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>unifaceview</groupId>
+		  <artifactId>poolman</artifactId>
+		  <version>1.0</version>
+		  <properties>
+			 <war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>unifaceflow</groupId>
+		  <artifactId>unet</artifactId>
+		  <version>1.0</version>
+		  <properties>
+			 <war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>unifaceflow</groupId>
+		  <artifactId>uniface_flow</artifactId>
+		  <version>1.0</version>
+		  <properties>
+			 <war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>jcs</groupId>
+		  <artifactId>jcs</artifactId>
+		  <version>1.2.7.9</version>
+		  <properties>
+			<war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>concurrent</groupId>
+		  <artifactId>concurrent</artifactId>
+		  <version>1.3.4</version>
+		  <properties>
+			<war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>commons-collections</groupId>
+		  <artifactId>commons-collections</artifactId>
+		  <version>3.2</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+				<war.target.path>applets</war.target.path>
+			</properties>
+		</dependency>
+
+		<dependency>
+		  <groupId>commons-beanutils</groupId>
+		  <artifactId>commons-beanutils</artifactId>
+		  <version>1.7.0</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+
+		<dependency>
+		  <groupId>json-lib</groupId>
+		  <artifactId>json-lib</artifactId>
+		  <version>2.2-jdk15</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+
+		<dependency>
+		  <groupId>ezmorph</groupId>
+		  <artifactId>ezmorph</artifactId>
+		  <version>1.0.4</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+
+		<dependency>
+		  <groupId>struts</groupId>
+		  <artifactId>struts-core</artifactId>
+		  <version>1.3.8</version>
+		  <properties>
+			<war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>struts</groupId>
+		  <artifactId>struts-taglib</artifactId>
+		  <version>1.3.8</version>
+		  <properties>
+			<war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>commons-io</groupId>
+		  <artifactId>commons-io</artifactId>
+		  <version>1.1</version>
+		  <properties>
+			<war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>commons-logging</groupId>
+		  <artifactId>commons-logging</artifactId>
+		  <version>1.0.4</version>
+		  <properties>
+			<war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+
+		<dependency>
+		  <groupId>commons-fileupload</groupId>
+		  <artifactId>commons-fileupload</artifactId>
+		  <version>1.1.1</version>
+		  <properties>
+			<war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>commons-chain</groupId>
+		  <artifactId>commons-chain</artifactId>
+		  <version>1.1</version>
+		  <properties>
+			<war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+		  <groupId>commons-digester</groupId>
+		  <artifactId>commons-digester</artifactId>
+		  <version>1.8</version>
+		  <properties>
+			<war.bundle>true</war.bundle>
+		  </properties>
+		</dependency>
+	
+		<dependency>
+			<groupId>caqs</groupId>
+			<artifactId>toolbox</artifactId>
+			<version>2.5</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+		
+		<dependency>
+			<groupId>caqs</groupId>
+			<artifactId>xmlcalcul</artifactId>
+			<version>2.6</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+		
+		<dependency>
+			<groupId>caqs</groupId>
+			<artifactId>scplugin</artifactId>
+			<version>1.0</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+		
+		<dependency>
+			<groupId>caqs</groupId>
+			<artifactId>unifaceflowlauncher</artifactId>
+			<version>1.0</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+		
+		<dependency>
+			<groupId>caqs</groupId>
+			<artifactId>applet-factory</artifactId>
+			<version>1.4</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+				<war.target.path>applets</war.target.path>
+			</properties>
+		</dependency>
+
+		<dependency>
+			<groupId>caqs</groupId>
+			<artifactId>architecture-applet</artifactId>
+			<version>3.4</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+				<war.target.path>applets</war.target.path>
+			</properties>
+		</dependency>
+
+		<dependency>
+			<groupId>caqs</groupId>
+			<artifactId>evolution-applet</artifactId>
+			<version>2.6</version>
+			<properties>
+				<war.target.path>applets</war.target.path>
+			</properties>
+		</dependency>
+
+		<dependency>
+			<groupId>caqs</groupId>
+			<artifactId>scatterplot-applet</artifactId>
+			<version>2.5</version>
+			<properties>
+				<war.target.path>applets</war.target.path>
+			</properties>
+		</dependency>
+		
+		<dependency>
+			<groupId>caqs</groupId>
+			<artifactId>graph-applet</artifactId>
+			<version>1.3</version>
+			<properties>
+				<war.target.path>applets</war.target.path>
+			</properties>
+		</dependency>
+		
+		<dependency>
+			<groupId>caqs</groupId>
+			<artifactId>usermgmt</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
+		  <dependency>
+  			<groupId>org/apache/commons/collections15/collections-generic</groupId>
+  			<artifactId>collections-generic</artifactId>
+  			<version>4.01</version>
+  			<properties>
+  				<war.target.path>applets</war.target.path>
+  			</properties>
+		  </dependency>
+		  <dependency>
+  			<groupId>colt</groupId>
+  			<artifactId>colt</artifactId>
+  			<version>1.2.0</version>
+  			<properties>
+  				<war.target.path>applets</war.target.path>
+  			</properties>
+		  </dependency>
+		  <dependency>
+  			<groupId>jung</groupId>
+  			<artifactId>jung-visualization</artifactId>
+  			<version>2.0-beta1</version>
+  			<properties>
+  				<war.target.path>applets</war.target.path>
+  			</properties>
+		  </dependency>
+		  <dependency>
+  			<groupId>jung</groupId>
+  			<artifactId>jung-algorithms</artifactId>
+  			<version>2.0-beta1</version>
+  			<properties>
+  				<war.target.path>applets</war.target.path>
+  			</properties>
+		  </dependency>
+		  <dependency>
+  			<groupId>jung</groupId>
+  			<artifactId>jung-api</artifactId>
+  			<version>2.0-beta1</version>
+  			<properties>
+  				<war.target.path>applets</war.target.path>
+  			</properties>
+		  </dependency>
+		  <dependency>
+  			<groupId>jung</groupId>
+  			<artifactId>jung-graph-impl</artifactId>
+  			<version>2.0-beta1</version>
+  			<properties>
+  				<war.target.path>applets</war.target.path>
+  			</properties>
+		  </dependency>
+		  <dependency>
+  			<groupId>jung</groupId>
+  			<artifactId>jung-io</artifactId>
+  			<version>2.0-beta1</version>
+  			<properties>
+  				<war.target.path>applets</war.target.path>
+  			</properties>
+		  </dependency>
+
+		  
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.2</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>1.2</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+	  
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+	  
+		<dependency>
+			<groupId>jcommon</groupId>
+			<artifactId>jcommon</artifactId>
+			<version>1.0.9</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+				<war.target.path>applets</war.target.path>
+			</properties>
+		</dependency>
+		
+		<dependency>
+			<groupId>cos</groupId>
+			<artifactId>cos</artifactId>
+			<version>1.0</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+
+		<dependency>
+			<groupId>oracle-jdbc</groupId>
+			<artifactId>oracle-jdbc</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>jfreechart</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.0.11</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+				<war.target.path>applets</war.target.path>
+			</properties>
+		</dependency>
+
+		<dependency>
+			<groupId>gnujaxp</groupId>
+			<artifactId>gnujaxp</artifactId>
+			<version>1.0</version>
+			<properties>
+				<war.target.path>applets</war.target.path>
+			</properties>
+		</dependency>
+	  
+		<dependency>
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.0</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+
+		<dependency>
+			<groupId>regexp</groupId>
+			<artifactId>regexp</artifactId>
+			<version>1.3</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+
+		<dependency>
+			<groupId>servletapi</groupId>
+			<artifactId>servletapi</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+		<dependency>
+		  <groupId>jspapi</groupId>
+		  <artifactId>jsp-api</artifactId>
+		  <version>2.0</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xerces</artifactId>
+			<version>2.4.0</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+
+		<dependency>
+			<groupId>opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>1.6</version>
+			<properties>
+				<war.bundle>true</war.bundle>
+			</properties>
+		</dependency>
+
+  	  <dependency>
+    		<groupId>iText</groupId>
+    		<artifactId>iText</artifactId>
+    		<version>2.0.7</version>
+  		  <properties>
+  			 <war.bundle>true</war.bundle>
+  		  </properties>
+  	  </dependency>
+
+	</dependencies>
+
+   <!--            Project Build section goes here           -->
+   <build>
+	   <nagEmailAddress>Frederic.Dubois@compuware.com</nagEmailAddress>
+	   <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+	   <!--
+     <aspectSourceDirectory>${basedir}/src/main/aspectj</aspectSourceDirectory>
+     -->
+	   <unitTestSourceDirectory>${basedir}/src/test</unitTestSourceDirectory>
+	   <unitTest>
+		  <includes>
+			 <include>**/*Test.java</include>
+		  </includes>
+	   </unitTest>
+	
+	   <resources>
+		  <resource>
+			 <directory>${basedir}/src/main/resources</directory>
+			 <includes>
+				<include>*.conf</include>
+				<include>*.ccf</include>
+				<include>**/*.properties</include>
+				<include>*.dtd</include>
+				<include>*.xml</include>
+			 </includes>
+		  </resource>
+	   </resources>
+   </build>
+   
+   <!--           Project Reports section goes here          -->
+	<reports>
+	   <report>maven-javadoc-plugin</report>
+       <report>maven-faq-plugin</report>
+	   <report>maven-changes-plugin</report>
+	   <report>maven-jdepend-plugin</report>
+	   <report>maven-checkstyle-plugin</report>
+	   <report>maven-pmd-plugin</report>
+	   <report>maven-tasklist-plugin</report>
+	   <report>maven-junit-report-plugin</report>
+	   <report>maven-changelog-plugin</report>
+	   <report>maven-file-activity-plugin</report>
+	   <report>maven-developer-activity-plugin</report>
+	   <report>maven-file-activity-plugin</report>
+	   <report>maven-linkcheck-plugin</report>
+	   <report>maven-jxr-plugin</report>
+	</reports>
+ </project>

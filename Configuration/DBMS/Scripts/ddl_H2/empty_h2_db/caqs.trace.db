@@ -1,0 +1,240 @@
+03-20 09:44:08 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement ALTER TABLE ACTION_PLAN_CRITERION
+ ADD CONSTRAINT ID_ACTION_PLAN_FK
+  FOREIGN KEY (ID_ACTION_PLAN)
+  REFERENCES ACTION_PLAN(ID_ACTION_PLAN) 
+
+COMMIT[*] ; SQL statement:
+ALTER TABLE ACTION_PLAN_CRITERION
+ ADD CONSTRAINT ID_ACTION_PLAN_FK
+  FOREIGN KEY (ID_ACTION_PLAN)
+  REFERENCES ACTION_PLAN(ID_ACTION_PLAN) 
+
+commit [42000-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSQLException(Message.java:77)
+	at org.h2.message.Message.getSyntaxError(Message.java:130)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:469)
+	at org.h2.command.Parser.prepareCommand(Parser.java:248)
+	at org.h2.engine.Session.prepareLocal(Session.java:409)
+	at org.h2.engine.Session.prepareCommand(Session.java:370)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1045)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:366)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:210)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:619)
+03-20 09:47:50 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Constraint ACTION_PLAN_ID_BLINE_FK already exists; SQL statement:
+ALTER TABLE ACTION_PLAN
+ ADD CONSTRAINT ACTION_PLAN_ID_BLINE_FK
+  FOREIGN KEY (ID_BLINE)
+  REFERENCES BASELINE(ID_BLINE) [90045-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSQLException(Message.java:77)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:107)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:88)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:207)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:164)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:366)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:210)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:619)
+04-02 11:28:55 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table BLOB_TABLE not found; SQL statement:
+DROP TABLE BLOB_TABLE [42102-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSQLException(Message.java:77)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:63)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:93)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:207)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:164)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:366)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:210)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:619)
+04-02 11:28:58 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table BLOB_TABLE not found; SQL statement:
+DROP TABLE BLOB_TABLE [42102-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSQLException(Message.java:77)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:63)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:93)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:207)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:164)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:366)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:210)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:619)
+04-02 11:29:01 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table BLOB_TABLE not found; SQL statement:
+DROP TABLE BLOB_TABLE [42102-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSQLException(Message.java:77)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:63)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:93)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:207)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:164)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:366)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:210)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:619)
+04-27 12:10:46 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement CREATE TABLE STATISTICS (
+  PERIOD  DATE PRIMARY KEY NOT[*] NULL,
+  SUMCONN NUMERIC NOT NULL,
+  MAXCONN NUMERIC NOT NULL)
+  ) ; expected ); SQL statement:
+CREATE TABLE STATISTICS (
+  PERIOD  DATE PRIMARY KEY NOT NULL,
+  SUMCONN numeric NOT NULL,
+  MAXCONN numeric NOT NULL)
+  ) [42001-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSyntaxError(Message.java:143)
+	at org.h2.command.Parser.read(Parser.java:2523)
+	at org.h2.command.Parser.readIfMore(Parser.java:764)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:4678)
+	at org.h2.command.Parser.parseCreate(Parser.java:3454)
+	at org.h2.command.Parser.parsePrepared(Parser.java:321)
+	at org.h2.command.Parser.parse(Parser.java:288)
+	at org.h2.command.Parser.parse(Parser.java:260)
+	at org.h2.command.Parser.prepareCommand(Parser.java:232)
+	at org.h2.engine.Session.prepareLocal(Session.java:409)
+	at org.h2.engine.Session.prepareCommand(Session.java:370)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1045)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:366)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:210)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:619)
+04-27 12:10:58 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement CREATE TABLE STATISTICS (
+  PERIOD  DATE PRIMARY KEY NOT[*] NULL,
+  SUMCONN NUMERIC NOT NULL,
+  MAXCONN NUMERIC NOT NULL) ; expected ); SQL statement:
+CREATE TABLE STATISTICS (
+  PERIOD  DATE PRIMARY KEY NOT NULL,
+  SUMCONN numeric NOT NULL,
+  MAXCONN numeric NOT NULL) [42001-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSyntaxError(Message.java:143)
+	at org.h2.command.Parser.read(Parser.java:2523)
+	at org.h2.command.Parser.readIfMore(Parser.java:764)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:4678)
+	at org.h2.command.Parser.parseCreate(Parser.java:3454)
+	at org.h2.command.Parser.parsePrepared(Parser.java:321)
+	at org.h2.command.Parser.parse(Parser.java:288)
+	at org.h2.command.Parser.parse(Parser.java:260)
+	at org.h2.command.Parser.prepareCommand(Parser.java:232)
+	at org.h2.engine.Session.prepareLocal(Session.java:409)
+	at org.h2.engine.Session.prepareCommand(Session.java:370)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1045)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:366)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:210)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:619)
+04-27 12:11:07 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement CREATE TABLE STATISTICS (
+  PERIOD  DATE PRIMARY KEY NOT[*] NULL,
+  SUMCONN NUMERIC NOT NULL,
+  MAXCONN NUMERIC NOT NULL) ; expected ); SQL statement:
+CREATE TABLE STATISTICS (
+  PERIOD  DATE PRIMARY KEY NOT NULL,
+  SUMCONN numeric NOT NULL,
+  MAXCONN numeric NOT NULL) [42001-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSyntaxError(Message.java:143)
+	at org.h2.command.Parser.read(Parser.java:2523)
+	at org.h2.command.Parser.readIfMore(Parser.java:764)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:4678)
+	at org.h2.command.Parser.parseCreate(Parser.java:3454)
+	at org.h2.command.Parser.parsePrepared(Parser.java:321)
+	at org.h2.command.Parser.parse(Parser.java:288)
+	at org.h2.command.Parser.parse(Parser.java:260)
+	at org.h2.command.Parser.prepareCommand(Parser.java:232)
+	at org.h2.engine.Session.prepareLocal(Session.java:409)
+	at org.h2.engine.Session.prepareCommand(Session.java:370)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1045)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:366)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:210)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:619)
+04-27 13:48:48 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSQLException(Message.java:77)
+	at org.h2.message.Message.getSQLException(Message.java:153)
+	at org.h2.jdbc.JdbcStatement.checkClosed(JdbcStatement.java:854)
+	at org.h2.jdbc.JdbcStatement.cancel(JdbcStatement.java:514)
+	at net.sourceforge.squirrel_sql.client.session.CancelStatementThread.run(CancelStatementThread.java:67)
+10-01 11:04:06 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement CREATE TABLE STATS (
+   PERIOD  DATE NOT NULL,
+   SUMCONN NUMBER(12) NOT NULL,
+   MAXCONN NUMBER(12) NOT NULL
+)
+STORAGE[*] (
+ 	INITIAL 	64 K
+	NEXT 	  	64 K
+	PCTINCREASE 10 
+)
+TABLESPACE %TABLE_TBS% ; SQL statement:
+CREATE TABLE STATS (
+   PERIOD  date NOT NULL,
+   SUMCONN number(12) NOT NULL,
+   MAXCONN number(12) NOT NULL
+)
+STORAGE (
+ 	INITIAL 	64 K
+	NEXT 	  	64 K
+	PCTINCREASE 10 
+)
+TABLESPACE %TABLE_TBS% [42000-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSQLException(Message.java:77)
+	at org.h2.message.Message.getSyntaxError(Message.java:130)
+	at org.h2.command.Parser.getSyntaxError(Parser.java:469)
+	at org.h2.command.Parser.prepareCommand(Parser.java:248)
+	at org.h2.engine.Session.prepareLocal(Session.java:409)
+	at org.h2.engine.Session.prepareCommand(Session.java:370)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1045)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:366)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:210)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:619)
+10-01 11:04:25 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table STATS already exists; SQL statement:
+CREATE TABLE STATS (
+   PERIOD  date NOT NULL,
+   SUMCONN number(12) NOT NULL,
+   MAXCONN number(12) NOT NULL
+) [42101-109]
+	at org.h2.message.Message.getSQLException(Message.java:107)
+	at org.h2.message.Message.getSQLException(Message.java:118)
+	at org.h2.message.Message.getSQLException(Message.java:77)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:113)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:71)
+	at org.h2.command.Command.executeUpdate(Command.java:207)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:164)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:366)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:210)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:619)

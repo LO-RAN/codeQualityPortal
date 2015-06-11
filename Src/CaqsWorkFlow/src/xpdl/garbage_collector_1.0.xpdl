@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://www.wfmc.org/2002/XPDL1.0" xmlns:xpdl="http://www.wfmc.org/2002/XPDL1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wfmc.org/2002/XPDL1.0 http://wfmc.org/standards/docs/TC-1025_schema_10_xpdl.xsd" Id="garbage_collector" Name="Garbage collector">
+  <PackageHeader>
+    <XPDLVersion>1.0</XPDLVersion>
+    <Vendor>Bonita Project Team</Vendor>
+    <Created>2010-09-24T11:34:00.218+0200</Created>
+  </PackageHeader>
+  <RedefinableHeader>
+    <Version>1.0</Version>
+  </RedefinableHeader>
+  <ConformanceClass GraphConformance="NON_BLOCKED" />
+  <WorkflowProcesses>
+    <WorkflowProcess AccessLevel="PUBLIC" Name="Garbage collector" Id="garbage_collector">
+      <ProcessHeader />
+      <RedefinableHeader>
+        <Version>1.0</Version>
+      </RedefinableHeader>
+      <DataFields>
+        <DataField Id="HTTP_SERVER_CONTEXT_PATH" Name="HTTP_SERVER_CONTEXT_PATH">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+          <InitialValue>http://localhost:8080/caqs</InitialValue>
+        </DataField>
+        <DataField Id="loop" Name="loop">
+          <DataType>
+            <BasicType Type="BOOLEAN" />
+          </DataType>
+          <InitialValue>true</InitialValue>
+        </DataField>
+        <DataField Id="lastUrl" Name="lastUrl">
+          <DataType>
+            <BasicType Type="STRING" />
+          </DataType>
+        </DataField>
+      </DataFields>
+      <Participants>
+        <Participant Id="john" Name="john">
+          <ParticipantType Type="HUMAN" />
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="NewParticipant" Value="true" />
+            <ExtendedAttribute Name="XOffset" Value="0" />
+            <ExtendedAttribute Name="YOffset" Value="150" />
+          </ExtendedAttributes>
+        </Participant>
+      </Participants>
+      <Activities>
+        <Activity Id="Wait_Garbage" Name="Wait Garbage">
+          <Route />
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="109" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="34" />
+            <ExtendedAttribute Name="XOffset" Value="147" />
+            <ExtendedAttribute Name="YOffset" Value="246" />
+            <ExtendedAttribute Name="CellHeight" Value="43" />
+            <ExtendedAttribute Name="CellWidth" Value="84" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="BonitaEnd" Name="BonitaEnd">
+          <Implementation>
+            <No />
+          </Implementation>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="621" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="56" />
+            <ExtendedAttribute Name="XOffset" Value="731" />
+            <ExtendedAttribute Name="YOffset" Value="250" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="BonitaInit" Name="BonitaInit">
+          <Implementation>
+            <No />
+          </Implementation>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="AND" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="63" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="56" />
+            <ExtendedAttribute Name="XOffset" Value="29" />
+            <ExtendedAttribute Name="YOffset" Value="250" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Run_Garbage_Collector" Name="Run Garbage Collector">
+          <Implementation>
+            <No />
+          </Implementation>
+          <Performer>john</Performer>
+          <StartMode>
+            <Manual />
+          </StartMode>
+          <Deadline Execution="ASYNCHR">
+            <DeadlineCondition>86400000</DeadlineCondition>
+            <ExceptionName>com.compuware.caqs.workflow.common.GarbageCollectorHook</ExceptionName>
+          </Deadline>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="27" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="152" />
+            <ExtendedAttribute Name="XOffset" Value="331" />
+            <ExtendedAttribute Name="YOffset" Value="252" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="147" />
+            <ExtendedAttribute Name="Async" Value="false" />
+          </ExtendedAttributes>
+        </Activity>
+        <Activity Id="Loop" Name="Loop">
+          <Implementation>
+            <No />
+          </Implementation>
+          <StartMode>
+            <Automatic />
+          </StartMode>
+          <TransitionRestrictions>
+            <TransitionRestriction>
+              <Join Type="XOR" />
+            </TransitionRestriction>
+          </TransitionRestrictions>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="XOffsetParticipantView" Value="27" />
+            <ExtendedAttribute Name="YOffsetParticipantView" Value="2" />
+            <ExtendedAttribute Name="XOffset" Value="551" />
+            <ExtendedAttribute Name="YOffset" Value="252" />
+            <ExtendedAttribute Name="CellHeight" Value="30" />
+            <ExtendedAttribute Name="CellWidth" Value="80" />
+            <ExtendedAttribute Name="Async" Value="false" />
+            <ExtendedAttribute Name="hook" Value="com.compuware.caqs.workflow.common.LoopHook">
+              <HookEventName>automatic:onEnter</HookEventName>
+              <Rollback>false</Rollback>
+            </ExtendedAttribute>
+          </ExtendedAttributes>
+        </Activity>
+      </Activities>
+      <Transitions>
+        <Transition Id="Wait_Garbage_Run_Garbage_Collector" Name="Wait Garbage_Run Garbage Collector" From="Wait_Garbage" To="Run_Garbage_Collector" />
+        <Transition Id="Loop2_End" Name="Loop2_End" From="Loop" To="BonitaEnd">
+          <Condition Type="CONDITION">loop.compareTo(Boolean.valueOf("false")) == 0</Condition>
+        </Transition>
+        <Transition Id="Loop2_Wait_Garbage" Name="Loop2_Wait Garbage" From="Loop" To="Wait_Garbage">
+          <Condition Type="CONDITION">loop.compareTo(Boolean.valueOf("true")) == 0</Condition>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="BreakPoint" Value="594.0-210.0" />
+            <ExtendedAttribute Name="BreakPoint" Value="198.0-210.0" />
+          </ExtendedAttributes>
+        </Transition>
+        <Transition Id="Run_Garbage_Collector_Loop2" Name="Run Garbage Collector_Loop2" From="Run_Garbage_Collector" To="Loop" />
+        <Transition Id="Start_Wait_Garbage" Name="Start_Wait Garbage" From="BonitaInit" To="Wait_Garbage" />
+      </Transitions>
+    </WorkflowProcess>
+  </WorkflowProcesses>
+  <ExtendedAttributes>
+    <ExtendedAttribute Name="MadeBy" Value="ProEd" />
+    <ExtendedAttribute Name="View" Value="Activity" />
+  </ExtendedAttributes>
+</Package>
+

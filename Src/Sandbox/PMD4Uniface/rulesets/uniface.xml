@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<ruleset name="Uniface rules"
+    language="uniface"
+    xmlns="http://pmd.sf.net/ruleset/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+    xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+	
+	<description>Rules concerning Uniface guidelines.</description>
+	
+	<rule name="NoGotos"
+	   since="4.2.5"
+		message="Avoid gotos."
+		class="net.sourceforge.pmd.rules.XPathRule"
+        externalInfoUrl="http://pmd.sourceforge.net/rules/uniface.html#NoGotos">
+		<description> Avoid using GOTO. Prefer structured programming.
+			</description>
+		<priority>2</priority>
+		<properties>
+			<property name="xpath">
+				<value>
+					<![CDATA[ 
+// Goto
+				]]>
+				</value>
+			</property>
+		</properties>
+		<example>
+			<![CDATA[
+start:          ; the label ends with a colon (:)
+if ($1 = 1001)
+   commit
+else
+   rollback
+endif
+goto start      ; but no colon is used in the goto line			]]>
+		</example>
+	</rule>
+
+   <rule name="NoInlineIfStmts"
+         since="4.2.5"
+         message="Avoid using if statements on a single line"
+         class="net.sourceforge.pmd.rules.XPathRule"
+          externalInfoUrl="http://pmd.sourceforge.net/rules/uniface.html#NoInlineIfStmts">
+     <description>
+Avoid using if statements on a single line.
+     </description>
+     <priority>3</priority>
+       <properties>
+           <property name="xpath">
+               <value>
+                   <![CDATA[
+//IfStatement[count(*) < 3][not(Statement/Block)]
+                   ]]>
+               </value>
+           </property>
+       </properties>
+     <example>
+ <![CDATA[
+     if (foo) x=2
+ ]]>
+     </example>
+     </rule>
+	
+</ruleset>

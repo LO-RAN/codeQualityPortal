@@ -1,0 +1,179 @@
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'MAIN', 'MAIN', 'Maintenabilité-Maintenabilité', 'Maintenabilité-Maintenabilité'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'MAIN', 'COMP', 'Maintenabilité-Compréhension', 'Maintenabilité-Compréhension'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'MAIN', 'ANTI_COPIER_COLLER', 'Maintenabilité-CopierColler', 'Maintenabilité-CopierColler'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'MAIN', 'ANTI_SPAG', 'Maintenabilité-Spaghetti', 'Maintenabilité-Spaghetti'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'MAIN', 'DEST', 'Maintenabilité-Destructuration', 'Maintenabilité-Destructuration'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'MAIN', 'PLOG', 'Maintenabilité-Poids Logique', 'Maintenabilité-Poids Logique'
+, 4,  null,  null); 
+
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'EVOL', 'ANTI_BLOB', 'Evolutivité-Pieuvre', 'Evolutivité-Pieuvre'
+, 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'EVOL', 'ANTI_SAK', 'Evolutivité-CouteauSuisse', 'Evolutivité-CouteauSuisse'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'EVOL', 'COMP', 'Evolutivité-Compréhension', 'Evolutivité-Compréhension'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'EVOL', 'DEST', 'Evolutivité-Destructuration', 'Evolutivité-Destructuration'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'EVOL', 'PLOG', 'Evolutivité-PoidsLogique', 'Evolutivité-PoidsLogique'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'EVOL', 'TPRO', 'Evolutivité-TailleProc', 'Evolutivité-TailleProc'
+, 2,  null,  null); 
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'EVOL', 'NIAC', 'Evolutivité-Not in a class', 'Evolutivité-C functions found, when C++ class methods expected'
+, 2,  null,  null); 
+
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'ROBU', 'ANTI_FMEM', 'Robustesse-FuiteMémoire', 'Robustesse-FuiteMémoire'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'ROBU', 'TCOU', 'Robustesse-Tx Couverture', 'Robustesse-Tx Couverture'
+, 8,  null,  null); 
+
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'PERT', 'ANTI_ARCHI_CS', 'Architecture-Liens CS', 'Architecture-Liens CS'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'PERT', 'ANTI_ARCHI_NP', 'Architecture-Liens NP', 'Architecture-Liens NP'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'PERT', 'ANTI_BLOB', 'Architecture-Pieuvre', 'Architecture-Pieuvre'
+, 1,  null,  null); 
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'PERT', 'NIAC', 'Architecture-Not in a class', 'Architecture-C functions found, when C++ class methods expected'
+, 2,  null,  null); 
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'ANTI_ARCHI_CS', 'Réutilisation-Liens CS', 'Réutilisation-Liens CS'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'ANTI_ARCHI_NP', 'Réutilisation-Liens NP', 'Réutilisation-Liens NP'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'ANTI_BLOB', 'Réutilisation-Pieuvre', 'Réutilisation-Pieuvre'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'ANTI_POLT', 'Réutilisation-Poltergeist', 'Réutilisation-Poltergeist'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'ANTI_SAK', 'Réutilisation-CouteauSuisse', 'Réutilisation-CouteauSuisse'
+, 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'CHER', 'Réutilisation-CouplageH', 'Réutilisation-CouplageHéritage'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'COBJ', 'Réutilisation-CouplageO', 'Réutilisation-CouplageObjet'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'CTRA', 'Réutilisation-CouplageT', 'Réutilisation-CouplageTraditionnel'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'PORTABILITE', 'Réutilisation-Portabilité', 'Réutilisation-Portabilité'
+, 4,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'TCOU', 'Réutilisation-TxCouv', 'Réutilisation-TauxCouverture'
+, 5,  null,  null); 
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'REUT', 'NIAC', 'Réutilisation-Not in a class', 'Réutilisation-C functions found, when C++ class methods expected'
+, 2,  null,  null); 
+
+
+
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'FIAB', 'ANTI_COPIER_COLLER', 'Fiabilité-CopierColler', 'Fiabilité-CopierColler'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'FIAB', 'CHER', 'Fiabilité-CouplageH', 'Fiabilité-CouplageHéritage'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'FIAB', 'COBJ', 'Fiabilité-CouplageO', 'Fiabilité-CouplageObjet'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'FIAB', 'CTRA', 'Fiabilité-CouplageT', 'Fiabilité-CouplageTraditionnel'
+, 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'FIAB', 'DEST', 'Fiabilité-Destructuration', 'Fiabilité-Destructuration'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'FIAB', 'INTE', 'Fiabilité-Intégration', 'Fiabilité-Intégration'
+, 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG
+, DMAJ_REG ) VALUES ( 
+'STANDARD-CPP', 'FIAB', 'PLOG', 'Fiabilité-Poids Logique', 'Fiabilité-Poids Logique'
+, 6,  null,  null); 
+
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_BUFFER'  , 'Sécurité-buffer'  , 'Sécurité-buffer'  , 73,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_FORMAT'  , 'Sécurité-format'  , 'Sécurité-format'  , 3,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_RACE'    , 'Sécurité-race'    , 'Sécurité-race'    , 5,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_TMPFILE' , 'Sécurité-tmpfile' , 'Sécurité-tmpfile' , 2,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_MISC'    , 'Sécurité-misc'    , 'Sécurité-misc'    , 10,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_ACCESS'  , 'Sécurité-access'  , 'Sécurité-access'  , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_SHELL'   , 'Sécurité-shell'   , 'Sécurité-shell'   , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_RANDOM'  , 'Sécurité-random'  , 'Sécurité-random'  , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_CRYPTO'  , 'Sécurité-crypto'  , 'Sécurité-crypto'  , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_OBSOLETE', 'Sécurité-obsolete', 'Sécurité-obsolete', 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_FREE'    , 'Sécurité-free'    , 'Sécurité-free'    , 1,  null,  null); 
+INSERT INTO FACTEUR_CRITERE ( ID_USA, ID_FACT, ID_CRIT, LIB_REL, DESC_REL, POIDS, DINST_REG, DMAJ_REG ) VALUES ( 'STANDARD-CPP', 'SECU', 'FF_INPUT'   , 'Sécurité-input'   , 'Sécurité-input'   , 1,  null,  null); 
+
+
+commit;
+ 

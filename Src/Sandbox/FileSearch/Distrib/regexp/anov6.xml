@@ -1,0 +1,14 @@
+<xml>
+    <SEARCH name="cdeuxpoints" filter=".*\.java">
+    	<RULE regexp="[a-zA-Z]:\\" />
+    </SEARCH>
+    <SEARCH name="http" filter=".*\.java">
+    	<RULE regexp="http://" />
+    </SEARCH>
+    <SEARCH name="slash" filter=".*\.java">
+    	<RULE regexp="[^/&lt;]/[^*/]" />
+    </SEARCH>
+    <SEARCH name="separator" filter=".*\.java">
+    	<RULE regexp="separator" />
+    </SEARCH>
+</xml>

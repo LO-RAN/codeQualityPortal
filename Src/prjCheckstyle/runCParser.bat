@@ -1,0 +1,1 @@
+java -cp renault.jar com.compuware.caqs.CStyle.MetricsExtractor %1
