@@ -222,7 +222,7 @@
                 <forkMode>once</forkMode>
  
                 <!-- load the Java agent in the new JVM and also pass the test run id (dtTestrunID property) to the agent -->
-                <argLine>-agentpath:"d:\cpwr\dynaTrace_6.1\agent\lib64\dtagent.dll"=name=${dynaTrace.agentGroup}_${dynaTrace.systemProfile},server=${dynaTrace.collector},optionTestRunIdJava=${dtTestrunID}</argLine>
+                <argLine>-agentpath:${dynaTrace.agentPath}=name=${dynaTrace.agentGroup}_${dynaTrace.systemProfile},server=${dynaTrace.collector},optionTestRunIdJava=${dtTestrunID}</argLine>
 
           
         </configuration>
@@ -235,7 +235,7 @@
             <version>2.17</version>
             <configuration>
                 <forkMode>once</forkMode>
-                <argLine>-agentpath:"d:\cpwr\dynaTrace_6.1\agent\lib64\dtagent.dll"=name=${dynaTrace.agentGroup}_${dynaTrace.profileName},server=${dynaTrace.collector},optionTestRunIdJava=${dtTestrunID}</argLine>
+                <argLine>-agentpath:${dynaTrace.agentPath}=name=${dynaTrace.agentGroup}_${dynaTrace.profileName},server=${dynaTrace.collector},optionTestRunIdJava=${dtTestrunID}</argLine>
             </configuration>
             <executions>
                 <execution>
