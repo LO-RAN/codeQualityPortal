@@ -15,6 +15,7 @@ import junit.framework.TestSuite;
  */
 public class StringUtilsTest extends TestCase
 {
+	// 
     public StringUtilsTest(String name)
     {
         super(name);
