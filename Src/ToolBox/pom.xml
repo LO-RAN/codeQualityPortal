@@ -2,89 +2,15 @@
                         <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    
-    	  <!-- Dynatrace Application Monitoring -->
-    
-     <dynaTrace.version>6.1</dynaTrace.version>
-    <dynaTrace.testCategory>unit</dynaTrace.testCategory>
+    <dynaTrace.version>6.1</dynaTrace.version>
+    <dynaTrace.testCategory>performance</dynaTrace.testCategory>
     <dynaTrace.agentGroup>Test</dynaTrace.agentGroup>
+    <dynaTrace.profileName>caqs</dynaTrace.profileName>
     <dynaTrace.username>admin</dynaTrace.username>
     <dynaTrace.password>admin</dynaTrace.password>
     <dynaTrace.collector>localhost:9998</dynaTrace.collector>
     <dynaTrace.serverUrl>http://localhost:8020</dynaTrace.serverUrl>
-    
-	  <!-- Setting default values for dynaTrace Maven goals that operate on a system profile: startRecording, stopRecording, clearSession, activateConfiguration, enableProfile -->
-		<dynaTrace.systemProfile>caqs</dynaTrace.systemProfile>
-
-		<!-- This property will be used to store the actual Session Name for e.g.: Start/Stop Recording -->
-		<dynaTrace.sessionNameProperty>dynaTrace.sessionName</dynaTrace.sessionNameProperty>		
-		
-		<!-- Following is a list of properties for goal: startRecording -->
-		<dynaTrace.sessionName>CAQS test Session</dynaTrace.sessionName>
-		<dynaTrace.sessionDescription>My stored Session Description</dynaTrace.sessionDescription>
-		<dynaTrace.recordingOption>all</dynaTrace.recordingOption> <!-- other options: violations|timeseries -->
-		<dynaTrace.sessionLocked>false</dynaTrace.sessionLocked>
-		<dynaTrace.appendTimestamp>false</dynaTrace.appendTimestamp> 
-		
-		<!-- Following is a list of properties for goal: stopRecording -->
-		
-		<!-- Following is a list of properties for goal: reanalyzeSession -->
-		<dynaTrace.doReanalyzeSession>true</dynaTrace.doReanalyzeSession> <!-- true to trigger reanalyze session after stop recording -->
-		<dynaTrace.reanalyzeSessionTimeout>60000</dynaTrace.reanalyzeSessionTimeout> <!-- timeout to wait till reanalyze session is finished - in ms (default: 60000) -->
-		<dynaTrace.reanalyzeSessionPollingInterval>5000</dynaTrace.reanalyzeSessionPollingInterval> <!-- polling interval while waiting for reanalyze to be finished in ms (default:5000) -->
-		<dynaTrace.reanalyzeStatusProperty>dynaTrace.status</dynaTrace.reanalyzeStatusProperty> <!-- property that will be set with true when reanalyze was finished within the timeout-->
-
-		
-		<!-- Following is a list of properties for goal: clearSession -->
-		<!-- only takes the dynaTrace.systemProfile -->
-
-		<!-- Following is a list of properties for goal: activateConfiguration -->
-		<dynaTrace.configuration>Default</dynaTrace.configuration>
-
-		<!-- Following is a list of properties for goal: enableProfile -->
-		<dynaTrace.enable>true</dynaTrace.enable>
-		
-		<!-- Following is a list of properties for goal: getAgentInfo -->
-		<dynaTrace.infoForAgentByIndex>0</dynaTrace.infoForAgentByIndex> <!-- index of the agent that information should be returned, e.g.: 0, 1, 2, ... -->
-		<dynaTrace.infoForAgentByName>caqs_tomcat</dynaTrace.infoForAgentByName> <!-- Name of the agent that information should be returned -->
-		<dynaTrace.agentCountProperty>dynaTrace.agentCount</dynaTrace.agentCountProperty> <!-- Property that will be set with the number of agents based on the criteria passed by infoForAgentByXXX -->
-		<dynaTrace.agentNameProperty>dynaTrace.agentName</dynaTrace.agentNameProperty> <!-- Property that will be set with the first agent name that matches the search criteria -->
-		<dynaTrace.agentHostNameProperty>dynaTrace.agentHostName</dynaTrace.agentHostNameProperty> <!-- Property that will be set with the first agent host name that matches the search criteria -->
-		<dynaTrace.agentProcessIdProperty>dynaTrace.agentProcessId</dynaTrace.agentProcessIdProperty> <!-- Property that will be set with the first processid that matches the search criteria -->
-		
-		<!-- Following is a list of properties for Memory and Thread Dump goals: memoryDump, threadDump -->
-		<!-- <dynaTrace.agentHostName>MYMACHINE</dynaTrace.hostName> --> <!-- will take this from the output of getAgentInfo -->
-		<!-- <dynaTrace.agentName>GoSpaceFrontend</dynaTrace.agentName> --> <!-- will take this from the output of getAgentInfo -->
-		<!-- <dynaTrace.agentProcessId>1234</dynaTrace.processId> --> <!-- will take this from the output of getAgentInfo -->
-		<dynaTrace.sessionLocked>false</dynaTrace.sessionLocked>
-		<dynaTrace.waitForDumpTimeout>60000</dynaTrace.waitForDumpTimeout> <!-- How long to wait for the dump in ms -->
-		<dynaTrace.waitForDumpPollingInterval>5000</dynaTrace.waitForDumpPollingInterval> <!-- How often to poll for the status till we reach the timeout -->
-		<dynaTrace.dumpStatusProperty>dynaTrace.status</dynaTrace.dumpStatusProperty> <!-- Property that will be set with the status. true when succeeded - false when we ran into the timeout -->
-		
-		<!-- Following is a list of properties for Memory Dump goal only: memoryDump -->
-		<dynaTrace.dumpType>simple</dynaTrace.dumpType> <!-- other options: extended|selective -->
-		<dynaTrace.memoryDumpNameProperty>dynaTrace.dumpName</dynaTrace.memoryDumpNameProperty> <!-- Property that retrieves the memory dump name -->
-
-		<!-- Following is a list of properties for Thread Dump goal only: threadDump -->
-		<dynaTrace.threadDumpNameProperty>dynaTrace.dumpName</dynaTrace.threadDumpNameProperty> <!-- Property that retrieves the thread dump name -->
-		
-		<!-- Following is a list of properties for Reporting goal only: createReport -->
-		<dynaTrace.dashboardName>caqs_test_report</dynaTrace.dashboardName>
-		<dynaTrace.source>live:caqs</dynaTrace.source>
-		<!-- <dynaTrace.comparison>stored:Stored Session</dynaTrace.comparison> --> 
-		<!-- <dynaTrace.iteratorDashboard>caqs_test_iterator</dynaTrace.iteratorDashboard> -->
-		<dynaTrace.xmlToFile>output.xml</dynaTrace.xmlToFile>
-		<dynaTrace.reportDir>./results</dynaTrace.reportDir>
-		<dynaTrace.createHtml>true</dynaTrace.createHtml>
-
-		<!-- Following is a list of properties for Reporting goal only: architectureValidation -->
-		<dynaTrace.source>live:caqs</dynaTrace.source>
-		<!-- <dynaTrace.comparison>stored:Stored Session</dynaTrace.comparison> -->
-		<dynaTrace.errorProperty>./results/dynaTrace.error</dynaTrace.errorProperty>
-		<dynaTrace.reportFile>./results/archivalresults.xml</dynaTrace.reportFile>
-		<dynaTrace.archiValFile>archivalrules.xml</dynaTrace.archiValFile>
-
-    
+        
     </properties>
 <modelVersion>4.0.0</modelVersion>
   <groupId>caqs</groupId>
@@ -164,44 +90,7 @@
       </resource>
     </resources>
     <plugins>
-    
-    
-     <plugin>
-            <groupId>dynaTrace</groupId>
-            <artifactId>dtAutomation</artifactId>
-            <version>${dynaTrace.version}</version>
-            <executions>
-                <execution>
-                    <id>DT_StartTest_UnitTest</id>
-                    <configuration>
-                        <!-- define the configuration properties 
-                             for this test run -->
-                        <versionMajor>1</versionMajor>
-                        <versionMinor>2</versionMinor>
-                        <versionRevision>3</versionRevision>
-                        <versionMilestone>5</versionMilestone>
-                        <versionBuild>${BUILD_ID}</versionBuild>
-                        <category>unit</category>
-                        <profileName>${dynaTrace.systemProfile}</profileName>
-                        <username>${dynaTrace.username}</username>
-                        <password>${dynaTrace.password}</password>
-                        <serverUrl>${dynaTrace.serverUrl}</serverUrl>
-                        <additionalProperties></additionalProperties>
-                    </configuration>
-                    <!-- start this test in the process-test-classes phase
-                         which is the one before the tests are executed -->
-                    <phase>pre-integration-test</phase>
-                    <goals>
-                        <!-- call the startTest goal of the Dynatrace plugin -->
-                        <goal>startTest</goal>
-                        <!-- call the createReport goal of the Dynatrace plugin -->
-                        <goal>createReport</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-
-    
+        
        <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
             <version>3.3</version>
@@ -224,7 +113,7 @@
                 <forkMode>once</forkMode>
  
                 <!-- load the Java agent in the new JVM and also pass the test run id (dtTestrunID property) to the agent -->
-                <argLine>-agentpath:${dynaTrace.agentPath}=name=${dynaTrace.agentGroup}_${dynaTrace.systemProfile},server=${dynaTrace.collector},optionTestRunIdJava=${dtTestrunID}</argLine>
+                <argLine>-agentpath:${dynaTrace.agentPath}=name=${dynaTrace.agentGroup}_${dynaTrace.profileName},server=${dynaTrace.collector},optionTestRunIdJava=${dtTestrunID}</argLine>
 
           
         </configuration>
@@ -249,6 +138,35 @@
             </executions>
         </plugin>
 
+        <plugin>
+            <groupId>dynaTrace</groupId>
+            <artifactId>dtAutomation</artifactId>
+            <version>${dynaTrace.version}</version>
+            <executions>
+                <execution>
+                    <id>DT_StartTest_UnitTest</id>
+                    <configuration>
+                        <!-- define the configuration properties 
+                             for this test run -->
+                        <versionMajor>1</versionMajor>
+                        <versionMinor>2</versionMinor>
+                        <versionRevision>3</versionRevision>
+                        <versionMilestone>5</versionMilestone>
+                        <versionBuild>${BUILD_ID}</versionBuild>
+                        <category>unit</category>
+                        <profileName>${dynaTrace.profileName}</profileName>
+                        <additionalProperties></additionalProperties>
+                    </configuration>
+                    <!-- start this test in the process-test-classes phase
+                         which is the one before the tests are executed -->
+                    <phase>process-test-classes</phase>
+                    <goals>
+                        <!-- call the startTest goal of the dT plugin -->
+                        <goal>startTest</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
       
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
