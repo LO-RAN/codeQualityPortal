@@ -6,7 +6,7 @@
     	  <!-- Dynatrace Application Monitoring -->
     
      <dynaTrace.version>6.1</dynaTrace.version>
-    <dynaTrace.testCategory>performance</dynaTrace.testCategory>
+    <dynaTrace.testCategory>unit</dynaTrace.testCategory>
     <dynaTrace.agentGroup>Test</dynaTrace.agentGroup>
     <dynaTrace.username>admin</dynaTrace.username>
     <dynaTrace.password>admin</dynaTrace.password>
@@ -181,7 +181,7 @@
                         <versionRevision>3</versionRevision>
                         <versionMilestone>5</versionMilestone>
                         <versionBuild>${BUILD_ID}</versionBuild>
-                        <category>performance</category>
+                        <category>unit</category>
                         <profileName>${dynaTrace.systemProfile}</profileName>
                         <username>${dynaTrace.username}</username>
                         <password>${dynaTrace.password}</password>
