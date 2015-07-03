@@ -8,7 +8,6 @@
     </pluginRepository>
   </pluginRepositories>
   <properties>
-    <caqs.version>4.5</caqs.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jcommon.version>1.0.16</jcommon.version>
     <jfreechart.version>1.0.13</jfreechart.version>
@@ -20,7 +19,7 @@
   <artifactId>carscode</artifactId>
   <packaging>war</packaging>
   <name>Caqs</name>
-  <version>${caqs.version}</version>
+  <version>4.5</version>
   <description>CAQS Project</description>
   <url>http://www.compuware.com</url>
   <issueManagement>
@@ -120,6 +119,7 @@
 -->      
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.3</version>
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
@@ -128,6 +128,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.17</version>
         <configuration>
           <includes>
             <include>**/*Test.java</include>
@@ -137,6 +138,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
+            <version>2.7</version>
         <configuration>
           <formats>
             <format>html</format>
@@ -158,65 +160,65 @@
                 <artifactItem>
                   <groupId>caqs</groupId>
                   <artifactId>scatterplot-applet</artifactId>
-                  <version>${caqs.version}</version>
+                  <version>${project.version}</version>
                   <type>jar</type>
-                  <outputDirectory>${project.build.directory}/carscode-${pom.version}/applets/</outputDirectory>
+                  <outputDirectory>${project.build.directory}/carscode-${project.version}/applets/</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>caqs</groupId>
                   <artifactId>graph-applet</artifactId>
-                  <version>${caqs.version}</version>
+                  <version>${project.version}</version>
                   <type>jar</type>
-                  <outputDirectory>${project.build.directory}/carscode-${pom.version}/applets/</outputDirectory>
+                  <outputDirectory>${project.build.directory}/carscode-${project.version}/applets/</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>org.netbeans</groupId>
                   <artifactId>org-netbeans-api-visual</artifactId>
                   <version>2.0</version>
                   <type>jar</type>
-                  <outputDirectory>${project.build.directory}/carscode-${pom.version}/applets/</outputDirectory>
+                  <outputDirectory>${project.build.directory}/carscode-${project.version}/applets/</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>org.netbeans</groupId>
                   <artifactId>org-openide-util</artifactId>
                   <version>2.0</version>
                   <type>jar</type>
-                  <outputDirectory>${project.build.directory}/carscode-${pom.version}/applets/</outputDirectory>
+                  <outputDirectory>${project.build.directory}/carscode-${project.version}/applets/</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>jfree</groupId>
                   <artifactId>jfreechart</artifactId>
                   <version>${jfreechart.version}</version>
                   <type>jar</type>
-                  <outputDirectory>${project.build.directory}/carscode-${pom.version}/applets/</outputDirectory>
+                  <outputDirectory>${project.build.directory}/carscode-${project.version}/applets/</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>jfree</groupId>
                   <artifactId>jcommon</artifactId>
                   <version>${jcommon.version}</version>
                   <type>jar</type>
-                  <outputDirectory>${project.build.directory}/carscode-${pom.version}/applets/</outputDirectory>
+                  <outputDirectory>${project.build.directory}/carscode-${project.version}/applets/</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>commons-collections</groupId>
                   <artifactId>commons-collections</artifactId>
                   <version>3.2</version>
                   <type>jar</type>
-                  <outputDirectory>${project.build.directory}/carscode-${pom.version}/applets/</outputDirectory>
+                  <outputDirectory>${project.build.directory}/carscode-${project.version}/applets/</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>caqs</groupId>
                   <artifactId>architecture-applet</artifactId>
-                  <version>${caqs.version}</version>
+                  <version>${project.version}</version>
                   <type>jar</type>
-                  <outputDirectory>${project.build.directory}/carscode-${pom.version}/applets/</outputDirectory>
+                  <outputDirectory>${project.build.directory}/carscode-${project.version}/applets/</outputDirectory>
                 </artifactItem>
                 <artifactItem>
                   <groupId>caqs</groupId>
                   <artifactId>applet-factory</artifactId>
-                  <version>${caqs.version}</version>
+                  <version>${project.version}</version>
                   <type>jar</type>
-                  <outputDirectory>${project.build.directory}/carscode-${pom.version}/applets/</outputDirectory>
+                  <outputDirectory>${project.build.directory}/carscode-${project.version}/applets/</outputDirectory>
                 </artifactItem>
               </artifactItems>
               <!-- other configurations here --></configuration>
@@ -230,50 +232,50 @@
               <phase>package</phase>
               <configuration>
                 <tasks>
-                  <delete file="${project.build.directory}/carscode-${pom.version}.war" />
+                  <delete file="${project.build.directory}/carscode-${project.version}.war" />
                   <!-- Place any ant task here. You can add anything you can add between <target>and</target>in a build.xml. -->
                   <echo message="Setting ExtJS as not debug..." />
                   <taskdef name="replaceregexp" classname="org.apache.tools.ant.taskdefs.optional.ReplaceRegExp" />
                   <replaceregexp match="ext-all-debug.js" replace="ext-all.js" flags="g" byline="false">
-                    <fileset dir="${project.build.directory}/carscode-${pom.version}/" includes="ext/common/extjsFramework.jsp" />
+                    <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="ext/common/extjsFramework.jsp" />
                   </replaceregexp>
                   <echo message="Striping white spaces from JSP files..." />
                   <!-- Strip whitespace -->
                     <replaceregexp match="&gt;\s*&lt;" replace="&gt;&lt;" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${pom.version}/" includes="**/*.html,**/*.htm,**/*.jsp,**/*.tag" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="**/*.html,**/*.htm,**/*.jsp,**/*.tag" />
                     </replaceregexp>
                     <replaceregexp match="\n\s*&lt;" replace="&lt;" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${pom.version}/" includes="**/*.html,**/*.htm,**/*.jsp,**/*.tag" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="**/*.html,**/*.htm,**/*.jsp,**/*.tag" />
                     </replaceregexp>
                     <echo message="Filling about.js file..." />
-                    <replaceregexp match="%CAQS_VERSION%" replace="${pom.version}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${pom.version}/WEB-INF/classes/com/compuware/caqs/Resources/" includes="resources*.properties" />
+                    <replaceregexp match="%CAQS_VERSION%" replace="${project.version}" flags="g" byline="false">
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/WEB-INF/classes/com/compuware/caqs/Resources/" includes="resources*.properties" />
                     </replaceregexp>
                     <replaceregexp match="%JFREECHART_VERSION%" replace="${jfreechart.version}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${pom.version}/" includes="scatterplot.jsp" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="scatterplot.jsp" />
                     </replaceregexp>
                     <replaceregexp match="%JCOMMON_VERSION%" replace="${jcommon.version}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${pom.version}/" includes="scatterplot.jsp" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="scatterplot.jsp" />
                     </replaceregexp>
-                    <replaceregexp match="%CAQS_VERSION%" replace="${pom.version}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${pom.version}/" includes="impactgraph.jsp,scatterplot.jsp" />
+                    <replaceregexp match="%CAQS_VERSION%" replace="${project.version}" flags="g" byline="false">
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="impactgraph.jsp,scatterplot.jsp" />
                     </replaceregexp>
-                    <replaceregexp match="%CAQS_VERSION%" replace="${pom.version}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${pom.version}/architecture/" includes="architectureApplet.jsp" />
+                    <replaceregexp match="%CAQS_VERSION%" replace="${project.version}" flags="g" byline="false">
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/architecture/" includes="architectureApplet.jsp" />
                     </replaceregexp>
-                    <replaceregexp match="%CAQS_ORGANISATION%" replace="${pom.organization.name}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${pom.version}/" includes="about.js" />
+                    <replaceregexp match="%CAQS_ORGANISATION%" replace="${project.organization.name}" flags="g" byline="false">
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="about.js" />
                     </replaceregexp>
-                    <replaceregexp match="%CAQS_ORGANISATION_URL%" replace="${pom.organization.url}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${pom.version}/" includes="about.js" />
+                    <replaceregexp match="%CAQS_ORGANISATION_URL%" replace="${project.organization.url}" flags="g" byline="false">
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="about.js" />
                     </replaceregexp>
                     <tstamp>
                       <format property="NOW_UK" pattern="yyyy-MM-dd" locale="en" />
                     </tstamp>
                     <replaceregexp match="%CAQS_DATE%" replace="${NOW_UK}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${pom.version}/" includes="about.js" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="about.js" />
                     </replaceregexp>
-                    <zip basedir="${project.build.directory}/carscode-${pom.version}/" destfile="${project.build.directory}/${project.build.finalName}.war" />
+                    <zip basedir="${project.build.directory}/carscode-${project.version}/" destfile="${project.build.directory}/${project.build.finalName}.war" />
                   </tasks>
                 </configuration>
                 <goals>
@@ -296,6 +298,7 @@
           </plugin>
           <plugin>
             <artifactId>maven-war-plugin</artifactId>
+            <version>2.6</version>
             <configuration>
               <warSourceDirectory>./src/main/webapps/</warSourceDirectory>
             </configuration>
@@ -436,27 +439,27 @@
                 <dependency>
                   <groupId>caqs</groupId>
                   <artifactId>toolbox</artifactId>
-                  <version>${caqs.version}</version>
+                  <version>${project.version}</version>
                 </dependency>
                 <dependency>
                   <groupId>caqs</groupId>
                   <artifactId>xmlcalcul</artifactId>
-                  <version>${caqs.version}</version>
+                  <version>${project.version}</version>
                 </dependency>
                 <dependency>
                   <groupId>caqs</groupId>
                   <artifactId>applet-factory</artifactId>
-                  <version>${caqs.version}</version>
+                  <version>${project.version}</version>
                 </dependency>
                 <dependency>
                   <groupId>caqs</groupId>
                   <artifactId>architecture-applet</artifactId>
-                  <version>${caqs.version}</version>
+                  <version>${project.version}</version>
                 </dependency>
                 <dependency>
                   <groupId>caqs</groupId>
                   <artifactId>usermgmt</artifactId>
-                  <version>${caqs.version}</version>
+                  <version>${project.version}</version>
                   <scope>provided</scope>
                   <exclusions>
                     <exclusion>
@@ -468,7 +471,7 @@
                 <dependency>
                   <groupId>caqs</groupId>
                   <artifactId>security</artifactId>
-                  <version>${caqs.version}</version>
+                  <version>${project.version}</version>
                 </dependency>
                 <dependency>
                   <groupId>org.springframework.security</groupId>

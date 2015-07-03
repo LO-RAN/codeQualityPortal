@@ -14,3 +14,7 @@ hs_err_pid*
 
 # backup files
 *~
+
+# generated build folder
+/build
+/Src/ToolBox/target/

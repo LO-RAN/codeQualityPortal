@@ -250,7 +250,7 @@ public class ControlPanel extends JToolBar implements ActionListener, ItemListen
         Object src = e.getSource();
 
         if (src == this.deleteAllBtn) {
-            // le premier paramètre est la fenêtre mère. Il sert à centrer la
+            // le premier paramÃ¨tre est la fenÃªtre mÃ¨re. Il sert Ã  centrer la
             // boite de dialogue
             int result = JOptionPane.showConfirmDialog(null, I18n.getString("confirme_delete_all"));
             switch (result) {

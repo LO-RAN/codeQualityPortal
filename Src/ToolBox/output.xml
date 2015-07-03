@@ -1,107 +1,690 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="styleDashboard.xsl" type="text/xsl"?>
 
-<dashboardreport name="caqs_test_report" version="6.1.0.8191" reportdate="2015-06-11T22:30:56.174+02:00" description="">
-  <source name="caqs" filtersummary="last 30 minutes (auto)"></source>
+<dashboardreport name="caqs_test_report" version="6.2.0.3001" reportdate="2015-07-03T14:12:46.063+02:00" description="">
+  <source name="caqs" filtersummary="last 7 days"></source>
   <data>
-    <businesstransactionsdashlet name="Test Transactions" description="" displaysource="Base">
-      <transactions>
-        <layout>
-          <sort field="group" order="descending"></sort>
-          <field order="1" name="application" display="Application"></field>
-          <field order="0" name="error_state" display=""></field>
-          <field order="2" name="failure_rate" display="Failed %"></field>
-        </layout>
-      </transactions>
-    </businesstransactionsdashlet>
-    <entrypointsdashlet name="Entry Points" description="" displaysource="Base">
-      <entrypoints>
-        <layout>
-          <field order="1" name="method" display="Entry Method"></field>
-          <field order="2" name="class" display="Entry Class"></field>
-          <field order="0" name="error_state" display=""></field>
-          <field order="3" name="failure_rate" display="Failed %"></field>
-        </layout>
-      </entrypoints>
-    </entrypointsdashlet>
-    <methodsdashlet name="Methods" description="" displaysource="Base">
-      <methods>
-        <layout>
-          <sort field="method" order="ascending"></sort>
-          <field order="0" name="method" display="Method"></field>
-          <field order="1" name="platform" display=""></field>
-          <field order="2" name="api" display="API"></field>
-          <field order="3" name="count" display="Count"></field>
-          <field order="4" name="agent" display="Agent"></field>
-          <field order="5" name="exec_avg" display="Exec Avg [ms]"></field>
-          <field order="6" name="exec_sum" display="Exec Sum [ms]"></field>
-          <field order="7" name="exceptions" display="Exceptions"></field>
-          <field order="8" name="cpu_avg" display="CPU Avg [ms]"></field>
-          <field order="9" name="cpu_sum" display="CPU Sum [ms]"></field>
-          <field order="10" name="sync_avg" display="Sync Avg [ms]"></field>
-          <field order="11" name="sync_sum" display="Sync Sum [ms]"></field>
-          <field order="12" name="wait_avg" display="Wait Avg [ms]"></field>
-          <field order="13" name="wait_sum" display="Wait Sum [ms]"></field>
-        </layout>
-      </methods>
-    </methodsdashlet>
-    <purepathsdashlet name="PurePaths" description="" displaysource="Base">
-      <purepaths>
-        <layout>
-          <sort field="descheduled" order="descending"></sort>
-          <field order="0" name="state" display=""></field>
-          <field order="1" name="name" display="PurePath"></field>
-          <field order="4" name="agent" display="Agent"></field>
-          <field order="6" name="node_count" display="Size"></field>
-          <field order="7" name="exec" display="Duration [ms]"></field>
-          <field order="8" name="cpu" display="CPU Sum [ms]"></field>
-          <field order="9" name="sync" display="Sync Sum [ms]"></field>
-          <field order="10" name="wait" display="Wait Sum [ms]"></field>
-          <field order="11" name="suspension" display="Suspension Sum [ms]"></field>
-          <field order="12" name="descheduled" display="Virtualization Duration [ms]"></field>
-          <field order="13" name="start" display="Start Time"></field>
-          <field order="14" name="agentid" display="Agent ID"></field>
-          <field order="15" name="tagid" display="Tag ID"></field>
-          <field order="5" name="application" display="Application"></field>
-          <field order="3" name="breakdown" display="Breakdown"></field>
-          <field order="2" name="response_time" display="Response Time [ms]"></field>
-        </layout>
-      </purepaths>
-    </purepathsdashlet>
-    <methodsdashlet name="test" description="" displaysource="Base">
-      <methods>
-        <layout>
-          <sort field="method" order="ascending"></sort>
-          <field order="0" name="method" display="Method"></field>
-          <field order="1" name="api" display="API"></field>
-          <field order="2" name="count" display="Count"></field>
-          <field order="3" name="exec_avg" display="Exec Avg [ms]"></field>
-          <field order="4" name="exec_sum" display="Exec Sum [ms]"></field>
-          <field order="5" name="exceptions" display="Exceptions"></field>
-          <field order="6" name="cpu_avg" display="CPU Avg [ms]"></field>
-          <field order="7" name="cpu_sum" display="CPU Sum [ms]"></field>
-          <field order="8" name="sync_avg" display="Sync Avg [ms]"></field>
-          <field order="9" name="sync_sum" display="Sync Sum [ms]"></field>
-          <field order="10" name="wait_avg" display="Wait Avg [ms]"></field>
-          <field order="11" name="wait_sum" display="Wait Sum [ms]"></field>
-        </layout>
-      </methods>
-    </methodsdashlet>
-    <apibreakdowndashlet name="API Breakdown" description="" displaysource="Base">
-      <apis>
-        <layout>
-          <sort field="exec_sum" order="descending"></sort>
-          <field order="0" name="name" display="API"></field>
-          <field order="1" name="exec_avg" display="Exec Avg [ms]"></field>
-          <field order="2" name="exec_sum" display="Exec Sum [ms]"></field>
-          <field order="3" name="cpu_avg" display="CPU Avg [ms]"></field>
-          <field order="4" name="cpu_sum" display="CPU Total [ms]"></field>
-          <field order="5" name="sync_avg" display="Sync Avg [ms]"></field>
-          <field order="6" name="sync_sum" display="Sync Sum [ms]"></field>
-          <field order="7" name="wait_avg" display="Wait Avg [ms]"></field>
-          <field order="8" name="wait_sum" display="Wait Sum [ms]"></field>
-        </layout>
-      </apis>
-    </apibreakdowndashlet>
+    <testautomation name="Test Results" description="" displaysource="Base">
+      <testcases>
+        <testcase testname="FonctionsParserTest.testFindAllElements" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.178+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#e5cf4d" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:41.058+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.694+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.220+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.264+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.407+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:03.054+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:02.080+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.172+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.929+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.850+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.756+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.612+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.215+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.164+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.724+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.416+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.454+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.703+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.136+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.570+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.491+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.178+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testInsertFiles" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.251+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#3a21de" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.267+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.568+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.041+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.080+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.251+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testGetBytesFromFile" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.249+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#4c8514" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.325+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.553+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.018+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.077+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.249+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="StringUtilsTest.testGetCollectionFromString" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.007+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#7fde21" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.341+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.573+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.062+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.103+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.296+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:02.938+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:01.800+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.039+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.807+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.702+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.610+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.490+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.077+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.017+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.559+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.263+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.279+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.576+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.004+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.421+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.355+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.007+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testUnzipToDir" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.283+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#e5744d" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.291+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.530+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.053+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.092+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.283+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Count" high="0.0" last="1.0" unit="num" color="#231485" agent="Test_caqs" metricgroup="Exceptions">
+              <testrun timestamp="2015-06-30T16:58:40.291+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.530+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.053+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.092+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.283+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="StringUtilsTest.testGetMaxString" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.006+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#59200d" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.341+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.575+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.062+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.104+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.297+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:02.936+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:01.800+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.040+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.808+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.703+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.610+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.489+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.079+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.018+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.558+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.265+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.282+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.575+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.004+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.421+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.353+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.006+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="StringUtilsTest.testStartsWithIgnoreCase" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.008+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#592f0d" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.342+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.574+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.061+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.105+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.297+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:02.937+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:01.799+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.038+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.807+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.704+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.608+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.491+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.079+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.016+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.559+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.264+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.281+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.576+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.004+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.419+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.355+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.008+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FonctionsParserTest.testFindFirstBalise" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.121+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#146685" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.971+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.715+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.230+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.229+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.396+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:03.037+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:02.097+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.183+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.936+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.821+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.720+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.630+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.221+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.182+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.687+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.379+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.407+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.716+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.110+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.541+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.463+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.121+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testZipDir_3args_3" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.281+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#0d5947" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.318+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.534+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.014+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.072+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.281+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testCopy_FileArr_File" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.292+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#ebad7a" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.308+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.528+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.051+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.096+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.292+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FonctionsParserTest.testGetPropertyString" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.113+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#b21a1a" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.962+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.723+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.185+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.221+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.377+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:03.045+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:02.056+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.142+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.889+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.844+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.705+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.638+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.185+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.172+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.678+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.398+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.423+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.670+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.144+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.555+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.507+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.113+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FonctionsParserTest.testFindElement" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.145+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#2f1bb1" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.985+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.734+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.246+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.238+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.365+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:03.028+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:02.105+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.163+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.915+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.829+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.750+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.645+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.199+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.156+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.740+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.410+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.448+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.695+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.101+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.525+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.522+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.145+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testRdelete" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.208+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#854714" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.124+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.485+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:54.973+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.039+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.208+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Count" high="0.0" last="1.0" unit="num" color="#854714" agent="Test_caqs" metricgroup="Exceptions">
+              <testrun timestamp="2015-06-30T16:58:40.124+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.485+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:54.973+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.039+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.208+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testZipFile_3args_3" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.280+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#b8de21" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.309+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.554+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.035+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.090+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.280+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FonctionsParserTest.testGetPropertyFloat" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.137+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#ebeb7a" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:41.049+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.702+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.192+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.210+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.402+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:03.016+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:02.064+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.149+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.896+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.803+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.745+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.622+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.229+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.140+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.715+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.385+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.432+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.678+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.163+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.517+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.515+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.137+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testCopy_File_File" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.261+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#e54d4d" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.320+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.547+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.043+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.084+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.261+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testCopy_3args" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.259+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#7a96eb" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.290+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.540+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.033+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.082+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.259+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FonctionsParserTest.testFindAllBalises" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.163+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#b2701a" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.995+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.749+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.210+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.247+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.382+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:03.021+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:02.089+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.177+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.922+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.811+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.738+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.593+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.207+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.131+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.732+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.371+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.397+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.709+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.129+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.534+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.481+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.163+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="StringUtilsTest.testGetStringBetween" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.008+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#855414" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.338+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.575+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.062+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.104+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.297+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:02.938+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:01.800+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.040+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.805+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.704+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.610+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.491+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.080+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.018+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.560+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.264+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.282+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.574+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.002+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.422+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.355+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.008+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testZipFile_3args_1" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.276+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#e44e8d" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.321+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.551+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.050+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.098+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.276+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testZipFile_3args_2" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.278+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#e5a34d" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.322+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.565+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.048+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.079+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.278+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testZipDir_3args_2" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.263+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#be7aeb" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.277+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.545+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.020+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.088+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.263+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testZipDir_3args_1" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.253+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#de5121" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.299+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.557+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.007+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.083+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.253+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Count" high="0.0" last="1.0" unit="num" color="#1d8613" agent="Test_caqs" metricgroup="Exceptions">
+              <testrun timestamp="2015-06-30T16:58:40.299+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.557+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.007+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.083+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.253+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testConcatPath" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:44.959+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#5ae54d" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.270+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.556+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.034+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.077+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.290+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:02.910+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:01.795+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.036+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.775+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.698+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.571+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.485+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.074+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:45.972+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.554+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.234+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.274+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.571+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:20.999+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.383+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.350+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:44.959+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Count" high="0.0" last="0.0" unit="num" color="#594e0d" agent="Test_caqs" metricgroup="Exceptions">
+              <testrun timestamp="2015-06-30T16:58:40.270+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.556+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.034+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.077+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.290+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:02.910+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:01.795+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.036+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.775+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.698+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.571+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.485+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.074+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:45.972+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.554+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.234+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.274+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.571+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:20.999+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.383+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.350+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:44.959+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FonctionsParserTest.testGetPropertyInt" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.171+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#b2861a" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.919+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.741+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.201+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.253+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.390+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:03.080+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:02.071+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.157+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.910+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.856+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.712+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.651+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.192+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.148+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.707+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.404+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.440+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.687+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.117+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.562+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.472+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.171+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FonctionsParserTest.testSetParseur" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.154+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#a6ddf2" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.928+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.707+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.238+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.259+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.372+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:03.063+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:02.112+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.133+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.903+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.838+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.728+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.603+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.176+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.123+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.697+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.392+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.415+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.662+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.152+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.549+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.499+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.154+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testRcopy_File_File" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.257+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#de5121" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.282+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.549+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.031+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.086+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.257+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testRcopy_FileArr_File" violationpercent="0.0" assignees="" status="Failed" prevstatus="Failed" lastrun="2015-06-30T17:49:40.290+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="1.0" unit="num" color="#13590d" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.317+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.542+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.052+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.075+02:00" value="1.0" failed="true" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.290+02:00" value="1.0" failed="true" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="HashMapUtilsTest.testGet" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.004+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#a6ddf2" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.332+02:00" value="0.0" failed="false" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.571+02:00" value="0.0" failed="false" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.058+02:00" value="0.0" failed="false" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.101+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.294+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:02.934+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:01.796+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.037+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.803+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.700+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.606+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.486+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.075+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.014+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.555+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.261+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.276+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.572+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:21.000+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.417+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.351+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.004+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+        <testcase testname="FileToolsTest.testEndsWithFileSeparator" violationpercent="0.0" assignees="" status="Passed" prevstatus="Passed" lastrun="2015-07-03T14:12:45.003+02:00" platform="Windows 8.1 6.3.9600 x64">
+          <testmetrics>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Failed Transaction Count" high="0.0" last="0.0" unit="num" color="#170d59" agent="Test_caqs" metricgroup="Error Detection">
+              <testrun timestamp="2015-06-30T16:58:40.301+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.538+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.005+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.088+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.261+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:02.933+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:01.744+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.011+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.802+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.670+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.605+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.448+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.046+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.012+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.507+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.260+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.232+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.535+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:20.955+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.416+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.307+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.003+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+            <testmetric violatedabove="0" violationpercent="0.0" platform="Windows 8.1 6.3.9600 x64" measure="Count" high="0.0" last="0.0" unit="num" color="#4d9ee5" agent="Test_caqs" metricgroup="Exceptions">
+              <testrun timestamp="2015-06-30T16:58:40.301+02:00" value="1.0" failed="true" testruninfo="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d"></testrun>
+              <testrun timestamp="2015-06-30T17:44:15.538+02:00" value="1.0" failed="true" testruninfo="tcd430845-f075-49d2-a5d3-851eac896c67"></testrun>
+              <testrun timestamp="2015-06-30T17:44:55.005+02:00" value="1.0" failed="true" testruninfo="t01b51e55-9d17-43d5-ab97-c001e733c51e"></testrun>
+              <testrun timestamp="2015-06-30T17:48:36.088+02:00" value="0.0" failed="false" testruninfo="t99f26652-4384-4bdb-ad6a-795a7a533b23"></testrun>
+              <testrun timestamp="2015-06-30T17:49:40.261+02:00" value="0.0" failed="false" testruninfo="t5999f391-32e9-4181-bd60-32c0485651f8"></testrun>
+              <testrun timestamp="2015-06-30T17:53:02.933+02:00" value="0.0" failed="false" testruninfo="teb470b18-6039-42f3-9024-6e21e8bcf399"></testrun>
+              <testrun timestamp="2015-07-03T11:15:01.744+02:00" value="0.0" failed="false" testruninfo="t5bcc995c-acaa-4a20-b52c-271fa6133231"></testrun>
+              <testrun timestamp="2015-07-03T11:19:30.011+02:00" value="0.0" failed="false" testruninfo="tbe591fbc-4620-444a-be0e-f4a1c09b75a8"></testrun>
+              <testrun timestamp="2015-07-03T11:20:28.802+02:00" value="0.0" failed="false" testruninfo="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08"></testrun>
+              <testrun timestamp="2015-07-03T11:23:54.670+02:00" value="0.0" failed="false" testruninfo="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c"></testrun>
+              <testrun timestamp="2015-07-03T11:25:14.605+02:00" value="0.0" failed="false" testruninfo="t6a223f70-cd26-4972-9c2c-591d42865f97"></testrun>
+              <testrun timestamp="2015-07-03T11:26:26.448+02:00" value="0.0" failed="false" testruninfo="t550521dd-a16a-4b89-b664-c6e0d039390e"></testrun>
+              <testrun timestamp="2015-07-03T11:28:10.046+02:00" value="0.0" failed="false" testruninfo="tf87095f0-26b2-41f9-adf9-055af6e35b23"></testrun>
+              <testrun timestamp="2015-07-03T12:18:46.012+02:00" value="0.0" failed="false" testruninfo="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195"></testrun>
+              <testrun timestamp="2015-07-03T12:19:34.507+02:00" value="0.0" failed="false" testruninfo="t77d9a38f-3857-433d-86b9-21a4373f2f13"></testrun>
+              <testrun timestamp="2015-07-03T13:52:33.260+02:00" value="0.0" failed="false" testruninfo="t818a88ab-5418-4589-9c04-164e5b467b21"></testrun>
+              <testrun timestamp="2015-07-03T13:54:46.232+02:00" value="0.0" failed="false" testruninfo="tf51425bc-b170-45d8-bb54-f7d5706165a4"></testrun>
+              <testrun timestamp="2015-07-03T14:04:08.535+02:00" value="0.0" failed="false" testruninfo="t3d950b11-9fcd-4eda-ba19-a550bca6e984"></testrun>
+              <testrun timestamp="2015-07-03T14:05:20.955+02:00" value="0.0" failed="false" testruninfo="ta1a892e9-6a88-414e-8583-af60b4d93a22"></testrun>
+              <testrun timestamp="2015-07-03T14:07:43.416+02:00" value="0.0" failed="false" testruninfo="t9a4380de-c163-4baa-8f2f-aa3b4f411139"></testrun>
+              <testrun timestamp="2015-07-03T14:10:17.307+02:00" value="0.0" failed="false" testruninfo="t31f9c225-311a-4817-acb4-30d4240b42b5"></testrun>
+              <testrun timestamp="2015-07-03T14:12:45.003+02:00" value="0.0" failed="false" testruninfo="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2"></testrun>
+            </testmetric>
+          </testmetrics>
+        </testcase>
+      </testcases>
+      <testruninfos>
+        <testruninfo id="tf87095f0-26b2-41f9-adf9-055af6e35b23" versionbuild="7" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="tbe591fbc-4620-444a-be0e-f4a1c09b75a8" versionbuild="2" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="t0ba6ac05-5145-40c5-a7f3-ca766e9e3ce2" versionbuild="16" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="t31f9c225-311a-4817-acb4-30d4240b42b5" versionbuild="15" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="te8db8f8b-29a7-4ed9-83a2-e1a9cbca3195" versionbuild="8" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="t5bcc995c-acaa-4a20-b52c-271fa6133231" versionbuild="1" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="t3d950b11-9fcd-4eda-ba19-a550bca6e984" versionbuild="12" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="tbdfaeaa0-5a66-4100-a7a2-8f87ab6edc4c" versionbuild="4" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="t9a4380de-c163-4baa-8f2f-aa3b4f411139" versionbuild="14" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="tcd430845-f075-49d2-a5d3-851eac896c67" versionmajor="1" versionminor="2" versionrevision="3" versionmilestone="5"></testruninfo>
+        <testruninfo id="t01b51e55-9d17-43d5-ab97-c001e733c51e" versionmajor="1" versionminor="2" versionrevision="3" versionmilestone="5"></testruninfo>
+        <testruninfo id="t6a223f70-cd26-4972-9c2c-591d42865f97" versionbuild="5" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="t5999f391-32e9-4181-bd60-32c0485651f8" versionmajor="1" versionminor="2" versionrevision="3" versionmilestone="5"></testruninfo>
+        <testruninfo id="t818a88ab-5418-4589-9c04-164e5b467b21" versionbuild="10" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="t550521dd-a16a-4b89-b664-c6e0d039390e" versionbuild="6" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="ta1a892e9-6a88-414e-8583-af60b4d93a22" versionbuild="13" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="tdbc9790c-c150-4c5a-b90f-4d2a4bdb899d" versionmajor="1" versionminor="2" versionrevision="3" versionmilestone="5"></testruninfo>
+        <testruninfo id="t99f26652-4384-4bdb-ad6a-795a7a533b23" versionmajor="1" versionminor="2" versionrevision="3" versionmilestone="5"></testruninfo>
+        <testruninfo id="teb470b18-6039-42f3-9024-6e21e8bcf399" versionmajor="1" versionminor="2" versionrevision="3" versionmilestone="5"></testruninfo>
+        <testruninfo id="t8a82278c-67cc-4f8a-8bcc-5afb25d1dc08" versionbuild="3" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="tf51425bc-b170-45d8-bb54-f7d5706165a4" versionbuild="11" versionmilestone="Autogenerated"></testruninfo>
+        <testruninfo id="t77d9a38f-3857-433d-86b9-21a4373f2f13" versionbuild="9" versionmilestone="Autogenerated"></testruninfo>
+      </testruninfos>
+    </testautomation>
   </data>
 </dashboardreport>

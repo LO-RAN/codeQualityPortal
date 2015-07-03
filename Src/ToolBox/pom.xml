@@ -181,7 +181,7 @@
                         <versionRevision>3</versionRevision>
                         <versionMilestone>5</versionMilestone>
                         <versionBuild>${BUILD_ID}</versionBuild>
-                        <category>unit</category>
+                        <category>performance</category>
                         <profileName>${dynaTrace.systemProfile}</profileName>
                         <username>${dynaTrace.username}</username>
                         <password>${dynaTrace.password}</password>
@@ -190,7 +190,7 @@
                     </configuration>
                     <!-- start this test in the process-test-classes phase
                          which is the one before the tests are executed -->
-                    <phase>process-test-classes</phase>
+                    <phase>pre-integration-test</phase>
                     <goals>
                         <!-- call the startTest goal of the Dynatrace plugin -->
                         <goal>startTest</goal>
@@ -204,11 +204,13 @@
     
        <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.3</version>
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
         </configuration>
       </plugin>
+      
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
             <version>2.17</version>
@@ -251,6 +253,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.7</version>
         <configuration>
           <formats>
             <format>html</format>
@@ -258,6 +261,7 @@
           </formats>
         </configuration>
       </plugin>
+      
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>javancss-maven-plugin</artifactId>
