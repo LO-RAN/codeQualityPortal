@@ -1,9 +1,11 @@
 @echo off
 
 cd ..\Src
-call mvn clean install
+call mvn -DdynaTrace.agentPath=d:\cpwr\dynaTrace_6.2\agent\lib64\dtagent.dll  clean install
 
 IF %ERRORLEVEL% NEQ 0 goto mvnerror
+
+
 
 Echo Build succeeded; making things installable...
 cd ..\Build

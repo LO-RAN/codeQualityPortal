@@ -1,0 +1,1426 @@
+<html>
+<head>
+<STYLE TYPE='text/css'>
+.styleBackground	{
+ background-color: #ffffff;
+}
+.styleTitle {
+ font-family : Verdana, Arial, Helvetica, sans-serif;
+ font-size: 9pt;
+ color: #ffffff;
+ background-color : #336699;
+ text-align : center;
+ font-weight : bold;
+}
+.styleInfoRow	{
+ font-family	:	Verdana, Arial, Helvetica, sans-serif;
+ font-size	:	9pt;
+ background-color : #99ccff;
+ text-align : center;
+}
+.styleExplain	{
+ font-family	:	Verdana, Arial, Helvetica, sans-serif;
+ font-size	:	8pt;
+ background-color : #F2F2E8;
+ text-align : left;
+}
+h3	{
+ font-family	:	Verdana, Arial, Helvetica, sans-serif;
+ font-size	:	8pt;
+ font-weight : bold;
+ background-color : #F2F2E8;
+}
+</style>
+<title>Rules in OptimalAdvisor</title>
+</head>
+<body>
+<font face='Verdana,Arial,Helvetica,Geneva,Swiss,SunSans-Regular'>
+<!-- ************************************************************* -->
+<h4 align='center'><a href='http://www.compuware.com/products/java'>OptimalAdvisor&#8482;</a> - Code Validation Rules Reference</h4>
+<a name='summary'><hr width='80%' size='3' noshade color='#006699'></a>
+<!-- ************************************************************* -->
+<!-- This is the List of Rules -->
+<br>
+<table class='styleBackground' cellspacing='0' cellpadding='0' border='0' width='100%'>
+ <tr><td>
+ <table border=0 cellPadding=2 cellSpacing=1 width='100%'>
+<tr class='styleTitle'>
+<th>&nbsp;Default&nbsp;</th>
+<th align=left>&nbsp;Title&nbsp;</th>
+<th>&nbsp;Severity&nbsp;</th>
+<th>&nbsp;Category&nbsp;</th>
+</tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0001: Class overrides equals() without overriding hashCode()</b></td><td>High</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>When a class overrides <code class='code'>equals()</code> it should also override <code class='code'>hashCode()</code>. Failure to do so will result in violating the contract for <code class='code'>hashCode()</code>, meaning that your class will not function properly with hash-based collections. The important thing to remember is that when two objects are considered equal (via your <code class='code'>equals()</code> method), their hash codes must be equal.<p>This issue is very important for public classes where you have no control over how your class is used. In package or private classes, this is less important, as the use of the class is more under your control and you might not be using hash tables.</p> <h3>Remedy:</h3>Try one of the following:<ul><li>Implement a <code class='code'>hashCode()</code> method. Make sure it returns the same value for all objects that your <code class='code'>equals()</code> method says are equal.</li><li>If your class will not be used in collections, make your intention clear by providing a <code class='code'>hashCode()</code> method that throws an exception if it is called.</li><li>You might find that you can eliminate the <code class='code'>equals()</code> method. If your class has evolved over time and the <code class='code'>equals()</code> method no longer tests for equality of data between two instances then remove your <code class='code'>equals()</code> method.</li><li>If you have a <code class='code'>hashCode()</code> method, make sure its name is correct (uppercase 'C') and that it has no parameters</li></ul> <h3>Reference:</h3>See page 36 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 36</b> in <b>Item 8</b> of the PDF version at: <a href='http://developer.java.sun.com/developer/Books/effectivejava/Chapter3.pdf'>Sample Chapter 3</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>OFF</td><td  align=left><b>R0002: equals() is overloaded without declaring an equals(Object) override</b></td><td>High</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>When a class declares an <code class='code'>equals()</code> method whose argument is not of type <code class='code'>Object</code> then the method is actually being overloaded  rather than overridden. This means that your <code class='code'>equals()</code> method might not be called because the compiler may use the <code class='code'>equals()</code> method of <code class='code'>java.lang.Object</code>, which tests for equality of references and not equality of content. If this is intentional, you must still define an <code class='code'>equals()</code> method that actually overrides <code class='code'>equals(Object)</code>.<h3>Remedy:</h3>Change this method to take a parameter of type <code class='code'>Object</code>, then check it with <code class='code'>instanceof</code> and cast it appropriately inside the method.<h3>Example:</h3>Here is an example of a good <code class='code'>equals()</code> method with proper checks and casting:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public boolean equals(Object o) {
+    if ( !(o instanceof MyType) )   // works if 'o' is null
+      return false;
+    if ( o==this )                  // quick identity check
+      return true;
+    MyType obj = (MyType)o;         // make it easy to work with
+    // rest of your code goes here
+    // and uses 'obj' as normal
+  }</pre></td></tr></table></div><h3>Reference:</h3>See page 35 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 35</b> in <b>Item 7</b> of the PDF version at: <a href='http://developer.java.sun.com/developer/Books/effectivejava/Chapter3.pdf'>Sample Chapter 3</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>OFF</td><td  align=left><b>R0003: Public class exposes a public field</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>When a class is declared <code class='code'>public</code> it should not have public fields for a variety of reasons:<ol><li>It is not thread safe.</li><li>You cannot limit the values that are stored in the fields.</li><li>You cannot take action when the field is modified.</li><li>In the future, you cannot change the internal representation of your class.</li></ol><h3>Remedy:</h3>Consider doing any or all of the following:<ul><li>Change the field access to <code class='code'>package</code> or <code class='code'>protected</code>.</li><li>Make the field final if it is a primitive type, or an immutable type like <code class='code'>String</code>, and the field is being used as a constant.</li><li>Change the class access to <code class='code'>package</code> or <code class='code'>protected</code>.</li><li>Add accessor methods for fields that are needed outside the class.</li></ul><h3>Reference:</h3>See page 61 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><h3>False Positives:</h3>This rule may not be applicable in the context of J2EE specs which require public attributes.<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0005: A final field should not contain a reference to a mutable object.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Non zero-length arrays are always mutable so it is nearly always wrong to have public static final arrays. This allows client code to change data that it shouldn't be allowed to. This is true for other mutable objects as well. </p><h3>Remedy:</h3>Possible workaround is to :<ul><li>Change the field to be non-public and access it only indirectly through methods. <li>You might even provide an accessor function that returns a copy of the object. </ul><h3>Reference:</h3>See page 122 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 122</b> in <b>Item 24</b> of the PDF version at: <a href='http://www.informit.com/isapi/product_id~%7B7DE69993-3EF5-4354-9E10-9F8A535909F1%7D/content/images/0201310058/samplechapter/blochch6.pdf'>Sample Chapter 6</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0007: Overridable method is invoked in constructor, clone() or readObject()</b></td><td>High</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Classes should never invoke any of their overridable methods from their constructor,  <code class='code'>clone()</code> or <code class='code'>readObject()</code> methods. For constructors, this is because the superclass constructor will call the overriding method in the subclass <b>before</b> the subclass constructor gets a chance to run. For <code class='code'>readObject()</code> the overriding method will run before the state of the subclass has been deserialized. For <code class='code'>clone()</code> the overriding method will run before the subclass's clone() method does its initializations. <p>In all cases, the class is likely to fail in the future if it is subclassed and the subclass overrides the indicated method.  The failure will happen at runtime and will be difficult to diagnose. </p><p>Because this problem only shows up when your class is subclassed, it is critical to fix this problem if your class is being used by other applications (for example, your class is part of a public class library). This is because the problem won't show up until after you ship the class to your users. </p><p>However, if this class is only for internal use by your application, then this violation is not so critical - any failures would happen when you use it improperly and you could directly fix the class when the problem happens. </p><h3>Remedy:</h3>Some possible workarounds include:<ul><li>Prohibit overriding of the called method by making it <code class='code'>private</code> or <code class='code'>final</code>.</li><li>Prohibit subclassing by making your class <code class='code'>final</code>.</li><li>Extract the code of the overridden method into a private method and then:</li><ol><li>call the private method from the constructor, <code class='code'>clone()</code> and <code class='code'>readObject()</code> methods instead of the original public method.</li><li>call the private method from the original public method, which can then be safely overridden by a subclass.</li></ol><li>Make the constructors <code class='code'>private</code> and use a static factory to create instances.</li></ul><h3>Reference:</h3>See page 80 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Also see this Sun Technical Tip: <a href='http://java.sun.com/developer/TechTips/2000/tt1205.html#tip2'>Constructor and Initialization Ordering</a><h3>False Positives:</h3>If your clone() or readObject() method creates an internal object of the same type as your class (the clone() method often does this) the detection algorithm may erroneously point out instances of calls to overridden methods on the internal object.  If the calls are not being made to the 'this' object, you can safely ignore this warning.<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0008: Abstract classes should implement an interface</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Abstract classes and interfaces work well together. This is especially important to note if you are defining an API for others to implement (outside of your package).<p>Abstract classes have the advantage of being easy to extend in the future with new methods. Their drawback is that they can only be subclassed in a hierarchical way.</p><p>Interfaces are ideal for defining mix-ins and nonhierarchical frameworks but cannot provide any default implementation.</p><p>Using abstract classes with interfaces provides the benefits of both. You can encapsulate your API in an interface and use your abstract class to provide a skeletal implementation of the interface.</p><h3>Remedy:</h3>To get the maximum flexibility for your class:<ol><li>Define an interface for the API of this class.</li><li>Rename this class to <code class='code'>Abstract<em>iii</em></code>, where <code class='code'><em>iii</em></code> is the name of your interface, and make it implement the interface. This becomes the skeletal implementation of the interface.</li><li>Subclasses should implement the interface and contain a field of the skeletal type (instead of simply extending the abstract class directly). This allows for the maximum flexibility.</li></ol><h3>Reference:</h3>See page 84 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Also see this Sun Technical Tip: <a href='http://java.sun.com/developer/JDCTechTips/2001/tt1106.html#tip2'>Abstract Classes vs. Interfaces</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0009: Interface used to only define constants</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Some classes use interfaces to define constants so that they do not need to qualify constant names with a class name in the code. This is a poor use of interfaces. Internal constants are an implementation detail that should not leak into the exported API of the subclass.<h3>Remedy:</h3>There are several possible improvements you can make:<ul><li>Use <code class='code'>enum</code> (Java 2 v1.5 only) to define the constants.</li><li>Use <code class='code'>import static</code> (Java 2 v1.5 only) to import just the constants, instead of 'implementing' this constant-only interface.</li><li>Create a class that defines the constants, with a private constructor to prevent instantiation. Use qualified names to reference the constants from other classes.</li></ul><h3>Example:</h3>This is how you could define a class that defines the constants, with a private constructor to prevent instantiation:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public class MyConstants {
+    private MyConstants() // prevent instantiation
+    public static final int MY_CONSTANT=xxx;
+    // ...more constant definitions...
+  }</pre></td></tr></table></div><p>You then reference your constants from other code like this:</p><div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public class OtherClass { // does not implement a constant-only class
+    public void myMethod() {
+      int x = MyConstants.MY_CONSTANT;
+    }
+  }</pre></td></tr></table></div><h3>Reference:</h3>See page 89 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Also see a description of <code class='code'>enum</code> and other 1.5 changes here: <a href='http://www.ftponline.com/javapro/2003_12/magazine/columns/proshop/default_pf.aspx'>http://www.ftponline.com/javapro/2003_12/magazine/columns/proshop/default_pf.aspx</a><br>And see this Sun Technical Tip: <a href='http://java.sun.com/developer/JDCTechTips/2003/tt0715.html#2'>Interfaces and Constants</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0011: Parameter list longer than recommended by convention</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Good programming practice avoids long parameter lists. In addition, if parameter lists have sequences of identically typed parameters, it is easy to call the method with the parameters in the wrong order.<h3>Remedy:</h3>Ways to reduce complexity include:<ul><li>Provide multiple methods with fewer parameters in place of one method that has many parameters. This generally improves the readability of the code.</li><li>Combine several parameters into an object and pass the object as a single parameter. This is the preferred fix if the parameters are strongly related to each other.</li></ul><h3>Example:</h3>This example shows how you can take a single method with a long parameter list, and convert it to multiple methods with shorter parameter lists. Here's a method with too many similar parameters:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public int getCount( boolean includeTypes, 
+                       boolean includeColors, 
+                       boolean includeTop ) { // TOO MANY BOOLEAN PARAMETERS
+    //... code
+  }</pre></td></tr></table></div><p>One improvement would be to make the original method private, and create 2 new public methods that have shorter parameter lists - even if they simply call the original method:</p><div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public int getCountWithTop(boolean includeTypes, boolean includeColors ) { 
+    //... code
+  }
+
+  public int getCountWithoutTop(boolean includeTypes, boolean includeColors ) { 
+    //... code
+  }</pre></td></tr></table></div><h3>Reference:</h3>See page 126 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 126</b> in <b>Item 25</b> of the PDF version at: <a href='http://www.informit.com/isapi/product_id~%7B7DE69993-3EF5-4354-9E10-9F8A535909F1%7D/content/images/0201310058/samplechapter/blochch6.pdf'>Sample Chapter 6</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0012: Class implements Cloneable without a clone() method</b></td><td>Low</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>If you do not provide at least a <code class='code'>protected clone()</code> method, this class cannot be clonable. If you want to prevent cloning, implement a <code class='code'>public clone()</code> method that throws <code class='code'>CloneNotSupportedException</code>.<h3>Remedy:</h3>Providing a properly functioning clone method is difficult. Consider whether you need to support <code class='code'>Cloneable</code> at all.  You have several options:<ul><li>Remove <code class='code'>implements Cloneable</code>.</li><li>Implement a working <code class='code'>clone()</code> method.</li></ul><h3>Example:</h3>Here is a skeleton for a working clone method:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public Object clone() throws CloneNotSupportedException {
+    MyClass object = (MyClass) super.clone();
+    // your code goes here
+    // be sure your cloned object gets <b>copies</b> of
+    // all mutable fields in this class
+    return object;
+  }</pre></td></tr></table></div><h3>Reference:</h3>See page 46 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 46</b> in <b>Item 10</b> of the PDF version at: <a href='http://developer.java.sun.com/developer/Books/effectivejava/Chapter3.pdf'>Sample Chapter 3</a><br>Also see this Sun Technical Tip: <a href='http://java.sun.com/developer/JDCTechTips/2001/tt0306.html#cloning'>Cloning Objects</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0013: Ambiguous Overloaded Methods in Class</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>When you have methods with similar parameter types, users of your class could accidentally call the wrong method. In particular, if the parameter types of one method could be cast to the parameter types of another method, you have two methods with ambiguous overloading. It is very hard to detect this problem by visually inspecting the code.<p>The choice of which overloaded routine to invoke is made at compile time, not runtime. Therefore it is likely that the correct method will not be invoked at runtime.</p><h3>Remedy:</h3>Try one of the following:<ul><li>Rename one of the methods so there is no overloaded ambiguity.</li><li>If you have several overloads and you find that one is generic but the others are not, you might consider making the generic method <code class='code'>private</code>.  For example, if you have one method with an Object parameter, one with a String, and one with a StringBuffer, then making the generic method private (the one with the Object parameter) would eliminate the ambiguity.</li><li>If you have multiple parameters of different types, sometimes you can change the order of parameters in one method so the method signatures are different.</li><li>Combine the ambiguous methods into a single method. Inside the method, use <code class='code'>instanceof</code> to dispatch appropriately at runtime to the proper code or to private methods.</li><li>Prevent the ambiguous methods from being called externally.  Change them to <code class='code'>private</code> or package access.</li></ul><h3>Example:</h3>The class below contains two ambiguous constructors.  The author's intention was to provide one constructor to build an ArrayList containing a single object, and a second constructor to build an ArrayList containing each object from a collection. For simplicity, the constructors are labeled *A* and *B*:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  class MyArrayList {
+    ArrayList data = new ArrayList();
+
+    public MyArrayList(<b>Object item</b>) {      // AMBIGUOUS *A*
+      data.add(item); // add single item
+    }
+
+    public MyArrayList(<b>Collection items</b>) { // AMBIGUOUS *B*
+      Iterator it = items.iterator();
+      while(it.hasNext())
+        data.add(it.next()); // add each item
+    }
+  }</pre></td></tr></table></div>The ambiguity shows up in this code fragment, which will surprise the user by calling the wrong method. The entire collection will be added as a single object to the ArrayList:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  Object[] myArray = new Object[10];         // create 10 elements
+  Object items = Arrays.asList( myArray );   // convert Array to List
+  MyArrayList a = new MyArrayList( items );  // CALLS *A*, not *B*!
+  System.out.println( a.data.size() );       // prints 1 instead of 10 !</pre></td></tr></table></div><br>If these were methods instead of constructors, a good fix would be to simply rename the second method (*B*).  This would make the intent clear as well as removing the ambiguity.  However, since these are constructors, we must use the third remedy (Combine Methods).  We combine the two constructors into one, and dispatch accordingly (note that fix this would work just as well if these were methods instead of constructors): <div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  class MyArrayList {
+    ArrayList data = new ArrayList();
+
+    public MyArrayList(Object item) {
+      if (item instanceof Collection) {
+        Iterator it = ((Collection)item).iterator();
+        while(it.hasNext()) // add each item
+          data.add(it.next());
+      } else {
+        data.add(item); // add single item
+      }
+    }
+  }</pre></td></tr></table></div>Since there's no longer any ambiguity, the code fragment below (unchanged from above), now correctly adds each item in the collection to the ArrayList:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  Object[] myArray = new Object[10];         // create 10 elements
+  Object items = Arrays.asList( myArray );   // convert Array to List
+  MyArrayList a = new MyArrayList( items );  // Correctly adds 10 items
+  System.out.println( a.data.size() );       // prints 10</pre></td></tr></table></div><h3>Reference:</h3>See page 128 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 128</b> in <b>Item 26</b> of the PDF version at: <a href='http://www.informit.com/isapi/product_id~%7B7DE69993-3EF5-4354-9E10-9F8A535909F1%7D/content/images/0201310058/samplechapter/blochch6.pdf'>Sample Chapter 6</a><br>Also see this Sun Technical Tip: <a href='http://java.sun.com/developer/JDCTechTips/2002/tt0806.html#tip2'>When Not to Overload Methods</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0014: Ambiguous Overloaded Methods in Class Hierarchy</b></td><td>High</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>These methods are overloaded, not overridden.  Typically, a subclass overrides (same exact parameter types) a method in the base class.  However, by overloading the base class method with a similar yet different signature, it is easy for users of this subclass to inadvertently call the method in the base class.  It is very hard to detect this problem by visually inspecting the code.<p>The choice of which overloaded routine to invoke is made at compile time, not runtime. Therefore it is likely that the correct method will not be invoked at runtime.</p><h3>Remedy:</h3>Try one of the following:<ul><li>If you intended to override the method in the base class, first change your subclass to match the parameter signature of the method in the base class.  Second, inside the subclass method, use <code class='code'>instanceof</code> to dispatch appropriately at runtime to the superclass method if necessary.</li><li>Rename the subclass method so there is no ambiguity.</li><li>If this is reported for a class that you use but cannot change, you should explicitly cast your parameters when you call either method, so that it is clear which method you are actually calling.</li></ul><h3>Example:</h3>These two ambiguous methods are in two different classes in the class hierarchy.  They are followed by corrections using the remedies above.  <p>The author's intention for the subclass below was to provide a subclass that executed faster than the base class since the author could optimize it for Integers. In the code below, <code class='code'>myMethod()</code> is defined ambiguously in the base class and subclass.  The parameter type <code class='code'>Integer</code> is a subclass of <code class='code'>Number</code>, which causes the ambiguity. </p><p>For simplicity, the ambiguous methods are labeled *A* and *B*:</p><div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public class BaseNum {
+    public void myMethod( Number n ) {   // AMBIGUOUS *A*
+      // base class code
+    }
+  }
+
+  public class IntNum extends BaseNum {
+    public void myMethod( Integer i ) {  // AMBIGUOUS *B*
+      // subclass code optimized for integers goes here
+    }
+  }</pre></td></tr></table></div>In this code that uses the overloaded method, the final line calls *A* not *B* because the compiler only knows that the parameter type is a Number. The compiler does not know that an Integer object is being passed to the method. <div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  Number  n = new Integer(1);
+  IntNum in = new IntNum( );
+  in.myMethod( n );  // CALLS *A*, not *B*!</pre></td></tr></table></div><p><b>FIX #1</b> - change the subclass method to have the same parameter type as the base class, and dispatch to the super class if necessary.  This uses overriding instead of overloading, which is really what the author intended. It also means the users of the class do not have to make any changes to their code - they can continue to use the same method name.</p><div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public class IntNum extends BaseNum {
+    public void myMethod( <u>Number</u> n ) {  // matching parameter type
+      if (n instanceof Integer) {
+        // subclass code optimized for integers goes here
+      } else {
+        super.myMethod( n );
+      }
+    }
+  }</pre></td></tr></table></div><p><b>FIX #2</b> - rename the method in the subclass.  While this forces the user of the class to explicitly pick which method they want executed, there's no surprise due to ambiguity. </p><div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public class IntNum extends BaseNum {
+    public void <u>myIntMethod</u>( Integer i ) {  // renamed
+      // subclass code optimized for integers goes here
+    }
+  }</pre></td></tr></table></div><h3>Reference:</h3>See page 128 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 128</b> in <b>Item 26</b> of the PDF version at: <a href='http://www.informit.com/isapi/product_id~%7B7DE69993-3EF5-4354-9E10-9F8A535909F1%7D/content/images/0201310058/samplechapter/blochch6.pdf'>Sample Chapter 6</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0016: Class extends Throwable or Error instead of RuntimeException</b></td><td>High</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>By strong convention, <code class='code'>Error</code> is reserved for use by the JVM to indicate conditions that make it impossible to continue execution.  <code class='code'>Throwable</code> is the base class for all errors and exceptions.  For that reason you should subclass <code class='code'>RuntimeException</code> or <code class='code'>Exception</code>. <h3>Remedy:</h3>Try one of the following:<ul> <li>Extend <b><code class='code'>RuntimeException</code></b> instead of <code class='code'>Error</code>.  This is appropriate if this is an error (usually a programming error) where recovery is not practical.</li><li>Extend <b><code class='code'>Exception</code></b> instead of <code class='code'>Error</code>.  This is the right choice if you want your users to recover from the problem.  It will turn this into a checked exception.</li></ul><h3>Reference:</h3>See page 172 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0019: Inner class implements Serializable</b></td><td>High</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Inner classes use compiler-generated synthetic fields to store references to enclosing instances and to store values of local variables from enclosing scopes. How these fields correspond to the class definition is unspecified, as are the names of anonymous and local classes. Therefore the default serialized form of an inner class is not well-defined and should be avoided. <h3>Remedy:</h3>Try one of the following:<ul> <li>Consider whether this inner class needs to be serialized at all.  Remove <b><code class='code'>implements Serializable</code></b> if possible.</li><li>If the serialized data is short term (saved and deserialized during one session) then this is not as important.  However, if the data is being saved for a longer time, you may have to rethink the design of this class to avoid serializing it.</li></ul><h3>Reference:</h3>See page 217 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0020: Serializable class does not include a 'serialVersionUID' field</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Declaring an explicit <code class='code'>serialVersionUID</code> field eliminates a potential source of incompatibility and also provides a small performance benefit. <h3>Remedy:</h3><ol> <li>Declare a field called <b><code class='code'>serialVersionUID</code></b> and set its value to a UID.</li><li>Be sure to change the UID value whenever you change your class such that deserialization of an old instance would fail (usually by adding or removing a field). </li></ol> <h3>Reference:</h3>See page 223 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Also see this Sun Technical Tip: <a href='http://java.sun.com/developer/JDCTechTips/2001/tt0306.html#serialized'>Serializable Fields API</a><h3>Example:</h3>Use the <code class='code'><b>serialver</b></code> utility on the class to generate a UID (or pick a number at random).  Create the field in your class like this:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  class MyClass {
+    <b><u>private static final long serialVersionUID =</b> <i>uidNumber</i>;</u>
+    // rest of the class
+  }</pre></td></tr></table></div><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0021: finalize() does not call super.finalize()</b></td><td>Low</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>In general, finalizers are not recommended. <p>However, when finalizers are used, Java does not call the superclass finalize() method automatically.  No chaining of finalizers occurs. When your class implements <code class='code'>finalize()</code>, it must manually invoke <code class='code'>super.finalize()</code> or the finalize method of the superclass will not be called. </p><h3>Remedy:</h3>Add a call to <b><code class='code'>super.finalize()</code></b> in your <code class='code'>finalize()</code> method.<h3>Reference:</h3>See page 23 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>OFF</td><td  align=left><b>R0022: toString() not defined in public class</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Providing a good <code class='code'>toString()</code> method makes your class that much easier to use, especially when debugging. A good <code class='code'>toString()</code> method should return all interesting data from the object. <h3>Remedy:</h3>Add a <b><code class='code'>public String toString()</code></b> method to your class.<h3>Reference:</h3>See page 42 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 42</b> in <b>Item 9</b> of the PDF version at: <a href='http://developer.java.sun.com/developer/Books/effectivejava/Chapter3.pdf'>Sample Chapter 3</a><br>Also see this Sun Technical Tip: <a href='http://java.sun.com/developer/JDCTechTips/2002/tt0205.html#tip1'>Writing toString Methods</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0025: clone() does not call super.clone()</b></td><td>Medium</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>The <code class='code'>clone()</code> method is similar to a constructor. All subclasses must call <code class='code'>super.clone()</code> and the base class eventually invokes <code class='code'>Object.clone()</code>, which creates an instance of the correct subclass.<p>By not calling <code class='code'>super.clone()</code> the <code class='code'>clone()</code> method is probably creating an object of its class instead of the subclass type.  This means if your class is subclassed, the clone method will likely fail at runtime.</p><h3>Remedy:</h3>Providing a properly functioning <code class='code'>clone()</code> method is difficult. You have several options:<ul><li>Prohibit subclassing by making your class <code class='code'>final</code>. If your class should not be subclassed, then this is a good solution that won't require any change to your clone method.</li><li>Add a call to <code class='code'>super.clone()</code> in your <code class='code'>clone()</code> method.</li><li>Remove your <code class='code'>clone()</code> method and <code class='code'>implements Cloneable</code> from your class. Do this if you find you do not really have to support cloning.</li></ul><h3>Example:</h3>Here is a skeleton for a working clone method:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public Object clone() throws CloneNotSupportedException {
+    MyClass object = (MyClass) super.clone();
+    // your code goes here
+    // be sure your cloned object gets <b>copies</b> of
+    // all mutable fields in this class
+    return object;
+  }</pre></td></tr></table></div><h3>Reference:</h3>See page 46 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 46</b> in <b>Item 10</b> of the PDF version at: <a href='http://developer.java.sun.com/developer/Books/effectivejava/Chapter3.pdf'>Sample Chapter 3</a><br>Also see this Sun Technical Tip: <a href='http://java.sun.com/developer/JDCTechTips/2001/tt0306.html#cloning'>Cloning Objects</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0026: readResolve() or writeReplace() declared private in Serializable class</b></td><td>Medium</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>In classes designed to be subclassed (not final), <code class='code'>readResolve()</code> and <code class='code'>writeReplace()</code> should not be private or they will not apply to any subclasses.<h3>Remedy:</h3>You should change this class to do at least one of the following:<ul><li>Change the access to <b><code class='code'>protected</code></b> or <b><code class='code'>public</code></b> on <code class='code'>readResolve()</code> and <code class='code'>writeReplace()</code> methods.</li><li>Make the class <b><code class='code'>final</code></b>, so it cannot be subclassed.</li></ul><h3>Reference:</h3>See page 232 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0027: There must be a readResolve() method present on a singleton class that implements Serializable.</b></td><td>Medium</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>There must be a readResolve() method present on a singleton class that implements Serializable. Otherwise each deserialization of a serialized instance will result in the creation of a new instance,which breaks the singleton guarantee.<h3>Remedy:</h3>Add a readResolve() method to the singleton class that implements Serializable. <h3>Reference:</h3>See page 232 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0028: JDBC object does not call its close() method</b></td><td>Medium</td><td>Performance</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>The JDBC spec says that closing a connection should automatically close its statements and result sets, and that closing a statement should automatically close its result sets. <p>However, in practice, some drivers require an explicit close of everything in reverse order - otherwise you can leave some objects in limbo and end up with resource leaks (memory, db connections, etc.). </p><p>Closing all ResultSets, Statements, and Connections in proper order is good JDBC defensive programming practice. <h3>Remedy:</h3>Add the appropriate calls to <b><code class='code'>close()</code></b> methods as pointed out by the rule.<h3>Reference:</h3>See <a href='http://www.compuware.com/products/devpartner/db'>Compuware's DevPartnerDB product</a> for more database debugging and tuning tools.</p><h3>False Positives:</h3>If your class doesn't own the JDBC object, it could fool the detection algorithm.  For example, if your class is designed to create JDBC objects and relinquish ownership of them, then your class is expecting the new owner of the JDBC object to close it.  However, if your class owns the JDBC object, you should make sure it closes it when it is finished with it.<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R0030: Class overrides equals() without implementing Comparable</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Since your class overrides <code class='code'>equals()</code> you should consider implementing the <code class='code'>Comparable</code> interface, which has one method: <code class='code'>compareTo()</code>. <p>By implementing <code class='code'>Comparable</code>, your class will interoperate with generic searching and sorting algorithms that are part of the Collections Framework.  If this class is for public use, this is very important as it enables people to successfully use your class in Collections and with the utility class <code class='code'>Arrays</code>. </p><h3>Remedy:</h3><ol> <li>Implement the <code class='code'><b>Comparable</b></code> interface</li> <li>Create a <code class='code'><b>compareTo()</b></code> method.  Make sure it is consistent with your <code class='code'>equals()</code> method. </li></ol><h3>Reference:</h3>See page 53 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 53</b> in <b>Item 11</b> of the PDF version at: <a href='http://developer.java.sun.com/developer/Books/effectivejava/Chapter3.pdf'>Sample Chapter 3</a><br>Also see Sun API Docs: <a href='http://java.sun.com/j2se/1.4/docs/api/java/lang/Comparable.html'>Comparable Interface</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1004: String copy constructor used</b></td><td>Low</td><td>Performance</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>String objects cannot change.  Because of that, you never need to make a copy of them - you can safely copy the reference to a String in all cases.  This avoids creating unnecessary String objects.  In addition, by explicitly creating a new String, you bypass the normal string caching that the String class does.<p>Therefore, do not use the <code class='code'><b>new String( String )</b></code> copy constructor, or the <code class='code'><b>new String()</b></code> empty constructor.</p><h3>Remedy:</h3>Replace instances of these statements:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>    String w = <b>new String()</b>;                                   // DON'T DO THIS
+    String x = <b>new String( <u>stringField</u> )</b>;                      // DON'T DO THIS
+    String y = <b>new String( <u>"abc"</u> )</b>;                            // DON'T DO THIS
+    String z = <b>new String( <u>"abc" + stringReturnedByMethod()</u> )</b>; // DON'T DO THIS</pre></td></tr></table></div>With these:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>    String w = <b><u>""</u></b>;
+    String x = <b><u>stringField</u></b>;
+    String y = <b><u>"abc"</u></b>;
+    String z = <b><u>"abc" + stringReturnedByMethod()</u></b>;</pre></td></tr></table></div><h3>Reference:</h3>See page 13 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br> Also see Sun Java Docs at <a href='http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html#String()'>String Constructor API</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1007: Method name matches Constructor name</b></td><td>High</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Do not create a method that has the same name as a constructor.  It's probably a mistake, and it's definitely confusing.<p>A typical case is where you accidentally create a constructor with a return type of <code class='code'>void</code>. It looks like a constructor to your users, but to the compiler it's a method.  For example:<pre><code>  Class MyClass {<br>    public <b><i>void</i></b> MyClass()  // this is NOT a constructor!<br>    { ... }<br>  }</code></pre></p><h3>Remedy:</h3>Do one of the following:<ul><li>If you intended this to be a constructor, remove the return type</li><li>Give this method a different name</li></ul><h3>Reference:</h3>See page 12  in <i><u>Java Pitfalls</u> (2001)</i>.  See book info here: <a href='http://www.amazon.com/exec/obidos/ASIN/0471361747/javaworld/104-0495591-2300751'>http://www.amazon.com/exec/obidos/ASIN/0471361747/javaworld/104-0495591-2300751</a><br>or see sample page 12 at: <a href='http://www.amazon.com/exec/obidos/tg/detail/-/0471361747/ref=lib_rd_ss_TI01/104-0495591-2300751?v=glance&s=books&vi=reader&img=21#reader-link'>Sample Pages Online</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>OFF</td><td  align=left><b>R1010: Constructor doesn't initialize all public and protected fields</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>This class has some public or protected fields that are not initialized by all its constructors (and of course are not initialized when declared).  This is known as Run-On Initialization and it can be the source of subtle bugs.<p>Run-on initialization requires users of your class to take two steps to create your object:<ol> <li>Call the constructor</li><li>Call an initialization method to pass additional data that is stored as part of your object's state.</li></ol> Because of all the problems involved with run-on initialization, it's much better for your constructors to initialize all fields.  Too often, constructors leave some fields uninitialized.  Full initialization avoids your users having to check internal fields for null before using them.  This doesn't mean you can't change a field to a new value via a set method.  But it does mean that your object will have consistent state at all times - and it also means that you won't tolerate fields being left null.  </p> <div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><b>Note:</b> If you have multiple constructors, check to see if this is a case where one of the constructors is neglecting to initialize a field that it should.  That's a critical case to fix. </td></tr></table></div><p>Using <code>null</code> as a valid state for an object reference is often an unsafe practice.  It is better to set all fields in an object to default values so every instance of your class is in a well-defined state. However, there are many times where you can successfully use <code>null</code> as a valid state for a field.  It requires care though, to avoid getting a <code>NullPointerException</code>.</p> <p><code>NullPointerException</code>s are particularly hard to debug because they tend to be thrown very far away from the actual cause of the bug.  And of course they don't really tell you any useful information about what is really wrong - namely: <b><i>why</i></b> the pointer is null. </p> <p>What's an alternative?  Create a unique object that represents the 'empty' or 'unset' case and store a reference to it in your object's field. If you are implementing JavaBeans, you may want to take this approach since the use of get and set methods is so common.  As a bean writer, you still provide get/set methods, but initialize your internal references to something non-null, namely to special object instances that represent the 'empty' case.</p> <h3>Remedy:</h3><ol><li>Eliminate methods that are of the form: <code>init( p1, p2, p3... )</code>. </li><li>Initialize all of your Fields to non-null values in all your constructors, or when they are declared. </li><li>Consider creating a unique object that represents 'empty' or 'unknown' and using this as the initial value of a field that's currently initialized to null. This avoids having to test the field for <code class='code'>null</code> all the time before using it. This is a good strategy for JavaBean writers, since they commonly provide a 'set' method to set internal references. </li></ol><h3>Reference:</h3>See Eric Allen's description of the evils of run-on initialization in this article: <br><a href='http://www-106.ibm.com/developerworks/java/library/j-diag0416'>http://www-106.ibm.com/developerworks/java/library/j-diag0416</a><br>To use unique objects to represent 'empty',  see page 260 in Martin Fowler's book <i><u>Refactoring</u> (2002)</i> for a step-by-step refactoring process. Or see the refactoring site: <a href='http://www.refactoring.com/catalog/introduceNullObject.html'>http://www.refactoring.com/catalog/introduceNullObject.html</a><h3>False Positives:</h3><ol><li>Lazy initialization (initializing a field's value when it's first used) can sometimes fool this rule into thinking a field was not initialized properly.  If your lazy initialization code is inline where the field is referenced, it's likely to show up as a false positive because the code won't be recognized as initialization code.  By moving the lazy initialization code into an accessor method, you'll avoid false positives and make your code more reliable.</li><li>If you have a good reason to use <code>null</code> as a valid state for your reference, you can disregard this rule.  It does not apply in this case. </li></ol><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>OFF</td><td  align=left><b>R1011: Constructor doesn't initialize all package and private fields</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>This class has some package or private fields that are not initialized by all its constructors (and of course are not initialized when declared).  This is known as Run-On Initialization and it can be the source of subtle bugs.<p>Run-on initialization requires users of your class to take two steps to create your object:<ol> <li>Call the constructor</li><li>Call an initialization method to pass additional data that is stored as part of your object's state.</li></ol> Because of all the problems involved with run-on initialization, it's much better for your constructors to initialize all fields.  Too often, constructors leave some fields uninitialized.  Full initialization avoids your users having to check internal fields for null before using them.  This doesn't mean you can't change a field to a new value via a set method.  But it does mean that your object will have consistent state at all times - and it also means that you won't tolerate fields being left null.  </p> <div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><b>Note:</b> If you have multiple constructors, check to see if this is a case where one of the constructors is neglecting to initialize a field that it should.  That's a critical case to fix. </td></tr></table></div><p>Using <code>null</code> as a valid state for an object reference is often an unsafe practice.  It is better to set all fields in an object to default values so every instance of your class is in a well-defined state. However, there are many times where you can successfully use <code>null</code> as a valid state for a field.  It requires care though, to avoid getting a <code>NullPointerException</code>.</p> <p><code>NullPointerException</code>s are particularly hard to debug because they tend to be thrown very far away from the actual cause of the bug.  And of course they don't really tell you any useful information about what is really wrong - namely: <b><i>why</i></b> the pointer is null. </p> <p>What's an alternative?  Create a unique object that represents the 'empty' or 'unset' case and store a reference to it in your object's field. If you are implementing JavaBeans, you may want to take this approach since the use of get and set methods is so common.  As a bean writer, you still provide get/set methods, but initialize your internal references to something non-null, namely to special object instances that represent the 'empty' case.</p> <h3>Remedy:</h3><ol><li>Eliminate methods that are of the form: <code>init( p1, p2, p3... )</code>. </li><li>Initialize all of your Fields to non-null values in all your constructors, or when they are declared. </li><li>Consider creating a unique object that represents 'empty' or 'unknown' and using this as the initial value of a field that's currently initialized to null. This avoids having to test the field for <code class='code'>null</code> all the time before using it. This is a good strategy for JavaBean writers, since they commonly provide a 'set' method to set internal references. </li></ol><h3>Reference:</h3>See Eric Allen's description of the evils of run-on initialization in this article: <br><a href='http://www-106.ibm.com/developerworks/java/library/j-diag0416'>http://www-106.ibm.com/developerworks/java/library/j-diag0416</a><br>To use unique objects to represent 'empty',  see page 260 in Martin Fowler's book <i><u>Refactoring</u> (2002)</i> for a step-by-step refactoring process. Or see the refactoring site: <a href='http://www.refactoring.com/catalog/introduceNullObject.html'>http://www.refactoring.com/catalog/introduceNullObject.html</a><h3>False Positives:</h3><ol><li>Lazy initialization (initializing a field's value when it's first used) can sometimes fool this rule into thinking a field was not initialized properly.  If your lazy initialization code is inline where the field is referenced, it's likely to show up as a false positive because the code won't be recognized as initialization code.  By moving the lazy initialization code into an accessor method, you'll avoid false positives and make your code more reliable.</li><li>If you have a good reason to use <code>null</code> as a valid state for your reference, you can disregard this rule.  It does not apply in this case. </li></ol><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1012: Class doesn't initialize all public and protected static fields</b></td><td>High</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>This class has some public or protected static fields that are not initialized when declared or by the static{} initializer.  This is known as Run-On Static Initialization and it can be the source of subtle bugs.<p>Since static fields can be accessed prior to any instantiations of the object, or prior to any method calls, they should all be initialized up front.  The static{} construct can be used to initialize them.  You should be setting non-null initial values for every static field in the class.</p> <p>Run-on Static Initialization requires users of your class to take two extra steps to reliably use your object:<ol> <li>Call an initialization method to pass additional data that is stored as part of your object's state.</li><li>Check field values or call methods to see if the class has been properly initialized.</li></ol> Because of all the problems involved with run-on initialization, it's much better to initialize all static fields when the class is created.  Too often some fields are left uninitialized.  Full initialization avoids your users having to check internal fields for null before using them.  This doesn't mean you can't change a field to a new value via a set method.  But it does mean that your static fields will have consistent state at all times - and it also means that you won't tolerate fields being left null.  </p> <p>Using <code>null</code> as a valid state for an object reference is often an unsafe practice.  It is better to set all static fields in an object to default values so your class is in a well-defined state. However, there are many times where you can successfully use <code>null</code> as a valid state for a field.  It requires care though, to avoid getting a <code>NullPointerException</code>.</p> <p><code>NullPointerException</code>s are particularly hard to debug because they tend to be thrown very far away from the actual cause of the bug.  And of course they don't really tell you any useful information about what is really wrong - namely: <b><i>why</i></b> the pointer is null. </p> <p>What's an alternative?  Create a unique object that represents the 'empty' or 'unset' case and store a reference to it in your object's field. If you are implementing JavaBeans, you may want to take this approach since the use of get and set methods is so common.  As a bean writer, you still provide get/set methods, but initialize your internal references to something non-null, namely to special object instances that represent the 'empty' case.</p> <h3>Remedy:</h3><ol><li>Eliminate methods that are of the form: <code>init( p1, p2, p3... )</code>. </li><li>Initialize all of your Fields to non-null values in the static{} construct, or when they are declared. </li><li>Consider creating a unique object that represents 'empty' or 'unknown' and using this as the initial value of a field that's currently initialized to null. This avoids having to test the field for <code class='code'>null</code> all the time before using it. </li></ol><h3>Reference:</h3>See Eric Allen's description of the evils of run-on initialization in this article: <a <a href='http://www-106.ibm.com/developerworks/java/library/j-diag0416'>http://www-106.ibm.com/developerworks/java/library/j-diag0416</a><br>To use unique objects to represent 'empty',  see page 260 in Martin Fowler's book <i><u>Refactoring</u> (2002)</i> for a step-by-step refactoring process. Or see the refactoring site: <a href='http://www.refactoring.com/catalog/introduceNullObject.html'>http://www.refactoring.com/catalog/introduceNullObject.html</a><h3>False Positives:</h3><ol><li>Lazy initialization (initializing a field's value when it's first used) can sometimes fool this rule into thinking a field was not initialized properly.  If your lazy initialization code is inline where the field is referenced, it's likely to show up as a false positive because the code won't be recognized as initialization code.  By moving the lazy initialization code into an accessor method, you'll avoid false positives and make your code more reliable.</li><li>If you have a good reason to use <code>null</code> as a valid state for your reference, you can disregard this rule.  It does not apply in this case. </li></ol><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1013: Class doesn't initialize all package and private static fields</b></td><td>Medium</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>This class has some package or private static fields that are not initialized when declared or by the static{} initializer.  This is known as Run-On Static Initialization and it can be the source of subtle bugs.<p>Since static fields can be accessed prior to any instantiations of the object, or prior to any method calls, they should all be initialized up front.  The static{} construct can be used to initialize them.  You should be setting non-null initial values for every static field in the class.</p> <p>Run-on Static Initialization requires users of your class to take two extra steps to reliably use your object:<ol> <li>Call an initialization method to pass additional data that is stored as part of your object's state.</li><li>Check field values or call methods to see if the class has been properly initialized.</li></ol> Because of all the problems involved with run-on initialization, it's much better to initialize all static fields when the class is created.  Too often some fields are left uninitialized.  Full initialization avoids your users having to check internal fields for null before using them.  This doesn't mean you can't change a field to a new value via a set method.  But it does mean that your static fields will have consistent state at all times - and it also means that you won't tolerate fields being left null.  </p> <p>Using <code>null</code> as a valid state for an object reference is often an unsafe practice.  It is better to set all static fields in an object to default values so your class is in a well-defined state. However, there are many times where you can successfully use <code>null</code> as a valid state for a field.  It requires care though, to avoid getting a <code>NullPointerException</code>.</p> <p><code>NullPointerException</code>s are particularly hard to debug because they tend to be thrown very far away from the actual cause of the bug.  And of course they don't really tell you any useful information about what is really wrong - namely: <b><i>why</i></b> the pointer is null. </p> <p>What's an alternative?  Create a unique object that represents the 'empty' or 'unset' case and store a reference to it in your object's field. If you are implementing JavaBeans, you may want to take this approach since the use of get and set methods is so common.  As a bean writer, you still provide get/set methods, but initialize your internal references to something non-null, namely to special object instances that represent the 'empty' case.</p> <h3>Remedy:</h3><ol><li>Eliminate methods that are of the form: <code>init( p1, p2, p3... )</code>. </li><li>Initialize all of your Fields to non-null values in the static{} construct, or when they are declared. </li><li>Consider creating a unique object that represents 'empty' or 'unknown' and using this as the initial value of a field that's currently initialized to null. This avoids having to test the field for <code class='code'>null</code> all the time before using it. </li></ol><h3>Reference:</h3>See Eric Allen's description of the evils of run-on initialization in this article: <a <a href='http://www-106.ibm.com/developerworks/java/library/j-diag0416'>http://www-106.ibm.com/developerworks/java/library/j-diag0416</a><br>To use unique objects to represent 'empty',  see page 260 in Martin Fowler's book <i><u>Refactoring</u> (2002)</i> for a step-by-step refactoring process. Or see the refactoring site: <a href='http://www.refactoring.com/catalog/introduceNullObject.html'>http://www.refactoring.com/catalog/introduceNullObject.html</a><h3>False Positives:</h3><ol><li>Lazy initialization (initializing a field's value when it's first used) can sometimes fool this rule into thinking a field was not initialized properly.  If your lazy initialization code is inline where the field is referenced, it's likely to show up as a false positive because the code won't be recognized as initialization code.  By moving the lazy initialization code into an accessor method, you'll avoid false positives and make your code more reliable.</li><li>If you have a good reason to use <code>null</code> as a valid state for your reference, you can disregard this rule.  It does not apply in this case. </li></ol><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1017: Constructor calls Thread.start()</b></td><td>High</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>It is not safe for a Constructor to create a thread (passing it <code class='code'>this</code>) and then start it.  This is a race condition and your <code class='code'>run()</code> method may access stale or incomplete instance data. <p>This happens because your object isn't yet fully constructed (or more importantly: flushed to memory) when the thread starts.  It's pretty likely that the run() method will reference data in the object - and since it's doing so from another thread (namely the one that is starting <i>your</i> thread), it's likely to get bad data. </p>This is not necessarily a logic error in your code.  But it is something that you have to take into account due to limitations of the Java Memory Model (see references).<h3>Remedy:</h3><ul><li>Start the thread from another method, not the constructor. You may simply want to create a <code class='code'>start()</code> method of your own for your class that the creator of your object can call directly.</li> </ul><h3>Reference:</h3>See Brian Goetz's description of this and other problems that can occur when your constructor passes its <code class='code'>this</code> reference to other classes.  <a href='http://www-106.ibm.com/developerworks/java/library/j-jtp0618'>http://www-106.ibm.com/developerworks/java/library/j-jtp0618</a><br> and see William Pugh's description of the problems with the Java Memory Model at: <a href='http://www.cs.umd.edu/~pugh/java/broken.pdf'>http://www.cs.umd.edu/~pugh/java/broken.pdf</a><h3>False Positives:</h3>If your constructor creates and starts a thread that is not based on 'this', it may fool the detection algorithm.  As long as the thread that's created has no access to fields or methods of the current class (or its subclasses), you can ignore the warning.  But, if the thread is being passed a reference to anything that can access fields or methods of this class, you should not ignore this warning.<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1028: equals() should use all the fields that hashCode() does</b></td><td>High</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Do not use fields in <code class='code'>hashCode()</code> that are not used by <code class='code'>equals()</code>.  You may violate the equals contract.  The equals() method can use <i>additional</i> fields that are not used by hashCode(), but not the other way around. <p>The critical thing is that equal instances must have equal hash codes.</p><h3>Remedy:</h3><ul><li>Make sure your <code class='code'>hashCode()</code> method always returns the same value for equal instances.</li></ul><h3>Reference:</h3>For guidelines on writing a good <code class='code'>hashCode()</code> method, See page 39 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 39</b> in <b>Item 8</b> of the PDF version at: <a href='http://developer.java.sun.com/developer/Books/effectivejava/Chapter3.pdf'>Sample Chapter 3</a><h3>False Positives:</h3>If your class caches the hash code, it may fool the detection algorithm.<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1036: Class contains only int or String constants; appears to be simulating an enum</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Classes that are defined to simulate an <code class='code'>enum</code> are not typesafe. If your class contains nothing but <code class='code'>int</code> or <code class='code'>String</code> values, and is being used as an <code class='code'>enum</code>, it is not typesafe because the methods that expect these values will accept any int or String value.  The compiler cannot help enforce the enum-nature of this class.  With a real enum, the compiler would be able to stop the use of illegal values. <h3>Remedy:</h3>Try one of the following:<ul><li>Java 2 v1.5 has an explicit <code class='code'>enum</code> construct.  You should consider converting this class to an <code class='code'>enum</code>.</li> <li>If you can't use Java 2 v1.5 yet, see the Sun reference below for how to create a typesafe enum-like class.  It is worth creating a typesafe enum-like class in critical situations (since it is a lot of work).  You may want to simply wait for Java 2 v1.5 and use the enum construct directly.</li></ul><h3>Reference:</h3>Click here to see a description of <code class='code'>enum</code> and other Java 2 v1.5 changes: <a href='http://www.ftponline.com/javapro/2003_12/magazine/columns/proshop/default_pf.aspx'>http://www.ftponline.com/javapro/2003_12/magazine/columns/proshop/default_pf.aspx</a><br><br>To create a typesafe class that simulates an enum, see: <a href='http://developer.java.sun.com/developer/Books/shiftintojava/page1.html#replaceenums'>Sun Article on creating a typesafe enum class</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1043: Include information in Exception detail message.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>For any throwable exception, you should never use its no-parameter constructor .  You should always provide some detail text to solve the problem.<h3>Remedy:</h3>Add parameters to exception constructors to provide information to help resolve the problem.<h3>Reference:</h3>See the list of java.lang.Exception's here:<a href='http://java.sun.com/j2se/1.4/docs/api/java/lang/Exception.html'>Sun Java Exceptions</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1046: Use of super.equals() may violate symmetry or transitivity of equals</b></td><td>High</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Use of <code class='code'>super.equals()</code> may violate the equals contract. This often happens when you extend a base class by adding new fields to the subclass, and use the base class' <code class='code'>equals()</code> method to help determine equality of two instances.  <p>When you add an aspect to a base class, (i.e. field in a subclass) there is no way to write an equals() method that is both symmetrical and transitive with the base class, if it takes the new aspect into account. </p><h3>Remedy:</h3>Adding an aspect to a subclass will always suffer from this problem because there is no way to prevent comparisons with instances of the base class. Here are some solutions:<ul><li>Replace Inheritance with Delegation<br>1) Modify your subclass to include an instance of the base class, rather than extending it.  <br>2) Add delegation methods from your subclass to your superclass for methods that are relevant. <br>This solves the problem by refactoring your class without impacting users of the class.  This solution makes sense if your subclass doesn't need all the methods defined in the base class.</li><br>&nbsp;<li>Replace Inheritance with simple Composition<br>1) Modify your subclass to include an instance of the base class, rather than extending it. <br>2) Add a method to return the embedded base class object, for use by users of your subclass. <br>This avoids the problem although it will likely require refactoring in code that uses this class. This solution makes sense if your subclass requires all the methods defined in the base class.</li><br>&nbsp;<li>Remove the <code class='code'>equals()</code> method<br>1) Delete the <code class='code'>equals()</code> method in the subclass.<br>If your class has changed over time; you might find that it really doesn't need the equals() method any longer - the one provided in the base class works correctly even for objects of the subclass type.</li></ul><h3>Example:</h3>If class AA extends class A by adding an <code class='code'>int</code> field, you will find either Symmetry or Transitivity fails depending on how the <code class='code'>equals()</code> method is written. For example: <pre><code>    class AA extends A {<br>      int field;<br>      AA(int i) { field=i; }<br>    }<br>&nbsp;<br>    A    a = new A();<br>    AA aa1 = new AA(1);<br>    AA aa2 = new AA(2);</code></pre><ul><li>Symmetry fails if the <code class='code'>AA.equals()</code> method returns false because 'a' doesn't have the int value:<br><code>a.equals(aa1)==true&nbsp;</code> // class A doesn't know about the int value<br><code>aa1.equals(a)==<b>false</b></code> // 'a' is not the same type of object as 'aa1'</li><br>&nbsp;<li>Transitivity fails if the <code class='code'>AA.equals()</code> method ignores the int value when comparing against an object of the base class type:<br><code>aa1.equals(a)&nbsp;&nbsp;==true&nbsp;</code> // 'aa1' ignores its int value since 'a' doesn't have one<br><code>a.equals(aa2)&nbsp;&nbsp;==true&nbsp;</code> // class A doesn't know about the int value<br><code>aa1.equals(aa2)==<b>false</b></code> // should be true because the first two are true</li></ul>A call to <code class='code'>super.equals()</code> from your <code class='code'>equals()</code> method usually indicates that either symmetry or transitivity is broken. <h3>Reference:</h3>See page 30 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 30</b> in <b>Item 7</b> of the PDF version at: <a href='http://developer.java.sun.com/developer/Books/effectivejava/Chapter3.pdf'>Sample Chapter 3</a><br>Also  see page 352 in Martin Fowler's book <i><u>Refactoring</u> (2002)</i> for a step-by-step refactoring process. Or see the refactoring site: <a href='http://www.refactoring.com/catalog/replaceInheritanceWithDelegation.html'>http://www.refactoring.com/catalog/replaceInheritanceWithDelegation.html</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1053: Field has same name as field in a superclass or interface</b></td><td>Medium</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>When you declare a field in your subclass with the same name as a field in your base class, your subclass can't access the field in the base class.  You should choose a different name to make your intention clear, otherwise someone reading the code might think it refers to the other field.<h3>Remedy:</h3>Rename the field in the subclass so there is no confusion.<h3>Reference:</h3>See page 20  in <i><u>Java Pitfalls</u> (2001)</i>.  See book info here: <a href='http://www.amazon.com/exec/obidos/ASIN/0471361747/javaworld/104-0495591-2300751'>http://www.amazon.com/exec/obidos/ASIN/0471361747/javaworld/104-0495591-2300751</a><br>or see sample page 20 at: <a href='http://www.amazon.com/exec/obidos/tg/detail/-/0471361747/ref=lib_rd_ss_TI01/104-0495591-2300751?v=glance&s=books&vi=reader&img=21#reader-link'>Sample Pages Online</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1063: Consider specifying initial capacity for resizable objects</b></td><td>Medium</td><td>Performance</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Classes like Vectors, HashMaps, Hashtables, ArrayLists and so on will resize themselves as they fill beyond their capacity. This is an expensive operation. If the user has an intelligent guess as to how many entries they'll actually need, they may be able to save themselves some of these resizing efforts by using a constructor that specifies the initial size.<h3>Remedy:</h3>Hash tables have a size, and have to grow when the data set exceeds its current capacity. It has been shown that if the size is a prime number, the performance of the hash table increases.<h3>Reference:</h3>Java Performance and Scalability Volume 1, Server-Side Programming Techniques by Dov Bulka - Optimization 18 <br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1064: Consider buffered I/O streams</b></td><td>Medium</td><td>Performance</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Java I/O classes do not do buffering by default. If your program does I/O in a loop, especially in a server environment, you should wrap your I/O object in a class that adds buffer support. This will increase your throughput on a server and speed up any I/O done in a loop.<p>Buffering has a greater effect on larger streams. Reading/writing small streams may not show any improvement from buffering. The size of a 'small' stream varies between operating systems but is probably less than a few thousand characters or bytes.</p><h3>Remedy:</h3>Try one of the following:<ul><li>In many cases, this is a one line change. Here is an example using a <code class='code'>FileInputStream</code>. <br>Original Code:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>   DataInputStream myStream =
+       new DataInputStream(
+           new FileInputStream("mydatafile.dat"));</pre></td></tr></table></div>Updated Code with the <code class='code'>FileInputStream</code> wrapped in a <code class='code'>BufferedInputStream</code>:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>   DataInputStream myStream =
+       new DataInputStream(
+           <b><u>new BufferedInputStream(</u></b>
+               new FileInputStream("mydatafile.dat")<b><u>)</u></b>);</pre></td></tr></table></div></li><br>&nbsp;<li>In some cases, you might have to change a variable's object type. <br>Original Code:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>    FileInputStream inFIS =
+        new FileInputStream("mydata.dat");
+    int dataByte = inFIS.read();</pre></td></tr></table></div>Updated Code with buffering:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>    <b><u>InputStream</u></b> inFIS =
+        <b><u>new BufferedInputStream(</u></b>
+            new FileInputStream("mydata.dat") <b><u>)</u></b>;
+    int dataByte = inFIS.read();</pre></td></tr></table></div><br>&nbsp;<li>If you have streams wrapped in streams, you should experiment to see where buffering makes the most difference. <br>For example, if your original code was:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>    new GZIPInputStream(new FileInputStream(file)) </pre></td></tr></table></div>you would find that this change does not help performance much:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>    // This would NOT offer any improvement
+    new GZIPInputStream(<b><u>new BufferedInputStream(</u></b>new FileInputStream(file))) </pre></td></tr></table></div>however this change would be significantly faster on large files:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>    // significantly faster on large files
+    <b><u>new BufferedInputStream(</u></b>new GZIPInputStream(new FileInputStream(file)))</pre></td></tr></table></div></li></li></ul><h3>Reference:</h3>See Optimizations 30 and 33 in Dov Bulka's book: <br><a href='http://www.awprofessional.com/catalog/product.asp?product_id={B811743E-1688-4688-94B3-0C8E4119D22C}'><i>Java Performance and Scalability Volume 1: Server-Side Programming Techniques</i></a><br>Also see this Sun Technical Tip: <a href='http://java.sun.com/developer/JDCTechTips/2002/tt0305.html#tip2'>Improving Java I/O Performance</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1069: equals() should use all the fields that compareTo() does</b></td><td>High</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>The <code class='code'>equals()</code> method must use the same fields as the <code class='code'>compareTo()</code> method.  If they use different algorithms, as evidenced by using different fields, then your class will likely fail if used in a Collection or Array.<h3>Remedy:</h3><ul><li>Make sure your <code class='code'>compareTo()</code> method uses the same algorithm to determine ordering that <code class='code'>equals()</code> uses in determining equality of instances.</li></ul><h3>Reference:</h3>See page 53 of <i><u>Effective Java</u> (2001)</i> by Joshua Bloch.   Book site is at: <a href='http://java.sun.com/docs/books/effective/'>http://java.sun.com/docs/books/effective/</a><br>Or search for <b>page 53</b> in <b>Item 8</b> of the PDF version at: <a href='http://developer.java.sun.com/developer/Books/effectivejava/Chapter3.pdf'>Sample Chapter 3</a><br>Also see Sun API Docs: <a href='http://java.sun.com/j2se/1.4/docs/api/java/lang/Comparable.html'>Comparable Interface</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1076: Use synchronized object when static and non-static methods access static resources</b></td><td>High</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>When a method is <code class='code'>synchronized</code>, it automatically acquires a lock before it runs. However, static methods use the <i>class definition</i> as their lock object while instance methods use the <i>object instance</i> (i.e. <code class='code'>this</code>). So static and non-static methods do not use the same lock.<h3>Remedy:</h3>Follow these steps to make your class thread safe:<ol><li>Add a static field to your class to use for a lock.</li><li>Surround all accesses to the shared resource with a <code class='code'><b>synchronized</b></code> statement using the new lock.</li></ol><h3>Example:</h3>Consider the following incorrect code:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public class NotSynchronized {    // INCORRECT
+    private <b>static</b> int sharedResource = 0;
+
+    <b>static synchronized</b> void accessSharedResource() {
+      sharedResource = 1;
+    }
+
+    <b>synchronized</b> void alsoAccessesSharedResource() {
+      sharedResource = 2;
+    }
+  }</pre></td></tr></table></div>At first glance, this looks like the static <code class='code'>sharedResource</code> is protected from multiple threads accessing it through each method. But there is a problem. Even though both methods are synchronized, the synchronization locks used by these two methods are different. The static method locks on the class and the other locks on the instance (i.e. <code class='code'>this</code>).<p>Note that this example would have worked if both methods were static or both were non-static.</p> <p>Here is the correct approach using a static synchronization object shared by both methods:</p><div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  public class ReallySynchronized {
+
+    private static int sharedResource = 0;
+    <b><u>private final static Object mySynchronizer = "mySync";</u></b>
+
+    static void accessSharedResource() {
+      <b><u>synchronized (mySynchronizer) {</u></b>
+        sharedResource = 1;
+      }
+    }
+
+    void alsoAccessesSharedResource() {
+      <b><u>synchronized (mySynchronizer) {</u></b>
+         sharedResource = 2;
+      }
+    }
+  }</pre></td></tr></table></div><h3>Reference:</h3>See the Sun documentation for details: <br><a href='http://java.sun.com/docs/books/vmspec/2nd-edition/html/Threads.doc.html#22500'><i>Sun JVM spec: 8.13 Locks and Synchronization</i></a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1093: Don’t use setTransform() without getTransform()</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>java.awt.Graphics2D don't use setTransform() without getTransform() The setTransform() method is only intended to restore a transformation,  not set one.This may not be a logic error in your code, if you get the transform as the parameter of the setTransform call. It is something that you have to take into account due to limitations of the Java Memory Model.<h3>Remedy:</h3>java.awt.Graphics2D - Use getTransform() before doing a setTransform().<h3>Reference:</h3>For reference to Graphics2D class:<a href='http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Graphics2D.html'>Class Graphics2D</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1094: When creating a LogRecord for the new Logging interface, call setSourceClassName and setSourceMethodName.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Before passing a LogRecord object for logging request specify an explicit source method name and source class name, otherwise  the default action used by the Logger may guess them incorrectly   (due to a call on getSourceMethodName or getSourceClassName), or by analyzing the call stack.<h3>Remedy:</h3>Set source class name and source method name, in the LogRecord.<h3>Reference:</h3>For reference to LogRecord class:<a href='http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/LogRecord.html'>Class LogRecord</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1095: Boolean constructor used</b></td><td>Low</td><td>Performance</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>It is rarely appropriate to use these constructors.  Unless a new instance is required, the static factory valueOf(boolean) and valueOf(String) is generally a better choice. It is likely to yield significantly better space and time performance. <p>Therefore, do not use the <code class='code'><b>Boolean( boolean )</b></code>, or the <code class='code'><b>Boolean( String )</b></code> constructors.  </p><h3>Remedy:</h3>Replace instances of these statements:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>    Boolean b = <b><u>new Boolean(true)</u></b>;                            // DON'T DO THIS
+    Boolean b = <b><u>new Boolean(false)</u></b>;                            // DON'T DO THIS
+    Boolean b = <b><u>new Boolean("true")</u></b>;                            // DON'T DO THIS
+    Boolean b = <b><u>new Boolean("false")</u></b>;                            // DON'T DO THIS
+</pre></td></tr></table></div>With these:<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>    Boolean b = <b><u>Boolean.valueOf(true)</u></b>;
+    Boolean b = <b><u>Boolean.valueOf(false)</u></b>;
+    Boolean b = <b><u>Boolean.valueOf("true")</u></b>;
+    Boolean b = <b><u>Boolean.valueOf("false")</u></b>;
+</pre></td></tr></table></div><h3>Reference:</h3><br> See Sun Java Docs at <a href='http://java.sun.com/j2se/1.4/docs/api/java/lang/Boolean.html#Boolean(boolean)'>Boolean Constructor API</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1096: Replace usage of class java.awt.Event with java.awt.AWTEvent</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Class <code class='code'>java.awt.Event</code> is from Java 2 v1.0 and has been superceded by class <code class='code'>java.awt.AWTEvent</code>.  <h3>Remedy:</h3>The API is different for the new class.  See the Sun documentation and make changes accordingly.<h3>Reference:</h3>See the Sun documentation for details: <a href='http://java.sun.com/j2se/1.4/docs/api/java/awt/Event.html'>java.awt.Event API</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1097: Replace usage of java.awt.Container method add(String, Component) with add(Component, Object)</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>The method <code class='code'>Container.add(String, Component)</code> is from Java 2 v1.0 and is has been superceded by <code class='code'>Container.add(Component, Object)</code>.  <h3>Remedy:</h3>Simply reverse the arguments in the <code class='code'>add()</code> call so the Component is first.<h3>Reference:</h3>See the Sun documentation for details: <a href='http://java.sun.com/j2se/1.4/docs/api/java/awt/Container.html#add(java.lang.String, java.awt.Component)'>java.awt.Container.add()</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1098: Replace usage of java.awt.Choice method addItem(String) with add(String)</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>The method <code class='code'>Choice.addItem(String)</code> is from Java 2 v1.0 and is has been superceded by <code class='code'>Choice.add(String)</code>.  <h3>Remedy:</h3>Simply change the method being called from <code class='code'>addItem()</code> to <b><code class='code'>add()</code></b>.<h3>Reference:</h3>See the Sun documentation for details: <a href='http://java.sun.com/j2se/1.4/docs/api/java/awt/Choice.html#addItem(java.lang.String)'>java.awt.Choice.addItem()</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1099: Replace usage of java.util.SimpleTimeZone.getOffset() with Calendar.get()</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>If possible, you should replace calls to: <code class='code'>SimpleTimeZone.getOffset(era, year, month, day, dayOfWeek, millis)</code><br>with calls to: <code class='code'>Calendar.get(ZONE_OFFSET) + Calendar.get(DST_OFFSET) </code> <h3>Remedy:</h3>You can create a Calendar object directly from a SimpleTimeZone like this:<br><pre><code>    Calendar calendar = new GregorianCalendar( timeZoneObject );</code></pre><br>and then make the calls to Calendar.get()<h3>Reference:</h3>See the Sun documentation for details: <a href='http://java.sun.com/j2se/1.4/docs/api/java/util/SimpleTimeZone.html#getOffset(int, int, int, int, int, int)'>java.util.SimpleTimeZone.getOffset()</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1100: Implement java.util.Map instead of extending java.util.Dictionary</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>In Java 2 v1.2, the Collections framework was added.  By using <code class='code'>implements Map</code> instead of <code class='code'>extends Dictionary</code>, your class will be able to work with Java's collection framework.  <p>This will let users of your class use iteration instead of enumeration. It will also let them put objects of your class into Collections. </p><h3>Remedy:</h3><ol><li>Update your class to say <code class='code'>implements Map</code> instead of <code class='code'>extends Dictionary</code></li><li>Implement the new methods that are part of the Map interface</li> </ol><h3>Reference:</h3>See the obsolete Dictionary class: <a href='http://java.sun.com/j2se/1.4/docs/api/java/util/Dictionary.html'>java.util.Dictionary Class</a><br>See the new Map interface: <a href='http://java.sun.com/j2se/1.4/docs/api/java/util/Map.html'>java.util.Map Interface</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1101: Use java.security.cert instead of javax.security.cert</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3><code class='code'>java<b><u>x</u></b>.security.cert</code> is an obsolete package.  It is a simplified version of the <code class='code'>java.security.cert</code> package. This package was developed as part of the Java Secure Socket Extension (JSSE). When JSSE was added to the Java 2 SDK, this package was added for backward-compatibility with earlier versions of JSSE only.<p>New applications should use the standard J2SE certificate classes in java.security.cert.</p><h3>Remedy:</h3><ol><li>Use the standard <code class='code'>java.security.cert</code> package</li><li>Read the Sun API docs to see differences between the interfaces.  For example, each package instantiates a certificate using different means.</li> </ol><h3>Reference:</h3>See the obsolete package: <a href='http://java.sun.com/j2se/1.4/docs/api/javax/security/cert/package-summary.html'>javax.security.cert API</a><br>See the new package: <a href='http://java.sun.com/j2se/1.4/docs/api/java/security/cert/package-summary.html'>java.security.cert API</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1102: Use java.util.List methods instead of older javax.swing.DefaultListModel methods</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.2, DefaultListModel contains two kinds of methods that do effectively the same thing:<ul><li>those that are part of the 1.1 Vector API, which support enumeration</li><li>those that are part of the List interface from the Collections framework</li></ul>Even though this class doesn't yet have support for Collections (as of JDK 1.4), it is a good idea to convert your code to use the newer Collections-oriented method names.  <h3>Remedy:</h3>Convert your code to use the newer method names, which are equivalent in functionality:<table><tr><td>&nbsp;</td><td align=right><code class='code'>elementAt()</code></td>        <td><i>becomes</i></td><td><code class='code'>get()</code></td></tr><tr><td>&nbsp;</td><td align=right><code class='code'>getElementAt()</code></td>     <td><i>becomes</i></td><td><code class='code'>get()</code></td></tr><tr><td>&nbsp;</td><td align=right><code class='code'>setElementAt()</code></td>     <td><i>becomes</i></td><td><code class='code'>set()</code></td></tr><tr><td>&nbsp;</td><td align=right><code class='code'>removeElementAt()</code></td>  <td><i>becomes</i></td><td><code class='code'>remove()</code></td></tr><tr><td>&nbsp;</td><td align=right><code class='code'>insertElementAt()</code></td>  <td><i>becomes</i></td><td><code class='code'>add()</code></td></tr><tr><td>&nbsp;</td><td align=right><code class='code'>removeAllElements()</code></td><td><i>becomes</i></td><td><code class='code'>clear()</code></td></tr></table><h3>Reference:</h3>See the Sun documentation for details: <a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/DefaultListModel.html#method_summary'>javax.swing.DefaultListModel methods</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1103: Use java.awt.Component.AccessibleAWTComponent instead of javax.swing.plaf.ComponentUI methods</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.3, several methods have been made obsolete in <code class='code'>ComponentUI</code>.  As recommended by the Sun documentation, you should replace calls to these <code class='code'>ComponentUI</code> methods with calls to the equivalent <b><code class='code'>Component.AccessibleAWTComponent</code></b> methods.<h3>Remedy:</h3>Convert your code to use the newer methods, which are equivalent in functionality:<ul><li><i>Call:</i> <code class='code'>java.awt.Component.AccessibleAWTComponent.getAccessibleChild()</code><br><i>instead of:</i> <code class='code'>ComponentUI.getAccessibleChild()</code> </li><li><i>Call:</i> <code class='code'>java.awt.Component.AccessibleAWTComponent.getAccessibleChildrenCount()</code><br><i>instead of:</i> <code class='code'>ComponentUI.getAccessibleChildrenCount()</code> </li></ul><h3>Reference:</h3>See the Sun documentation for details: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/plaf/ComponentUI.html#getAccessibleChild(javax.swing.JComponent, int)'>ComponentUI.getAccessibleChild()</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/plaf/ComponentUI.html#getAccessibleChildrenCount(javax.swing.JComponent)'>ComponentUI.getAccessibleChildrenCount()</a><p>New methods are documented at: <br><a href='http://java.sun.com/j2se/1.4/docs/api/java/awt/Component.AccessibleAWTComponent.html#getAccessibleChild(int)'>Component.AccessibleAWTComponent.getAccessibleChild()</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/accessibility/AccessibleContext.html#getAccessibleChildrenCount()'>Component.AccessibleAWTComponent.getAccessibleChildrenCount()</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1104: Use of obsolete javax.swing.SwingUtilities method</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.3, several methods have been made obsolete in <code class='code'>SwingUtilities</code>.  As recommended by the Sun documentation, you should replace calls to these <code class='code'>SwingUtilities</code> methods with calls to the equivalent <b><code class='code'>Component.AccessibleAWTComponent</code></b> methods.<h3>Remedy:</h3>Convert your code to use the newer methods, which are equivalent in functionality:<ul><li><i>Call:</i> <code class='code'>java.awt.Component.AccessibleAWTComponent.getAccessibleIndexInParent()</code><br><i>instead of:</i> <code class='code'>SwingUtilities.getAccessibleIndexInParent()</code> </li><li><i>Call:</i> <code class='code'>java.awt.Component.AccessibleAWTComponent.getAccessibleStateSet()</code><br><i>instead of:</i> <code class='code'>SwingUtilities.getAccessibleStateSet()</code> </li><li><i>Call:</i> <code class='code'>java.awt.Component.AccessibleAWTComponent.getAccessibleChildrenCount()</code><br><i>instead of:</i> <code class='code'>SwingUtilities.getAccessibleChildrenCount()</code> </li><li><i>Call:</i> <code class='code'>java.awt.Component.AccessibleAWTComponent.getAccessibleChild()</code><br><i>instead of:</i> <code class='code'>SwingUtilities.getAccessibleChild()</code> </li></ul><h3>Reference:</h3>See the Sun documentation for details: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/SwingUtilities.html#getAccessibleIndexInParent(java.awt.Component)'>SwingUtilities.getAccessibleIndexInParent()</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/SwingUtilities.html#getAccessibleStateSet(java.awt.Component)'>SwingUtilities.getAccessibleStateSet()</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/SwingUtilities.html#getAccessibleChildrenCount(java.awt.Component)'>SwingUtilities.getAccessibleChildrenCount()</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/SwingUtilities.html#getAccessibleChild(java.awt.Component, int)'>SwingUtilities.getAccessibleChild()</a><p>New methods are documented at: <br><a href='http://java.sun.com/j2se/1.4/docs/api/java/awt/Component.AccessibleAWTComponent.html#getAccessibleIndexInParent()'>Component.AccessibleAWTComponent.getAccessibleIndexInParent()</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/java/awt/Component.AccessibleAWTComponent.html#getAccessibleStateSet()'>Component.AccessibleAWTComponent.getAccessibleStateSet()</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/java/awt/Component.AccessibleAWTComponent.html#getAccessibleChildrenCount()'>Component.AccessibleAWTComponent.getAccessibleChildrenCount()</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/java/awt/Component.AccessibleAWTComponent.html#getAccessibleChild(int)'>Component.AccessibleAWTComponent.getAccessibleChild()</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1105: Use of obsolete javax.swing.ScrollPaneLayout field or method</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Since Swing 1.0.2, these fields and methods have been made obsolete in <code class='code'>ScrollPaneLayout</code>.  As recommended by the Sun documentation, you should replace these references with their equivalents in <code class='code'>JScrollPane</code>.<h3>Remedy:</h3>Convert your code to use the new field and method names, which are equivalent in functionality. See the Sun API Docs for details.<table><tr><td>&nbsp;</td><td align=right><code class='code'>vsbPolicy</code></td>                    <td><i>becomes</i></td><td><code class='code'>JScrollPane.verticalScrollBarPolicy</code></td></tr><tr><td>&nbsp;</td><td align=right><code class='code'>hsbPolicy</code></td>                    <td><i>becomes</i></td><td><code class='code'>JScrollPane.horizontalScrollBarPolicy</code></td></tr><tr><td>&nbsp;</td><td align=right><code class='code'>setVerticalScrollBarPolicy()</code></td> <td><i>becomes</i></td><td><code class='code'>JScrollPane.setVerticalScrollBarPolicy()</code></td></tr><tr><td>&nbsp;</td><td align=right><code class='code'>setHorizontalScrollBarPolicy()</code></td><td><i>becomes</i></td><td><code class='code'>JScrollPane.setHorizontalScrollBarPolicy()</code></td></tr></table><h3>Reference:</h3>See the Sun documentation for details: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/ScrollPaneLayout.html#vsbPolicy'>ScrollPaneLayout.vsbPolicy</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/ScrollPaneLayout.html#hsbPolicy'>ScrollPaneLayout.hsbPolicy</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/ScrollPaneLayout.html#setVerticalScrollBarPolicy(int)'>ScrollPaneLayout.setVerticalScrollBarPolicy()</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/ScrollPaneLayout.html#setHorizontalScrollBarPolicy(int)'>ScrollPaneLayout.setHorizontalScrollBarPolicy()</a><p>New fields and methods are documented at: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JScrollPane.html#verticalScrollBarPolicy'>JScrollPane.verticalScrollBarPolicy</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JScrollPane.html#horizontalScrollBarPolicy'>JScrollPane.horizontalScrollBarPolicy</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JScrollPane.html#setVerticalScrollBarPolicy(int)'>JScrollPane.setVerticalScrollBarPolicy()</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JScrollPane.html#setHorizontalScrollBarPolicy(int)'>JScrollPane.setHorizontalScrollBarPolicy()</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1106: Use of obsolete javax.swing.table.DefaultTableModel method setNumRows()</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.3, <code class='code'>setNumRows()</code> has been made obsolete in <code class='code'>DefaultTableModel</code>.  As recommended by the Sun documentation, you should replace this call with the equivalent method: <code class='code'>setRowCount()</code>.<h3>Remedy:</h3>Convert your code to use the new method name.<ul><li>Simply change <code class='code'>setNumRows()</code> to <code class='code'>setRowCount()</code></li></ul><h3>Reference:</h3>See the Sun documentation for details: <a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/table/DefaultTableModel.html#setNumRows(int)'>DefaultTableModel.setNumRows()</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1107: Use of obsolete class javax.swing.plaf.basic.BasicSliderUI.ActionScroller</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.3 this undocumented class is obsolete. The recommended approach to creating key stroke bindings is to use a combination of an <code class='code'>ActionMap</code> to contain the action, and an <code class='code'>InputMap</code> to contain the mapping from KeyStroke to action. The <code class='code'>InputMap</code> is usually described in the LookAndFeel tables. Refer to the Keyboard Binding Infrastructure in the Sun docs for further details.  <h3>Remedy:</h3>Replace use of this class with <code class='code'>ActionMap</code> and <code class='code'>InputMap</code><h3>Reference:</h3>See the Sun documentation for details: <br><a href='http://java.sun.com/j2se/1.3/docs/guide/swing/KeyBindChanges.html'>New 1.3 Keyboard Binding Infrastructure</a><br><a href='http://java.sun.com/products/jfc/tsc/special_report/kestrel/keybindings.html'>Keyboard Bindings in Swing</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/plaf/basic/BasicSliderUI.ActionScroller.html'>BasicSliderUI.ActionScroller Class</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1108: Use of obsolete javax.swing.JMenu method</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.3, this is an obsolete way to add Actions to a <code class='code'>JMenu</code>. Instead, Sun recommends using <code class='code'>setAction()</code> to configure a <code class='code'>JMenuItem</code> with an action, and then adding the <code class='code'>JMenuItem</code> directly to the <code class='code'>JMenu</code><p>Two key functions that an <code class='code'>Action</code> object performs are being an Action listener and defining the enabled/disabled state.  The <code class='code'>Action</code> class is very useful when the same listener is accessed by several controls (for example by both a button and a menu item). </p><h3>Remedy:</h3>Examine your code and replace uses of these obsolete <code class='code'>JMenu</code> methods with <code class='code'>setAction()</code>:<ul><li><code class='code'>add(Action a)</code></li><li><code class='code'>createActionComponent(Action a)</code></li><li><code class='code'>createActionChangeListener(JButton b)</code></li></ul><h3>Example:</h3>This code sample creates an <code class='code'>Action</code> for a <code class='code'>JMenu</code>.<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  // Create Action and JMenu:
+  Action action1 = new MyAction();
+  JMenu menu = new JMenu("Menu");
+
+  // This is the new way to add an action to a Menu Item
+  JMenuItem item1 = new JMenuItem();
+  item1.setAction(action1);  // SET ACTION FOR MENU ITEM
+  menu.add(item1);</pre></td></tr></table></div><h3>Reference:</h3>See the Sun documentation for details on the obsolete methods: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JMenu.html#add(javax.swing.Action)'>javax.swing.JMenu.add(Action)</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JMenu.html#createActionComponent(javax.swing.Action)'>javax.swing.JMenu.createActionComponent(Action)</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JMenu.html#createActionChangeListener(javax.swing.JMenuItem)'>javax.swing.JMenu.createActionChangeListener(JMenuItem)</a><br><br>The Sun documentation for the new method: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/AbstractButton.html#setAction(javax.swing.Action)'>javax.swing.AbstractButton.setAction(Action)</a><br><br>The Sun tutorial on Actions: <br><a href='http://java.sun.com/docs/books/tutorial/uiswing/misc/action.html'>How to Use Actions</a><br><br>Also see this article on Actions and ActionListeners: <br><a href='http://www.developer.com/java/other/article.php/1146531'>http://www.developer.com/java/other/article.php/1146531</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1109: Use of obsolete javax.swing.JPopupMenu method</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.3, this is an obsolete way to add Actions to a <code class='code'>JPopupMenu</code>. Now, Sun recommends using <code class='code'>setAction()</code> to configure a <code class='code'>JMenuItem</code> with an action, and then adding the <code class='code'>JMenuItem</code> directly to the <code class='code'>JPopupMenu</code><p>Two key functions that an <code class='code'>Action</code> object performs are being an Action listener and defining the enabled/disabled state.  The <code class='code'>Action</code> class is very useful when the same listener is accessed by several controls (for example by both a button and a menu item). </p><h3>Remedy:</h3>Examine your code and replace uses of these obsolete <code class='code'>JPopupMenu</code> methods with <code class='code'>setAction()</code>:<ul><li><code class='code'>add(Action a)</code></li><li><code class='code'>createActionComponent(Action a)</code></li><li><code class='code'>createActionChangeListener(JButton b)</code></li></ul><h3>Example:</h3>This code sample creates an <code class='code'>Action</code> for a <code class='code'>JPopupMenu</code>.<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  // Create Action and JPopupMenu:
+  Action action1 = new MyAction();
+  JPopupMenu menu = new JPopupMenu("PopupMenu");
+
+  // This is the new way to add an action to a Menu Item
+  JMenuItem item1 = new JMenuItem();
+  item1.setAction(action1);  // SET ACTION FOR MENU ITEM
+  menu.add(item1);</pre></td></tr></table></div><h3>Reference:</h3>See the Sun documentation for details on the obsolete methods: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JPopupMenu.html#add(javax.swing.Action)'>javax.swing.JPopupMenu.add(Action)</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JPopupMenu.html#createActionComponent(javax.swing.Action)'>javax.swing.JPopupMenu.createActionComponent(Action)</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JPopupMenu.html#createActionChangeListener(javax.swing.JMenuItem)'>javax.swing.JPopupMenu.createActionChangeListener(JMenuItem)</a><br><br>The Sun documentation for the new method: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/AbstractButton.html#setAction(javax.swing.Action)'>javax.swing.AbstractButton.setAction(Action)</a><br><br>Also see this article on Actions and ActionListeners: <br><a href='http://www.developer.com/java/other/article.php/1146531'>http://www.developer.com/java/other/article.php/1146531</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1110: Use of obsolete javax.swing.JToolBar method</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.3, this is an obsolete way to add Actions to a <code class='code'>JToolBar</code>. Instead, Sun recommends using <code class='code'>setAction()</code> to configure a <code class='code'>JButton</code> with an action, and then adding the <code class='code'>JButton</code> directly to the <code class='code'>JToolBar</code><p>Two key functions that an <code class='code'>Action</code> object performs are being an Action listener and defining the enabled/disabled state.  The <code class='code'>Action</code> class is very useful when the same listener is accessed by several controls (for example by both a button and a menu item). </p><h3>Remedy:</h3>Examine your code and replace uses of these obsolete <code class='code'>JToolBar</code> methods with <code class='code'>setAction()</code>:<ul><li><code class='code'>add(Action a)</code></li><li><code class='code'>createActionComponent(Action a)</code></li><li><code class='code'>createActionChangeListener(JButton b)</code></li></ul><h3>Example:</h3>This code sample creates an <code class='code'>Action</code> for a <code class='code'>JToolBar</code>.<div style='background:#FFFAF5;'><table border='0' cellpadding='0'><tr><td style='padding-top:5;padding-left:5'><pre style='font-size:11'>  // Create Action and JToolBar:
+  Action action1 = new MyAction();
+  JToolBar toolBar = new JToolBar("ToolBar");
+
+  // This is the new way to add an action to a Menu Item
+  JButton item1 = new JButton();
+  item1.setAction(action1);  // SET ACTION FOR MENU ITEM
+  toolBar.add(item1);</pre></td></tr></table></div><h3>Reference:</h3>See the Sun documentation for details on the obsolete methods: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JToolBar.html#add(javax.swing.Action)'>javax.swing.JToolBar.add(Action)</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JToolBar.html#createActionComponent(javax.swing.Action)'>javax.swing.JToolBar.createActionComponent(Action)</a><br><a href='http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JToolBar.html#createActionChangeListener(javax.swing.JButton)'>javax.swing.JToolBar.createActionChangeListener(JButton)</a><br><br>The Sun documentation for the new method: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/AbstractButton.html#setAction(javax.swing.Action)'>javax.swing.AbstractButton.setAction(Action)</a><br><br>The Sun tutorial on Actions: <br><a href='http://java.sun.com/docs/books/tutorial/uiswing/misc/action.html'>How to Use Actions</a><br><br>Also see this article on Actions and ActionListeners: <br><a href='http://www.developer.com/java/other/article.php/1146531'>http://www.developer.com/java/other/article.php/1146531</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1111: Use of obsolete javax.swing.table.TableColumn field or method</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.3, Sun recommends <b>not</b> using these constants for bound property names of the Swing TableColumn class:<ul><li><code class='code'>COLUMN_WIDTH_PROPERTY</code>  // YOU MUST AVOID THIS ONE</li><li><code class='code'>HEADER_VALUE_PROPERTY</code></li><li><code class='code'>HEADER_RENDERER_PROPERTY</code></li><li><code class='code'>CELL_RENDERER_PROPERTY</code></li></ul>In addition, Sun recommends you use the new method for setting column width: <ul><li><code class='code'>setPreferredWidth( width )</code></li></ul><h3>Remedy:</h3><ul><li>If you are using <code class='code'>COLUMN_WIDTH_PROPERTY</code>, and cannot eliminate it, you must replace it with the string constant <b><code class='code'>"width"</code></b> as the <code class='code'>COLUMN_WIDTH_PROPERTY</code> constant is no longer valid. </li><li>If you are using <code class='code'>setWidth()</code>, replace it with <code class='code'>setPreferredWidth()</code></li><li>Examine your use of the constants and see if you can eliminate them. </li></ul><h3>Reference:</h3>See the Sun documentation for details on the obsolete fields and methods: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/table/TableColumn.html#CELL_RENDERER_PROPERTY'>TableColumn.CELL_RENDERER_PROPERTY</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/table/TableColumn.html#COLUMN_WIDTH_PROPERTY'>TableColumn.COLUMN_WIDTH_PROPERTY</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/table/TableColumn.html#HEADER_RENDERER_PROPERTY'>TableColumn.HEADER_RENDERER_PROPERTY</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/table/TableColumn.html#HEADER_VALUE_PROPERTY'>TableColumn.HEADER_VALUE_PROPERTY</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/table/TableColumn.html#setWidth(int)'>TableColumn.setWidth(int)</a><br><br>The new method: <a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/table/TableColumn.html#setPreferredWidth(int)'>TableColumn.setPreferredWidth(int)</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1112: Use of obsolete javax.swing.table.JTableHeader field or method</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.3, real time repaints, in response to column dragging or resizing, are now unconditional in <code class='code'>JTableHeader</code>. You can safely eliminate any references to these methods or field of <code class='code'>JTableHeader</code>:<ul><li><code class='code'>updateTableInRealTime</code></li><li><code class='code'>getUpdateTableInRealTime()</code></li><li><code class='code'>setUpdateTableInRealTime()</code></li></ul><h3>Remedy:</h3>Eliminate any references to these field or methods.<h3>Reference:</h3>See the Sun documentation for details on the obsolete fields and methods: <a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/table/JTableHeader.html#updateTableInRealTime'>JTableHeader.updateTableInRealTime</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1113: Use of obsolete javax.swing.JTable field or method</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>JTable has obsolete methods and fields:<ol><li>The field <code class='code'>cellSelectionEnabled</code> is obsolete as of Java 2 v1.3. It has been replaced by two properties <code class='code'>rowSelectionAllowed</code> and <code class='code'>columnSelectionAllowed</code>. The correct way to access this field is via its accessor methods: <ul><li><code class='code'>getCellSelectionEnabled()</code></li><li><code class='code'>setCellSelectionEnabled()</code></li></ul>Or, to access individual properties use one of these methods:<ul><li><code class='code'>setColumnSelectionAllowed()</code></li><li><code class='code'>setRowSelectionAllowed()</code></li><li><code class='code'>getColumnSelectionAllowed()</code></li><li><code class='code'>getRowSelectionAllowed()</code><br>&nbsp;</li></ul></li><li>The method <code class='code'>sizeColumnsToFit()</code> is obsolete as of Java 2 v1.4.  If the functionality is needed, call <code class='code'>doLayout()</code>.  <code class='code'>doLayout()</code> determines the resizing column from <code class='code'>JTableHeader</code>.</li></ol><h3>Remedy:</h3>Replace references to the obsolete field or method:<ul><li>Replace references of <code class='code'>cellSelectionEnabled</code> with <code class='code'>getCellSelectionEnabled()</code> or <code class='code'>setCellSelectionEnabled()</code></li><li>Replace calls to <code class='code'>sizeColumnsToFit()</code> with <code class='code'>doLayout()</code></li></ul><h3>Reference:</h3>See the Sun documentation for details on the obsolete fields and methods: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JTable.html#cellSelectionEnabled'>JTable.cellSelectionEnabled</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JTable.html#sizeColumnsToFit(int)'>JTable.sizeColumnsToFit(int)</a><br><br>New methods:<br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JTable.html#setCellSelectionEnabled(boolean)'>JTable.setCellSelectionEnabled(boolean)</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JTable.html#setRowSelectionAllowed(boolean)'>JTable.setRowSelectionAllowed(boolean)</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JTable.html#setColumnSelectionAllowed(boolean)'>JTable.setColumnSelectionAllowed(boolean)</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/JTable.html#doLayout()'>JTable.doLayout()</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1114: Use of obsolete BasicComboPopup member class or field</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.4, Sun made these nested classes in <code class='code'>BasicComboPopup</code> obsolete.  Their functionality has been replaced by new classes and interfaces.  Do not call or override these classes.<ul><li>public class <code class='code'>BasicComboPopup.InvocationKeyHandler</code><br>All the functionality of this class has been included in <code class='code'>BasicComboBoxUI ActionMap</code> and <code class='code'>InputMap</code> methods.</li> <li>public class <code class='code'>BasicComboPopup.ListDataHandler</code><br>As of 1.4, this class doesn't do anything, and is only included for backwards API compatibility. The functionality has been migrated into <code class='code'>BasicComboPopup.ItemHandler</code>. </li><li>protected class <code class='code'>BasicComboPopup.ListSelectionHandler</code><br>As of Java 2 platform v 1.4, this class is now obsolete, doesn't do anything, and is only included for backwards API compatibility. </li> </ul><h3>Remedy:</h3>Examine your use of these nested classes and replace the functionality with the new Swing classes.<h3>Reference:</h3>See the Sun documentation for details on the obsolete classes: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/plaf/basic/BasicComboPopup.html#nested_class_summary'>BasicComboPopup Nested Class Summary</a><br><br>New classes and articles from Sun:<br><a href='http://java.sun.com/j2se/1.3/docs/guide/swing/KeyBindChanges.html'>New 1.3 Keyboard Binding Infrastructure</a><br><a href='http://java.sun.com/products/jfc/tsc/special_report/kestrel/keybindings.html'>Keyboard Bindings in Swing</a><br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/plaf/basic/BasicComboPopup.ItemHandler.html'>class BasicComboPopup.ItemHandler</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1115: Use of obsolete class javax.swing.plaf.basic.BasicMenuUI.ChangeHandler</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.4, this undocumented class is now obsolete. Key bindings are now managed by the popup menu. <h3>Remedy:</h3>Examine your use of <code class='code'>BasicMenuUI.ChangeHandler</code> and replace the functionality with the new Swing classes.<h3>Reference:</h3>See the Sun documentation for details on the obsolete class: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/plaf/basic/BasicMenuUI.ChangeHandler.html'>class BasicMenuUI.ChangeHandler</a><br><br>Relevant articles from Sun:<br><a href='http://java.sun.com/j2se/1.3/docs/guide/swing/KeyBindChanges.html'>New 1.3 Keyboard Binding Infrastructure</a><br><a href='http://java.sun.com/products/jfc/tsc/special_report/kestrel/keybindings.html'>Keyboard Bindings in Swing</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1116: Use of obsolete class javax.swing.plaf.basic.BasicTableUI.KeyHandler</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.3, this undocumented class is now obsolete. Instead <code class='code'>JTable</code> overrides <code class='code'>processKeyBinding</code> to dispatch the event to the current <code class='code'>TableCellEditor</code>.<h3>Remedy:</h3>Examine your use of <code class='code'>BasicTableUI.KeyHandler</code> and replace the functionality with the new Swing classes.<h3>Reference:</h3>See the Sun documentation for details on the obsolete class: <br><a href='http://java.sun.com/j2se/1.4/docs/api/javax/swing/plaf/basic/BasicTableUI.KeyHandler.html'>class BasicTableUI.KeyHandler</a><br><br>Relevant articles from Sun:<br><a href='http://java.sun.com/j2se/1.3/docs/guide/swing/KeyBindChanges.html'>New 1.3 Keyboard Binding Infrastructure</a><br><a href='http://java.sun.com/products/jfc/tsc/special_report/kestrel/keybindings.html'>Keyboard Bindings in Swing</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1117: Use of obsolete canEdit field</b></td><td>Low</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of Java 2 v1.4, this field is now obsolete. <h3>Remedy:</h3>Don't use: DefaultTreeCellEditor.canEdit field.  Instead, override isCellEditable.<h3>Reference:</h3>See the Sun documentation for details: <br><a href='http://java.sun.com/j2se/1.4.1/docs/api/javax/swing/tree/DefaultTreeCellEditor.html #canEdit '>class BasicTableUI.KeyHandler</a><br><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1118: Use of javax.swing.plaf.metal.MetalButtonUI.paintText()</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>As of v1.4 do not use or override:  javax.swing.plaf.metal.MetalButtonUI:    paintText(Graphics, JComponent, Rectangle, String)instead, use the parent’s method:  javax.swing.plaf.basic.BasicButtonUI:    paintText(Graphics, AbstractButton, Rectangle, String)(JDK 1.4 change)<h3>Remedy:</h3>Examine your use of <code class='code'>MetalButtonUI.paintText</code> and replace the functionality with the new Swing classes.<h3>Reference:</h3>See the Sun documentation for details on the obsolete class: <br><a href='http://java.sun.com/j2se/1.4.1/docs/api/javax/swing/plaf/metal/MetalButtonUI.html'>class BasicTableUI.KeyHandler</a><br><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R1120: Use of Obsolete parameter type for setMnemonic()</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Obsolete: javax.swing.AbstractButton.setMnemonic(char mnemonic) <h3>Remedy:</h3> Instead, use: javax.swing.AbstractButton.setMnemonic(int mnemonic)<h3>Reference:</h3>See the Sun documentation for details: <br><a href='http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/AbstractButton.html#setMnemonic(char) '>class BasicTableUI.KeyHandler</a><br><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R2015: Do not call deprecated Thread method</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Do not call Thread.stop(), resume(), suspend(), countStackFrames()<h3>Reference:</h3>See the Sun documentation for details: <br><a href='http://java.sun.com/j2se/1.4/docs/api/java/lang/Thread.html'>class java.lang.Thread</a><br><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R2016: Don't call deprecated DataInputStream.readLine().</b></td><td>Medium</td><td>Correctness</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>This method - java.io.DataInputStream.readLine() does not properly convert bytes to characters. The preferred way to read lines of text is via the BufferedReader.readLine() method. <h3>Remedy:</h3>Use BufferedReader.readLine() instead of java.io.DataInputStream.readLine().<h3>Reference:</h3>See the overview of method DataInputStream.readLine:<br><a href='http://java.sun.com/j2se/1.4.2/docs/api/java/io/DataInputStream.html#readLine() '>Sun Java docs</a><br><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R2033: Do not use non-standard exception chaining mechanisms.</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>Prior to release 1.4, there were many throwables that had their own non-standard exception chaining mechanisms (ExceptionInInitializerError, ClassNotFoundException, UndeclaredThrowableException, InvocationTargetException, WriteAbortedException, PrivilegedActionException, PrinterIOException and RemoteException). As of release 1.4, all of these throwables have been retrofitted to use the standard exception chaining mechanism, while continuing to implement their legacy chaining mechanisms for compatibility. <h3>Remedy:</h3>Use getCause() instead of getException(), getUndeclaredThrowable(), getTargetException(), etc.<h3>Reference:</h3>See the overview of class ExceptionInInitializerError:<a href='http://java.sun.com/j2se/1.4.2/docs/api/java/lang/ExceptionInInitializerError.html'>Sun Java docs</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R2040: Improve performance of your custom cell renderer for JTable.</b></td><td>Medium</td><td>Performance</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3> The JTable class employs a unique mechanism for rendering its cells . The table class defines a single cell renderer and uses it as a rubber-stamp for rendering all cells in the table. The standard JLabel component was not designed to be used this way.The triggering of revalidate each time the cell is drawn should be avoided.As this would greatly decrease performance because the revalidate message would be passed up the hierarchy of the container to determine whether any other components would be affected. <h3>Remedy:</h3>Override the validate, revalidate and firePropertyChange methods to be no-ops.<h3>Reference:</h3>See Sun API for more information:<a href='http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/table/DefaultTableCellRenderer.html#override '>http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/table/DefaultTableCellRenderer.html#override </a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>R2049: The word 'enum' is being used as identifier.</b></td><td>Low</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>In Java v1.5, enum will be a reserved word. You should consider changing this code to use a different  word to avoid future conflict with 1.5. <h3>Remedy:</h3>Avoid using 'enum' as an identifier.<h3>Reference:</h3>See enum use and declaration in:<a href='http://java.sun.com/developer/technicalArticles/releases/j2se15langfeat/'>http://java.sun.com/developer/technicalArticles/releases/j2se15langfeat/</a><br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>HardCodedIP: Using hard coded IP Addresses in souce lead to portability problems</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>HardCodedIP: Using hard coded IP Addresses in souce lead to portability problems<h3>Example:</h3>public class Foo {
+			  public void bar() {
+			  String sIpAddress = "192.168.2.100";
+			  return;
+			  }
+			  }<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UnnecessaryReturn: Avoid unnecessary return statements</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UnnecessaryReturn: Avoid unnecessary return statements<h3>Example:</h3>public class Foo {
+ public void bar() {
+  int x = 42;
+  return;
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>DoubleCheckedLocking: Partially created objects can be returned by the Double Checked Locking pattern when used in Java.
+An optimizing JRE may assign a reference to the baz variable before it creates the object the
+  reference is intended to point to.  For more details see http://www.javaworld.com/javaworld/jw-02-2001/jw-0209-double.html.</b></td><td>High</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>DoubleCheckedLocking: Partially created objects can be returned by the Double Checked Locking pattern when used in Java.
+An optimizing JRE may assign a reference to the baz variable before it creates the object the
+  reference is intended to point to.  For more details see http://www.javaworld.com/javaworld/jw-02-2001/jw-0209-double.html.<h3>Example:</h3>public class Foo {
+  Object baz;
+  Object bar() {
+    if(baz == null) { //baz may be non-null yet not fully created
+      synchronized(this){
+        if(baz == null){
+          baz = new Object();
+        }
+      }
+    }
+    return baz;
+  }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>BooleanInstantiation: Avoid instantiating Boolean objects, instead use the constants Boolean.TRUE or Boolean.FALSE.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>BooleanInstantiation: Avoid instantiating Boolean objects, instead use the constants Boolean.TRUE or Boolean.FALSE.<h3>Example:</h3>public class Foo {
+ Boolean bar = new Boolean("true"); // just do a Boolean bar = Boolean.TRUE;
+ Boolean buz = Boolean.valueOf(false); // just do a Boolean buz = Boolean.FALSE;
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>EmptyTryBlock: Avoid empty try blocks - what's the point?</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>EmptyTryBlock: Avoid empty try blocks - what's the point?<h3>Example:</h3>public class Foo {
+ public void bar() {
+  try {
+  } catch (Exception e) {
+    e.printStackTrace();
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>ReturnFromFinallyBlock: Avoid returning from a finally block - this can discard exceptions.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>ReturnFromFinallyBlock: Avoid returning from a finally block - this can discard exceptions.<h3>Example:</h3>public class Bar {
+ public String foo() {
+  try {
+   throw new Exception( "My Exception" );
+  } catch (Exception e) {
+   throw e;
+  } finally {
+   return "A. O. K."; // Very bad.
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>EmptyFinallyBlock: Avoid empty finally blocks - these can be deleted.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>EmptyFinallyBlock: Avoid empty finally blocks - these can be deleted.<h3>Example:</h3>public class Foo {
+ public void bar() {
+  try {
+    int x=2;
+   } finally {
+    // empty!
+   }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>OverrideBothEqualsAndHashcode: Override both public boolean Object.equals(Object other), and public int Object.hashCode(), or override neither.  Even if you are inheriting a hashCode() from a parent class, consider implementing hashCode and explicitly delegating to your superclass.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>OverrideBothEqualsAndHashcode: Override both public boolean Object.equals(Object other), and public int Object.hashCode(), or override neither.  Even if you are inheriting a hashCode() from a parent class, consider implementing hashCode and explicitly delegating to your superclass.<h3>Example:</h3>// this is bad
+public class Bar {
+  public boolean equals(Object o) {
+      // do some comparison
+  }
+}
+
+// and so is this
+public class Baz {
+  public int hashCode() {
+      // return some hash value
+  }
+}
+
+// this is OK
+public class Foo {
+  public boolean equals(Object other) {
+      // do some comparison
+  }
+  public int hashCode() {
+      // return some hash value
+  }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>MisplacedNullCheck: The null check here is misplaced. if the variable is null you'll get a NullPointerException.
+    Either the check is useless (the variable will never  be "null") or it's incorrect.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>MisplacedNullCheck: The null check here is misplaced. if the variable is null you'll get a NullPointerException.
+    Either the check is useless (the variable will never  be "null") or it's incorrect.<h3>Example:</h3>public class Foo {
+ public void bar() {
+  if (a.equals("hi") && a != null) {
+   // do something
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>EmptyIfStmt: Empty If Statement finds instances where a condition is checked but nothing is done about it.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>EmptyIfStmt: Empty If Statement finds instances where a condition is checked but nothing is done about it.<h3>Example:</h3>public class Foo {
+ void bar(int x) {
+  if (x == 0) {
+   // empty!
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>EmptySynchronizedBlock: Avoid empty synchronized blocks - they're useless.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>EmptySynchronizedBlock: Avoid empty synchronized blocks - they're useless.<h3>Example:</h3>public class Foo {
+ public void bar() {
+  synchronized (this) {
+   // empty!
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UnusedNullCheckInEquals: After checking an object reference for null, you should invoke equals() on that object rather than passing it to another object's equals() method.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UnusedNullCheckInEquals: After checking an object reference for null, you should invoke equals() on that object rather than passing it to another object's equals() method.<h3>Example:</h3>public class Test {
+
+public String method1() { return "ok";}
+public String method2() { return null;}
+
+public void method(String a) {
+String b;
+/*
+I don't know it method1() can be "null"
+but I know "a" is not null..
+I'd better write a.equals(method1())
+*/
+if (a!=null && method1().equals(a)) { // will
+trigger the rule
+//whatever
+}
+
+if (method1().equals(a) && a != null) { //
+won't trigger the rule
+//whatever
+}
+
+if (a!=null && method1().equals(b)) { // won't
+trigger the rule
+//whatever
+}
+
+if (a!=null && "LITERAL".equals(a)) { // won't
+trigger the rule
+//whatever
+}
+
+if (a!=null && !a.equals("go")) { // won't
+trigger the rule
+a=method2();
+if (method1().equals(a)) {
+//whatever
+}
+}
+}
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>EmptyWhileStmt: Empty While Statement finds all instances where a while statement
+does nothing.  If it is a timing loop, then you should use Thread.sleep() for it; if
+it's a while loop that does a lot in the exit expression, rewrite it to make it clearer.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>EmptyWhileStmt: Empty While Statement finds all instances where a while statement
+does nothing.  If it is a timing loop, then you should use Thread.sleep() for it; if
+it's a while loop that does a lot in the exit expression, rewrite it to make it clearer.<h3>Example:</h3>public class Foo {
+ void bar(int a, int b) {
+  while (a == b) {
+   // empty!
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>CollapsibleIfStatements: Sometimes two 'if' statements can be consolidated by separating their conditions with a boolean short-circuit operator.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>CollapsibleIfStatements: Sometimes two 'if' statements can be consolidated by separating their conditions with a boolean short-circuit operator.<h3>Example:</h3>public class Foo {
+ void bar() {
+  if (x) {
+   if (y) {
+    // do stuff
+   }
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>AvoidDecimalLiteralsInBigDecimalConstructor: One might assume that "new BigDecimal(.1)" is exactly equal
+     to .1, but it is actually equal
+     to .1000000000000000055511151231257827021181583404541015625.
+     This is so because .1 cannot be represented exactly as a double
+     (or, for that matter, as a binary fraction of any finite length).
+     Thus, the long value that is being passed in to the constructor
+     is not exactly equal to .1, appearances notwithstanding.
+
+     The (String) constructor, on the other hand, is perfectly predictable:
+     'new BigDecimal(".1")' is exactly equal to .1, as one
+     would expect.  Therefore, it is generally recommended that the (String)
+     constructor be used in preference to this one.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>AvoidDecimalLiteralsInBigDecimalConstructor: One might assume that "new BigDecimal(.1)" is exactly equal
+     to .1, but it is actually equal
+     to .1000000000000000055511151231257827021181583404541015625.
+     This is so because .1 cannot be represented exactly as a double
+     (or, for that matter, as a binary fraction of any finite length).
+     Thus, the long value that is being passed in to the constructor
+     is not exactly equal to .1, appearances notwithstanding.
+
+     The (String) constructor, on the other hand, is perfectly predictable:
+     'new BigDecimal(".1")' is exactly equal to .1, as one
+     would expect.  Therefore, it is generally recommended that the (String)
+     constructor be used in preference to this one.<h3>Example:</h3>import java.math.BigDecimal;
+public class Test {
+
+    public static void main(String[] args) {
+      // this would trigger the rule
+     BigDecimal bd=new BigDecimal(1.123);
+      // this wouldn't trigger the rule
+     BigDecimal bd=new BigDecimal("1.123");
+      // this wouldn't trigger the rule
+     BigDecimal bd=new BigDecimal(12);
+    }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>EmptyCatchBlock: Empty Catch Block finds instances where an exception is caught,
+but nothing is done.  In most circumstances, this swallows an exception
+which should either be acted on or reported.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>EmptyCatchBlock: Empty Catch Block finds instances where an exception is caught,
+but nothing is done.  In most circumstances, this swallows an exception
+which should either be acted on or reported.<h3>Example:</h3>public void doSomething() {
+  try {
+    FileInputStream fis = new FileInputStream("/tmp/bugger");
+  } catch (IOException ioe) {
+      // not good
+  }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UnnecessaryConversionTemporary: Avoid unnecessary temporaries when converting primitives to Strings</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UnnecessaryConversionTemporary: Avoid unnecessary temporaries when converting primitives to Strings<h3>Example:</h3>public String convert(int x) {
+  // this wastes an object
+  String foo = new Integer(x).toString();
+  // this is better
+  return Integer.toString(x);
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>ForLoopShouldBeWhileLoop: Some for loops can be simplified to while loops - this makes them more concise.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>ForLoopShouldBeWhileLoop: Some for loops can be simplified to while loops - this makes them more concise.<h3>Example:</h3>public class Foo {
+ void bar() {
+  for (;true;) true; // No Init or Update part, may as well be: while (true)
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UselessOverridingMethod: The overriding method merely calls the same method defined in a superclass</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UselessOverridingMethod: The overriding method merely calls the same method defined in a superclass<h3>Example:</h3>public String foo() {
+    return super.foo();  //Why bother overriding?
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>JumbledIncrementer: Avoid jumbled loop incrementers - it's usually a mistake, and it's confusing even if it's what's intended.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>JumbledIncrementer: Avoid jumbled loop incrementers - it's usually a mistake, and it's confusing even if it's what's intended.<h3>Example:</h3>public class JumbledIncrementerRule1 {
+  public void foo() {
+   for (int i = 0; i < 10; i++) {
+    for (int k = 0; k < 20; i++) {
+     System.out.println("Hello");
+    }
+   }
+  }
+ }<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>EmptyStaticInitializer: An empty static initializer was found.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>EmptyStaticInitializer: An empty static initializer was found.<h3>Example:</h3>public class Foo {
+ static {
+  // empty
+ }
+ }<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UselessOperationOnImmutable: An operation on an Immutable object (BigDecimal or BigInteger) won't change the object itself. The
+    result of the operation is a new object. Therefore, ignoring the operation result is an error.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UselessOperationOnImmutable: An operation on an Immutable object (BigDecimal or BigInteger) won't change the object itself. The
+    result of the operation is a new object. Therefore, ignoring the operation result is an error.<h3>Example:</h3>import java.math.*;
+class Test {
+ void method1() {
+  BigDecimal bd=new BigDecimal(10);
+  bd.add(new BigDecimal(5)); // this will trigger the rule
+ }
+ void method2() {
+  BigDecimal bd=new BigDecimal(10);
+  bd = bd.add(new BigDecimal(5)); // this won't trigger the rule
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UnconditionalIfStatement: Do not use "if" statements that are always true or always false.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UnconditionalIfStatement: Do not use "if" statements that are always true or always false.<h3>Example:</h3>public class Foo {
+ public void close() {
+  if (true) {
+       // ...
+   }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>EmptySwitchStatements: Avoid empty switch statements.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>EmptySwitchStatements: Avoid empty switch statements.<h3>Example:</h3>public class Foo {
+ public void bar() {
+  int x = 2;
+  switch (x) {
+   // once there was code here
+   // but it's been commented out or something
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UnnecessaryFinalModifier: When a class has the final modifier, all the methods are automatically final.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UnnecessaryFinalModifier: When a class has the final modifier, all the methods are automatically final.<h3>Example:</h3>public final class Foo {
+    // This final modifier is not necessary, since the class is final
+    // and thus, all methods are final
+    private final void foo() {
+    }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>EmptyStatementNotInLoop: An empty statement (aka a semicolon by itself) that is not used
+as the sole body of a for loop or while loop is probably a bug.  It
+could also be a double semicolon, which is useless and should be
+removed.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>EmptyStatementNotInLoop: An empty statement (aka a semicolon by itself) that is not used
+as the sole body of a for loop or while loop is probably a bug.  It
+could also be a double semicolon, which is useless and should be
+removed.<h3>Example:</h3>public class MyClass {
+   public void doit() {
+      // this is probably not what you meant to do
+      ;
+      // the extra semicolon here this is not necessary
+      System.out.println("look at the extra semicolon");;
+   }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>ClassCastExceptionWithToArray: if you need to get an array of a class from your Collection,
+you should pass an array of the desidered class
+as the parameter of the toArray method. Otherwise you will get a
+ClassCastException.</b></td><td>Medium</td><td>Basic</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>ClassCastExceptionWithToArray: if you need to get an array of a class from your Collection,
+you should pass an array of the desidered class
+as the parameter of the toArray method. Otherwise you will get a
+ClassCastException.<h3>Example:</h3>import java.util.ArrayList;
+import java.util.Collection;
+
+public class Test {
+
+    public static void main(String[] args) {
+        Collection c=new ArrayList();
+        Integer obj=new Integer(1);
+        c.add(obj);
+
+        // this would trigger the rule (and throw a ClassCastException
+if executed)
+        Integer[] a=(Integer [])c.toArray();
+
+        // this wouldn't trigger the rule
+        Integer[] b=(Integer [])c.toArray(new Integer[c.size()]);
+    }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>IdempotentOperations: Avoid idempotent operations - they are silly.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>IdempotentOperations: Avoid idempotent operations - they are silly.<h3>Example:</h3>public class Foo {
+ public void bar() {
+  int x = 2;
+  x = x;
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UseNotifyAllInsteadOfNotify: Thread.notify() awakens a thread monitoring the object. If more than one thread is monitoring, then only
+one is chosen.  The thread chosen is arbitrary; thus it's usually safer to call notifyAll() instead.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UseNotifyAllInsteadOfNotify: Thread.notify() awakens a thread monitoring the object. If more than one thread is monitoring, then only
+one is chosen.  The thread chosen is arbitrary; thus it's usually safer to call notifyAll() instead.<h3>Example:</h3>public class Foo {
+ void bar() {
+  x.notify();
+  // If many threads are monitoring x, only one (and you won't know which) will be notified.
+  // use instead:
+  x.notifyAll();
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>CompareObjectsWithEquals: Use equals() to compare object references; avoid comparing them with ==.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>CompareObjectsWithEquals: Use equals() to compare object references; avoid comparing them with ==.<h3>Example:</h3>class Foo {
+ boolean bar(String a, String b) {
+  return a == b;
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>BadComparison: Avoid equality comparisons with Double.NaN - these are
+likely to be logic errors.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>BadComparison: Avoid equality comparisons with Double.NaN - these are
+likely to be logic errors.<h3>Example:</h3>public class Bar {
+ boolean x = (y == Double.NaN);
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>SimpleDateFormatNeedsLocale: Be sure to specify a Locale when creating a new instance of SimpleDateFormat.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>SimpleDateFormatNeedsLocale: Be sure to specify a Locale when creating a new instance of SimpleDateFormat.<h3>Example:</h3>public class Foo {
+ // Should specify Locale.US (or whatever)
+ private SimpleDateFormat sdf = new SimpleDateFormat("pattern");
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>SimplifyBooleanReturns: Avoid unnecessary if..then..else statements when returning a boolean</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>SimplifyBooleanReturns: Avoid unnecessary if..then..else statements when returning a boolean<h3>Example:</h3>public class Foo {
+  private int bar =2;
+  public boolean isBarEqualsTo(int x) {
+    // this bit of code
+    if (bar == x) {
+     return true;
+    } else {
+     return false;
+    }
+    // can be replaced with a simple
+    // return bar == x;
+  }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>SwitchDensity: A high ratio of statements to labels in a switch statement implies that the switch
+ statement is doing too much work.  Consider moving the statements either into new
+ methods, or creating subclasses based on the switch variable.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>SwitchDensity: A high ratio of statements to labels in a switch statement implies that the switch
+ statement is doing too much work.  Consider moving the statements either into new
+ methods, or creating subclasses based on the switch variable.<h3>Example:</h3>public class Foo {
+ public void bar(int x) {
+   switch (x) {
+     case 1: {
+       // lots of statements
+       break;
+     } case 2: {
+       // lots of statements
+       break;
+     }
+   }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>NonCaseLabelInSwitchStatement: A non-case label (e.g. a named break/continue label) was present in a switch statement.
+This legal, but confusing. It is easy to mix up the case labels and the non-case labels.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>NonCaseLabelInSwitchStatement: A non-case label (e.g. a named break/continue label) was present in a switch statement.
+This legal, but confusing. It is easy to mix up the case labels and the non-case labels.<h3>Example:</h3>public class Foo {
+ void bar(int a) {
+  switch (a) {
+   case 1:
+      // do something
+      break;
+   mylabel: // this is legal, but confusing!
+      break;
+   default:
+      break;
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>SimplifyBooleanExpressions: Avoid unnecessary comparisons in boolean expressions - this makes simple code seem complicated.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>SimplifyBooleanExpressions: Avoid unnecessary comparisons in boolean expressions - this makes simple code seem complicated.<h3>Example:</h3>public class Bar {
+ // can be simplified to
+ // bar = isFoo();
+ private boolean bar = (isFoo() == true);
+
+ public isFoo() { return false;}
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>DefaultLabelNotLastInSwitchStmt: By convention, the default label should be the last label in a switch statement.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>DefaultLabelNotLastInSwitchStmt: By convention, the default label should be the last label in a switch statement.<h3>Example:</h3>public class Foo {
+ void bar(int a) {
+  switch (a) {
+   case 1:  // do something
+      break;
+   default:  // the default case should be last, by convention
+      break;
+   case 2:
+      break;
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>CloseResource: Ensure that resources (like Connection, Statement, and ResultSet objects) are always closed after use</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>CloseResource: Ensure that resources (like Connection, Statement, and ResultSet objects) are always closed after use<h3>Example:</h3>public class Bar {
+ public void foo() {
+  Connection c = pool.getConnection();
+  try {
+    // do stuff
+  } catch (SQLException ex) {
+    // handle exception
+  } finally {
+    // oops, should close the connection using 'close'!
+    // c.close();
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>SwitchStmtsShouldHaveDefault: Switch statements should have a default label.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>SwitchStmtsShouldHaveDefault: Switch statements should have a default label.<h3>Example:</h3>public class Foo {
+ public void bar() {
+  int x = 2;
+  switch (x) {
+   case 2: int j = 8;
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>ConstructorCallsOverridableMethod: Calling overridable methods during construction poses a risk of invoking methods on an
+incompletely constructed object.  This situation can be difficult to discern.
+It may leave the sub-class unable to construct its superclass or forced to
+replicate the construction process completely within itself, losing the ability to call
+super().  If the default constructor contains a call to an overridable method,
+the subclass may be completely uninstantiable.   Note that this includes method calls
+throughout the control flow graph - i.e., if a constructor Foo() calls a private method
+bar() that calls a public method buz(), there's a problem.</b></td><td>High</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>ConstructorCallsOverridableMethod: Calling overridable methods during construction poses a risk of invoking methods on an
+incompletely constructed object.  This situation can be difficult to discern.
+It may leave the sub-class unable to construct its superclass or forced to
+replicate the construction process completely within itself, losing the ability to call
+super().  If the default constructor contains a call to an overridable method,
+the subclass may be completely uninstantiable.   Note that this includes method calls
+throughout the control flow graph - i.e., if a constructor Foo() calls a private method
+bar() that calls a public method buz(), there's a problem.<h3>Example:</h3>public class SeniorClass {
+  public SeniorClass(){
+      toString(); //may throw NullPointerException if overridden
+  }
+  public String toString(){
+    return "IAmSeniorClass";
+  }
+}
+public class JuniorClass extends SeniorClass {
+  private String name;
+  public JuniorClass(){
+    super(); //Automatic call leads to NullPointerException
+    name = "JuniorClass";
+  }
+  public String toString(){
+    return name.toUpperCase();
+  }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>AvoidInstanceofChecksInCatchClause: Each caught exception type should be handled in its own catch clause.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>AvoidInstanceofChecksInCatchClause: Each caught exception type should be handled in its own catch clause.<h3>Example:</h3>try { // Avoid this
+ // do something
+} catch (Exception ee) {
+ if (ee instanceof IOException) {
+  cleanup();
+ }
+}
+try {  // Prefer this:
+ // do something
+} catch (IOException ee) {
+ cleanup();
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UseLocaleWithCaseConversions: When doing a String.toLowerCase()/toUpperCase() call, use a Locale.  This avoids
+problems with certain locales, i.e. Turkish.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UseLocaleWithCaseConversions: When doing a String.toLowerCase()/toUpperCase() call, use a Locale.  This avoids
+problems with certain locales, i.e. Turkish.<h3>Example:</h3>class Foo {
+ // BAD
+ if (x.toLowerCase().equals("list"))...
+ /*
+ This will not match "LIST" when in Turkish locale
+ The above could be
+ if (x.toLowerCase(Locale.US).equals("list")) ...
+ or simply
+ if (x.equalsIgnoreCase("list")) ...
+ */
+ // GOOD
+ String z = a.toLowerCase(Locale.EN);
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>AvoidReassigningParameters: Reassigning values to parameters is a questionable practice.  Use a temporary local variable instead.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>AvoidReassigningParameters: Reassigning values to parameters is a questionable practice.  Use a temporary local variable instead.<h3>Example:</h3>public class Foo {
+ private void foo(String bar) {
+  bar = "something else";
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>AvoidDeeplyNestedIfStmts: Deeply nested if..then statements are hard to read.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>AvoidDeeplyNestedIfStmts: Deeply nested if..then statements are hard to read.<h3>Example:</h3>public class Foo {
+ public void bar(int x, int y, int z) {
+  if (x>y) {
+   if (y>z) {
+    if (z==x) {
+     // whew, too deep
+    }
+   }
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>PositionLiteralsFirstInComparisons: Position literals first in String comparisons - that way if the String is null you won't get a NullPointerException, it'll just return false.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>PositionLiteralsFirstInComparisons: Position literals first in String comparisons - that way if the String is null you won't get a NullPointerException, it'll just return false.<h3>Example:</h3>class Foo {
+ boolean bar(String x) {
+  return x.equals("2"); // should be "2".equals(x)
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>SimplifyConditional: No need to check for null before an instanceof; the instanceof keyword returns false when given a null argument.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>SimplifyConditional: No need to check for null before an instanceof; the instanceof keyword returns false when given a null argument.<h3>Example:</h3>class Foo {
+ void bar(Object x) {
+  if (x != null && x instanceof Bar) {
+   // just drop the "x != null" check
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>AbstractClassWithoutAbstractMethod: The abstract class does not contain any abstract methods. An abstract class suggests
+an incomplete implementation, which is to be completed by subclasses implementing the
+abstract methods. If the class is intended to be used as a base class only (not to be instantiated
+direcly) a protected constructor can be provided prevent direct instantiation.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>AbstractClassWithoutAbstractMethod: The abstract class does not contain any abstract methods. An abstract class suggests
+an incomplete implementation, which is to be completed by subclasses implementing the
+abstract methods. If the class is intended to be used as a base class only (not to be instantiated
+direcly) a protected constructor can be provided prevent direct instantiation.<h3>Example:</h3>public abstract class Foo {
+ void int method1() { ... }
+ void int method2() { ... }
+ // consider using abstract methods or removing
+ // the abstract modifier and adding protected constructors
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>ConfusingTernary: In an "if" expression with an "else" clause, avoid negation in
+the test.  For example, rephrase:
+if (x != y) diff(); else same();
+as:
+if (x == y) same(); else diff();
+Most "if (x != y)" cases without an "else" are often return
+cases, so consistent use of this rule makes the code easier
+to read.  Also, this resolves trivial ordering problems, such
+as "does the error case go first?" or "does the common case
+go first?".</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>ConfusingTernary: In an "if" expression with an "else" clause, avoid negation in
+the test.  For example, rephrase:
+if (x != y) diff(); else same();
+as:
+if (x == y) same(); else diff();
+Most "if (x != y)" cases without an "else" are often return
+cases, so consistent use of this rule makes the code easier
+to read.  Also, this resolves trivial ordering problems, such
+as "does the error case go first?" or "does the common case
+go first?".<h3>Example:</h3>public class Foo {
+ boolean bar(int x, int y) {
+  return (x != y) ? diff : same;
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>MissingBreakInSwitch: A switch statement without an enclosed break statement may be a bug.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>MissingBreakInSwitch: A switch statement without an enclosed break statement may be a bug.<h3>Example:</h3>public class Foo {
+ public void bar(int status) {
+  switch(status) {
+   case CANCELLED:
+    doCancelled();
+    // break; hm, should this be commented out?
+   case NEW:
+    doNew();
+   case REMOVED:
+    doRemoved();
+   }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>EqualsNull: Newbie programmers sometimes get the comparison concepts confused
+and use equals() to compare to null.</b></td><td>High</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>EqualsNull: Newbie programmers sometimes get the comparison concepts confused
+and use equals() to compare to null.<h3>Example:</h3>class Bar {
+   void foo() {
+       String x = "foo";
+       if (x.equals(null)) { // bad!
+        doSomething();
+       }
+   }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>AvoidProtectedFieldInFinalClass: Do not use protected fields in final classes since they cannot be subclassed.
+Clarify your intent by using private or package access modifiers instead.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>AvoidProtectedFieldInFinalClass: Do not use protected fields in final classes since they cannot be subclassed.
+Clarify your intent by using private or package access modifiers instead.<h3>Example:</h3>public final class Bar {
+ private int x;
+ protected int y;  // <-- Bar cannot be subclassed, so is y really private or package visible???
+ Bar() {}
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UncommentedEmptyConstructor: Uncommented Empty Constructor finds instances where a constructor does not
+contain statements, but there is no comment. By explicitly commenting empty
+constructors it is easier to distinguish between intentional (commented)
+and unintentional empty constructors.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UncommentedEmptyConstructor: Uncommented Empty Constructor finds instances where a constructor does not
+contain statements, but there is no comment. By explicitly commenting empty
+constructors it is easier to distinguish between intentional (commented)
+and unintentional empty constructors.<h3>Example:</h3>public Foo() {
+  super();
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>AvoidSynchronizedAtMethodLevel: Method level synchronization can backfire when new code is added to the method.  Block-level
+  synchronization helps to ensure that only the code that needs synchronization gets it.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>AvoidSynchronizedAtMethodLevel: Method level synchronization can backfire when new code is added to the method.  Block-level
+  synchronization helps to ensure that only the code that needs synchronization gets it.<h3>Example:</h3>public class Foo {
+ // Try to avoid this
+ synchronized void foo() {
+ }
+ // Prefer this:
+ void bar() {
+  synchronized(this) {
+  }
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>AvoidConstantsInterface: An interface should be used only to model a behaviour of a
+    class: using an interface as a container of constants is a poor usage pattern.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>AvoidConstantsInterface: An interface should be used only to model a behaviour of a
+    class: using an interface as a container of constants is a poor usage pattern.<h3>Example:</h3>public interface ConstantsInterface {
+     public static final int CONSTANT1=0;
+     public static final String CONSTANT2="1";
+    }<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>MissingStaticMethodInNonInstantiatableClass: A class that has private constructors and does not have any static methods or fields cannot be used.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>MissingStaticMethodInNonInstantiatableClass: A class that has private constructors and does not have any static methods or fields cannot be used.<h3>Example:</h3>/* This class is unusable, since it cannot be
+ instantiated (private constructor),
+ and no static method can be called.
+ */
+public class Foo {
+ private Foo() {}
+ void foo() {}
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>InstantiationToGetClass: Avoid instantiating an object just to call getClass() on it; use the .class public member instead</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>InstantiationToGetClass: Avoid instantiating an object just to call getClass() on it; use the .class public member instead<h3>Example:</h3>public class Foo {
+ // Replace this
+ Class c = new String().getClass();
+ // with this:
+ Class c = String.class;
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UnnecessaryLocalBeforeReturn: Avoid unnecessarily creating local variables</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UnnecessaryLocalBeforeReturn: Avoid unnecessarily creating local variables<h3>Example:</h3>public class Foo {
+    public int foo() {
+      int x = doSomething();
+      return x;  // instead, just 'return doSomething();'
+    }
+  }<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>OptimizableToArrayCall: A call to Collection.toArray can use the Collection's size vs an empty Array of the desired type.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>OptimizableToArrayCall: A call to Collection.toArray can use the Collection's size vs an empty Array of the desired type.<h3>Example:</h3>class Foo {
+ void bar(Collection x) {
+   // A bit inefficient
+   x.toArray(new Foo[0]);
+   // Much better; this one sizes the destination array, avoiding
+   // a reflection call in some Collection implementations
+   x.toArray(new Foo[x.size()]);
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>AccessorClassGeneration: Instantiation by way of private constructors from outside of the constructor's class often causes the generation of an accessor.
+A factory method, or non-privitization of the constructor can eliminate this situation.
+The generated class file is actually an interface.  It gives the accessing class the ability to invoke a new hidden package
+scope constructor that takes the interface as a supplementary parameter.  This turns a private constructor effectively into
+one with package scope, though not visible to the naked eye.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>AccessorClassGeneration: Instantiation by way of private constructors from outside of the constructor's class often causes the generation of an accessor.
+A factory method, or non-privitization of the constructor can eliminate this situation.
+The generated class file is actually an interface.  It gives the accessing class the ability to invoke a new hidden package
+scope constructor that takes the interface as a supplementary parameter.  This turns a private constructor effectively into
+one with package scope, though not visible to the naked eye.<h3>Example:</h3>public class Outer {
+ void method(){
+  Inner ic = new Inner();//Causes generation of accessor class
+ }
+ public class Inner {
+  private Inner(){}
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>FinalFieldCouldBeStatic: If a final field is assigned to a compile-time constant, it could be
+made static, thus saving overhead in each object</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>FinalFieldCouldBeStatic: If a final field is assigned to a compile-time constant, it could be
+made static, thus saving overhead in each object<h3>Example:</h3>public class Foo {
+ public final int BAR = 42; // this could be static and save some space
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UseSingleton: If you have a class that has nothing but static methods, consider making it a Singleton.
+Note that this doesn't apply to abstract classes, since their subclasses may
+well include non-static methods.  Also, if you want this class to be a Singleton,
+remember to add a private constructor to prevent instantiation.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UseSingleton: If you have a class that has nothing but static methods, consider making it a Singleton.
+Note that this doesn't apply to abstract classes, since their subclasses may
+well include non-static methods.  Also, if you want this class to be a Singleton,
+remember to add a private constructor to prevent instantiation.<h3>Example:</h3>public class MaybeASingleton {
+ public static void foo() {}
+ public static void bar() {}
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>NonStaticInitializer: A nonstatic initializer block will be called any time a constructor
+is invoked (just prior to invoking the constructor).  While this
+is a valid language construct, it is rarely used and is confusing.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>NonStaticInitializer: A nonstatic initializer block will be called any time a constructor
+is invoked (just prior to invoking the constructor).  While this
+is a valid language construct, it is rarely used and is confusing.<h3>Example:</h3>public class MyClass {
+ // this block gets run before any call to a constructor
+ {
+  System.out.println("I am about to construct myself");
+ }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>AssignmentToNonFinalStatic: Identifies a possible unsafe usage of a static field.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>AssignmentToNonFinalStatic: Identifies a possible unsafe usage of a static field.<h3>Example:</h3>public class StaticField {
+   static int x;
+   public FinalFields(int y) {
+    x = y; // unsafe
+   }
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>UncommentedEmptyMethod: Uncommented Empty Method finds instances where a method does not contain
+statements, but there is no comment. By explicitly commenting empty methods
+it is easier to distinguish between intentional (commented) and unintentional
+empty methods.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>UncommentedEmptyMethod: Uncommented Empty Method finds instances where a method does not contain
+statements, but there is no comment. By explicitly commenting empty methods
+it is easier to distinguish between intentional (commented) and unintentional
+empty methods.<h3>Example:</h3>public void doSomething() {
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>NonThreadSafeSingleton: Non-thread safe singletons can result in bad state changes. If possible,
+get rid of static singletons by directly instantiating the object. Static
+singletons are usually not needed as only a single instance exists anyway.
+Other possible fixes are to synchronize the entire method or to use an
+initialize-on-demand holder class (do not use the double-check idiom).
+
+See Effective Java, item 48.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>NonThreadSafeSingleton: Non-thread safe singletons can result in bad state changes. If possible,
+get rid of static singletons by directly instantiating the object. Static
+singletons are usually not needed as only a single instance exists anyway.
+Other possible fixes are to synchronize the entire method or to use an
+initialize-on-demand holder class (do not use the double-check idiom).
+
+See Effective Java, item 48.<h3>Example:</h3>private static Foo foo = null;
+
+//multiple simultaneous callers may see partially initialized objects
+public static Foo getFoo() {
+    if (foo==null)
+        foo = new Foo();
+    return foo;
+}<br>&nbsp;</td></tr>
+<tr class='styleInfoRow'>
+<td>ON</td><td  align=left><b>ImmutableField: Identifies private fields whose values never change once they are initialized either in the declaration of the field or by
+a constructor.  This aids in converting existing classes to immutable classes.</b></td><td>Medium</td><td>Design</td></tr>
+<tr class='styleInfoRow'>
+<td class='styleExplain'>&nbsp;</td><td colspan='3' class='styleExplain'><h3>Explanation:</h3>ImmutableField: Identifies private fields whose values never change once they are initialized either in the declaration of the field or by
+a constructor.  This aids in converting existing classes to immutable classes.<h3>Example:</h3>public class Foo {
+  private int x; // could be final
+  public Foo() {
+      x = 7;
+  }
+  public void foo() {
+     int a = x + 2;
+  }
+}<br>&nbsp;</td></tr>
+<tr><td colspan='4'>
+<hr width='100%' size='1' noshade color='#cccc99'>
+</td></tr>
+</table>
+</TD></TR>
+<tr class='styleExplain'><td align=center>Generated: Mar 6, 2006&nbsp;&nbsp;&nbsp;&nbsp;Version: 4.1, Build #719</td></tr>
+</table>
+<br>
+</body></html>
