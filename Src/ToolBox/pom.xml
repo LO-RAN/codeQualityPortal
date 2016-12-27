@@ -5,7 +5,7 @@
     <dynaTrace.version>6.5.0</dynaTrace.version>
     <dynaTrace.testCategory>performance</dynaTrace.testCategory>
     <dynaTrace.agentGroup>Test</dynaTrace.agentGroup>
-    <dynaTrace.profileName>caqs</dynaTrace.profileName>
+    <dynaTrace.profileName>CAQS</dynaTrace.profileName>
     <dynaTrace.username>admin</dynaTrace.username>
     <dynaTrace.password>admin</dynaTrace.password>
     <dynaTrace.collector>localhost:9998</dynaTrace.collector>
