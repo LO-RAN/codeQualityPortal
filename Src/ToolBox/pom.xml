@@ -2,7 +2,7 @@
                         <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <dynaTrace.version>6.5</dynaTrace.version>
+    <dynaTrace.version>6.5.0</dynaTrace.version>
     <dynaTrace.testCategory>performance</dynaTrace.testCategory>
     <dynaTrace.agentGroup>Test</dynaTrace.agentGroup>
     <dynaTrace.profileName>caqs</dynaTrace.profileName>
