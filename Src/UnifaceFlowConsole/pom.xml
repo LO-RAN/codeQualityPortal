@@ -102,7 +102,7 @@
     <dependency>
       <groupId>struts</groupId>
       <artifactId>struts</artifactId>
-      <version>1.0.2</version>
+      <version>1.2.9</version>
     </dependency>
     <dependency>
       <groupId>caqs</groupId>
@@ -112,7 +112,7 @@
     <dependency>
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
-      <version>1.2</version>
+      <version>1.2.2</version>
     </dependency>
     <dependency>
       <groupId>commons-pool</groupId>
