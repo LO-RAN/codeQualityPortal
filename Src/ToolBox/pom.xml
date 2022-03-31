@@ -156,7 +156,7 @@
                         <versionBuild>${BUILD_ID}</versionBuild>
                         <category>unit</category>
                         <profileName>${dynaTrace.profileName}</profileName>
-                        <additionalProperties></additionalProperties>
+                        <additionalProperties/>
                     </configuration>
                     <!-- start this test in the process-test-classes phase
                          which is the one before the tests are executed -->
@@ -211,7 +211,7 @@
      <dependency>
          <groupId>commons-dbcp</groupId>
          <artifactId>commons-dbcp</artifactId>
-         <version>1.2</version>
+         <version>1.2.2</version>
          <!--<properties>
              <war.bundle>true</war.bundle>
          </properties>-->
@@ -231,7 +231,7 @@
      <dependency>
          <groupId>commons-pool</groupId>
          <artifactId>commons-pool</artifactId>
-         <version>1.2</version>
+         <version>1.3</version>
          <!--<properties>
              <war.bundle>true</war.bundle>
          </properties>-->
