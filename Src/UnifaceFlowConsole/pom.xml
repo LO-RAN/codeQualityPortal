@@ -117,7 +117,7 @@
     <dependency>
       <groupId>commons-pool</groupId>
       <artifactId>commons-pool</artifactId>
-      <version>1.2</version>
+      <version>20030825.183949</version>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
