@@ -514,7 +514,7 @@
         <dependency>
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-core</artifactId>
-            <version>1.5.8</version>
+            <version>3.1.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.ws</groupId>
@@ -524,7 +524,7 @@
         <dependency>
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-security</artifactId>
-            <version>1.5.8</version>
+            <version>3.1.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
