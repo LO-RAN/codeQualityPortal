@@ -232,50 +232,50 @@
               <phase>package</phase>
               <configuration>
                 <tasks>
-                  <delete file="${project.build.directory}/carscode-${project.version}.war" />
+                  <delete file="${project.build.directory}/carscode-${project.version}.war"/>
                   <!-- Place any ant task here. You can add anything you can add between <target>and</target>in a build.xml. -->
-                  <echo message="Setting ExtJS as not debug..." />
-                  <taskdef name="replaceregexp" classname="org.apache.tools.ant.taskdefs.optional.ReplaceRegExp" />
+                  <echo message="Setting ExtJS as not debug..."/>
+                  <taskdef name="replaceregexp" classname="org.apache.tools.ant.taskdefs.optional.ReplaceRegExp"/>
                   <replaceregexp match="ext-all-debug.js" replace="ext-all.js" flags="g" byline="false">
-                    <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="ext/common/extjsFramework.jsp" />
+                    <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="ext/common/extjsFramework.jsp"/>
                   </replaceregexp>
-                  <echo message="Striping white spaces from JSP files..." />
+                  <echo message="Striping white spaces from JSP files..."/>
                   <!-- Strip whitespace -->
                     <replaceregexp match="&gt;\s*&lt;" replace="&gt;&lt;" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="**/*.html,**/*.htm,**/*.jsp,**/*.tag" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="**/*.html,**/*.htm,**/*.jsp,**/*.tag"/>
                     </replaceregexp>
                     <replaceregexp match="\n\s*&lt;" replace="&lt;" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="**/*.html,**/*.htm,**/*.jsp,**/*.tag" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="**/*.html,**/*.htm,**/*.jsp,**/*.tag"/>
                     </replaceregexp>
-                    <echo message="Filling about.js file..." />
+                    <echo message="Filling about.js file..."/>
                     <replaceregexp match="%CAQS_VERSION%" replace="${project.version}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${project.version}/WEB-INF/classes/com/compuware/caqs/Resources/" includes="resources*.properties" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/WEB-INF/classes/com/compuware/caqs/Resources/" includes="resources*.properties"/>
                     </replaceregexp>
                     <replaceregexp match="%JFREECHART_VERSION%" replace="${jfreechart.version}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="scatterplot.jsp" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="scatterplot.jsp"/>
                     </replaceregexp>
                     <replaceregexp match="%JCOMMON_VERSION%" replace="${jcommon.version}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="scatterplot.jsp" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="scatterplot.jsp"/>
                     </replaceregexp>
                     <replaceregexp match="%CAQS_VERSION%" replace="${project.version}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="impactgraph.jsp,scatterplot.jsp" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="impactgraph.jsp,scatterplot.jsp"/>
                     </replaceregexp>
                     <replaceregexp match="%CAQS_VERSION%" replace="${project.version}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${project.version}/architecture/" includes="architectureApplet.jsp" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/architecture/" includes="architectureApplet.jsp"/>
                     </replaceregexp>
                     <replaceregexp match="%CAQS_ORGANISATION%" replace="${project.organization.name}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="about.js" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="about.js"/>
                     </replaceregexp>
                     <replaceregexp match="%CAQS_ORGANISATION_URL%" replace="${project.organization.url}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="about.js" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="about.js"/>
                     </replaceregexp>
                     <tstamp>
-                      <format property="NOW_UK" pattern="yyyy-MM-dd" locale="en" />
+                      <format property="NOW_UK" pattern="yyyy-MM-dd" locale="en"/>
                     </tstamp>
                     <replaceregexp match="%CAQS_DATE%" replace="${NOW_UK}" flags="g" byline="false">
-                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="about.js" />
+                      <fileset dir="${project.build.directory}/carscode-${project.version}/" includes="about.js"/>
                     </replaceregexp>
-                    <zip basedir="${project.build.directory}/carscode-${project.version}/" destfile="${project.build.directory}/${project.build.finalName}.war" />
+                    <zip basedir="${project.build.directory}/carscode-${project.version}/" destfile="${project.build.directory}/${project.build.finalName}.war"/>
                   </tasks>
                 </configuration>
                 <goals>
@@ -377,7 +377,7 @@
               <dependency>
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
-                <version>3.2</version>
+                <version>3.2.2</version>
               </dependency>
               <dependency>
                 <groupId>commons-lang</groupId>
