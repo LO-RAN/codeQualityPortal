@@ -1,0 +1,22 @@
+name: Send events to Dynatrace
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  send-custom-webhook:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Send events to Dynatrace
+      run: |
+        curl -X POST ${{ secrets.DT_API_URL }} \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Api-Token ${{ secrets.DT_API_TOKEN }}" \
+        -d '{
+          "event": "${{ github.event_name }}",
+          "repository": "${{ github.repository }}",
+          "sender": "${{ github.actor }}"
+        }'
