@@ -514,7 +514,7 @@
         <dependency>
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-core</artifactId>
-            <version>1.5.8</version>
+            <version>3.0.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.ws</groupId>
@@ -524,7 +524,7 @@
         <dependency>
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-security</artifactId>
-            <version>1.5.8</version>
+            <version>3.0.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -831,7 +831,7 @@
         <jfreechart.version>1.0.13</jfreechart.version>
         <caqs.version>4.5</caqs.version>
         <cxf.version>2.2.5</cxf.version>
-        <spring.version>2.5.6</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
         <jaxws.version>2.1.3</jaxws.version>
     </properties>
 </project>
